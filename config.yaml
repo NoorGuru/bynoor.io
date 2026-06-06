@@ -1,5 +1,5 @@
-baseURL: "https://www.noor.sh"
-title: noor.sh
+baseURL: "https://www.bynoor.io"
+title: bynoor.io
 pagination.pagerSize: 7
 theme: PaperMod
 
@@ -57,7 +57,7 @@ languages:
           url: cv
           weight: 2
         - name: My Apps
-          url: https://go.noor.sh/apps
+          url: https://go.bynoor.io/apps
           weight: 3
 
 
@@ -96,9 +96,9 @@ params:
 
   profileMode:
     enabled: false
-    title: noor.sh
+    title: bynoor.io
     imageUrl: "images/logo.svg"
-    imageTitle: noor.sh logo
+    imageTitle: bynoor.io logo
     imageWidth: 300
     imageHeight: 300
     buttons:
@@ -123,7 +123,7 @@ params:
 
 
   homeInfoParams:
-    Title: "noor.sh"
+    Title: "bynoor.io"
     video_series:
       - name: C++ for Beginners
         url: /series/c++-for-beginners/
@@ -170,21 +170,21 @@ params:
 
   socialIcons:
     - name: linkedin
-      url: "https://go.noor.sh/linkedin"
+      url: "https://go.bynoor.io/linkedin"
     - name: github
-      url: "https://go.noor.sh/github"
+      url: "https://go.bynoor.io/github"
     - name: hackerrank
-      url: "https://go.noor.sh/hr"
+      url: "https://go.bynoor.io/hr"
     - name: stackoverflow
-      url: "https://go.noor.sh/sof"
+      url: "https://go.bynoor.io/sof"
     - name: youtube
-      url: "https://go.noor.sh/youtube"
+      url: "https://go.bynoor.io/youtube"
     #    - name: youtube
-    #      url: "https://go.noor.sh/youtube-cwn"
+    #      url: "https://go.bynoor.io/youtube-cwn"
     - name: twitter
-      url: "https://go.noor.sh/twitter"
+      url: "https://go.bynoor.io/twitter"
     - name: email
-      url: "https://go.noor.sh/email"
+      url: "https://go.bynoor.io/email"
   #    - name: KoFi
   #      url: "https://ko-fi.com/adityatelange"
   #    - name: RsS

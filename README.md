@@ -1,3 +1,3 @@
-# noor.sh
+# bynoor.io
 
-My tech blog source code: https://www.noor.sh/
+My tech blog source code: https://www.bynoor.io/

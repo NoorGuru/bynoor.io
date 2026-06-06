@@ -23,7 +23,7 @@ If I can afford only one book to prepare for my technical interviews, I will def
 That's it, good luck!
 
 ## Before You Continue
-> Check my new presentation on [Cracking the Tech Job Interview](https://present.noor.sh/tech-interview/) to get a better understanding of the technical interview process, and what you can do to prepare for it - on the technical and non-technical sides.
+> Check my new presentation on [Cracking the Tech Job Interview](https://present.bynoor.io/tech-interview/) to get a better understanding of the technical interview process, and what you can do to prepare for it - on the technical and non-technical sides.
 
 
 ---

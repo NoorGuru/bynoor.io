@@ -1,5 +1,5 @@
 ---
 title: "Search"
 layout: "search"
-summary: "noor.sh search page"
+summary: "bynoor.io search page"
 ---

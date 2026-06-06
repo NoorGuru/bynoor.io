@@ -33,7 +33,7 @@ as you need to server your customers (clients) in any time!
 2. **DNS** (Domain Name Server) is the server that provide your customers with your **IP** (Internet Protocol) address.
    - This is usually a paid server.
    - The simplest abstraction to think about DNS is a system that acts like a cache, or a map to convert your domain name
-     (like www.noor.sh) to an actual IP address (like 132.126.15.3) of the server with your actual website contents.
+     (like www.bynoor.io) to an actual IP address (like 132.126.15.3) of the server with your actual website contents.
    - Your first time users will connect to the DNS once, and when they got the actual IP of your server they start
      to send **HTTP** (Hypertext Transfer Protocol) requests directly to your server.
    - You may (or may not) got a static IP address for your server (as it's an extra paid service), that's why, once in a
