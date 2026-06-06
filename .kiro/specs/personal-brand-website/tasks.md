@@ -156,7 +156,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - _Requirements: 14.1, 14.2, 14.3_
 
 - [ ] 4. Implement animations and responsive polish
-  - [ ] 4.1 Implement scroll-triggered entrance animations
+  - [x] 4.1 Implement scroll-triggered entrance animations
     - Create `src/scripts/animations.js` (imported by main.js)
     - Query all `[data-animate]` elements
     - Set initial state via CSS: `opacity: 0; transform: translateY(20px)` (for fade-up) — class `.animate-hidden`

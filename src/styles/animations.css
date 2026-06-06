@@ -1,0 +1,12 @@
+/* Scroll-triggered entrance animations */
+
+.animate-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.animate-visible {
+  opacity: 1;
+  transform: none;
+  transition: all var(--duration-entrance) var(--ease-out);
+}
