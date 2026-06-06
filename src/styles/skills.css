@@ -1,0 +1,68 @@
+/* Skills Section */
+.skills {
+  padding: var(--space-xl) var(--space-md);
+  background-color: var(--color-bg-section);
+}
+
+.skills__container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.skills__heading {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+
+.skills__category {
+  margin-bottom: var(--space-lg);
+}
+
+.skills__category:last-child {
+  margin-bottom: 0;
+}
+
+.skills__category-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.skills__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* Skill Pill Base */
+.skill-pill {
+  display: inline-block;
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--skill-text);
+  white-space: nowrap;
+}
+
+/* Skill Pill Category Variants */
+.skill-pill--languages {
+  background-color: var(--skill-languages-bg);
+}
+
+.skill-pill--technologies {
+  background-color: var(--skill-technologies-bg);
+}
+
+.skill-pill--expertise {
+  background-color: var(--skill-expertise-bg);
+}
+
+.skill-pill--leadership {
+  background-color: var(--skill-leadership-bg);
+}

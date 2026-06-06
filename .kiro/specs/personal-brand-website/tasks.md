@@ -93,8 +93,8 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Ensure graceful degradation if IntersectionObserver is unsupported (no active states, but nav still functions)
     - _Requirements: 9.5_
 
-- [ ] 3. Build remaining landing page sections
-  - [ ] 3.1 Build Highlights section with 5 achievement cards
+- [x] 3. Build remaining landing page sections
+  - [x] 3.1 Build Highlights section with 5 achievement cards
     - Add `<section id="highlights" aria-labelledby="highlights-heading">`
     - Add h2 heading (e.g., "Highlights" or "What I Do")
     - Create 5 card elements, each containing:
@@ -105,7 +105,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Style: card grid (1 col mobile, 2 col tablet, 3 col desktop), rounded corners, subtle shadow, spacing
     - _Requirements: 4.1, 4.2, 4.3_
 
-  - [ ] 3.2 Build Skills section with 4 color-coded categories
+  - [x] 3.2 Build Skills section with 4 color-coded categories
     - Add `<section id="skills" aria-labelledby="skills-heading">`
     - Add h2 heading
     - Create 4 category groups, each with:
@@ -121,7 +121,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Responsive: pills wrap naturally, no overflow
     - _Requirements: 5.1, 5.2, 5.3_
 
-  - [ ] 3.3 Build Connect section (social links and CTAs)
+  - [x] 3.3 Build Connect section (social links and CTAs)
     - Add `<section id="links" aria-labelledby="connect-heading">`
     - Add h2 "Connect" heading
     - Add prominent "Let's Connect" button: large, primary color, links to https://cal.com/mohammad-noor
@@ -137,7 +137,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Style: icon + label layout, hover effect (scale/shadow), grid responsive
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5_
 
-  - [ ] 3.4 Build Projects section with 2 project cards
+  - [x] 3.4 Build Projects section with 2 project cards
     - Add `<section id="projects" aria-labelledby="projects-heading">`
     - Add h2 heading (e.g., "Built by Noor" or "Projects")
     - Create 2 project cards:
@@ -148,7 +148,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Style: card layout (1 col mobile, 2 col desktop), hover effect
     - _Requirements: 7.1, 7.2, 7.3_
 
-  - [ ] 3.5 Build Footer component
+  - [x] 3.5 Build Footer component
     - Add `<footer class="footer">` with `<p>© <span id="year"></span> Noor 🤍</p>`
     - JS: `document.getElementById('year').textContent = new Date().getFullYear();`
     - Style: centered text, small font, muted color, generous top margin
