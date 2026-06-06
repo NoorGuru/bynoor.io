@@ -9,9 +9,13 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
+    "test:e2e": "playwright test",
     "optimize-images": "node scripts/optimize-images.mjs"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.3",
+    "@playwright/test": "^1.60.0",
+    "jsdom": "^29.1.1",
     "sharp": "^0.34.5",
     "vite": "^6.3.5",
     "vitest": "^3.1.4"

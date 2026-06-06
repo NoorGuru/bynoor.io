@@ -260,7 +260,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Fix any performance issues found (render-blocking resources, large assets, layout shifts)
     - _Requirements: 10.1, 10.2, 10.3, 10.5_
 
-- [~] 8. Final verification
+- [x] 8. Final verification
   - Run full build: `npm run build`
   - Serve `dist/` locally and verify both pages render correctly
   - Test on real mobile device or emulator if possible
@@ -268,8 +268,8 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
   - Confirm all social links, project links, and CTA links work
   - Ask user for final review
 
-- [ ] 9. Write tests
-  - [~] 9.1 Write build output validation tests (REQUIRED)
+- [x] 9. Write tests
+  - [x] 9.1 Write build output validation tests (REQUIRED)
     - Set up Vitest
     - Test: `dist/index.html` exists after build
     - Test: `dist/technical-interview-preparation-kit/index.html` exists after build
@@ -278,7 +278,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Test: Total dist size under 1.5MB
     - _Requirements: 10.4, 10.6, 11.2, 11.4_
 
-  - [ ]* 9.2 Write DOM content assertion tests (optional)
+  - [x] 9.2 Write DOM content assertion tests (optional)
     - Test Hero: profile image with alt text, h1 with correct name, tagline, subtitle, CTA links with correct hrefs
     - Test Highlights: all 5 cards with correct titles
     - Test Skills: all 4 categories with all skills present
@@ -290,7 +290,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Test Accessibility: skip-nav link is first focusable, semantic landmarks present, ARIA labels on icon links
     - _Requirements: 1.1–1.7, 4.1, 5.1, 6.1–6.5, 7.1–7.3, 9.1, 12.1–12.4, 13.4–13.6, 14.1_
 
-  - [ ]* 9.3 Write responsive and accessibility E2E tests (optional)
+  - [x] 9.3 Write responsive and accessibility E2E tests (optional)
     - Set up Playwright
     - Test: no horizontal overflow at 320px, 375px, 768px, 1024px, 1200px, 2560px
     - Test: hamburger menu visible below 768px, hidden above
