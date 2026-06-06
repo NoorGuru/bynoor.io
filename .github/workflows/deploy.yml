@@ -1,0 +1,70 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Validate build output
+        run: |
+          if [ ! -f dist/CNAME ]; then
+            echo "ERROR: dist/CNAME is missing"
+            exit 1
+          fi
+          if [ ! -f dist/index.html ]; then
+            echo "ERROR: dist/index.html is missing"
+            exit 1
+          fi
+          CNAME_CONTENT=$(cat dist/CNAME)
+          if [ "$CNAME_CONTENT" != "bynoor.io" ]; then
+            echo "ERROR: dist/CNAME does not contain 'bynoor.io', found: $CNAME_CONTENT"
+            exit 1
+          fi
+          echo "Build validation passed"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -44,6 +44,13 @@
     gtag('config', 'G-XHXB3G7XDR');
   </script>
 
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="/profile-pic.webp" type="image/webp">
+
+  <!-- Preload critical fonts -->
+  <link rel="preload" as="font" href="/src/assets/fonts/inter-variable.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="/src/assets/fonts/space-grotesk-variable.woff2" type="font/woff2" crossorigin>
+
   <!-- Styles -->
   <link rel="stylesheet" href="/src/styles/main.css">
 </head>
@@ -78,7 +85,7 @@
     <section id="hero" class="hero" aria-label="Introduction">
       <picture>
         <source srcset="/profile-pic.webp" type="image/webp">
-        <img src="/profile-pic.png" alt="Mohammad Noor Abu Khlaif — Software Engineer, AI Advocate, and Tech Educator" width="400" height="400" class="hero__photo">
+        <img src="/profile-pic.png" alt="Mohammad Noor Abu Khlaif — Software Engineer, AI Advocate, and Tech Educator" width="400" height="400" fetchpriority="high" decoding="async" class="hero__photo">
       </picture>
 
       <h1>Mohammad Noor Abu Khlaif</h1>
@@ -284,6 +291,6 @@
   </footer>
 
   <!-- Scripts -->
-  <script type="module" defer src="/src/scripts/main.js"></script>
+  <script type="module" src="/src/scripts/main.js"></script>
 </body>
 </html>

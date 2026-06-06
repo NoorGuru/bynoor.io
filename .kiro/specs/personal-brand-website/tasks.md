@@ -188,7 +188,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Fix any issues found during review
     - _Requirements: 2.1, 2.2, 2.4, 2.5, 2.6_
 
-- [-] 5. Build the Resources page (Technical Interview Preparation Kit)
+- [x] 5. Build the Resources page (Technical Interview Preparation Kit)
   - [x] 5.1 Convert markdown content to semantic HTML
     - Read `content/technical-interview-preparation-kit/index.md` as source
     - Create full HTML content in `technical-interview-preparation-kit/index.html`:
@@ -214,7 +214,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Add `scroll-margin-top: calc(var(--header-height) + 1rem)` to all heading elements
     - _Requirements: 8.6_
 
-  - [-] 5.3 Add shared navigation and footer to Resources page
+  - [x] 5.3 Add shared navigation and footer to Resources page
     - Copy the same nav markup from index.html (or extract as common pattern)
     - Set "Resources" nav link as active (`.nav__link--active` class)
     - "Noor" home link points to `/` (not `#hero`)
@@ -222,15 +222,15 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Include footer with dynamic copyright year
     - _Requirements: 8.1, 9.6, 14.3_
 
-- [ ] 6. Checkpoint - Verify both pages complete
+- [x] 6. Checkpoint - Verify both pages complete
   - Open dev server, visually inspect both pages at multiple viewports
   - Verify all links work (no 404s, correct targets)
   - Verify animations trigger on scroll and respect reduced-motion
   - Verify navigation scroll-spy, hamburger menu, smooth scroll all function
   - Ask user for visual review if needed
 
-- [ ] 7. Performance optimization and deployment
-  - [ ] 7.1 Configure Vite build optimization
+- [x] 7. Performance optimization and deployment
+  - [x] 7.1 Configure Vite build optimization
     - Verify CSS and JS minification is enabled (Vite defaults)
     - Verify asset hashing in filenames
     - Ensure `public/CNAME` (containing "bynoor.io") is copied to `dist/` root
@@ -243,7 +243,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
       - No individual image > 200KB
     - _Requirements: 10.6, 11.2, 11.4_
 
-  - [ ] 7.2 Create GitHub Actions workflow for automated deployment
+  - [x] 7.2 Create GitHub Actions workflow for automated deployment
     - Replace existing `.github/workflows/gh-pages.yml` with new `deploy.yml`:
       - Trigger: push to `main` branch only
       - Steps: checkout → setup Node → install deps → build → validate (CNAME exists, index.html exists) → deploy
@@ -252,7 +252,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Verify workflow YAML is valid
     - _Requirements: 11.1, 11.2, 11.3, 11.5_
 
-  - [ ] 7.3 Add lazy loading and final performance checks
+  - [x] 7.3 Add lazy loading and final performance checks
     - Add `loading="lazy"` to any images below the fold (Resources page images, if any)
     - Profile picture in hero is LCP — must NOT be lazy-loaded (it's above the fold)
     - Verify images have explicit width/height to prevent CLS
@@ -260,7 +260,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Fix any performance issues found (render-blocking resources, large assets, layout shifts)
     - _Requirements: 10.1, 10.2, 10.3, 10.5_
 
-- [ ] 8. Final verification
+- [~] 8. Final verification
   - Run full build: `npm run build`
   - Serve `dist/` locally and verify both pages render correctly
   - Test on real mobile device or emulator if possible
@@ -269,7 +269,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
   - Ask user for final review
 
 - [ ] 9. Write tests
-  - [ ] 9.1 Write build output validation tests (REQUIRED)
+  - [~] 9.1 Write build output validation tests (REQUIRED)
     - Set up Vitest
     - Test: `dist/index.html` exists after build
     - Test: `dist/technical-interview-preparation-kit/index.html` exists after build
