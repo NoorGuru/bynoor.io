@@ -1,0 +1,190 @@
+/* Navigation Component */
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll offset for sticky header */
+section[id] {
+  scroll-margin-top: var(--header-height);
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background-color: rgba(250, 250, 250, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Nav container */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  height: 100%;
+}
+
+/* Logo / Home link */
+.nav__logo {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--duration-hover) ease;
+}
+
+.nav__logo:hover,
+.nav__logo:focus-visible {
+  color: var(--color-primary-hover);
+}
+
+/* Nav links list */
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Individual nav link */
+.nav__link {
+  font-family: var(--font-primary);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 4px;
+  transition: color var(--duration-hover) ease, background-color var(--duration-hover) ease;
+}
+
+.nav__link:hover,
+.nav__link:focus-visible {
+  color: var(--color-primary);
+  background-color: rgba(99, 102, 241, 0.08);
+}
+
+/* Active nav link (scroll-spy) */
+.nav__link--active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Focus indicator for accessibility */
+.nav__logo:focus-visible,
+.nav__link:focus-visible,
+.nav__hamburger:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Hamburger button — hidden on desktop */
+.nav__hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-sm);
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav__hamburger-icon {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text);
+  position: relative;
+  transition: background-color var(--duration-hover) ease;
+}
+
+.nav__hamburger-icon::before,
+.nav__hamburger-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: transform var(--duration-hover) ease;
+}
+
+.nav__hamburger-icon::before {
+  top: -7px;
+}
+
+.nav__hamburger-icon::after {
+  top: 7px;
+}
+
+/* Hamburger open state icon animation */
+.nav__hamburger[aria-expanded="true"] .nav__hamburger-icon {
+  background-color: transparent;
+}
+
+.nav__hamburger[aria-expanded="true"] .nav__hamburger-icon::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.nav__hamburger[aria-expanded="true"] .nav__hamburger-icon::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .nav__hamburger {
+    display: flex;
+  }
+
+  .nav__links {
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background-color: rgba(250, 250, 250, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-sm) 0;
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform var(--duration-hover) var(--ease-out),
+                opacity var(--duration-hover) var(--ease-out),
+                visibility 0s linear var(--duration-hover);
+  }
+
+  .nav__links[data-visible="true"] {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition: transform var(--duration-hover) var(--ease-out),
+                opacity var(--duration-hover) var(--ease-out),
+                visibility 0s linear 0s;
+  }
+
+  .nav__link {
+    display: block;
+    padding: var(--space-md);
+    font-size: 1rem;
+  }
+}

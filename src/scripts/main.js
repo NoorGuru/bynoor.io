@@ -1,2 +1,9 @@
 // Main application module
-// Scroll-spy, animations, and interactivity will be added in future tasks
+import { initNavigation } from './navigation.js';
+import { initScrollSpy } from './scroll-spy.js';
+
+// Initialize modules when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  initNavigation();
+  initScrollSpy();
+});

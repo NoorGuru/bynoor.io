@@ -57,8 +57,8 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Place OG image in `public/` folder
     - _Requirements: 10.4, 10.5, 12.1_
 
-- [ ] 2. Build Hero section and navigation
-  - [ ] 2.1 Build Hero section with profile picture, name, tagline, and CTAs
+- [x] 2. Build Hero section and navigation
+  - [x] 2.1 Build Hero section with profile picture, name, tagline, and CTAs
     - Add `<section id="hero" class="hero" aria-label="Introduction">` as first section in main
     - Add `<picture>` element with `<source srcset="profile-pic.webp" type="image/webp">` and `<img src="profile-pic.png" alt="Mohammad Noor Abu Khlaif — Software Engineer, AI Advocate, and Tech Educator" class="hero__photo">`
     - Style photo: circular with `border-radius: 50%`, min 150px on mobile, 200px on desktop
@@ -71,7 +71,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Write responsive CSS inline with the component: mobile-first base styles + tablet/desktop enhancements
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7_
 
-  - [ ] 2.2 Build sticky navigation with section links and mobile hamburger menu
+  - [x] 2.2 Build sticky navigation with section links and mobile hamburger menu
     - Create `<header>` with `<nav>` containing:
       - "Noor" home link (scrolls to #hero)
       - Section links: Highlights (#highlights), Skills (#skills), Connect (#links), Projects (#projects)
@@ -85,7 +85,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - All nav links keyboard-accessible (Tab, Enter)
     - _Requirements: 9.1, 9.2, 9.3, 9.4, 2.3, 13.3, 13.5_
 
-  - [ ] 2.3 Implement scroll-spy for active section highlighting
+  - [x] 2.3 Implement scroll-spy for active section highlighting
     - Create `src/scripts/main.js` with Intersection Observer watching all section elements
     - Observer config: threshold 0.2, rootMargin accounts for header height
     - On intersection: add/remove `.nav__link--active` class to corresponding nav link
