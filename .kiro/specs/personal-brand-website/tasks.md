@@ -155,7 +155,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Duplicate footer markup in Resources page HTML
     - _Requirements: 14.1, 14.2, 14.3_
 
-- [-] 4. Implement animations and responsive polish
+- [x] 4. Implement animations and responsive polish
   - [x] 4.1 Implement scroll-triggered entrance animations
     - Create `src/scripts/animations.js` (imported by main.js)
     - Query all `[data-animate]` elements
@@ -166,7 +166,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Ensure elements start visible if JS is disabled: add `.animate-hidden` class via JS on load (progressive enhancement — no JS = no hidden state)
     - _Requirements: 3.1, 3.2, 3.5, 4.2_
 
-  - [-] 4.2 Implement hover effects and prefers-reduced-motion support
+  - [x] 4.2 Implement hover effects and prefers-reduced-motion support
     - Add hover transitions to all interactive elements:
       - Buttons: slight scale (1.02) + shadow lift
       - Social link cards: scale (1.05) + color shift
@@ -179,7 +179,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
       - Keep only `color` and `opacity` transitions
     - _Requirements: 3.2, 3.3, 3.4, 3.5_
 
-  - [-] 4.3 Responsive polish and final mobile-first adjustments
+  - [x] 4.3 Responsive polish and final mobile-first adjustments
     - Review all sections at breakpoints: 320px, 375px, 768px, 1024px, 1200px, 1920px
     - Verify: no horizontal overflow, no text truncation, no element overlap
     - Verify: all tap targets ≥ 44x44px on mobile
@@ -188,8 +188,8 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Fix any issues found during review
     - _Requirements: 2.1, 2.2, 2.4, 2.5, 2.6_
 
-- [ ] 5. Build the Resources page (Technical Interview Preparation Kit)
-  - [ ] 5.1 Convert markdown content to semantic HTML
+- [-] 5. Build the Resources page (Technical Interview Preparation Kit)
+  - [x] 5.1 Convert markdown content to semantic HTML
     - Read `content/technical-interview-preparation-kit/index.md` as source
     - Create full HTML content in `technical-interview-preparation-kit/index.html`:
       - h1: "Technical Interview Preparation Kit"
@@ -207,14 +207,14 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
       - Lists: proper nesting indentation
     - _Requirements: 8.2, 8.3, 8.4, 8.5_
 
-  - [ ] 5.2 Add table of contents with anchor navigation
+  - [x] 5.2 Add table of contents with anchor navigation
     - Add id attributes to all h2 and h3 elements (slug format: lowercase, hyphenated)
     - Create TOC at the top of the page as an ordered list of anchor links grouped by h2 sections
     - Style TOC: outlined box, clear visual hierarchy (h2 = bold, h3 = indented)
     - Add `scroll-margin-top: calc(var(--header-height) + 1rem)` to all heading elements
     - _Requirements: 8.6_
 
-  - [ ] 5.3 Add shared navigation and footer to Resources page
+  - [-] 5.3 Add shared navigation and footer to Resources page
     - Copy the same nav markup from index.html (or extract as common pattern)
     - Set "Resources" nav link as active (`.nav__link--active` class)
     - "Noor" home link points to `/` (not `#hero`)

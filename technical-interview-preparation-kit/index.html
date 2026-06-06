@@ -55,7 +55,15 @@
   <header class="header">
     <nav class="nav" aria-label="Main navigation">
       <a href="/" class="nav__logo">Noor</a>
-      <ul class="nav__links">
+      <button
+        class="nav__hamburger"
+        aria-expanded="false"
+        aria-controls="nav-links"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="nav__hamburger-icon"></span>
+      </button>
+      <ul class="nav__links" id="nav-links">
         <li><a href="/#highlights" class="nav__link">Highlights</a></li>
         <li><a href="/#skills" class="nav__link">Skills</a></li>
         <li><a href="/#links" class="nav__link">Connect</a></li>
@@ -66,8 +74,531 @@
   </header>
 
   <!-- Main Content -->
-  <main id="main-content">
+  <main id="main-content" class="resources">
     <h1>Technical Interview Preparation Kit</h1>
+    <p class="resources__updated">Updated on Sep 7th, 2023</p>
+
+    <!-- Table of Contents -->
+    <nav class="toc" aria-label="Table of Contents">
+      <h2 class="toc__title">Table of Contents</h2>
+      <ol class="toc__list">
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#long-term-preparation-kit">Long-Term Preparation Kit</a>
+          <ol>
+            <li><a href="#before-you-continue">Before You Continue</a></li>
+          </ol>
+        </li>
+        <li><a href="#learn-by-practice">Learn by Practice</a>
+          <ol>
+            <li><a href="#practice-per-topic">Practice per Topic</a></li>
+            <li><a href="#practice-on-a-schedule">Practice on a Schedule</a></li>
+          </ol>
+        </li>
+        <li><a href="#short-term-preparation-kit">Short-Term Preparation Kit</a>
+          <ol>
+            <li><a href="#keep-in-mind">Keep in Mind</a></li>
+            <li><a href="#7-steps-to-solve-algorithm-problems">7 Steps to Solve Algorithm Problems</a></li>
+            <li><a href="#3-algorithm-strategies">3 Algorithm Strategies</a></li>
+            <li><a href="#bit-manipulation-in-a-nutshell">Bit Manipulation in a Nutshell</a></li>
+            <li><a href="#linked-lists-vs-arrays">Linked Lists VS Arrays</a></li>
+            <li><a href="#sort-algorithms">Sort Algorithms</a></li>
+            <li><a href="#search-algorithms">Search Algorithms</a></li>
+            <li><a href="#trees">Trees</a></li>
+            <li><a href="#binary-trees">Binary Trees</a></li>
+            <li><a href="#graphs">Graphs</a></li>
+            <li><a href="#solid-design-principles">SOLID Design Principles</a></li>
+          </ol>
+        </li>
+        <li><a href="#sources-and-references">Sources and References</a></li>
+      </ol>
+    </nav>
+
+    <!-- Introduction -->
+    <h2 id="introduction">Introduction</h2>
+    <p>I used to have some cheat sheets around to prepare myself for any incoming technical interviews, so I thought it would be a better idea to gather them here for quicker access. It could help someone else to prepare quickly as well :)</p>
+
+    <blockquote>
+      <p>The order might not be so relevant. Pick and choose what you need to review.</p>
+    </blockquote>
+
+    <hr>
+
+    <!-- Long-Term Preparation Kit -->
+    <h2 id="long-term-preparation-kit">Long-Term Preparation Kit</h2>
+    <p>If I can afford only one book to prepare for my technical interviews, I will definitely buy the <a href="https://www.crackingthecodinginterview.com" target="_blank" rel="noopener">Cracking the Coding Interview</a> book by Gayle McDowell, 6th edition. That's it, good luck!</p>
+
+    <h3 id="before-you-continue">Before You Continue</h3>
+    <blockquote>
+      <p>Check my new presentation on <a href="https://present.bynoor.io/tech-interview/" target="_blank" rel="noopener">Cracking the Tech Job Interview</a> to get a better understanding of the technical interview process, and what you can do to prepare for it - on the technical and non-technical sides.</p>
+    </blockquote>
+
+    <hr>
+
+    <!-- Learn by Practice -->
+    <h2 id="learn-by-practice">Learn by Practice</h2>
+    <p>If you prefer to learn by practising, I would advise you to start with Hackerank Preparation Kits.</p>
+
+    <h3 id="practice-per-topic">Practice per Topic</h3>
+    <p><a href="https://www.hackerrank.com/interview/interview-preparation-kit" target="_blank" rel="noopener">The HackerRank Interview Preparation Kit</a></p>
+    <p><strong>Recommended</strong> if you are a beginner or you need a refresher on a certain topic.</p>
+
+    <h3 id="practice-on-a-schedule">Practice on a Schedule</h3>
+    <p><a href="https://www.hackerrank.com/interview/preparation-kits" target="_blank" rel="noopener">Interview Preparation Kits</a></p>
+    <p><strong>Recommended</strong> if you have a scheduled interview, and you need to refresh your skills in different topics.</p>
+
+    <ul>
+      <li><a href="https://www.hackerrank.com/interview/preparation-kits/three-month-preparation-kit/three-month-week-one/challenges" target="_blank" rel="noopener">3 Months Preparation Kit</a></li>
+      <li><a href="https://www.hackerrank.com/interview/preparation-kits/one-month-preparation-kit/one-month-week-one/challenges" target="_blank" rel="noopener">1 Month Preparation Kit</a></li>
+      <li><a href="https://www.hackerrank.com/interview/preparation-kits/one-week-preparation-kit/one-week-day-one/challenges" target="_blank" rel="noopener">1 Week Preparation Kit</a></li>
+      <li><strong>1 Day Preparation Kit?</strong> Continue reading this article.</li>
+    </ul>
+
+    <hr>
+
+    <!-- Short-Term Preparation Kit -->
+    <h2 id="short-term-preparation-kit">Short-Term Preparation Kit</h2>
+    <p>If I don't have a long time to prepare, or if I already went through the long-term preparation kit before, and I want a quick refresh, I would follow this kit. Multiple resources and steps already summarize some topics from the Cracking the Coding Interview book I referred to above, with few modifications.</p>
+
+    <p><strong>Video Kit:</strong> If I have a little more time, I would go through <a href="https://www.youtube.com/playlist?list=PLOuZYwbmgZWXvkghUyMLdI90IwxbNCiWK" target="_blank" rel="noopener">this playlist</a> first, at least once.</p>
+
+    <hr>
+
+    <!-- Keep in Mind -->
+    <h3 id="keep-in-mind">Keep in Mind</h3>
+    <p>Keep these data structures, algorithms, and concepts in mind:</p>
+
+    <ul>
+      <li>Data Structures:
+        <ol>
+          <li>Linked Lists</li>
+          <li>Trees, Tries, and Graphs</li>
+          <li>Stacks and Queues</li>
+          <li>Heaps</li>
+          <li>Vectors and Array Lists</li>
+          <li><strong>&gt;&gt; Hash Tables &lt;&lt;</strong> (Dictionaries, Maps, ...)</li>
+        </ol>
+      </li>
+      <li>Algorithms:
+        <ol>
+          <li>Breadth-First Search</li>
+          <li>Depth-First Search</li>
+          <li>Binary Search</li>
+          <li>Merge Sort</li>
+          <li>Quick Sort</li>
+        </ol>
+      </li>
+      <li>Concepts:
+        <ol>
+          <li>Memory (Stacks VS Heaps)</li>
+          <li>Recursion</li>
+          <li>Dynamic Programming</li>
+          <li>Big O Time &amp; Space</li>
+          <li>Bit Manipulation</li>
+        </ol>
+      </li>
+    </ul>
+
+    <hr>
+
+    <!-- 7 Steps to Solve Algorithm Problems -->
+    <h3 id="7-steps-to-solve-algorithm-problems">7 Steps to Solve Algorithm Problems</h3>
+    <ol>
+      <li>Listen (&amp; ask!).</li>
+      <li>Pick an example which is:
+        <ol>
+          <li>Big (enough)</li>
+          <li>Is not a special case</li>
+        </ol>
+      </li>
+      <li>Use a brute-force approach (at least to think of the problem).</li>
+      <li>Optimize your solution.</li>
+      <li>Walk through your algorithm and know exactly what you are going to do before starting to code, think of needed variables and data structures for instance.</li>
+      <li>Code! Make sure to have a:
+        <ol>
+          <li>(Consistent) code style: Use descriptive variable names, and you may refer to them with abbreviations later.</li>
+          <li>Modular code: before coding, not after.</li>
+        </ol>
+      </li>
+      <li><strong>TEST</strong>!
+        <ol>
+          <li>Don't use your original example.</li>
+          <li>Analyze (line by line).</li>
+          <li>Test with a:
+            <ol>
+              <li>Small test case.</li>
+              <li>Edge test case.</li>
+              <li>Big test case.</li>
+            </ol>
+          </li>
+          <li>Test your code, not your algorithm!</li>
+          <li>Think before fixing bugs (so that you won't introduce new bugs, or make the code missy or hard).</li>
+          <li>Don't panic, you might not solve it from the first round.</li>
+        </ol>
+      </li>
+    </ol>
+
+    <hr>
+
+    <!-- 3 Algorithm Strategies -->
+    <h3 id="3-algorithm-strategies">3 Algorithm Strategies</h3>
+    <ol>
+      <li>B.U.D.
+        <ul>
+          <li>Go through your brute-force or best solution right now and look for:
+            <ol>
+              <li><strong>B</strong>ottlenecks</li>
+              <li><strong>U</strong>nnecessary Work</li>
+              <li><strong>D</strong>uplicated Work</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+      <li>Space &amp; Time Tradeoffs
+        <ul>
+          <li>Always have <strong>hash tables</strong> at the top of your mind</li>
+        </ul>
+      </li>
+      <li>D.I.Y. (Do it Yourself)
+        <ul>
+          <li>Try to solve it in your mind, and write a code that behaves the same.</li>
+          <li>Use a large and generic example.</li>
+          <li>Reverse engineering your thoughts!</li>
+        </ul>
+      </li>
+    </ol>
+
+    <hr>
+
+    <!-- Bit Manipulation in a Nutshell -->
+    <h3 id="bit-manipulation-in-a-nutshell">Bit Manipulation in a Nutshell</h3>
+    <ul>
+      <li>Get the i<em>th</em> bit of x &rarr; <code>x &amp; (1 &lt;&lt; i)</code></li>
+      <li>Set the i<em>th</em> bit of x &rarr; <code>x | (1 &lt;&lt; i)</code></li>
+      <li>Clear the i<em>th</em> bit of x &rarr; <code>x &amp; ~(1 &lt;&lt; i)</code></li>
+    </ul>
+
+    <hr>
+
+    <!-- Linked Lists VS Arrays -->
+    <h3 id="linked-lists-vs-arrays">Linked Lists VS Arrays</h3>
+    <div class="resources__table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Case #</th>
+            <th>Operation / Data Structure</th>
+            <th>Arrays</th>
+            <th>Linked Lists</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>get (retrieve)</td>
+            <td>Constant</td>
+            <td>Linear</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>insert and delete (@ start)</td>
+            <td>Linear</td>
+            <td>Constant</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>insert and delete (@ end)</td>
+            <td>Constant</td>
+            <td>Linear</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Clarifications:</strong></p>
+    <ul>
+      <li>Case #1
+        <ul>
+          <li>An array will get any item by index in a constant <code>O(1)</code> time.</li>
+          <li>A linked list needs to traverse and count nodes until it reaches the needed item and returns it so that it needs a linear <code>O(n)</code> time.</li>
+        </ul>
+      </li>
+      <li>Case #2
+        <ul>
+          <li>An array will access the needed index in a constant <code>O(1)</code> time and add or delete it, but it needs a linear <code>O(n)</code> to shift <strong>all</strong> the old nodes to right in the case of adding and to left in the case of removing.</li>
+          <li>A linked list needs to traverse a <strong>few</strong> nodes (since we will add or delete from the start), add or delete the new node and update the pointers, so it needs a constant <code>O(1)</code> time.</li>
+        </ul>
+      </li>
+      <li>Case #3
+        <ul>
+          <li>An array will access the needed index in a constant <code>O(1)</code> time and add or delete it, and since we are adding or deleting from the end, it needs a constant <code>O(1)</code> to shift the <strong>few</strong> old nodes to right in the case of adding and to left in the case of removing.</li>
+          <li>A linked list needs to traverse <strong>almost all</strong> nodes (since we will add or delete from the end), add or delete the new node and update the pointers, so it needs a linear <code>O(n)</code> time.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <hr>
+
+    <!-- Sort Algorithms -->
+    <h3 id="sort-algorithms">Sort Algorithms</h3>
+    <blockquote>
+      <p><strong>A great website to visualize and understand the different sorting algorithms is <a href="https://visualgo.net/en/sorting" target="_blank" rel="noopener">visualgo.net</a></strong>.</p>
+    </blockquote>
+
+    <div class="resources__table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Algorithm</th>
+            <th>Average Time Complexity</th>
+            <th>Worst Time Complexity</th>
+            <th>Worst Space Complexity</th>
+            <th>Keys / Notes</th>
+            <th>Stability</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-group-header">
+            <td colspan="6"><strong>Best Time:</strong></td>
+          </tr>
+          <tr>
+            <td>Quick Sort</td>
+            <td>O(n lg n)</td>
+            <td>O(n^2)</td>
+            <td>O(lg n)</td>
+            <td>Pivot could make things missy</td>
+            <td><strong>Not</strong> stable</td>
+          </tr>
+          <tr>
+            <td>Merge Sort</td>
+            <td>O(n lg n)</td>
+            <td>O(n lg n)</td>
+            <td>O(n)</td>
+            <td>Divide and conquer</td>
+            <td>Stable</td>
+          </tr>
+          <tr>
+            <td>Heap Sort</td>
+            <td>O(n lg n)</td>
+            <td>O(n lg n)</td>
+            <td>O(1) <em>in-place</em></td>
+            <td>Heapsort is significantly slower than Quicksort and Merge Sort, so Heapsort is less commonly encountered in practice.</td>
+            <td><strong>Not</strong> stable</td>
+          </tr>
+          <tr class="table-group-header">
+            <td colspan="6"><strong>Best Space:</strong></td>
+          </tr>
+          <tr>
+            <td>Bubble Sort</td>
+            <td>O(n^2)</td>
+            <td>O(n^2)</td>
+            <td>O(1) <em>in-place</em></td>
+            <td>Compare every pair and swap if they are not in order</td>
+            <td>Stable</td>
+          </tr>
+          <tr>
+            <td>Insertion Sort</td>
+            <td>O(n^2)</td>
+            <td>O(n^2)</td>
+            <td>O(1) <em>in-place</em></td>
+            <td>Compare every item with all previous items, if a smaller (a larger) item is found, move all items in between to right and <em>insert</em> that item in the correct place.</td>
+            <td>Stable</td>
+          </tr>
+          <tr>
+            <td>Selection Sort</td>
+            <td>O(n^2)</td>
+            <td>O(n^2)</td>
+            <td>O(1) <em>in-place</em></td>
+            <td>Find the smallest (largest) item and add it to the end of the sorted part. Usually worse than insertion sort. <em>The first part is always sorted</em>.</td>
+            <td><strong>Not</strong> stable</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ul>
+      <li>Lower bound for sorting algorithms is O(n lg n).</li>
+      <li>A sorting algorithm is stable if two objects with equal keys appear in the same order in sorted output as they appear in the input array to be sorted. Informally, stability means that equivalent elements retain their relative positions, after sorting.</li>
+      <li>Read more about different sorting algorithms in <a href="https://www.happycoders.eu/algorithms/" target="_blank" rel="noopener">HappyCoders.eu</a>.</li>
+    </ul>
+
+    <hr>
+
+    <!-- Search Algorithms -->
+    <h3 id="search-algorithms">Search Algorithms</h3>
+    <div class="resources__table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Algorithm</th>
+            <th>Average / Worst Time Complexity</th>
+            <th>Average / Worst Space Complexity</th>
+            <th>Why to use?</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Binary Search</td>
+            <td>O(lg n)</td>
+            <td>O(lg n)</td>
+            <td><em>Best time</em></td>
+            <td><strong>Works with sorted data only</strong>. Extra space is needed for the call stack in the recursive solution.</td>
+          </tr>
+          <tr>
+            <td>Linear Search</td>
+            <td>O(n)</td>
+            <td>O(1) <em>in-place</em></td>
+            <td><em>Best space</em></td>
+            <td>Works with any (sorted or unsorted) data.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr>
+
+    <!-- Trees -->
+    <h3 id="trees">Trees</h3>
+    <h4>Tree Traversals</h4>
+    <ul>
+      <li>Pre-order: <strong>root</strong> &rarr; left &rarr; right</li>
+      <li>In-order: left &rarr; <strong>root</strong> &rarr; right</li>
+      <li>Post-order: left &rarr; right &rarr; <strong>root</strong></li>
+    </ul>
+
+    <hr>
+
+    <!-- Binary Trees -->
+    <h3 id="binary-trees">Binary Trees</h3>
+    <h4>Types</h4>
+    <ul>
+      <li>A <strong>binary tree</strong> is a tree where every node has a max of 2 children.</li>
+      <li>A <strong>perfect binary tree</strong> is a <em>binary</em> tree where all levels are full (every node has 2 children).</li>
+      <li>A <strong>complete binary tree</strong> is a <em>binary</em> tree where all levels are full (every node has 2 children) except (possibly) the last level.
+        <ul>
+          <li>Every perfect tree is a complete tree.</li>
+        </ul>
+      </li>
+      <li>A <strong>balanced binary tree</strong> is a <em>binary</em> tree in which the left and right subtrees of every node differ in height by no more than 1.</li>
+      <li>A <strong>full binary tree</strong> is a <em>binary</em> tree in which every node has either 0 or 2 children.</li>
+      <li>A <strong>binary search tree</strong> is a <em>binary</em> tree whose internal nodes each store a key greater than all the keys in the node's left subtree and less than those in its right subtree.
+        <ul>
+          <li>An in-order traversal for a binary search tree will give us ascending sorted data.</li>
+          <li>A binary search tree is an ideal way to go with the hierarchical way of storing data.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h4>Useful Computations</h4>
+    <p>In any <strong><em>perfect binary tree</em></strong>:</p>
+    <ul>
+      <li>Number of nodes <code>n</code> = <code>2^(h-1)</code>. Where <code>h</code> is the tree height.</li>
+      <li>Height <code>h</code> = <code>lg (n+1)</code>. Where <code>n</code> is the number of nodes.</li>
+      <li>Number of the nodes in the last level = number of nodes in all other levels + 1.</li>
+    </ul>
+
+    <hr>
+
+    <!-- Graphs -->
+    <h3 id="graphs">Graphs</h3>
+    <p>A graph organizes items in an interconnected network. A graph consists of multiple nodes and edges between them.</p>
+
+    <h4>Classifications</h4>
+    <p>A graph could be:</p>
+    <ul>
+      <li>Directed or Undirected
+        <ul>
+          <li>The edge is bidirectional in an undirected graph, but has a direction in a directed graph.</li>
+        </ul>
+      </li>
+      <li>Cyclic or Acyclic
+        <ul>
+          <li>A graph is cyclic if you can start from any node and come back to it in a closed path; acyclic otherwise.</li>
+        </ul>
+      </li>
+      <li>Weighted or Unweighted
+        <ul>
+          <li>The edge has a certain weight (importance/degree) in a weighted graph. All edges have the same weight in an unweighted graph.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h4>Representations</h4>
+    <p>A graph could be represented with:</p>
+    <ul>
+      <li>An edge list
+        <ul>
+          <li>A list of all the edges in the graph.</li>
+          <li>Every edge is represented by the 2 nodes it connects.</li>
+          <li>An unconnected node (a node with no edges) will not be represented with this form.</li>
+        </ul>
+      </li>
+      <li>An adjacency list
+        <ul>
+          <li>A list where the index represents the node, and the value at that index is a list of the node's neighbours.</li>
+          <li>Another form of this representation is to use a map (a dictionary) where the key is the node, and the value is a list of neighbours.</li>
+        </ul>
+      </li>
+      <li>An adjacency matrix
+        <ul>
+          <li>A matrix of <code>0</code>s and <code>1</code>s indicating whether a node <code>x</code> connects to node <code>y</code> where <code>0</code> means unconnected and <code>1</code> means connected.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <hr>
+
+    <!-- SOLID Design Principles -->
+    <h3 id="solid-design-principles">SOLID Design Principles</h3>
+
+    <h4>Dependency Inversion</h4>
+    <ul>
+      <li>A high-level module should not depend on a low-level module.</li>
+      <li>Both should depend on abstraction.</li>
+      <li>Abstraction should not depend on details.</li>
+      <li>Details should depend on abstraction.</li>
+      <li>A <a href="https://github.com/mohnoor94/LearningDesignPatterns/tree/master/src/main/java/_00_solid_design_principles/dependency_inversion" target="_blank" rel="noopener">code example</a>.</li>
+    </ul>
+
+    <h4>Interface Segregation</h4>
+    <ul>
+      <li>You should add the minimum amount of methods/code to each interface.</li>
+      <li>At no point, the client should need to implement a method they do not need at all.</li>
+      <li>A <a href="https://github.com/mohnoor94/LearningDesignPatterns/tree/master/src/main/java/_00_solid_design_principles/interface_segreggation" target="_blank" rel="noopener">code example</a>.</li>
+    </ul>
+
+    <h4>Liskov Substitution</h4>
+    <ul>
+      <li>You should be able to substitute a sub-class for a base class without breaking the logic.</li>
+      <li>A <a href="https://github.com/mohnoor94/LearningDesignPatterns/tree/master/src/main/java/_00_solid_design_principles/liskov_subsitution" target="_blank" rel="noopener">code example</a>.</li>
+    </ul>
+
+    <h4>Open-Closed</h4>
+    <ul>
+      <li>Your code should be:
+        <ul>
+          <li><em>Open</em> for extension.</li>
+          <li><em>Closed</em> for modifications.</li>
+        </ul>
+      </li>
+      <li>A <a href="https://github.com/mohnoor94/LearningDesignPatterns/tree/master/src/main/java/_00_solid_design_principles/open_closed" target="_blank" rel="noopener">code example</a>.</li>
+    </ul>
+
+    <h4>Separation of Concerns (Single Responsibility)</h4>
+    <ul>
+      <li>Every module, class or function should have responsibility over a single part of that program's functionality, and it should encapsulate that part.</li>
+      <li>A <a href="https://github.com/mohnoor94/LearningDesignPatterns/tree/master/src/main/java/_00_solid_design_principles/single_responsibility" target="_blank" rel="noopener">code example</a>.</li>
+      <li>Read more about <a href="../posts/solid/java/single-responsibility-principle/">Single Responsibility Principle</a>.</li>
+    </ul>
+
+    <hr>
+
+    <!-- Sources and References -->
+    <h2 id="sources-and-references">Sources and References</h2>
+    <ul>
+      <li><a href="https://www.crackingthecodinginterview.com" target="_blank" rel="noopener">Cracking the Coding Interview</a>. A book by Gayle McDowell, 6th edition.</li>
+      <li><a href="https://www.happycoders.eu/blog/" target="_blank" rel="noopener">HappyCoders.eu</a>. A blog by Sven Woltmann to make you a better Java programmer (and more).</li>
+    </ul>
   </main>
 
   <!-- Footer -->
