@@ -1,2 +1,3 @@
-puplic/
-resources/
+node_modules/
+dist/
+*.local

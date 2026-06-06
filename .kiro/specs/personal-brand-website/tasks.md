@@ -6,8 +6,8 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
 
 ## Tasks
 
-- [ ] 1. Clean workspace and set up project structure
-  - [ ] 1.1 Remove old Hugo files and initialize new Vite project
+- [x] 1. Clean workspace and set up project structure
+  - [x] 1.1 Remove old Hugo files and initialize new Vite project
     - Remove old Hugo directories and files: `config.yaml`, `content/` (EXCEPT preserve `content/technical-interview-preparation-kit/index.md` as reference), `layouts/`, `archetypes/`, `assets/`, `themes/`, `.gitmodules`
     - Keep: `static/CNAME`, `static/favicon*`, `static/android-chrome*`, `static/apple-touch-icon*`, `profile-pic.png`, `.github/`, `README.md`
     - Create `package.json` with Vite, Vitest as dev dependencies
@@ -19,7 +19,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Run `npm install` to verify setup, `npm run build` to verify empty build works
     - _Requirements: 11.1, 11.4_
 
-  - [ ] 1.2 Set up CSS architecture with design tokens and font loading
+  - [x] 1.2 Set up CSS architecture with design tokens and font loading
     - Create `src/styles/tokens.css` with ALL CSS Custom Properties from design document:
       - Colors: `--color-primary` (#6366f1), `--color-primary-hover` (#4f46e5), `--color-secondary` (#06b6d4), `--color-accent` (#f59e0b), `--color-bg` (#fafafa), `--color-bg-section` (#ffffff), `--color-text` (#1e293b), `--color-text-secondary` (#475569), `--color-border` (#e2e8f0)
       - Skill pill colors: `--skill-languages-bg` (hsl(210,70%,42%)), `--skill-technologies-bg` (hsl(150,60%,35%)), `--skill-expertise-bg` (hsl(30,80%,40%)), `--skill-leadership-bg` (hsl(330,65%,42%)), `--skill-text` (#fff)
@@ -34,7 +34,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Add empty `@media (prefers-color-scheme: dark) { :root {} }` rule to enforce light mode
     - _Requirements: 15.1, 15.2, 15.3_
 
-  - [ ] 1.3 Create base HTML boilerplate with SEO and analytics
+  - [x] 1.3 Create base HTML boilerplate with SEO and analytics
     - Create `index.html` at project root with:
       - `<!DOCTYPE html>`, `<html lang="en">`, viewport meta tag
       - Title: "Mohammad Noor Abu Khlaif | Software Engineer & AI Advocate" (≤60 chars)
@@ -49,7 +49,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Create `technical-interview-preparation-kit/index.html` with same boilerplate but page-specific title/description
     - _Requirements: 12.1, 12.2, 12.3, 12.4, 12.5, 13.4, 13.6_
 
-  - [ ] 1.4 Optimize profile picture and create OG image
+  - [x] 1.4 Optimize profile picture and create OG image
     - Convert `profile-pic.png` to WebP format using build-time or manual conversion (e.g., `cwebp`)
     - Ensure both `profile-pic.webp` and `profile-pic.png` are under 200KB each
     - Add explicit width/height dimensions to prevent CLS

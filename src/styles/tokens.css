@@ -1,0 +1,47 @@
+/* Design Tokens — CSS Custom Properties */
+:root {
+  /* Colors */
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+  --color-secondary: #06b6d4;
+  --color-accent: #f59e0b;
+  --color-bg: #fafafa;
+  --color-bg-section: #ffffff;
+  --color-text: #1e293b;
+  --color-text-secondary: #475569;
+  --color-border: #e2e8f0;
+
+  /* Skill pill colors */
+  --skill-languages-bg: hsl(210, 70%, 42%);
+  --skill-technologies-bg: hsl(150, 60%, 35%);
+  --skill-expertise-bg: hsl(30, 80%, 40%);
+  --skill-leadership-bg: hsl(330, 65%, 42%);
+  --skill-text: #ffffff;
+
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Space Grotesk', var(--font-primary);
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --header-height: 64px;
+
+  /* Animation */
+  --duration-entrance: 500ms;
+  --duration-hover: 200ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Enforce light mode — do not respond to dark preference */
+@media (prefers-color-scheme: dark) {
+  :root {}
+}
