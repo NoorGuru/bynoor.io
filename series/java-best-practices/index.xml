@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Java Best Practices on noor.sh</title>
-    <link>https://www.noor.sh/series/java-best-practices/</link>
-    <description>Recent content in Java Best Practices on noor.sh</description>
+    <title>Java Best Practices on bynoor.io</title>
+    <link>https://www.bynoor.io/series/java-best-practices/</link>
+    <description>Recent content in Java Best Practices on bynoor.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 27 May 2021 00:27:28 +0300</lastBuildDate><atom:link href="https://www.noor.sh/series/java-best-practices/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 May 2021 00:27:28 +0300</lastBuildDate><atom:link href="https://www.bynoor.io/series/java-best-practices/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java Best Practices 01 | Static Factory Methods Over Constructors</title>
-      <link>https://www.noor.sh/posts/java-bp/static-factory-methods-over-constructors/</link>
+      <link>https://www.bynoor.io/posts/java-bp/static-factory-methods-over-constructors/</link>
       <pubDate>Thu, 27 May 2021 00:27:28 +0300</pubDate>
       
-      <guid>https://www.noor.sh/posts/java-bp/static-factory-methods-over-constructors/</guid>
+      <guid>https://www.bynoor.io/posts/java-bp/static-factory-methods-over-constructors/</guid>
       <description>Static Factory Methods Consider using Static Factory Methods Instead of Constructors
 The static factory method is a method that returns an instance of the class.
 Example In this example, we will build some HTML elements using Java. Here is the base class.

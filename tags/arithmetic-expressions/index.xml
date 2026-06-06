@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Arithmetic Expressions on noor.sh</title>
-    <link>https://www.noor.sh/tags/arithmetic-expressions/</link>
-    <description>Recent content in Arithmetic Expressions on noor.sh</description>
+    <title>Arithmetic Expressions on bynoor.io</title>
+    <link>https://www.bynoor.io/tags/arithmetic-expressions/</link>
+    <description>Recent content in Arithmetic Expressions on bynoor.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 13 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.noor.sh/tags/arithmetic-expressions/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bynoor.io/tags/arithmetic-expressions/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1-8 Mixed Expressions &amp; Type Conversion (Casting) | التعابير المختلطة وتحويل الأنواع</title>
-      <link>https://www.noor.sh/posts/cpp/mixed-expressions-and-type-conversion-cpp/</link>
+      <link>https://www.bynoor.io/posts/cpp/mixed-expressions-and-type-conversion-cpp/</link>
       <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/cpp/mixed-expressions-and-type-conversion-cpp/</guid>
+      <guid>https://www.bynoor.io/posts/cpp/mixed-expressions-and-type-conversion-cpp/</guid>
       <description>في هذا الدّرس سنتعرّف على التعابير الحسابية المختلطة وتحويل الأنواع في لغة سي بلس بلس باستخدام الكثير من الأمثلة. In this lecture, we will learn about mixed (mathematical) expressions, like:
 int (op) int double (op) double double (op) int int (op) double And type casting with static_cast, by understanding a lot of examples.</description>
     </item>
     
     <item>
       <title>1-7 Operator Precedence and Arithmetic Expressions | أولويات العمليات والتعابير الحسابية</title>
-      <link>https://www.noor.sh/posts/cpp/operator-precedence-and-arithmetic-expressions-cpp/</link>
+      <link>https://www.bynoor.io/posts/cpp/operator-precedence-and-arithmetic-expressions-cpp/</link>
       <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/cpp/operator-precedence-and-arithmetic-expressions-cpp/</guid>
+      <guid>https://www.bynoor.io/posts/cpp/operator-precedence-and-arithmetic-expressions-cpp/</guid>
       <description>في هذا الدرس سنتعرف على أولويات العمليات الحسابية، التعابير الحسابية، وأنواع المعاملات الأحادية والثنائية في لغة سي بلس بلس باستخدام الكثير من الأمثلة. In this lecture, we will learn about arithmetic operations and operators, mathematical expressions, operator precedence, binary operators, and Unary Operators in C++, using multiple examples.</description>
     </item>
     

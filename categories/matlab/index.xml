@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Matlab on noor.sh</title>
-    <link>https://www.noor.sh/categories/matlab/</link>
-    <description>Recent content in Matlab on noor.sh</description>
+    <title>Matlab on bynoor.io</title>
+    <link>https://www.bynoor.io/categories/matlab/</link>
+    <description>Recent content in Matlab on bynoor.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 28 Apr 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://www.noor.sh/categories/matlab/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 28 Apr 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bynoor.io/categories/matlab/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Graphical User Interface (GUI) Programming Example (in Arabic)</title>
-      <link>https://www.noor.sh/posts/matlab/gui-graphical-user-interface-matlab/</link>
+      <link>https://www.bynoor.io/posts/matlab/gui-graphical-user-interface-matlab/</link>
       <pubDate>Tue, 28 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/matlab/gui-graphical-user-interface-matlab/</guid>
+      <guid>https://www.bynoor.io/posts/matlab/gui-graphical-user-interface-matlab/</guid>
       <description> </description>
     </item>
     
     <item>
       <title>Programming with Matlab, Selection, Loops and Debug (in Arabic)</title>
-      <link>https://www.noor.sh/posts/matlab/programming-selection-loops-debug-matlab/</link>
+      <link>https://www.bynoor.io/posts/matlab/programming-selection-loops-debug-matlab/</link>
       <pubDate>Sat, 28 Mar 2015 23:59:59 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/matlab/programming-selection-loops-debug-matlab/</guid>
+      <guid>https://www.bynoor.io/posts/matlab/programming-selection-loops-debug-matlab/</guid>
       <description> </description>
     </item>
     
     <item>
       <title>Functions and Script Files (in Arabic)</title>
-      <link>https://www.noor.sh/posts/matlab/functions-and-script-files-matlab/</link>
+      <link>https://www.bynoor.io/posts/matlab/functions-and-script-files-matlab/</link>
       <pubDate>Sat, 28 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/matlab/functions-and-script-files-matlab/</guid>
+      <guid>https://www.bynoor.io/posts/matlab/functions-and-script-files-matlab/</guid>
       <description> </description>
     </item>
     

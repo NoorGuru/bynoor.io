@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Builtin on noor.sh</title>
-    <link>https://www.noor.sh/tags/builtin/</link>
-    <description>Recent content in Builtin on noor.sh</description>
+    <title>Builtin on bynoor.io</title>
+    <link>https://www.bynoor.io/tags/builtin/</link>
+    <description>Recent content in Builtin on bynoor.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 16 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.noor.sh/tags/builtin/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bynoor.io/tags/builtin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1-9 String and Programmer Defined VS Built-In Data Types | النصوص والمكتبات والأنواع المضمنة</title>
-      <link>https://www.noor.sh/posts/cpp/string-and-programmer-defined-vs-built-in-data-types-cpp/</link>
+      <link>https://www.bynoor.io/posts/cpp/string-and-programmer-defined-vs-built-in-data-types-cpp/</link>
       <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/cpp/string-and-programmer-defined-vs-built-in-data-types-cpp/</guid>
+      <guid>https://www.bynoor.io/posts/cpp/string-and-programmer-defined-vs-built-in-data-types-cpp/</guid>
       <description>في هذا الدّرس سنتعرّف على كيفية تمثيل النصوص، وأنواع البيانات المتوفرة في المكتبة القياسية والمتضمنة افتراضيًا وكيفية استخدام مكتبات أخرى في لغة سي بلس بلس:
 string (Strings) لتمثيل البيانات النصية المكتبات الخارجية أو الأنواع الخاصة الأنواع المضمنة افتراضيًا كيفيّة استخدام النّصوص في سي بلس بلس بالإضافة إلى:
 مراجعة الصيغة العامة لكتابة برنامج بلغة سي بلس بلس مراجعة الحروف النصية char/characters مراجعة المتغيرات variables بشكل سريع باستخدام الكثير من الأمثلة.</description>

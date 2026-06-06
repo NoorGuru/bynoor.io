@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Identifiers on noor.sh</title>
-    <link>https://www.noor.sh/tags/identifiers/</link>
-    <description>Recent content in Identifiers on noor.sh</description>
+    <title>Identifiers on bynoor.io</title>
+    <link>https://www.bynoor.io/tags/identifiers/</link>
+    <description>Recent content in Identifiers on bynoor.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 04 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.noor.sh/tags/identifiers/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 04 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bynoor.io/tags/identifiers/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1-4 Tokens (Program Components) and Naming Rules in C&#43;&#43; | المكوّنات الأساسيّة للبرنامج وقواعد التسمية </title>
-      <link>https://www.noor.sh/posts/cpp/tokens-program-components-naming-rules-cpp/</link>
+      <link>https://www.bynoor.io/posts/cpp/tokens-program-components-naming-rules-cpp/</link>
       <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/cpp/tokens-program-components-naming-rules-cpp/</guid>
+      <guid>https://www.bynoor.io/posts/cpp/tokens-program-components-naming-rules-cpp/</guid>
       <description>في هذا الدّرس سنتعرّف على المكوّنات الأساسيّة لأي برنامج في لغة سي بلس بلس:
 الرموز الخاصة الكلمات المحجوزة الأسماء \ المعرّفات بالإضافة إلى قواعد التّسمية في لغة سي بلس بلس.
 In this lecture, we will learn about essential program components (tokens) in C++:

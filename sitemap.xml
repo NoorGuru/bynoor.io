@@ -2,346 +2,346 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.noor.sh/</loc>
+    <loc>https://www.bynoor.io/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/technical-interview-preparation-kit/</loc>
+    <loc>https://www.bynoor.io/technical-interview-preparation-kit/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/best-practice/</loc>
+    <loc>https://www.bynoor.io/tags/best-practice/</loc>
     <lastmod>2021-05-27T00:27:28+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/categories/</loc>
+    <loc>https://www.bynoor.io/categories/</loc>
     <lastmod>2021-05-27T00:27:28+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/effective-java/</loc>
+    <loc>https://www.bynoor.io/tags/effective-java/</loc>
     <lastmod>2021-05-27T00:27:28+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/categories/java/</loc>
+    <loc>https://www.bynoor.io/categories/java/</loc>
     <lastmod>2021-05-27T00:27:28+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/series/java-best-practices/</loc>
+    <loc>https://www.bynoor.io/series/java-best-practices/</loc>
     <lastmod>2021-05-27T00:27:28+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/java-bp/static-factory-methods-over-constructors/</loc>
+    <loc>https://www.bynoor.io/posts/java-bp/static-factory-methods-over-constructors/</loc>
     <lastmod>2021-05-27T00:27:28+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/</loc>
+    <loc>https://www.bynoor.io/posts/</loc>
     <lastmod>2021-05-27T00:27:28+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/series/</loc>
+    <loc>https://www.bynoor.io/series/</loc>
     <lastmod>2021-05-27T00:27:28+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/</loc>
+    <loc>https://www.bynoor.io/tags/</loc>
     <lastmod>2021-05-27T00:27:28+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/series/scalability/</loc>
+    <loc>https://www.bynoor.io/series/scalability/</loc>
     <lastmod>2021-04-03T23:51:58+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/system-design/003-scale-vertically/</loc>
+    <loc>https://www.bynoor.io/posts/system-design/003-scale-vertically/</loc>
     <lastmod>2021-04-03T23:51:58+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/categories/system-design/</loc>
+    <loc>https://www.bynoor.io/categories/system-design/</loc>
     <lastmod>2021-04-03T23:51:58+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/concurrency/</loc>
+    <loc>https://www.bynoor.io/tags/concurrency/</loc>
     <lastmod>2021-04-02T18:04:24+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/dns/</loc>
+    <loc>https://www.bynoor.io/tags/dns/</loc>
     <lastmod>2021-04-02T18:04:24+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/growth/</loc>
+    <loc>https://www.bynoor.io/tags/growth/</loc>
     <lastmod>2021-04-02T18:04:24+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/http/</loc>
+    <loc>https://www.bynoor.io/tags/http/</loc>
     <lastmod>2021-04-02T18:04:24+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/ip/</loc>
+    <loc>https://www.bynoor.io/tags/ip/</loc>
     <lastmod>2021-04-02T18:04:24+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/request/</loc>
+    <loc>https://www.bynoor.io/tags/request/</loc>
     <lastmod>2021-04-02T18:04:24+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/system-design/scalability-start-small-single-server-configuration/</loc>
+    <loc>https://www.bynoor.io/posts/system-design/scalability-start-small-single-server-configuration/</loc>
     <lastmod>2021-04-02T18:04:24+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/server/</loc>
+    <loc>https://www.bynoor.io/tags/server/</loc>
     <lastmod>2021-04-02T18:04:24+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/service/</loc>
+    <loc>https://www.bynoor.io/tags/service/</loc>
     <lastmod>2021-04-02T18:04:24+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/single-server/</loc>
+    <loc>https://www.bynoor.io/tags/single-server/</loc>
     <lastmod>2021-04-02T18:04:24+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/big-data/</loc>
+    <loc>https://www.bynoor.io/tags/big-data/</loc>
     <lastmod>2021-03-28T23:21:15+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/data/</loc>
+    <loc>https://www.bynoor.io/tags/data/</loc>
     <lastmod>2021-03-28T23:21:15+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/scalability/</loc>
+    <loc>https://www.bynoor.io/tags/scalability/</loc>
     <lastmod>2021-03-28T23:21:15+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/system-design/what-is-scalability/</loc>
+    <loc>https://www.bynoor.io/posts/system-design/what-is-scalability/</loc>
     <lastmod>2021-03-28T23:21:15+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/web/</loc>
+    <loc>https://www.bynoor.io/tags/web/</loc>
     <lastmod>2021-03-28T23:21:15+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/web-design/</loc>
+    <loc>https://www.bynoor.io/tags/web-design/</loc>
     <lastmod>2021-03-28T23:21:15+03:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/increment-and-decrement-operators-part-3-cpp/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/increment-and-decrement-operators-part-3-cpp/</loc>
     <lastmod>2020-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/categories/c&#43;&#43;/</loc>
+    <loc>https://www.bynoor.io/categories/c&#43;&#43;/</loc>
     <lastmod>2020-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/series/c&#43;&#43;-for-beginners/</loc>
+    <loc>https://www.bynoor.io/series/c&#43;&#43;-for-beginners/</loc>
     <lastmod>2020-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/cout/</loc>
+    <loc>https://www.bynoor.io/tags/cout/</loc>
     <lastmod>2020-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/cpp-course/</loc>
+    <loc>https://www.bynoor.io/tags/cpp-course/</loc>
     <lastmod>2020-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/decrement/</loc>
+    <loc>https://www.bynoor.io/tags/decrement/</loc>
     <lastmod>2020-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/increment/</loc>
+    <loc>https://www.bynoor.io/tags/increment/</loc>
     <lastmod>2020-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/lecture/</loc>
+    <loc>https://www.bynoor.io/tags/lecture/</loc>
     <lastmod>2020-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/operators/</loc>
+    <loc>https://www.bynoor.io/tags/operators/</loc>
     <lastmod>2020-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/video/</loc>
+    <loc>https://www.bynoor.io/tags/video/</loc>
     <lastmod>2020-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/increment-and-decrement-operators-part-2-cpp/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/increment-and-decrement-operators-part-2-cpp/</loc>
     <lastmod>2020-11-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/increment-and-decrement-operators-part-1-cpp/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/increment-and-decrement-operators-part-1-cpp/</loc>
     <lastmod>2020-10-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/putting-data-into-variables-assignment-statement-input-cin-cpp/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/putting-data-into-variables-assignment-statement-input-cin-cpp/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/assignment-statement/</loc>
+    <loc>https://www.bynoor.io/tags/assignment-statement/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/cin/</loc>
+    <loc>https://www.bynoor.io/tags/cin/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/constants/</loc>
+    <loc>https://www.bynoor.io/tags/constants/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/input/</loc>
+    <loc>https://www.bynoor.io/tags/input/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/variables/</loc>
+    <loc>https://www.bynoor.io/tags/variables/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/named-constants-cpp/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/named-constants-cpp/</loc>
     <lastmod>2020-10-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/escape-sequences--part-2-cpp/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/escape-sequences--part-2-cpp/</loc>
     <lastmod>2020-10-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/escape-sequence/</loc>
+    <loc>https://www.bynoor.io/tags/escape-sequence/</loc>
     <lastmod>2020-10-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/escape-sequences-part-1-cpp/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/escape-sequences-part-1-cpp/</loc>
     <lastmod>2020-10-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/string-and-programmer-defined-vs-built-in-data-types-cpp/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/string-and-programmer-defined-vs-built-in-data-types-cpp/</loc>
     <lastmod>2020-10-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/builtin/</loc>
+    <loc>https://www.bynoor.io/tags/builtin/</loc>
     <lastmod>2020-10-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/char/</loc>
+    <loc>https://www.bynoor.io/tags/char/</loc>
     <lastmod>2020-10-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/data-types/</loc>
+    <loc>https://www.bynoor.io/tags/data-types/</loc>
     <lastmod>2020-10-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/first-program/</loc>
+    <loc>https://www.bynoor.io/tags/first-program/</loc>
     <lastmod>2020-10-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/library/</loc>
+    <loc>https://www.bynoor.io/tags/library/</loc>
     <lastmod>2020-10-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/string/</loc>
+    <loc>https://www.bynoor.io/tags/string/</loc>
     <lastmod>2020-10-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/mixed-expressions-and-type-conversion-cpp/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/mixed-expressions-and-type-conversion-cpp/</loc>
     <lastmod>2020-10-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/arithmetic-expressions/</loc>
+    <loc>https://www.bynoor.io/tags/arithmetic-expressions/</loc>
     <lastmod>2020-10-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/casting/</loc>
+    <loc>https://www.bynoor.io/tags/casting/</loc>
     <lastmod>2020-10-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/mixed-expressions/</loc>
+    <loc>https://www.bynoor.io/tags/mixed-expressions/</loc>
     <lastmod>2020-10-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/static_cast/</loc>
+    <loc>https://www.bynoor.io/tags/static_cast/</loc>
     <lastmod>2020-10-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/type-conversion/</loc>
+    <loc>https://www.bynoor.io/tags/type-conversion/</loc>
     <lastmod>2020-10-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/operator-precedence-and-arithmetic-expressions-cpp/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/operator-precedence-and-arithmetic-expressions-cpp/</loc>
     <lastmod>2020-10-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/arithmetic-operators/</loc>
+    <loc>https://www.bynoor.io/tags/arithmetic-operators/</loc>
     <lastmod>2020-10-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/operator-precedence/</loc>
+    <loc>https://www.bynoor.io/tags/operator-precedence/</loc>
     <lastmod>2020-10-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/arithmetic-operators-cpp/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/arithmetic-operators-cpp/</loc>
     <lastmod>2020-10-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/variables-cpp/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/variables-cpp/</loc>
     <lastmod>2020-10-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/tokens-program-components-naming-rules-cpp/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/tokens-program-components-naming-rules-cpp/</loc>
     <lastmod>2020-10-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/identifiers/</loc>
+    <loc>https://www.bynoor.io/tags/identifiers/</loc>
     <lastmod>2020-10-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/program-components/</loc>
+    <loc>https://www.bynoor.io/tags/program-components/</loc>
     <lastmod>2020-10-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/reserved-words/</loc>
+    <loc>https://www.bynoor.io/tags/reserved-words/</loc>
     <lastmod>2020-10-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/special-symbols/</loc>
+    <loc>https://www.bynoor.io/tags/special-symbols/</loc>
     <lastmod>2020-10-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/tokens/</loc>
+    <loc>https://www.bynoor.io/tags/tokens/</loc>
     <lastmod>2020-10-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/design-principles/</loc>
+    <loc>https://www.bynoor.io/tags/design-principles/</loc>
     <lastmod>2019-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/series/solid-design-principles/</loc>
+    <loc>https://www.bynoor.io/series/solid-design-principles/</loc>
     <lastmod>2019-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/solid/java/single-responsibility-principle/</loc>
+    <loc>https://www.bynoor.io/posts/solid/java/single-responsibility-principle/</loc>
     <lastmod>2019-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/fp/</loc>
+    <loc>https://www.bynoor.io/tags/fp/</loc>
     <lastmod>2018-04-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/functional-programming/</loc>
+    <loc>https://www.bynoor.io/tags/functional-programming/</loc>
     <lastmod>2018-04-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/oop/</loc>
+    <loc>https://www.bynoor.io/tags/oop/</loc>
     <lastmod>2018-04-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/categories/scala/</loc>
+    <loc>https://www.bynoor.io/categories/scala/</loc>
     <lastmod>2018-04-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/scala/why-scala-and-functional-programming/</loc>
+    <loc>https://www.bynoor.io/posts/scala/why-scala-and-functional-programming/</loc>
     <lastmod>2018-04-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/scala-language/</loc>
+    <loc>https://www.bynoor.io/tags/scala-language/</loc>
     <lastmod>2018-04-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/event-driven-programming/</loc>
+    <loc>https://www.bynoor.io/tags/event-driven-programming/</loc>
     <lastmod>2015-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/example/</loc>
+    <loc>https://www.bynoor.io/tags/example/</loc>
     <lastmod>2015-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/function/</loc>
+    <loc>https://www.bynoor.io/tags/function/</loc>
     <lastmod>2015-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/graphical-user-interface/</loc>
+    <loc>https://www.bynoor.io/tags/graphical-user-interface/</loc>
     <lastmod>2015-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/matlab/gui-graphical-user-interface-matlab/</loc>
+    <loc>https://www.bynoor.io/posts/matlab/gui-graphical-user-interface-matlab/</loc>
     <lastmod>2015-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/gui/</loc>
+    <loc>https://www.bynoor.io/tags/gui/</loc>
     <lastmod>2015-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/categories/matlab/</loc>
+    <loc>https://www.bynoor.io/categories/matlab/</loc>
     <lastmod>2015-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/series/matlab-lectures/</loc>
+    <loc>https://www.bynoor.io/series/matlab-lectures/</loc>
     <lastmod>2015-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/debug/</loc>
+    <loc>https://www.bynoor.io/tags/debug/</loc>
     <lastmod>2015-03-28T23:59:59+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/documentation/</loc>
+    <loc>https://www.bynoor.io/tags/documentation/</loc>
     <lastmod>2015-03-28T23:59:59+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/find/</loc>
+    <loc>https://www.bynoor.io/tags/find/</loc>
     <lastmod>2015-03-28T23:59:59+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/for/</loc>
+    <loc>https://www.bynoor.io/tags/for/</loc>
     <lastmod>2015-03-28T23:59:59+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/if/</loc>
+    <loc>https://www.bynoor.io/tags/if/</loc>
     <lastmod>2015-03-28T23:59:59+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/logical-operators/</loc>
+    <loc>https://www.bynoor.io/tags/logical-operators/</loc>
     <lastmod>2015-03-28T23:59:59+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/loops/</loc>
+    <loc>https://www.bynoor.io/tags/loops/</loc>
     <lastmod>2015-03-28T23:59:59+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/matlab/programming-selection-loops-debug-matlab/</loc>
+    <loc>https://www.bynoor.io/posts/matlab/programming-selection-loops-debug-matlab/</loc>
     <lastmod>2015-03-28T23:59:59+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/pseudo-code/</loc>
+    <loc>https://www.bynoor.io/tags/pseudo-code/</loc>
     <lastmod>2015-03-28T23:59:59+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/relational-operators/</loc>
+    <loc>https://www.bynoor.io/tags/relational-operators/</loc>
     <lastmod>2015-03-28T23:59:59+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/selection/</loc>
+    <loc>https://www.bynoor.io/tags/selection/</loc>
     <lastmod>2015-03-28T23:59:59+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/vectorization/</loc>
+    <loc>https://www.bynoor.io/tags/vectorization/</loc>
     <lastmod>2015-03-28T23:59:59+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/while/</loc>
+    <loc>https://www.bynoor.io/tags/while/</loc>
     <lastmod>2015-03-28T23:59:59+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/matlab/functions-and-script-files-matlab/</loc>
+    <loc>https://www.bynoor.io/posts/matlab/functions-and-script-files-matlab/</loc>
     <lastmod>2015-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/tags/script/</loc>
+    <loc>https://www.bynoor.io/tags/script/</loc>
     <lastmod>2015-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/data-types-cpp/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/data-types-cpp/</loc>
     <lastmod>2014-03-12T23:59:59+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/first-program-in-cpp-extra/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/first-program-in-cpp-extra/</loc>
     <lastmod>2014-03-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/posts/cpp/first-program-in-cpp/</loc>
+    <loc>https://www.bynoor.io/posts/cpp/first-program-in-cpp/</loc>
     <lastmod>2014-03-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/cpp-resources/</loc>
+    <loc>https://www.bynoor.io/cpp-resources/</loc>
     <lastmod>2013-05-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.noor.sh/cv/</loc>
+    <loc>https://www.bynoor.io/cv/</loc>
   </url><url>
-    <loc>https://www.noor.sh/search/</loc>
+    <loc>https://www.bynoor.io/search/</loc>
   </url><url>
-    <loc>https://www.noor.sh/timeline/</loc>
+    <loc>https://www.bynoor.io/timeline/</loc>
   </url>
 </urlset>

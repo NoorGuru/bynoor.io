@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Documentation on noor.sh</title>
-    <link>https://www.noor.sh/tags/documentation/</link>
-    <description>Recent content in Documentation on noor.sh</description>
+    <title>Documentation on bynoor.io</title>
+    <link>https://www.bynoor.io/tags/documentation/</link>
+    <description>Recent content in Documentation on bynoor.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 28 Mar 2015 23:59:59 +0000</lastBuildDate><atom:link href="https://www.noor.sh/tags/documentation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Mar 2015 23:59:59 +0000</lastBuildDate><atom:link href="https://www.bynoor.io/tags/documentation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Programming with Matlab, Selection, Loops and Debug (in Arabic)</title>
-      <link>https://www.noor.sh/posts/matlab/programming-selection-loops-debug-matlab/</link>
+      <link>https://www.bynoor.io/posts/matlab/programming-selection-loops-debug-matlab/</link>
       <pubDate>Sat, 28 Mar 2015 23:59:59 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/matlab/programming-selection-loops-debug-matlab/</guid>
+      <guid>https://www.bynoor.io/posts/matlab/programming-selection-loops-debug-matlab/</guid>
       <description> </description>
     </item>
     

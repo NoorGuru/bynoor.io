@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Request on noor.sh</title>
-    <link>https://www.noor.sh/tags/request/</link>
-    <description>Recent content in Request on noor.sh</description>
+    <title>Request on bynoor.io</title>
+    <link>https://www.bynoor.io/tags/request/</link>
+    <description>Recent content in Request on bynoor.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 02 Apr 2021 18:04:24 +0300</lastBuildDate><atom:link href="https://www.noor.sh/tags/request/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Apr 2021 18:04:24 +0300</lastBuildDate><atom:link href="https://www.bynoor.io/tags/request/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Scalability 02 | Start Small (Single-Server Configuration)</title>
-      <link>https://www.noor.sh/posts/system-design/scalability-start-small-single-server-configuration/</link>
+      <link>https://www.bynoor.io/posts/system-design/scalability-start-small-single-server-configuration/</link>
       <pubDate>Fri, 02 Apr 2021 18:04:24 +0300</pubDate>
       
-      <guid>https://www.noor.sh/posts/system-design/scalability-start-small-single-server-configuration/</guid>
+      <guid>https://www.bynoor.io/posts/system-design/scalability-start-small-single-server-configuration/</guid>
       <description>In this post, we will take a step back, and discuss how could we start small and simple with our website before considering any scalability options, and we will discuss when should we start considering them</description>
     </item>
     

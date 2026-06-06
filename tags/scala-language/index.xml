@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Scala Language on noor.sh</title>
-    <link>https://www.noor.sh/tags/scala-language/</link>
-    <description>Recent content in Scala Language on noor.sh</description>
+    <title>Scala Language on bynoor.io</title>
+    <link>https://www.bynoor.io/tags/scala-language/</link>
+    <description>Recent content in Scala Language on bynoor.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 21 Apr 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://www.noor.sh/tags/scala-language/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 Apr 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bynoor.io/tags/scala-language/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Scala and Functional Programming, Why?</title>
-      <link>https://www.noor.sh/posts/scala/why-scala-and-functional-programming/</link>
+      <link>https://www.bynoor.io/posts/scala/why-scala-and-functional-programming/</link>
       <pubDate>Sat, 21 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/scala/why-scala-and-functional-programming/</guid>
+      <guid>https://www.bynoor.io/posts/scala/why-scala-and-functional-programming/</guid>
       <description>What is Scala? “Scala combines object-oriented and functional programming in one concise, high-level language. Scala’s static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries”.
 This is how Scala official website introduces the language to the world. In this blog, I will try to make this introduction some way simpler with a taste of real Scala examples, note that I’m assuming a general knowledge of other object-oriented languages like Java or C# but no functional programming knowledge is ok.</description>
     </item>

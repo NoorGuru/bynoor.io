@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Data on noor.sh</title>
-    <link>https://www.noor.sh/tags/data/</link>
-    <description>Recent content in Data on noor.sh</description>
+    <title>Data on bynoor.io</title>
+    <link>https://www.bynoor.io/tags/data/</link>
+    <description>Recent content in Data on bynoor.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 28 Mar 2021 23:21:15 +0300</lastBuildDate><atom:link href="https://www.noor.sh/tags/data/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Mar 2021 23:21:15 +0300</lastBuildDate><atom:link href="https://www.bynoor.io/tags/data/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Scalability 01 | What Is Scalability (Scalability in a Nutshell)?</title>
-      <link>https://www.noor.sh/posts/system-design/what-is-scalability/</link>
+      <link>https://www.bynoor.io/posts/system-design/what-is-scalability/</link>
       <pubDate>Sun, 28 Mar 2021 23:21:15 +0300</pubDate>
       
-      <guid>https://www.noor.sh/posts/system-design/what-is-scalability/</guid>
+      <guid>https://www.bynoor.io/posts/system-design/what-is-scalability/</guid>
       <description>Scalability usually means the ability to handle more users, clients, data transactions, or requests without affecting the user experience.</description>
     </item>
     
     <item>
       <title>1-13 Putting Data into Variables (Assignment Statement &amp; Input - cin) | تعيين قيم للمتغيرات</title>
-      <link>https://www.noor.sh/posts/cpp/putting-data-into-variables-assignment-statement-input-cin-cpp/</link>
+      <link>https://www.bynoor.io/posts/cpp/putting-data-into-variables-assignment-statement-input-cin-cpp/</link>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/cpp/putting-data-into-variables-assignment-statement-input-cin-cpp/</guid>
+      <guid>https://www.bynoor.io/posts/cpp/putting-data-into-variables-assignment-statement-input-cin-cpp/</guid>
       <description>في هذا الدّرس سنتعرّف على طرق تعيين وإعطاء قيم للمتغيرات في لغة سي بلس بلس:
 استخدام جملة التّعيين في لغة سي بلس بلس استخدام جملة \ دالّة \ اقتران الإدخال في لغة سي بلس بلس بالإضافة إلى:
 مراجعة سريعة للمتغيرات لماذا نستخدم هذه الطرق لتعيين قيم للمتغيرات في لغة سي بلس بلس باستخدام الكثير من الأمثلة

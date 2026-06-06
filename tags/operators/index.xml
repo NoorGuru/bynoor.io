@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Operators on noor.sh</title>
-    <link>https://www.noor.sh/tags/operators/</link>
-    <description>Recent content in Operators on noor.sh</description>
+    <title>Operators on bynoor.io</title>
+    <link>https://www.bynoor.io/tags/operators/</link>
+    <description>Recent content in Operators on bynoor.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 11 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.noor.sh/tags/operators/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bynoor.io/tags/operators/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1-16 Increment and Decrement Operators in C&#43;&#43; (Part 3) | معاملات الزيادة والنقصان (الجزء الثالث)</title>
-      <link>https://www.noor.sh/posts/cpp/increment-and-decrement-operators-part-3-cpp/</link>
+      <link>https://www.bynoor.io/posts/cpp/increment-and-decrement-operators-part-3-cpp/</link>
       <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/cpp/increment-and-decrement-operators-part-3-cpp/</guid>
+      <guid>https://www.bynoor.io/posts/cpp/increment-and-decrement-operators-part-3-cpp/</guid>
       <description>في هذا الدّرس سنتعرّف بشكل أكبر على معاملات الزيادة والنقصان في لغة سي بلس بلس. In this lecture, we will dig deeper with Increment and Decrements Operators in C++ using multiple examples.</description>
     </item>
     
     <item>
       <title>1-15 Increment and Decrement Operators in C&#43;&#43; (Part 2) | معاملات الزيادة والنقصان (الجزء الثاني)</title>
-      <link>https://www.noor.sh/posts/cpp/increment-and-decrement-operators-part-2-cpp/</link>
+      <link>https://www.bynoor.io/posts/cpp/increment-and-decrement-operators-part-2-cpp/</link>
       <pubDate>Sat, 07 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/cpp/increment-and-decrement-operators-part-2-cpp/</guid>
+      <guid>https://www.bynoor.io/posts/cpp/increment-and-decrement-operators-part-2-cpp/</guid>
       <description>في هذا الدّرس سنتعرّف بشكل أكبر على معاملات الزيادة والنقصان في لغة سي بلس بلس. In this lecture, we will dig deeper with Increment and Decrements Operators in C++ using multiple examples.</description>
     </item>
     
     <item>
       <title>1-14 Increment and Decrement Operators in C&#43;&#43; (Part 1) | معاملات الزيادة والنقصان (الجزء الأول)</title>
-      <link>https://www.noor.sh/posts/cpp/increment-and-decrement-operators-part-1-cpp/</link>
+      <link>https://www.bynoor.io/posts/cpp/increment-and-decrement-operators-part-1-cpp/</link>
       <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/cpp/increment-and-decrement-operators-part-1-cpp/</guid>
+      <guid>https://www.bynoor.io/posts/cpp/increment-and-decrement-operators-part-1-cpp/</guid>
       <description>في هذا الدّرس سنتعرّف على معاملات الزيادة والنقصان في لغة سي بلس بلس. In this lecture, we will learn about Increment and Decrements Operators in C++ using multiple examples.</description>
     </item>
     

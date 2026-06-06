@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Solid Design Principles on noor.sh</title>
-    <link>https://www.noor.sh/series/solid-design-principles/</link>
-    <description>Recent content in Solid Design Principles on noor.sh</description>
+    <title>Solid Design Principles on bynoor.io</title>
+    <link>https://www.bynoor.io/series/solid-design-principles/</link>
+    <description>Recent content in Solid Design Principles on bynoor.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://www.noor.sh/series/solid-design-principles/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bynoor.io/series/solid-design-principles/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Solid Design Principles with Java – #01 Single Responsibility Principle (SRP)</title>
-      <link>https://www.noor.sh/posts/solid/java/single-responsibility-principle/</link>
+      <link>https://www.bynoor.io/posts/solid/java/single-responsibility-principle/</link>
       <pubDate>Sat, 30 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/solid/java/single-responsibility-principle/</guid>
+      <guid>https://www.bynoor.io/posts/solid/java/single-responsibility-principle/</guid>
       <description>Solid Design Principles with Java Series Welcome to this new series of solid design principles with Java programming language.
 In this series we will focus on the most important design principles, introduce them with minimal efforts on both us and the reader, this series should be followed by a more advanced one on design patterns with Java later on – stay tuned!
 Single Responsibility Principle (SRP) On this first lesson, we will discuss the Separation of Concerns (SoC) aka Single Responsibility Principle (SRP).</description>

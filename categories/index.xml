@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Categories on noor.sh</title>
-    <link>https://www.noor.sh/categories/</link>
-    <description>Recent content in Categories on noor.sh</description>
+    <title>Categories on bynoor.io</title>
+    <link>https://www.bynoor.io/categories/</link>
+    <description>Recent content in Categories on bynoor.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 27 May 2021 00:27:28 +0300</lastBuildDate><atom:link href="https://www.noor.sh/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 May 2021 00:27:28 +0300</lastBuildDate><atom:link href="https://www.bynoor.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java</title>
-      <link>https://www.noor.sh/categories/java/</link>
+      <link>https://www.bynoor.io/categories/java/</link>
       <pubDate>Thu, 27 May 2021 00:27:28 +0300</pubDate>
       
-      <guid>https://www.noor.sh/categories/java/</guid>
+      <guid>https://www.bynoor.io/categories/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>System Design</title>
-      <link>https://www.noor.sh/categories/system-design/</link>
+      <link>https://www.bynoor.io/categories/system-design/</link>
       <pubDate>Sat, 03 Apr 2021 23:51:58 +0300</pubDate>
       
-      <guid>https://www.noor.sh/categories/system-design/</guid>
+      <guid>https://www.bynoor.io/categories/system-design/</guid>
       <description></description>
     </item>
     
     <item>
       <title>C&#43;&#43;</title>
-      <link>https://www.noor.sh/categories/c&#43;&#43;/</link>
+      <link>https://www.bynoor.io/categories/c&#43;&#43;/</link>
       <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/categories/c&#43;&#43;/</guid>
+      <guid>https://www.bynoor.io/categories/c&#43;&#43;/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Scala</title>
-      <link>https://www.noor.sh/categories/scala/</link>
+      <link>https://www.bynoor.io/categories/scala/</link>
       <pubDate>Sat, 21 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/categories/scala/</guid>
+      <guid>https://www.bynoor.io/categories/scala/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Matlab</title>
-      <link>https://www.noor.sh/categories/matlab/</link>
+      <link>https://www.bynoor.io/categories/matlab/</link>
       <pubDate>Tue, 28 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/categories/matlab/</guid>
+      <guid>https://www.bynoor.io/categories/matlab/</guid>
       <description></description>
     </item>
     

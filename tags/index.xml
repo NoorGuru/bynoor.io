@@ -1,639 +1,639 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags on noor.sh</title>
-    <link>https://www.noor.sh/tags/</link>
-    <description>Recent content in Tags on noor.sh</description>
+    <title>Tags on bynoor.io</title>
+    <link>https://www.bynoor.io/tags/</link>
+    <description>Recent content in Tags on bynoor.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 27 May 2021 00:27:28 +0300</lastBuildDate><atom:link href="https://www.noor.sh/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 May 2021 00:27:28 +0300</lastBuildDate><atom:link href="https://www.bynoor.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Best Practice</title>
-      <link>https://www.noor.sh/tags/best-practice/</link>
+      <link>https://www.bynoor.io/tags/best-practice/</link>
       <pubDate>Thu, 27 May 2021 00:27:28 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/best-practice/</guid>
+      <guid>https://www.bynoor.io/tags/best-practice/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Effective Java</title>
-      <link>https://www.noor.sh/tags/effective-java/</link>
+      <link>https://www.bynoor.io/tags/effective-java/</link>
       <pubDate>Thu, 27 May 2021 00:27:28 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/effective-java/</guid>
+      <guid>https://www.bynoor.io/tags/effective-java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Concurrency</title>
-      <link>https://www.noor.sh/tags/concurrency/</link>
+      <link>https://www.bynoor.io/tags/concurrency/</link>
       <pubDate>Fri, 02 Apr 2021 18:04:24 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/concurrency/</guid>
+      <guid>https://www.bynoor.io/tags/concurrency/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DNS</title>
-      <link>https://www.noor.sh/tags/dns/</link>
+      <link>https://www.bynoor.io/tags/dns/</link>
       <pubDate>Fri, 02 Apr 2021 18:04:24 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/dns/</guid>
+      <guid>https://www.bynoor.io/tags/dns/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Growth</title>
-      <link>https://www.noor.sh/tags/growth/</link>
+      <link>https://www.bynoor.io/tags/growth/</link>
       <pubDate>Fri, 02 Apr 2021 18:04:24 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/growth/</guid>
+      <guid>https://www.bynoor.io/tags/growth/</guid>
       <description></description>
     </item>
     
     <item>
       <title>HTTP</title>
-      <link>https://www.noor.sh/tags/http/</link>
+      <link>https://www.bynoor.io/tags/http/</link>
       <pubDate>Fri, 02 Apr 2021 18:04:24 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/http/</guid>
+      <guid>https://www.bynoor.io/tags/http/</guid>
       <description></description>
     </item>
     
     <item>
       <title>IP</title>
-      <link>https://www.noor.sh/tags/ip/</link>
+      <link>https://www.bynoor.io/tags/ip/</link>
       <pubDate>Fri, 02 Apr 2021 18:04:24 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/ip/</guid>
+      <guid>https://www.bynoor.io/tags/ip/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Request</title>
-      <link>https://www.noor.sh/tags/request/</link>
+      <link>https://www.bynoor.io/tags/request/</link>
       <pubDate>Fri, 02 Apr 2021 18:04:24 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/request/</guid>
+      <guid>https://www.bynoor.io/tags/request/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Server</title>
-      <link>https://www.noor.sh/tags/server/</link>
+      <link>https://www.bynoor.io/tags/server/</link>
       <pubDate>Fri, 02 Apr 2021 18:04:24 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/server/</guid>
+      <guid>https://www.bynoor.io/tags/server/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Service</title>
-      <link>https://www.noor.sh/tags/service/</link>
+      <link>https://www.bynoor.io/tags/service/</link>
       <pubDate>Fri, 02 Apr 2021 18:04:24 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/service/</guid>
+      <guid>https://www.bynoor.io/tags/service/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Single-Server</title>
-      <link>https://www.noor.sh/tags/single-server/</link>
+      <link>https://www.bynoor.io/tags/single-server/</link>
       <pubDate>Fri, 02 Apr 2021 18:04:24 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/single-server/</guid>
+      <guid>https://www.bynoor.io/tags/single-server/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Big Data</title>
-      <link>https://www.noor.sh/tags/big-data/</link>
+      <link>https://www.bynoor.io/tags/big-data/</link>
       <pubDate>Sun, 28 Mar 2021 23:21:15 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/big-data/</guid>
+      <guid>https://www.bynoor.io/tags/big-data/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data</title>
-      <link>https://www.noor.sh/tags/data/</link>
+      <link>https://www.bynoor.io/tags/data/</link>
       <pubDate>Sun, 28 Mar 2021 23:21:15 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/data/</guid>
+      <guid>https://www.bynoor.io/tags/data/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Scalability</title>
-      <link>https://www.noor.sh/tags/scalability/</link>
+      <link>https://www.bynoor.io/tags/scalability/</link>
       <pubDate>Sun, 28 Mar 2021 23:21:15 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/scalability/</guid>
+      <guid>https://www.bynoor.io/tags/scalability/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Web</title>
-      <link>https://www.noor.sh/tags/web/</link>
+      <link>https://www.bynoor.io/tags/web/</link>
       <pubDate>Sun, 28 Mar 2021 23:21:15 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/web/</guid>
+      <guid>https://www.bynoor.io/tags/web/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Web Design</title>
-      <link>https://www.noor.sh/tags/web-design/</link>
+      <link>https://www.bynoor.io/tags/web-design/</link>
       <pubDate>Sun, 28 Mar 2021 23:21:15 +0300</pubDate>
       
-      <guid>https://www.noor.sh/tags/web-design/</guid>
+      <guid>https://www.bynoor.io/tags/web-design/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cout</title>
-      <link>https://www.noor.sh/tags/cout/</link>
+      <link>https://www.bynoor.io/tags/cout/</link>
       <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/cout/</guid>
+      <guid>https://www.bynoor.io/tags/cout/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CPP Course</title>
-      <link>https://www.noor.sh/tags/cpp-course/</link>
+      <link>https://www.bynoor.io/tags/cpp-course/</link>
       <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/cpp-course/</guid>
+      <guid>https://www.bynoor.io/tags/cpp-course/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Decrement</title>
-      <link>https://www.noor.sh/tags/decrement/</link>
+      <link>https://www.bynoor.io/tags/decrement/</link>
       <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/decrement/</guid>
+      <guid>https://www.bynoor.io/tags/decrement/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Increment</title>
-      <link>https://www.noor.sh/tags/increment/</link>
+      <link>https://www.bynoor.io/tags/increment/</link>
       <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/increment/</guid>
+      <guid>https://www.bynoor.io/tags/increment/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Lecture</title>
-      <link>https://www.noor.sh/tags/lecture/</link>
+      <link>https://www.bynoor.io/tags/lecture/</link>
       <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/lecture/</guid>
+      <guid>https://www.bynoor.io/tags/lecture/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Operators</title>
-      <link>https://www.noor.sh/tags/operators/</link>
+      <link>https://www.bynoor.io/tags/operators/</link>
       <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/operators/</guid>
+      <guid>https://www.bynoor.io/tags/operators/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Video</title>
-      <link>https://www.noor.sh/tags/video/</link>
+      <link>https://www.bynoor.io/tags/video/</link>
       <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/video/</guid>
+      <guid>https://www.bynoor.io/tags/video/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Assignment Statement</title>
-      <link>https://www.noor.sh/tags/assignment-statement/</link>
+      <link>https://www.bynoor.io/tags/assignment-statement/</link>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/assignment-statement/</guid>
+      <guid>https://www.bynoor.io/tags/assignment-statement/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cin</title>
-      <link>https://www.noor.sh/tags/cin/</link>
+      <link>https://www.bynoor.io/tags/cin/</link>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/cin/</guid>
+      <guid>https://www.bynoor.io/tags/cin/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Constants</title>
-      <link>https://www.noor.sh/tags/constants/</link>
+      <link>https://www.bynoor.io/tags/constants/</link>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/constants/</guid>
+      <guid>https://www.bynoor.io/tags/constants/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Input</title>
-      <link>https://www.noor.sh/tags/input/</link>
+      <link>https://www.bynoor.io/tags/input/</link>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/input/</guid>
+      <guid>https://www.bynoor.io/tags/input/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Variables</title>
-      <link>https://www.noor.sh/tags/variables/</link>
+      <link>https://www.bynoor.io/tags/variables/</link>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/variables/</guid>
+      <guid>https://www.bynoor.io/tags/variables/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Escape Sequence</title>
-      <link>https://www.noor.sh/tags/escape-sequence/</link>
+      <link>https://www.bynoor.io/tags/escape-sequence/</link>
       <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/escape-sequence/</guid>
+      <guid>https://www.bynoor.io/tags/escape-sequence/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Builtin</title>
-      <link>https://www.noor.sh/tags/builtin/</link>
+      <link>https://www.bynoor.io/tags/builtin/</link>
       <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/builtin/</guid>
+      <guid>https://www.bynoor.io/tags/builtin/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Char</title>
-      <link>https://www.noor.sh/tags/char/</link>
+      <link>https://www.bynoor.io/tags/char/</link>
       <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/char/</guid>
+      <guid>https://www.bynoor.io/tags/char/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data Types</title>
-      <link>https://www.noor.sh/tags/data-types/</link>
+      <link>https://www.bynoor.io/tags/data-types/</link>
       <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/data-types/</guid>
+      <guid>https://www.bynoor.io/tags/data-types/</guid>
       <description></description>
     </item>
     
     <item>
       <title>First Program</title>
-      <link>https://www.noor.sh/tags/first-program/</link>
+      <link>https://www.bynoor.io/tags/first-program/</link>
       <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/first-program/</guid>
+      <guid>https://www.bynoor.io/tags/first-program/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Library</title>
-      <link>https://www.noor.sh/tags/library/</link>
+      <link>https://www.bynoor.io/tags/library/</link>
       <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/library/</guid>
+      <guid>https://www.bynoor.io/tags/library/</guid>
       <description></description>
     </item>
     
     <item>
       <title>String</title>
-      <link>https://www.noor.sh/tags/string/</link>
+      <link>https://www.bynoor.io/tags/string/</link>
       <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/string/</guid>
+      <guid>https://www.bynoor.io/tags/string/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Arithmetic Expressions</title>
-      <link>https://www.noor.sh/tags/arithmetic-expressions/</link>
+      <link>https://www.bynoor.io/tags/arithmetic-expressions/</link>
       <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/arithmetic-expressions/</guid>
+      <guid>https://www.bynoor.io/tags/arithmetic-expressions/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Casting</title>
-      <link>https://www.noor.sh/tags/casting/</link>
+      <link>https://www.bynoor.io/tags/casting/</link>
       <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/casting/</guid>
+      <guid>https://www.bynoor.io/tags/casting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mixed Expressions</title>
-      <link>https://www.noor.sh/tags/mixed-expressions/</link>
+      <link>https://www.bynoor.io/tags/mixed-expressions/</link>
       <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/mixed-expressions/</guid>
+      <guid>https://www.bynoor.io/tags/mixed-expressions/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Static_cast</title>
-      <link>https://www.noor.sh/tags/static_cast/</link>
+      <link>https://www.bynoor.io/tags/static_cast/</link>
       <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/static_cast/</guid>
+      <guid>https://www.bynoor.io/tags/static_cast/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Type Conversion</title>
-      <link>https://www.noor.sh/tags/type-conversion/</link>
+      <link>https://www.bynoor.io/tags/type-conversion/</link>
       <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/type-conversion/</guid>
+      <guid>https://www.bynoor.io/tags/type-conversion/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Arithmetic Operators</title>
-      <link>https://www.noor.sh/tags/arithmetic-operators/</link>
+      <link>https://www.bynoor.io/tags/arithmetic-operators/</link>
       <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/arithmetic-operators/</guid>
+      <guid>https://www.bynoor.io/tags/arithmetic-operators/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Operator Precedence</title>
-      <link>https://www.noor.sh/tags/operator-precedence/</link>
+      <link>https://www.bynoor.io/tags/operator-precedence/</link>
       <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/operator-precedence/</guid>
+      <guid>https://www.bynoor.io/tags/operator-precedence/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Identifiers</title>
-      <link>https://www.noor.sh/tags/identifiers/</link>
+      <link>https://www.bynoor.io/tags/identifiers/</link>
       <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/identifiers/</guid>
+      <guid>https://www.bynoor.io/tags/identifiers/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Program Components</title>
-      <link>https://www.noor.sh/tags/program-components/</link>
+      <link>https://www.bynoor.io/tags/program-components/</link>
       <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/program-components/</guid>
+      <guid>https://www.bynoor.io/tags/program-components/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Reserved Words</title>
-      <link>https://www.noor.sh/tags/reserved-words/</link>
+      <link>https://www.bynoor.io/tags/reserved-words/</link>
       <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/reserved-words/</guid>
+      <guid>https://www.bynoor.io/tags/reserved-words/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Special Symbols</title>
-      <link>https://www.noor.sh/tags/special-symbols/</link>
+      <link>https://www.bynoor.io/tags/special-symbols/</link>
       <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/special-symbols/</guid>
+      <guid>https://www.bynoor.io/tags/special-symbols/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tokens</title>
-      <link>https://www.noor.sh/tags/tokens/</link>
+      <link>https://www.bynoor.io/tags/tokens/</link>
       <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/tokens/</guid>
+      <guid>https://www.bynoor.io/tags/tokens/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Design Principles</title>
-      <link>https://www.noor.sh/tags/design-principles/</link>
+      <link>https://www.bynoor.io/tags/design-principles/</link>
       <pubDate>Sat, 30 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/design-principles/</guid>
+      <guid>https://www.bynoor.io/tags/design-principles/</guid>
       <description></description>
     </item>
     
     <item>
       <title>FP</title>
-      <link>https://www.noor.sh/tags/fp/</link>
+      <link>https://www.bynoor.io/tags/fp/</link>
       <pubDate>Sat, 21 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/fp/</guid>
+      <guid>https://www.bynoor.io/tags/fp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Functional Programming</title>
-      <link>https://www.noor.sh/tags/functional-programming/</link>
+      <link>https://www.bynoor.io/tags/functional-programming/</link>
       <pubDate>Sat, 21 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/functional-programming/</guid>
+      <guid>https://www.bynoor.io/tags/functional-programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>OOP</title>
-      <link>https://www.noor.sh/tags/oop/</link>
+      <link>https://www.bynoor.io/tags/oop/</link>
       <pubDate>Sat, 21 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/oop/</guid>
+      <guid>https://www.bynoor.io/tags/oop/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Scala Language</title>
-      <link>https://www.noor.sh/tags/scala-language/</link>
+      <link>https://www.bynoor.io/tags/scala-language/</link>
       <pubDate>Sat, 21 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/scala-language/</guid>
+      <guid>https://www.bynoor.io/tags/scala-language/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Event Driven Programming</title>
-      <link>https://www.noor.sh/tags/event-driven-programming/</link>
+      <link>https://www.bynoor.io/tags/event-driven-programming/</link>
       <pubDate>Tue, 28 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/event-driven-programming/</guid>
+      <guid>https://www.bynoor.io/tags/event-driven-programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Example</title>
-      <link>https://www.noor.sh/tags/example/</link>
+      <link>https://www.bynoor.io/tags/example/</link>
       <pubDate>Tue, 28 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/example/</guid>
+      <guid>https://www.bynoor.io/tags/example/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Function</title>
-      <link>https://www.noor.sh/tags/function/</link>
+      <link>https://www.bynoor.io/tags/function/</link>
       <pubDate>Tue, 28 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/function/</guid>
+      <guid>https://www.bynoor.io/tags/function/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Graphical User Interface</title>
-      <link>https://www.noor.sh/tags/graphical-user-interface/</link>
+      <link>https://www.bynoor.io/tags/graphical-user-interface/</link>
       <pubDate>Tue, 28 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/graphical-user-interface/</guid>
+      <guid>https://www.bynoor.io/tags/graphical-user-interface/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GUI</title>
-      <link>https://www.noor.sh/tags/gui/</link>
+      <link>https://www.bynoor.io/tags/gui/</link>
       <pubDate>Tue, 28 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/gui/</guid>
+      <guid>https://www.bynoor.io/tags/gui/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Debug</title>
-      <link>https://www.noor.sh/tags/debug/</link>
+      <link>https://www.bynoor.io/tags/debug/</link>
       <pubDate>Sat, 28 Mar 2015 23:59:59 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/debug/</guid>
+      <guid>https://www.bynoor.io/tags/debug/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Documentation</title>
-      <link>https://www.noor.sh/tags/documentation/</link>
+      <link>https://www.bynoor.io/tags/documentation/</link>
       <pubDate>Sat, 28 Mar 2015 23:59:59 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/documentation/</guid>
+      <guid>https://www.bynoor.io/tags/documentation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Find</title>
-      <link>https://www.noor.sh/tags/find/</link>
+      <link>https://www.bynoor.io/tags/find/</link>
       <pubDate>Sat, 28 Mar 2015 23:59:59 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/find/</guid>
+      <guid>https://www.bynoor.io/tags/find/</guid>
       <description></description>
     </item>
     
     <item>
       <title>For</title>
-      <link>https://www.noor.sh/tags/for/</link>
+      <link>https://www.bynoor.io/tags/for/</link>
       <pubDate>Sat, 28 Mar 2015 23:59:59 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/for/</guid>
+      <guid>https://www.bynoor.io/tags/for/</guid>
       <description></description>
     </item>
     
     <item>
       <title>If</title>
-      <link>https://www.noor.sh/tags/if/</link>
+      <link>https://www.bynoor.io/tags/if/</link>
       <pubDate>Sat, 28 Mar 2015 23:59:59 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/if/</guid>
+      <guid>https://www.bynoor.io/tags/if/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Logical Operators</title>
-      <link>https://www.noor.sh/tags/logical-operators/</link>
+      <link>https://www.bynoor.io/tags/logical-operators/</link>
       <pubDate>Sat, 28 Mar 2015 23:59:59 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/logical-operators/</guid>
+      <guid>https://www.bynoor.io/tags/logical-operators/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Loops</title>
-      <link>https://www.noor.sh/tags/loops/</link>
+      <link>https://www.bynoor.io/tags/loops/</link>
       <pubDate>Sat, 28 Mar 2015 23:59:59 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/loops/</guid>
+      <guid>https://www.bynoor.io/tags/loops/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pseudo Code</title>
-      <link>https://www.noor.sh/tags/pseudo-code/</link>
+      <link>https://www.bynoor.io/tags/pseudo-code/</link>
       <pubDate>Sat, 28 Mar 2015 23:59:59 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/pseudo-code/</guid>
+      <guid>https://www.bynoor.io/tags/pseudo-code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Relational Operators</title>
-      <link>https://www.noor.sh/tags/relational-operators/</link>
+      <link>https://www.bynoor.io/tags/relational-operators/</link>
       <pubDate>Sat, 28 Mar 2015 23:59:59 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/relational-operators/</guid>
+      <guid>https://www.bynoor.io/tags/relational-operators/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Selection</title>
-      <link>https://www.noor.sh/tags/selection/</link>
+      <link>https://www.bynoor.io/tags/selection/</link>
       <pubDate>Sat, 28 Mar 2015 23:59:59 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/selection/</guid>
+      <guid>https://www.bynoor.io/tags/selection/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vectorization</title>
-      <link>https://www.noor.sh/tags/vectorization/</link>
+      <link>https://www.bynoor.io/tags/vectorization/</link>
       <pubDate>Sat, 28 Mar 2015 23:59:59 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/vectorization/</guid>
+      <guid>https://www.bynoor.io/tags/vectorization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>While</title>
-      <link>https://www.noor.sh/tags/while/</link>
+      <link>https://www.bynoor.io/tags/while/</link>
       <pubDate>Sat, 28 Mar 2015 23:59:59 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/while/</guid>
+      <guid>https://www.bynoor.io/tags/while/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Script</title>
-      <link>https://www.noor.sh/tags/script/</link>
+      <link>https://www.bynoor.io/tags/script/</link>
       <pubDate>Sat, 28 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/tags/script/</guid>
+      <guid>https://www.bynoor.io/tags/script/</guid>
       <description></description>
     </item>
     

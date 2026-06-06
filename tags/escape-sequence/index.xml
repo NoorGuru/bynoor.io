@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Escape Sequence on noor.sh</title>
-    <link>https://www.noor.sh/tags/escape-sequence/</link>
-    <description>Recent content in Escape Sequence on noor.sh</description>
+    <title>Escape Sequence on bynoor.io</title>
+    <link>https://www.bynoor.io/tags/escape-sequence/</link>
+    <description>Recent content in Escape Sequence on bynoor.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 28 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.noor.sh/tags/escape-sequence/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bynoor.io/tags/escape-sequence/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1-11 Escape Sequences in C&#43;&#43; (Part 2)</title>
-      <link>https://www.noor.sh/posts/cpp/escape-sequences--part-2-cpp/</link>
+      <link>https://www.bynoor.io/posts/cpp/escape-sequences--part-2-cpp/</link>
       <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/cpp/escape-sequences--part-2-cpp/</guid>
+      <guid>https://www.bynoor.io/posts/cpp/escape-sequences--part-2-cpp/</guid>
       <description>في هذا الدّرس سنتعرّف على موضوع ال Escape Sequences في لغة سي بلس بلس - الجزء الثاني باستخدام الكثير من الأمثلة. In this lecture, we will learn about Escape Sequences in C++ - Part 2 by using a lot of examples.</description>
     </item>
     
     <item>
       <title>1-10 Escape Sequences in C&#43;&#43; (Part 1)</title>
-      <link>https://www.noor.sh/posts/cpp/escape-sequences-part-1-cpp/</link>
+      <link>https://www.bynoor.io/posts/cpp/escape-sequences-part-1-cpp/</link>
       <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.noor.sh/posts/cpp/escape-sequences-part-1-cpp/</guid>
+      <guid>https://www.bynoor.io/posts/cpp/escape-sequences-part-1-cpp/</guid>
       <description>في هذا الدّرس سنتعرّف على موضوع ال Escape Sequences في لغة سي بلس بلس - الجزء الأول باستخدام الكثير من الأمثلة. In this lecture, we will learn about Escape Sequences in C++ - Part 1 by using a lot of examples.</description>
     </item>
     
