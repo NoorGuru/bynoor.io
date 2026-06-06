@@ -19,7 +19,9 @@
 
 /* "Let's Connect" CTA Button */
 .links__cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: var(--space-md) var(--space-xl);
   background: var(--color-primary);
   color: #ffffff;
@@ -28,6 +30,8 @@
   font-weight: 600;
   text-decoration: none;
   border-radius: 0.5rem;
+  min-height: 44px;
+  min-width: 44px;
   transition: background var(--duration-hover) var(--ease-out),
               transform var(--duration-hover) var(--ease-out);
   margin-bottom: var(--space-xl);
@@ -35,7 +39,7 @@
 
 .links__cta:hover {
   background: var(--color-primary-hover);
-  transform: translateY(-2px);
+  transform: scale(1.02) translateY(-2px);
 }
 
 .links__cta:focus-visible {
@@ -46,9 +50,15 @@
 /* Links Grid */
 .links__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--space-md);
   margin-top: var(--space-lg);
+}
+
+@media (min-width: 375px) {
+  .links__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 600px) {
@@ -74,12 +84,13 @@
   border-radius: 0.75rem;
   text-decoration: none;
   color: var(--color-text);
+  min-height: 44px;
   transition: transform var(--duration-hover) var(--ease-out),
               box-shadow var(--duration-hover) var(--ease-out);
 }
 
 .link-card:hover {
-  transform: scale(1.04);
+  transform: scale(1.05);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 

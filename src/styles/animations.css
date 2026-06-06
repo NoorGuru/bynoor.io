@@ -10,3 +10,45 @@
   transform: none;
   transition: all var(--duration-entrance) var(--ease-out);
 }
+
+/* Reduced motion: disable transforms and entrance animations */
+@media (prefers-reduced-motion: reduce) {
+  /* Remove entrance animations — elements immediately visible */
+  .animate-hidden {
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-visible {
+    transition: opacity var(--duration-entrance) var(--ease-out);
+  }
+
+  /* Remove all transform-based hover transitions globally */
+  .hero__btn,
+  .hero__btn--primary,
+  .hero__social-link,
+  .highlights__card,
+  .links__cta,
+  .link-card,
+  .project-card,
+  .skill-pill {
+    transition: color var(--duration-hover) ease,
+                opacity var(--duration-hover) ease,
+                background-color var(--duration-hover) ease !important;
+  }
+
+  /* Disable transform on hover states */
+  .hero__btn--primary:hover,
+  .hero__social-link:hover,
+  .highlights__card:hover,
+  .links__cta:hover,
+  .link-card:hover,
+  .project-card:hover {
+    transform: none !important;
+  }
+
+  /* Disable filter transition on skill pills */
+  .skill-pill:hover {
+    filter: none !important;
+  }
+}

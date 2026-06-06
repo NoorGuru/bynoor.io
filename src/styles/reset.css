@@ -22,6 +22,7 @@ body {
   background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 img,
@@ -58,6 +59,29 @@ p {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Skip navigation — visually hidden until focused */
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-primary);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  z-index: 200;
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.skip-nav:focus {
+  top: 0;
 }
 
 ul,

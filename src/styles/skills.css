@@ -66,3 +66,12 @@
 .skill-pill--leadership {
   background-color: var(--skill-leadership-bg);
 }
+
+/* Skill Pill Hover */
+.skill-pill {
+  transition: filter var(--duration-hover) var(--ease-out);
+}
+
+.skill-pill:hover {
+  filter: brightness(1.15);
+}

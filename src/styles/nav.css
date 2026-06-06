@@ -40,6 +40,10 @@ section[id] {
   font-weight: 700;
   color: var(--color-primary);
   text-decoration: none;
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
   transition: color var(--duration-hover) ease;
 }
 
@@ -67,6 +71,9 @@ section[id] {
   text-decoration: none;
   padding: var(--space-xs) var(--space-sm);
   border-radius: 4px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   transition: color var(--duration-hover) ease, background-color var(--duration-hover) ease;
 }
 
@@ -186,5 +193,6 @@ section[id] {
     display: block;
     padding: var(--space-md);
     font-size: 1rem;
+    min-height: 44px;
   }
 }

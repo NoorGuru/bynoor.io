@@ -31,6 +31,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   text-decoration: none;
   display: block;
+  min-height: 44px;
   transition: transform var(--duration-hover) var(--ease-out),
               box-shadow var(--duration-hover) var(--ease-out);
 }

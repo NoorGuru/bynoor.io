@@ -155,7 +155,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Duplicate footer markup in Resources page HTML
     - _Requirements: 14.1, 14.2, 14.3_
 
-- [ ] 4. Implement animations and responsive polish
+- [-] 4. Implement animations and responsive polish
   - [x] 4.1 Implement scroll-triggered entrance animations
     - Create `src/scripts/animations.js` (imported by main.js)
     - Query all `[data-animate]` elements
@@ -166,7 +166,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Ensure elements start visible if JS is disabled: add `.animate-hidden` class via JS on load (progressive enhancement — no JS = no hidden state)
     - _Requirements: 3.1, 3.2, 3.5, 4.2_
 
-  - [ ] 4.2 Implement hover effects and prefers-reduced-motion support
+  - [-] 4.2 Implement hover effects and prefers-reduced-motion support
     - Add hover transitions to all interactive elements:
       - Buttons: slight scale (1.02) + shadow lift
       - Social link cards: scale (1.05) + color shift
@@ -179,7 +179,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
       - Keep only `color` and `opacity` transitions
     - _Requirements: 3.2, 3.3, 3.4, 3.5_
 
-  - [ ] 4.3 Responsive polish and final mobile-first adjustments
+  - [-] 4.3 Responsive polish and final mobile-first adjustments
     - Review all sections at breakpoints: 320px, 375px, 768px, 1024px, 1200px, 1920px
     - Verify: no horizontal overflow, no text truncation, no element overlap
     - Verify: all tap targets ≥ 44x44px on mobile
