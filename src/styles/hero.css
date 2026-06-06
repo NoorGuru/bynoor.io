@@ -46,7 +46,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   margin-top: var(--space-lg);
 }
 
@@ -77,6 +77,23 @@
 }
 
 .hero__btn--primary:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.hero__btn--secondary {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.hero__btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.02) translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+.hero__btn--secondary:focus-visible {
   outline: 3px solid #ffffff;
   outline-offset: 3px;
 }
@@ -124,6 +141,8 @@
 
   .hero__cta-group {
     flex-direction: row;
-    gap: var(--space-lg);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
   }
 }

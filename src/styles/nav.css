@@ -36,20 +36,32 @@ section[id] {
 /* Logo / Home link */
 .nav__logo {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-primary);
+  font-size: 1.4rem;
   text-decoration: none;
   min-height: 44px;
   min-width: 44px;
   display: inline-flex;
   align-items: center;
-  transition: color var(--duration-hover) ease;
+  transition: opacity var(--duration-hover) ease;
 }
 
-.nav__logo:hover,
-.nav__logo:focus-visible {
-  color: var(--color-primary-hover);
+.nav__logo:hover {
+  opacity: 0.85;
+}
+
+.nav__logo-by {
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.nav__logo-noor {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.nav__logo-io {
+  font-weight: 400;
+  color: #818cf8;
 }
 
 /* Nav links list */
