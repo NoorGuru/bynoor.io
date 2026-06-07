@@ -32,10 +32,12 @@
 }
 
 /* Hide native cursor when custom cursor is active */
+/*
 html.cursor-active,
 html.cursor-active * {
   cursor: none !important;
 }
+*/
 
 /* Hide custom cursor on smaller viewports (touch devices) */
 @media (max-width: 1023px) {

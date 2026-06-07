@@ -1,7 +1,8 @@
-/* Connect / Links Section */
+/* Connect / Links Section — Dark Theme Glassmorphism */
 .links {
   padding: var(--space-xl) var(--space-md);
   background: var(--color-bg);
+  color: var(--color-text);
 }
 
 .links__container {
@@ -18,7 +19,7 @@
 }
 
 .links__subtitle {
-  color: #ffffff;
+  color: var(--color-text);
   font-size: 1.35rem;
   font-weight: 500;
   margin-bottom: var(--space-lg);
@@ -26,15 +27,29 @@
   font-family: var(--font-heading);
 }
 
-/* "Let's Connect" CTA Button */
+/* ===========================
+   CTA Banner — Glassmorphism
+   =========================== */
+.links__cta-banner {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 1.25rem;
+  padding: var(--space-xl) var(--space-lg);
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+
+/* CTA Button — Accent gradient background, white text */
 .links__cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
   padding: 1rem 2.5rem;
-  background: #ffffff;
-  color: var(--color-primary);
+  background: var(--gradient-text);
+  color: #ffffff;
   font-family: var(--font-primary);
   font-size: 1.2rem;
   font-weight: 700;
@@ -42,7 +57,7 @@
   border-radius: 9999px;
   min-height: 44px;
   min-width: 44px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
   transition: transform var(--duration-hover) var(--ease-out),
               box-shadow var(--duration-hover) var(--ease-out);
   margin-bottom: 0;
@@ -50,11 +65,11 @@
 
 .links__cta:hover {
   transform: scale(1.04) translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.4);
 }
 
 .links__cta:focus-visible {
-  outline: 3px solid #ffffff;
+  outline: 3px solid var(--accent-primary);
   outline-offset: 3px;
 }
 
@@ -62,16 +77,7 @@
   flex-shrink: 0;
 }
 
-/* CTA banner wrapper */
-.links__cta-banner {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  border-radius: 1.25rem;
-  padding: var(--space-xl) var(--space-lg);
-  margin-bottom: var(--space-xl);
-  text-align: center;
-  box-shadow: 0 12px 40px rgba(99, 102, 241, 0.25);
-}
-
+/* Banner Actions */
 .links__banner-actions {
   display: flex;
   align-items: center;
@@ -80,17 +86,18 @@
   margin-top: var(--space-lg);
 }
 
+/* Banner Links — Dark theme with glass border */
 .links__banner-link {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-text);
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
   padding: 0.5rem 0.75rem;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--glass-border);
   transition: background var(--duration-hover) var(--ease-out),
               border-color var(--duration-hover) var(--ease-out);
   min-height: 44px;
@@ -98,15 +105,16 @@
 }
 
 .links__banner-link:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.6);
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
 }
 
 .links__banner-link:focus-visible {
-  outline: 3px solid #ffffff;
+  outline: 3px solid var(--accent-primary);
   outline-offset: 3px;
 }
 
+/* Grid Heading */
 .links__grid-heading {
   font-family: var(--font-heading);
   font-size: 1.25rem;
@@ -115,7 +123,9 @@
   text-align: center;
 }
 
-/* Links Grid */
+/* ===========================
+   Links Grid
+   =========================== */
 .links__grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -141,29 +151,37 @@
   }
 }
 
-/* Link Card */
+/* ===========================
+   Link Card — Glassmorphism
+   =========================== */
 .link-card {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  padding: var(--space-md) var(--space-md);
-  background: var(--color-bg-section);
-  border: 1px solid var(--color-border);
+  padding: var(--space-md);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   border-radius: 0.75rem;
   text-decoration: none;
   color: var(--color-text);
   min-height: 44px;
-  transition: transform var(--duration-hover) var(--ease-out),
+  transition: background var(--duration-hover) var(--ease-out),
+              border-color var(--duration-hover) var(--ease-out),
+              transform var(--duration-hover) var(--ease-out),
               box-shadow var(--duration-hover) var(--ease-out);
 }
 
 .link-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .link-card:focus-visible {
-  outline: 3px solid var(--color-primary);
+  outline: 3px solid var(--accent-primary);
   outline-offset: 3px;
 }
 
@@ -171,7 +189,7 @@
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-  color: var(--color-primary);
+  color: var(--accent-secondary);
 }
 
 .link-card__label {
@@ -180,11 +198,26 @@
   font-weight: 500;
 }
 
-/* Featured link row (YouTube) */
+/* ===========================
+   Featured Link Row
+   =========================== */
 .links__featured-row {
   display: flex;
   justify-content: center;
   margin-top: var(--space-md);
+}
+
+/* Featured card gets same glassmorphism treatment */
+.links__featured-row .link-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}
+
+.links__featured-row .link-card:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
 }
 
 .link-card__featured-content {
@@ -197,4 +230,27 @@
   font-size: 0.8rem;
   color: var(--color-text-secondary);
   font-weight: 400;
+}
+
+/* ===========================
+   Fallback: no backdrop-filter
+   =========================== */
+@supports not (backdrop-filter: blur(1px)) {
+  .link-card {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--glass-border);
+  }
+
+  .link-card:hover {
+    background: var(--color-bg-elevated);
+    border-color: var(--glass-border-hover);
+  }
+
+  .links__cta-banner {
+    background: var(--color-bg-elevated);
+  }
+
+  .links__featured-row .link-card {
+    background: var(--color-bg-elevated);
+  }
 }

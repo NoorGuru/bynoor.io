@@ -2,6 +2,7 @@
 .projects {
   padding: var(--space-2xl) var(--space-md);
   background: var(--color-bg);
+  color: var(--color-text);
 }
 
 .projects__container {
@@ -12,9 +13,21 @@
 .projects__heading {
   font-family: var(--font-heading);
   font-size: clamp(1.75rem, 4vw, 2.5rem);
-  color: var(--color-text);
   text-align: center;
   margin-bottom: var(--space-xl);
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--accent-primary);
+}
+
+@supports not (-webkit-background-clip: text) {
+  .projects__heading {
+    background: none;
+    -webkit-text-fill-color: unset;
+    color: var(--accent-primary);
+  }
 }
 
 .projects__grid {
@@ -23,26 +36,38 @@
   gap: var(--space-lg);
 }
 
+/* Glassmorphism project card with accent glow left-border */
 .project-card {
-  background: var(--color-bg-section);
+  --project-accent: var(--accent-primary);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   border-radius: 12px;
   padding: var(--space-lg);
-  border-left: 4px solid var(--color-border);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   text-decoration: none;
   display: block;
   min-height: 44px;
-  transition: transform var(--duration-hover) var(--ease-out),
-              box-shadow var(--duration-hover) var(--ease-out);
+  box-shadow: inset 4px 0 0 0 color-mix(in srgb, var(--project-accent) 80%, transparent);
+  transition:
+    transform var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out),
+    background var(--duration-hover) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out);
 }
 
 .project-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow:
+    inset 4px 0 0 0 var(--project-accent),
+    0 0 12px color-mix(in srgb, var(--project-accent) 30%, transparent),
+    0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .project-card:focus-visible {
-  outline: 3px solid var(--color-primary);
+  outline: 3px solid var(--accent-primary);
   outline-offset: 3px;
 }
 
@@ -59,9 +84,17 @@
   line-height: 1.6;
 }
 
-/* Desktop: 2 column grid */
+/* Asymmetric grid layout at ≥768px: first card wider */
 @media (min-width: 768px) {
   .projects__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1.5fr 1fr;
+  }
+}
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not (backdrop-filter: blur(1px)) {
+  .project-card {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--glass-border);
   }
 }

@@ -8,7 +8,7 @@ import { lerp } from './utils/lerp.js';
 import { prefersReducedMotion, onMotionPreferenceChange } from './utils/reduced-motion.js';
 import { onBreakpointChange } from './utils/breakpoints.js';
 
-const LERP_FACTOR = 0.1;
+const LERP_FACTOR = 0.35;
 const DESKTOP_BREAKPOINT = 1024;
 const INTERACTIVE_SELECTOR = 'a, button, [role="button"]';
 

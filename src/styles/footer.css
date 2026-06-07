@@ -1,10 +1,10 @@
-/* Footer Component */
+/* Footer Component — Dark Theme Redesign */
 .footer {
-  margin-top: var(--space-2xl);
+  background: var(--color-bg);
+  border-top: 1px solid transparent;
+  border-image: linear-gradient(90deg, transparent, var(--accent-primary), var(--accent-secondary), transparent) 1;
   padding: var(--space-xl) var(--space-md) var(--space-lg);
-  border-top: 1px solid var(--color-border);
   text-align: center;
-  font-size: 0.875rem;
   color: var(--color-text-secondary);
   display: flex;
   flex-direction: column;
@@ -31,12 +31,13 @@
 
 .footer__logo-noor {
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-text);
+  text-shadow: 0 0 8px var(--accent-primary);
 }
 
 .footer__logo-io {
   font-weight: 400;
-  color: #818cf8;
+  color: var(--accent-secondary);
 }
 
 .footer__beta {
@@ -49,12 +50,15 @@
 
 .footer__beta-badge {
   display: inline-block;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  color: #ffffff;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.3rem 0.75rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  padding: var(--space-xs) var(--space-md);
   border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-quaternary);
 }
 
 .footer__beta-note {

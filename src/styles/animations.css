@@ -1,45 +1,41 @@
 /* Scroll-triggered entrance animations */
 
-.animate-hidden {
+/* Elements with data-animate start hidden via CSS.
+   JS adds .animate-visible when they scroll into view.
+   Without JS, .js-loaded is never added to <html>, so elements stay visible. */
+html.js-loaded [data-animate] {
   opacity: 0;
   transform: translateY(20px);
   will-change: transform, opacity;
 }
 
-.animate-visible {
+html.js-loaded [data-animate="fade-in"] {
+  transform: none;
+}
+
+html.js-loaded [data-animate="scale-in"] {
+  transform: scale(0.95);
+}
+
+/* Once visible — animate in */
+html.js-loaded [data-animate].animate-visible {
   opacity: 1;
   transform: none;
   transition: opacity var(--duration-entrance) var(--ease-out),
               transform var(--duration-entrance) var(--ease-out);
 }
 
-/* Animation variants */
-.animate-hidden[data-animate="fade-up"] {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.animate-hidden[data-animate="fade-in"] {
-  opacity: 0;
-  transform: none;
-}
-
-.animate-hidden[data-animate="scale-in"] {
-  opacity: 0;
-  transform: scale(0.95);
-}
-
 /* Reduced motion: disable transforms and entrance animations */
 @media (prefers-reduced-motion: reduce) {
   /* Remove entrance animations — elements immediately visible */
-  .animate-hidden {
+  html.js-loaded [data-animate] {
     opacity: 1;
     transform: none;
     will-change: auto;
   }
 
-  .animate-visible {
-    transition: opacity var(--duration-entrance) var(--ease-out);
+  html.js-loaded [data-animate].animate-visible {
+    transition: none;
   }
 
   /* Remove all transform-based hover transitions globally */

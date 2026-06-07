@@ -224,8 +224,8 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
 - [x] 6. Checkpoint — Verify all JS modules load without errors
   - Ensure `npm run build` succeeds and `npm run test` passes, ask the user if questions arise.
 
-- [ ] 7. Update HTML structure and section styles
-  - [~] 7.1 Update `index.html` hero section for creative redesign
+- [x] 7. Update HTML structure and section styles
+  - [x] 7.1 Update `index.html` hero section for creative redesign
     - Add `.hero__mesh` background div inside hero section
     - Add `<canvas>` element for particle system with `aria-hidden="true"`
     - Add scroll-down indicator chevron SVG after CTA group
@@ -234,7 +234,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Ensure hero retains `min-height: 100vh`
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5_
 
-  - [~] 7.2 Update `src/styles/hero.css` for creative hero redesign
+  - [x] 7.2 Update `src/styles/hero.css` for creative hero redesign
     - Style `.hero` with dark background, full viewport height, relative positioning
     - Style `.hero__mesh` as absolute-positioned gradient background layer
     - Style profile photo with circular clip, animated border/glow ring, floating transform
@@ -244,19 +244,19 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Add `prefers-reduced-motion` overrides
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6_
 
-  - [~] 7.3 Update `index.html` navigation and add scroll progress bar
+  - [x] 7.3 Update `index.html` navigation and add scroll progress bar
     - Add `.scroll-progress` div before the header element
     - Update nav to support glassmorphism when scrolled (`.nav--scrolled` class toggled by JS)
     - Add logo glow styles integration
     - _Requirements: 3.4, 4.2_
 
-  - [~] 7.4 Update `src/styles/nav.css` for glassmorphism navigation
+  - [x] 7.4 Update `src/styles/nav.css` for glassmorphism navigation
     - Add `.nav--scrolled` state with `backdrop-filter: blur`, semi-transparent background
     - Add logo text-shadow glow effect on `.nav__logo-noor`
     - Update mobile menu overlay with glassmorphism backdrop blur ≥10px
     - _Requirements: 3.4, 10.2, 10.3_
 
-  - [~] 7.5 Update `index.html` highlights section with creative markup
+  - [x] 7.5 Update `index.html` highlights section with creative markup
     - Add `data-animate-stagger="100"` to highlights grid container
     - Add `data-animate="fade-up"` to each card
     - Add `.tilt-card` class to highlight cards
@@ -264,19 +264,19 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Adjust grid to feature asymmetric spans (at least one card spans differently) at ≥768px
     - _Requirements: 3.2, 4.4, 6.1_
 
-  - [~] 7.6 Update `src/styles/highlights.css` for glassmorphism and creative layout
+  - [x] 7.6 Update `src/styles/highlights.css` for glassmorphism and creative layout
     - Apply glass-card styling (translucent background, border, blur)
     - Create asymmetric grid layout at ≥768px (first card spans 2 columns)
     - Add hover states (vertical lift + elevated box-shadow within 200ms)
     - Style card icons with accent glow
     - _Requirements: 3.2, 4.3, 6.1, 6.4_
 
-  - [~] 7.7 Update `index.html` skills section with creative markup
+  - [x] 7.7 Update `index.html` skills section with creative markup
     - Add `data-animate-stagger="200"` to skills container
     - Add `data-animate="fade-up"` to each category
     - _Requirements: 8.3_
 
-  - [~] 7.8 Update `src/styles/skills.css` for creative skills redesign
+  - [x] 7.8 Update `src/styles/skills.css` for creative skills redesign
     - Style skill pills with gradient backgrounds (2+ color stops) and box-shadow glow on hover
     - Scale pills 1.05–1.1x on hover with shadow spread increase
     - Style category labels as accent-colored tags (border-radius ≥4px, distinct bg per category, font-weight ≥600)
@@ -284,7 +284,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Add `prefers-reduced-motion` overrides (no scale, preserve visual effects)
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6_
 
-  - [~] 7.9 Update `index.html` connect section with creative markup
+  - [x] 7.9 Update `index.html` connect section with creative markup
     - Add `data-animate-stagger="80"` to link cards grid
     - Add `data-animate="fade-up"` to cards
     - Add `.tilt-card` class to link cards
@@ -292,13 +292,13 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Add `data-magnetic` to CTA button
     - _Requirements: 6.2, 5.4_
 
-  - [~] 7.10 Update `src/styles/links.css` for glassmorphism connect section
+  - [x] 7.10 Update `src/styles/links.css` for glassmorphism connect section
     - Apply glass-card styling to link cards
     - Add border gradient activation on hover (transition ≤200ms)
     - Style CTA banner with glassmorphism
     - _Requirements: 6.2, 6.4_
 
-  - [~] 7.11 Update `index.html` projects section with creative markup
+  - [x] 7.11 Update `index.html` projects section with creative markup
     - Add `data-animate-stagger="120"` to projects grid
     - Add `data-animate="fade-up"` to project cards
     - Add `.tilt-card` class to project cards
@@ -306,28 +306,28 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Create asymmetric grid at ≥768px
     - _Requirements: 3.2, 6.3_
 
-  - [~] 7.12 Update `src/styles/projects.css` for glassmorphism projects
+  - [x] 7.12 Update `src/styles/projects.css` for glassmorphism projects
     - Apply glass-card styling
     - Replace solid left-border with accent glow (80% opacity)
     - Add asymmetric grid layout at ≥768px
     - _Requirements: 3.2, 6.3, 6.4_
 
-  - [~] 7.13 Update `src/styles/footer.css` for dark theme footer redesign
+  - [x] 7.13 Update `src/styles/footer.css` for dark theme footer redesign
     - Apply dark theme background with gradient border-top (border-image)
     - Add logo text-shadow glow
     - Style beta badge with glassmorphism (glass-bg, glass-border, backdrop-filter)
     - _Requirements: 1.1_
 
-  - [~] 7.14 Add section dividers to `index.html`
+  - [x] 7.14 Add section dividers to `index.html`
     - Insert `<hr class="section-divider" aria-hidden="true">` between each main section
     - _Requirements: 3.4_
 
-  - [~] 7.15 Add `src/styles/reset.css` update for dark-mode body defaults
+  - [x] 7.15 Add `src/styles/reset.css` update for dark-mode body defaults
     - Set `body` background to `var(--color-bg)`, color to `var(--color-text)`
     - Ensure smooth scrolling behavior
     - _Requirements: 1.1_
 
-- [ ] 8. Wire JavaScript modules into main.js and add navigation glassmorphism toggle
+- [x] 8. Wire JavaScript modules into main.js and add navigation glassmorphism toggle
   - [~] 8.1 Update `src/scripts/main.js` to import and initialize all new modules
     - Import and call: `initAnimationEngine`, `initCustomCursor`, `initParticleSystem`, `initScrollProgress`, `initMagneticElements`, `initTiltCards`
     - Pass hero canvas element to `initParticleSystem`

@@ -27,28 +27,26 @@ export function initAnimationEngine() {
   if (!elements.length) return;
 
   // If user prefers reduced motion, skip all animations —
-  // elements stay in their natural visible state.
+  // elements stay visible via the CSS reduced-motion override.
   if (prefersReducedMotion()) {
     return;
   }
 
+  // Signal to CSS that JS is loaded — elements get hidden via CSS rule
+  // `html.js-loaded [data-animate] { opacity: 0 }`
+  document.documentElement.classList.add('js-loaded');
+
   // Apply stagger delays to children of containers with data-animate-stagger
   applyStaggerDelays();
 
-  // Add .animate-hidden via JS (progressive enhancement).
-  // Without JS, elements remain visible.
-  elements.forEach((el) => {
-    el.classList.add('animate-hidden');
-  });
-
-  // Single observer for all animated elements
+  // Single observer — reveals elements when they enter the viewport
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const el = entry.target;
 
-          // Apply explicit delay from data attribute
+          // Apply explicit delay from data attribute (stagger)
           const delay = el.getAttribute('data-animate-delay');
           if (delay) {
             el.style.transitionDelay = `${delay}ms`;
@@ -62,7 +60,7 @@ export function initAnimationEngine() {
         }
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0.1 }
   );
 
   // Observe all animated elements

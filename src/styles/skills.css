@@ -1,4 +1,4 @@
-/* Skills Section */
+/* Skills Section — Creative Redesign */
 .skills {
   padding: var(--space-xl) var(--space-md);
   background-color: var(--color-bg-section);
@@ -9,14 +9,27 @@
   margin: 0 auto;
 }
 
+/* Heading with gradient text fill */
 .skills__heading {
   font-family: var(--font-heading);
   font-size: 2rem;
-  color: var(--color-text);
+  font-weight: var(--fw-bold);
   margin-bottom: var(--space-lg);
   text-align: center;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--color-text);
 }
 
+@supports not (-webkit-background-clip: text) {
+  .skills__heading {
+    color: var(--accent-primary);
+  }
+}
+
+/* Category blocks */
 .skills__category {
   margin-bottom: var(--space-lg);
 }
@@ -25,13 +38,42 @@
   margin-bottom: 0;
 }
 
+/* Category labels as accent-colored tags */
 .skills__category-name {
+  display: inline-block;
   font-family: var(--font-heading);
-  font-size: 1.25rem;
-  color: var(--color-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
   margin-bottom: var(--space-sm);
+  color: var(--color-text);
 }
 
+/* Distinct background per category label */
+.skills__category:nth-child(1) .skills__category-name {
+  background: hsla(265, 90%, 65%, 0.15);
+  color: hsl(265, 90%, 75%);
+}
+
+.skills__category:nth-child(2) .skills__category-name {
+  background: hsla(195, 85%, 55%, 0.15);
+  color: hsl(195, 85%, 70%);
+}
+
+.skills__category:nth-child(3) .skills__category-name {
+  background: hsla(330, 80%, 60%, 0.15);
+  color: hsl(330, 80%, 72%);
+}
+
+.skills__category:nth-child(4) .skills__category-name {
+  background: hsla(45, 90%, 60%, 0.15);
+  color: hsl(45, 90%, 70%);
+}
+
+/* Pills container — flex-wrap, no horizontal scroll */
 .skills__pills {
   display: flex;
   flex-wrap: wrap;
@@ -40,38 +82,80 @@
 
 /* Skill Pill Base */
 .skill-pill {
-  display: inline-block;
-  padding: 0.375rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
   border-radius: 9999px;
   font-family: var(--font-primary);
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--skill-text);
+  color: rgba(255, 255, 255, 0.95);
   white-space: nowrap;
+  transition:
+    transform var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out);
 }
 
-/* Skill Pill Category Variants */
+/* Skill Pill Category Variants — Gradient Backgrounds (2+ color stops) */
 .skill-pill--languages {
-  background-color: var(--skill-languages-bg);
+  background: linear-gradient(135deg, hsl(265, 80%, 55%), hsl(280, 75%, 65%));
 }
 
 .skill-pill--technologies {
-  background-color: var(--skill-technologies-bg);
+  background: linear-gradient(135deg, hsl(195, 80%, 45%), hsl(210, 75%, 55%));
 }
 
 .skill-pill--expertise {
-  background-color: var(--skill-expertise-bg);
+  background: linear-gradient(135deg, hsl(330, 75%, 50%), hsl(345, 70%, 62%));
 }
 
 .skill-pill--leadership {
-  background-color: var(--skill-leadership-bg);
+  background: linear-gradient(135deg, hsl(45, 85%, 48%), hsl(35, 80%, 55%));
 }
 
-/* Skill Pill Hover */
-.skill-pill {
-  transition: filter var(--duration-hover) var(--ease-out);
+/* Skill Pill Hover — scale + box-shadow glow */
+.skill-pill--languages:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 12px 4px hsla(265, 90%, 65%, 0.4);
 }
 
-.skill-pill:hover {
-  filter: brightness(1.15);
+.skill-pill--technologies:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 12px 4px hsla(195, 85%, 55%, 0.4);
+}
+
+.skill-pill--expertise:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 12px 4px hsla(330, 80%, 60%, 0.4);
+}
+
+.skill-pill--leadership:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 12px 4px hsla(45, 90%, 60%, 0.4);
+}
+
+/* Reduced Motion — no scale transforms on hover, keep gradients and glow */
+@media (prefers-reduced-motion: reduce) {
+  .skill-pill {
+    transition: box-shadow var(--duration-hover) var(--ease-out);
+  }
+
+  .skill-pill--languages:hover,
+  .skill-pill--technologies:hover,
+  .skill-pill--expertise:hover,
+  .skill-pill--leadership:hover {
+    transform: none;
+  }
+}
+
+/* Mobile — ensure no horizontal scroll, natural flex wrap */
+@media (max-width: 768px) {
+  .skills__pills {
+    overflow-x: hidden;
+  }
+
+  .skill-pill {
+    white-space: normal;
+    word-break: break-word;
+  }
 }

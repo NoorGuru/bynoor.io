@@ -1,6 +1,7 @@
 /**
- * Canvas-based particle system for the hero section background.
- * Renders floating orbs that drift in toroidal space and fade out on scroll.
+ * Canvas-based constellation effect for the hero section background.
+ * Renders nodes connected by lines when within proximity, creating
+ * a techy geometric network that drifts slowly.
  */
 
 import { prefersReducedMotion } from './utils/reduced-motion.js';
@@ -10,8 +11,11 @@ import { randomBetween, randomInt } from './utils/random.js';
 /** Accent palette hue angles (violet, cyan, magenta, amber) */
 const ACCENT_HUES = [265, 195, 330, 45];
 
-/** @type {Particle[]} */
-let particles = [];
+/** Maximum distance between nodes to draw a connecting line */
+const CONNECTION_DISTANCE = 150;
+
+/** @type {Node[]} */
+let nodes = [];
 /** @type {number|null} */
 let rafId = null;
 /** @type {HTMLCanvasElement|null} */
@@ -28,7 +32,7 @@ let canvasHeight = 0;
 let dpr = 1;
 
 /**
- * @typedef {Object} Particle
+ * @typedef {Object} Node
  * @property {number} x
  * @property {number} y
  * @property {number} radius
@@ -39,61 +43,84 @@ let dpr = 1;
  */
 
 /**
- * Creates a particle with random properties within the current canvas bounds.
- * @returns {Particle}
+ * Creates a node with random properties within the current canvas bounds.
+ * @returns {Node}
  */
-function createParticle() {
+function createNode() {
   return {
     x: randomBetween(0, canvasWidth),
     y: randomBetween(0, canvasHeight),
-    radius: randomBetween(2, 6),
-    vx: randomBetween(-0.3, 0.3),
-    vy: randomBetween(-0.2, 0.2),
-    opacity: randomBetween(0.1, 0.4),
+    radius: randomBetween(1.5, 3),
+    vx: randomBetween(-0.15, 0.15),
+    vy: randomBetween(-0.1, 0.1),
+    opacity: randomBetween(0.3, 0.7),
     hue: ACCENT_HUES[randomInt(0, ACCENT_HUES.length - 1)],
   };
 }
 
 /**
- * Computes the target particle count based on canvas area and hardware.
+ * Computes the target node count based on canvas area and hardware.
  * @param {number} width - Logical canvas width
  * @param {number} height - Logical canvas height
  * @returns {number}
  */
-function computeParticleCount(width, height) {
+function computeNodeCount(width, height) {
   const area = width * height;
-  let count = Math.min(50, Math.floor(area / 10000));
+  let count = Math.min(40, Math.floor(area / 20000));
   if (navigator.hardwareConcurrency != null && navigator.hardwareConcurrency < 4) {
     count = Math.floor(count / 2);
   }
-  return count;
+  return Math.max(count, 8);
 }
 
 /**
- * Updates and draws all particles for one frame.
+ * Updates and draws all nodes and their connections for one frame.
  */
 function render() {
   if (!ctx || !canvas) return;
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  for (let i = 0; i < particles.length; i++) {
-    const p = particles[i];
-
-    // Update position
-    p.x += p.vx;
-    p.y += p.vy;
+  // Update positions
+  for (let i = 0; i < nodes.length; i++) {
+    const n = nodes[i];
+    n.x += n.vx;
+    n.y += n.vy;
 
     // Toroidal wrapping
-    if (p.x < 0) p.x += canvasWidth;
-    else if (p.x > canvasWidth) p.x -= canvasWidth;
-    if (p.y < 0) p.y += canvasHeight;
-    else if (p.y > canvasHeight) p.y -= canvasHeight;
+    if (n.x < 0) n.x += canvasWidth;
+    else if (n.x > canvasWidth) n.x -= canvasWidth;
+    if (n.y < 0) n.y += canvasHeight;
+    else if (n.y > canvasHeight) n.y -= canvasHeight;
+  }
 
-    // Draw particle (scale radius by dpr for crisp rendering)
+  // Draw connections between nearby nodes
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const a = nodes[i];
+      const b = nodes[j];
+      const dx = a.x - b.x;
+      const dy = a.y - b.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < CONNECTION_DISTANCE) {
+        const lineOpacity = (1 - dist / CONNECTION_DISTANCE) * 0.25;
+        ctx.beginPath();
+        ctx.moveTo(a.x * dpr, a.y * dpr);
+        ctx.lineTo(b.x * dpr, b.y * dpr);
+        ctx.strokeStyle = `hsla(${a.hue}, 70%, 60%, ${lineOpacity})`;
+        ctx.lineWidth = 0.5 * dpr;
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Draw nodes
+  for (let i = 0; i < nodes.length; i++) {
+    const n = nodes[i];
     ctx.beginPath();
-    ctx.arc(p.x * dpr, p.y * dpr, p.radius * dpr, 0, Math.PI * 2);
-    ctx.fillStyle = `hsla(${p.hue}, 80%, 60%, ${p.opacity})`;
+    ctx.arc(n.x * dpr, n.y * dpr, n.radius * dpr, 0, Math.PI * 2);
+    ctx.fillStyle = `hsla(${n.hue}, 80%, 65%, ${n.opacity})`;
     ctx.fill();
   }
 }
@@ -123,15 +150,12 @@ function startLoop() {
  * Handles visibility change — pause/resume RAF.
  */
 function handleVisibilityChange() {
-  if (document.hidden) {
-    // Loop will self-terminate on next frame check
-    return;
-  }
+  if (document.hidden) return;
   startLoop();
 }
 
 /**
- * Handles scroll to fade particle container opacity.
+ * Handles scroll to fade constellation container opacity.
  */
 function handleScroll() {
   if (!canvas) return;
@@ -162,33 +186,31 @@ function handleResize(entries) {
   canvas.style.width = width + 'px';
   canvas.style.height = height + 'px';
 
-  const oldCanvasWidth = canvasWidth;
-  const oldCanvasHeight = canvasHeight;
   canvasWidth = width;
   canvasHeight = height;
 
-  // Clamp existing particles to new bounds
-  for (let i = 0; i < particles.length; i++) {
-    const p = particles[i];
-    if (p.x > canvasWidth) p.x = canvasWidth - 1;
-    if (p.y > canvasHeight) p.y = canvasHeight - 1;
-    if (p.x < 0) p.x = 0;
-    if (p.y < 0) p.y = 0;
+  // Clamp existing nodes to new bounds
+  for (let i = 0; i < nodes.length; i++) {
+    const n = nodes[i];
+    if (n.x > canvasWidth) n.x = canvasWidth - 1;
+    if (n.y > canvasHeight) n.y = canvasHeight - 1;
+    if (n.x < 0) n.x = 0;
+    if (n.y < 0) n.y = 0;
   }
 
-  // Adjust particle count if canvas grew/shrank significantly
-  const targetCount = computeParticleCount(canvasWidth, canvasHeight);
-  if (particles.length > targetCount) {
-    particles.length = targetCount;
+  // Adjust node count if canvas grew/shrank significantly
+  const targetCount = computeNodeCount(canvasWidth, canvasHeight);
+  if (nodes.length > targetCount) {
+    nodes.length = targetCount;
   } else {
-    while (particles.length < targetCount) {
-      particles.push(createParticle());
+    while (nodes.length < targetCount) {
+      nodes.push(createNode());
     }
   }
 }
 
 /**
- * Initializes the particle system on the given canvas element.
+ * Initializes the constellation system on the given canvas element.
  * Skips initialization on mobile (<768px) or if reduced-motion is preferred.
  * @param {HTMLCanvasElement} canvasElement
  */
@@ -218,11 +240,11 @@ export function initParticleSystem(canvasElement) {
   canvas.style.width = canvasWidth + 'px';
   canvas.style.height = canvasHeight + 'px';
 
-  // Create particles
-  const count = computeParticleCount(canvasWidth, canvasHeight);
-  particles = [];
+  // Create nodes
+  const count = computeNodeCount(canvasWidth, canvasHeight);
+  nodes = [];
   for (let i = 0; i < count; i++) {
-    particles.push(createParticle());
+    nodes.push(createNode());
   }
 
   // Set up ResizeObserver on hero
@@ -240,7 +262,7 @@ export function initParticleSystem(canvasElement) {
 }
 
 /**
- * Destroys the particle system and cleans up all resources.
+ * Destroys the constellation system and cleans up all resources.
  */
 export function destroyParticleSystem() {
   if (rafId != null) {
@@ -256,7 +278,7 @@ export function destroyParticleSystem() {
   window.removeEventListener('scroll', handleScroll);
   document.removeEventListener('visibilitychange', handleVisibilityChange);
 
-  particles = [];
+  nodes = [];
   canvas = null;
   ctx = null;
   canvasWidth = 0;

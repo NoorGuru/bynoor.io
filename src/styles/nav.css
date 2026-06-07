@@ -1,4 +1,4 @@
-/* Navigation Component */
+/* Navigation Component — Dark Theme + Glassmorphism */
 
 /* Smooth scroll behavior */
 html {
@@ -10,16 +10,25 @@ section[id] {
   scroll-margin-top: var(--header-height);
 }
 
-/* Header */
+/* Header — transparent by default over hero */
 .header {
   position: sticky;
   top: 0;
   z-index: 100;
   height: var(--header-height);
-  background-color: rgba(250, 250, 250, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--color-border);
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color var(--duration-hover) ease,
+              border-color var(--duration-hover) ease,
+              backdrop-filter var(--duration-hover) ease;
+}
+
+/* Scrolled state — glassmorphism (class added by JS when scrollTop > 100px) */
+.header.nav--scrolled {
+  background-color: rgba(14, 14, 20, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: var(--glass-border);
 }
 
 /* Nav container */
@@ -54,14 +63,27 @@ section[id] {
   color: var(--color-text-secondary);
 }
 
+/* Logo "noor" with glow effect */
 .nav__logo-noor {
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--accent-primary);
+  text-shadow: 0 0 8px var(--accent-primary);
+  transition: text-shadow var(--duration-hover) var(--ease-out);
 }
 
+.nav__logo-noor:hover {
+  text-shadow: 0 0 16px var(--accent-primary), 0 0 32px var(--accent-secondary);
+}
+
+/* Enhanced glow when nav is in scrolled/glassmorphism state */
+.header.nav--scrolled .nav__logo-noor {
+  text-shadow: 0 0 12px var(--accent-primary);
+}
+
+/* Logo ".io" segment */
 .nav__logo-io {
   font-weight: 400;
-  color: #818cf8;
+  color: var(--accent-secondary);
 }
 
 /* Nav links list */
@@ -91,13 +113,13 @@ section[id] {
 
 .nav__link:hover,
 .nav__link:focus-visible {
-  color: var(--color-primary);
-  background-color: rgba(99, 102, 241, 0.08);
+  color: var(--accent-primary);
+  background-color: rgba(139, 92, 246, 0.08);
 }
 
 /* Active nav link (scroll-spy) */
 .nav__link--active {
-  color: var(--color-primary);
+  color: var(--accent-primary);
   font-weight: 600;
 }
 
@@ -105,7 +127,7 @@ section[id] {
 .nav__logo:focus-visible,
 .nav__link:focus-visible,
 .nav__hamburger:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--accent-primary);
   outline-offset: 2px;
 }
 
@@ -171,18 +193,21 @@ section[id] {
     display: flex;
   }
 
+  /* Mobile menu overlay — glassmorphism */
   .nav__links {
     position: absolute;
     top: var(--header-height);
     left: 0;
     right: 0;
+    bottom: 0;
+    height: calc(100vh - var(--header-height));
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    background-color: rgba(250, 250, 250, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--color-border);
+    background-color: rgba(14, 14, 20, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
     padding: var(--space-sm) 0;
     transform: translateY(-10px);
     opacity: 0;
@@ -206,5 +231,18 @@ section[id] {
     padding: var(--space-md);
     font-size: 1rem;
     min-height: 44px;
+  }
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .header.nav--scrolled {
+    background-color: rgba(14, 14, 20, 0.97);
+  }
+
+  @media (max-width: 767px) {
+    .nav__links {
+      background-color: rgba(14, 14, 20, 0.98);
+    }
   }
 }

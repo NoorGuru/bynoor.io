@@ -1,11 +1,13 @@
 /**
  * Navigation module
- * Handles hamburger menu toggle, Escape key close, and link click close.
+ * Handles hamburger menu toggle, Escape key close, link click close,
+ * and glassmorphism scroll toggle.
  */
 
 export function initNavigation() {
   const hamburger = document.querySelector('.nav__hamburger');
   const navLinks = document.getElementById('nav-links');
+  const header = document.querySelector('.header');
 
   if (!hamburger || !navLinks) return;
 
@@ -45,4 +47,29 @@ export function initNavigation() {
       closeMenu();
     }
   });
+
+  // Glassmorphism scroll toggle
+  if (header) {
+    const SCROLL_THRESHOLD = 100;
+    let ticking = false;
+
+    function updateScrollClass() {
+      if (window.scrollY > SCROLL_THRESHOLD) {
+        header.classList.add('nav--scrolled');
+      } else {
+        header.classList.remove('nav--scrolled');
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateScrollClass);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Set initial state in case page is already scrolled
+    updateScrollClass();
+  }
 }
