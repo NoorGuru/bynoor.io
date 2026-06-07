@@ -1,3 +1,7 @@
 node_modules/
 dist/
 *.local
+
+# Untracked project directories
+bynoor.io/
+themes/
