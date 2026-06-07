@@ -1,7 +1,19 @@
 /* Main stylesheet entry point */
+
+/* Foundation: reset, tokens, typography */
 @import './reset.css';
 @import './tokens.css';
 @import './fonts.css';
+
+/* Design system layers: gradients, glass, cursor, progress, dividers, decorative */
+@import './gradients.css';
+@import './glass.css';
+@import './cursor.css';
+@import './progress.css';
+@import './dividers.css';
+@import './decorative.css';
+
+/* Component styles */
 @import './hero.css';
 @import './nav.css';
 @import './links.css';
@@ -10,4 +22,6 @@
 @import './highlights.css';
 @import './resources.css';
 @import './footer.css';
+
+/* Animations (last, so they can override) */
 @import './animations.css';

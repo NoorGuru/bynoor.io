@@ -1,0 +1,45 @@
+/* Custom Cursor Styles */
+
+/* Cursor element — fixed-position circle that follows mouse */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  border-radius: 50%;
+  border: 2px solid var(--cursor-color);
+  background: hsla(265, 90%, 65%, 0.1);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition:
+    width var(--duration-hover) var(--ease-out),
+    height var(--duration-hover) var(--ease-out),
+    background var(--duration-hover) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out);
+  will-change: transform;
+}
+
+/* Hover state — expanded ring when over interactive elements */
+.custom-cursor--hover {
+  width: var(--cursor-size-hover);
+  height: var(--cursor-size-hover);
+  border-color: var(--cursor-color);
+  background: hsla(265, 90%, 65%, 0.05);
+  box-shadow: 0 0 12px hsla(265, 90%, 65%, 0.3), 0 0 24px hsla(265, 90%, 65%, 0.1);
+}
+
+/* Hide native cursor when custom cursor is active */
+html.cursor-active,
+html.cursor-active * {
+  cursor: none !important;
+}
+
+/* Hide custom cursor on smaller viewports (touch devices) */
+@media (max-width: 1023px) {
+  .custom-cursor {
+    display: none;
+  }
+}

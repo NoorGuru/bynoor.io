@@ -6,7 +6,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
 
 ## Tasks
 
-- [-] 1. Set up testing infrastructure and utility modules
+- [x] 1. Set up testing infrastructure and utility modules
   - [x] 1.1 Add fast-check dependency and configure Vitest for property-based testing
     - Add `fast-check` to devDependencies in `package.json`
     - Verify Vitest config supports the `tests/unit/` and `tests/property/` directories
@@ -37,15 +37,15 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Export both as named exports
     - _Requirements: 7.1_
 
-  - [ ]* 1.6 Write unit tests for utility modules
+  - [x]* 1.6 Write unit tests for utility modules
     - Test `lerp.js`: verify interpolation for factor 0, 0.5, 1, and edge cases
     - Test `reduced-motion.js`: mock matchMedia, verify boolean detection and callback firing
     - Test `random.js`: verify output bounds
     - Test `breakpoints.js`: mock matchMedia, verify callback behavior
     - _Requirements: 9.4_
 
-- [ ] 2. Redesign design tokens and create new CSS foundation layers
-  - [~] 2.1 Rewrite `src/styles/tokens.css` with dark-mode-first color system
+- [x] 2. Redesign design tokens and create new CSS foundation layers
+  - [x] 2.1 Rewrite `src/styles/tokens.css` with dark-mode-first color system
     - Replace light theme variables with dark backgrounds (hsl 240, 15%, 6%)
     - Add 4 neon accent colors (violet, cyan, magenta, amber) at 70%+ saturation
     - Add glassmorphism tokens (`--glass-bg`, `--glass-border`, `--glass-blur`)
@@ -56,7 +56,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Remove the old `prefers-color-scheme: dark` empty media query
     - _Requirements: 1.1, 1.3, 3.1_
 
-  - [~] 2.2 Create `src/styles/gradients.css` with gradient utilities and mesh keyframes
+  - [x] 2.2 Create `src/styles/gradients.css` with gradient utilities and mesh keyframes
     - Register CSS `@property` for `--mesh-hue-1`, `--mesh-hue-2`, `--mesh-hue-3`
     - Define `.hero__mesh` class with 3-stop radial gradient background
     - Define `@keyframes mesh-cycle` (12s, ease-in-out, infinite) cycling hues within 30° range
@@ -64,36 +64,36 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Add `@media (prefers-reduced-motion: reduce)` rule to pause mesh animation
     - _Requirements: 1.2, 1.6, 2.1, 3.3_
 
-  - [~] 2.3 Create `src/styles/glass.css` with glassmorphism utility classes
+  - [x] 2.3 Create `src/styles/glass.css` with glassmorphism utility classes
     - Define `.glass-card` with background opacity 0.05–0.15, backdrop-filter blur ≥10px, 1px border at 0.1–0.3 opacity
     - Define `.glass-card:hover` increasing background and border opacity
     - Add `@supports not (backdrop-filter: blur(1px))` fallback
     - _Requirements: 6.1, 6.2, 6.3, 6.4_
 
-  - [~] 2.4 Create `src/styles/cursor.css` with custom cursor styles
+  - [x] 2.4 Create `src/styles/cursor.css` with custom cursor styles
     - Define `.custom-cursor` element styles (size, shape, color from tokens, position: fixed, pointer-events: none, z-index high)
     - Define `.custom-cursor--hover` state (scale 1.5x, ring expansion)
     - Define `.cursor-active` on `html` to hide native cursor
     - Add media query to hide cursor element below 1024px
     - _Requirements: 5.1, 5.2, 5.3_
 
-  - [~] 2.5 Create `src/styles/progress.css` with scroll progress bar
+  - [x] 2.5 Create `src/styles/progress.css` with scroll progress bar
     - Define `.scroll-progress` as fixed position top bar, height 3px
     - Use `width: calc(var(--scroll-progress) * 100%)` with gradient background from tokens
     - Set z-index above all content
     - _Requirements: 4.2_
 
-  - [~] 2.6 Create `src/styles/dividers.css` for section gradient dividers
+  - [x] 2.6 Create `src/styles/dividers.css` for section gradient dividers
     - Define `.section-divider` with 1px height, gradient background (transparent → accent → transparent), opacity 0.3
     - _Requirements: 3.4_
 
-  - [~] 2.7 Create `src/styles/decorative.css` for background blobs and radial glows
+  - [x] 2.7 Create `src/styles/decorative.css` for background blobs and radial glows
     - Define decorative pseudo-elements or classes for gradient blobs behind at least 2 content sections
     - Set `z-index` behind content, `pointer-events: none`
     - Add `@media (prefers-reduced-motion: reduce)` to pause/remove animations
     - _Requirements: 7.4, 7.5_
 
-  - [~] 2.8 Update `src/styles/animations.css` for entrance animation classes
+  - [x] 2.8 Update `src/styles/animations.css` for entrance animation classes
     - Define `.animate-hidden` (opacity: 0, translateY: 20px) — the pre-entrance state
     - Define `.animate-visible` (opacity: 1, translateY: 0) with transition using `--duration-entrance`
     - Add variants: `fade-up`, `fade-in`, `scale-in`
@@ -101,7 +101,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Ensure transitions use `will-change: transform, opacity` for compositor offloading
     - _Requirements: 4.1, 4.6, 9.4_
 
-  - [~] 2.9 Update `src/styles/main.css` to import all new CSS modules
+  - [x] 2.9 Update `src/styles/main.css` to import all new CSS modules
     - Add imports for `gradients.css`, `glass.css`, `cursor.css`, `progress.css`, `dividers.css`, `decorative.css`
     - Maintain correct import order (reset → tokens → fonts → gradients → glass → cursor → progress → dividers → decorative → component styles → animations)
     - _Requirements: 1.1_

@@ -1,0 +1,11 @@
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: calc(var(--scroll-progress) * 100%);
+  background: var(--gradient-progress);
+  z-index: 10000;
+  pointer-events: none;
+  transition: width 50ms linear;
+}

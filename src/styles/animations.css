@@ -3,12 +3,30 @@
 .animate-hidden {
   opacity: 0;
   transform: translateY(20px);
+  will-change: transform, opacity;
 }
 
 .animate-visible {
   opacity: 1;
   transform: none;
-  transition: all var(--duration-entrance) var(--ease-out);
+  transition: opacity var(--duration-entrance) var(--ease-out),
+              transform var(--duration-entrance) var(--ease-out);
+}
+
+/* Animation variants */
+.animate-hidden[data-animate="fade-up"] {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.animate-hidden[data-animate="fade-in"] {
+  opacity: 0;
+  transform: none;
+}
+
+.animate-hidden[data-animate="scale-in"] {
+  opacity: 0;
+  transform: scale(0.95);
 }
 
 /* Reduced motion: disable transforms and entrance animations */
@@ -17,6 +35,7 @@
   .animate-hidden {
     opacity: 1;
     transform: none;
+    will-change: auto;
   }
 
   .animate-visible {

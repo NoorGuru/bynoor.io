@@ -1,0 +1,8 @@
+/* Section Dividers — gradient transitions between dark sections */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-primary), var(--accent-secondary), transparent);
+  opacity: 0.3;
+  border: none;
+  margin: 0;
+}

@@ -1,0 +1,62 @@
+/* Gradient utilities, mesh keyframes, and @property definitions */
+
+/* === CSS @property Registrations for GPU-composited hue animation === */
+@property --mesh-hue-1 {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --mesh-hue-2 {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 120deg;
+}
+
+@property --mesh-hue-3 {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 240deg;
+}
+
+/* === Hero Gradient Mesh === */
+.hero__mesh {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.6;
+  background:
+    radial-gradient(ellipse at 20% 50%, hsl(var(--mesh-hue-1), 80%, 50%) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, hsl(var(--mesh-hue-2), 75%, 45%) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, hsl(var(--mesh-hue-3), 85%, 55%) 0%, transparent 50%);
+  animation: mesh-cycle 12s ease-in-out infinite;
+}
+
+@keyframes mesh-cycle {
+  0%   { --mesh-hue-1: 260deg; --mesh-hue-2: 200deg; --mesh-hue-3: 320deg; }
+  33%  { --mesh-hue-1: 280deg; --mesh-hue-2: 220deg; --mesh-hue-3: 340deg; }
+  66%  { --mesh-hue-1: 240deg; --mesh-hue-2: 180deg; --mesh-hue-3: 300deg; }
+  100% { --mesh-hue-1: 260deg; --mesh-hue-2: 200deg; --mesh-hue-3: 320deg; }
+}
+
+/* === Gradient Text Utility === */
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Fallback for browsers without background-clip: text support */
+@supports not (-webkit-background-clip: text) {
+  .gradient-text {
+    color: var(--accent-primary);
+  }
+}
+
+/* === Reduced Motion === */
+@media (prefers-reduced-motion: reduce) {
+  .hero__mesh {
+    animation: none;
+  }
+}

@@ -1,0 +1,55 @@
+/* Decorative Elements — Background Blobs & Radial Glows */
+
+/* === Float Animation === */
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -20px) scale(1.05); }
+}
+
+/* === Base Blob Class === */
+.decorative-blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(60px);
+  opacity: 0.15;
+  animation: blob-float 8s ease-in-out infinite;
+}
+
+/* === Primary Blob — Violet, Top-Right === */
+.decorative-blob--primary {
+  width: 300px;
+  height: 300px;
+  background: var(--accent-primary);
+  top: -60px;
+  right: -60px;
+}
+
+/* === Secondary Blob — Cyan, Bottom-Left === */
+.decorative-blob--secondary {
+  width: 250px;
+  height: 250px;
+  background: var(--accent-secondary);
+  bottom: -50px;
+  left: -50px;
+  animation-delay: -4s;
+}
+
+/* === Radial Glow Effect === */
+.decorative-glow {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-tertiary) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+/* === Reduced Motion === */
+@media (prefers-reduced-motion: reduce) {
+  .decorative-blob,
+  .decorative-glow {
+    animation: none;
+  }
+}
