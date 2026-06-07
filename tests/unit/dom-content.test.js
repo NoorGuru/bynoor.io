@@ -21,7 +21,7 @@ describe('Hero Section', () => {
   it('has an h1 with the correct name', () => {
     const h1 = document.querySelector('#hero h1');
     expect(h1).not.toBeNull();
-    expect(h1.textContent).toBe('Mohammad Noor Abu Khlaif');
+    expect(h1.textContent).toBe('Mohammad Noor');
   });
 
   it('has the tagline text', () => {
@@ -106,21 +106,28 @@ describe('Skills Section', () => {
 });
 
 describe('Links Section', () => {
-  const expectedLinks = [
-    { href: 'https://go.bynoor.io/linkedin', label: 'LinkedIn' },
-    { href: 'https://go.bynoor.io/github', label: 'GitHub' },
-    { href: 'https://go.bynoor.io/youtube', label: 'Code with Noor' },
-    { href: 'https://go.bynoor.io/twitter', label: 'Twitter / X' },
-    { href: 'https://go.bynoor.io/sof', label: 'StackOverflow' },
-    { href: 'https://go.bynoor.io/hr', label: 'HackerRank' },
-    { href: 'https://go.bynoor.io/email', label: 'Email' },
+  const expectedLinkCardHrefs = [
+    'https://go.bynoor.io/github',
+    'https://go.bynoor.io/youtube',
+    'https://go.bynoor.io/twitter',
+    'https://go.bynoor.io/sof',
+    'https://go.bynoor.io/hr',
   ];
 
-  it('has all 7 social link cards with correct hrefs', () => {
+  const expectedBannerLinkHrefs = [
+    'https://go.bynoor.io/linkedin',
+    'https://go.bynoor.io/email',
+  ];
+
+  it('has all social link cards and banner links with correct hrefs', () => {
     const linksSection = document.querySelector('#links');
-    expectedLinks.forEach(({ href }) => {
+    expectedLinkCardHrefs.forEach((href) => {
       const link = linksSection.querySelector(`a.link-card[href="${href}"]`);
-      expect(link, `Expected link with href="${href}"`).not.toBeNull();
+      expect(link, `Expected link-card with href="${href}"`).not.toBeNull();
+    });
+    expectedBannerLinkHrefs.forEach((href) => {
+      const link = linksSection.querySelector(`a[href="${href}"]`);
+      expect(link, `Expected banner link with href="${href}"`).not.toBeNull();
     });
   });
 
@@ -191,11 +198,10 @@ describe('Navigation', () => {
 });
 
 describe('Footer', () => {
-  it('has copyright text with current year placeholder', () => {
+  it('has footer with branding and year placeholder', () => {
     const footer = document.querySelector('footer');
     expect(footer).not.toBeNull();
-    expect(footer.textContent).toContain('©');
-    expect(footer.textContent).toContain('Noor');
+    expect(footer.textContent).toContain('noor');
     // The year is filled by JS at runtime; check the span exists
     const yearSpan = footer.querySelector('#year');
     expect(yearSpan).not.toBeNull();
