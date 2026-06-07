@@ -3,6 +3,8 @@
   padding: var(--space-xl) var(--space-md);
   background: var(--color-bg);
   color: var(--color-text);
+  position: relative;
+  overflow: hidden;
 }
 
 .links__container {
@@ -133,15 +135,9 @@
   margin-top: var(--space-lg);
 }
 
-@media (min-width: 375px) {
+@media (min-width: 768px) {
   .links__grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 600px) {
-  .links__grid {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -253,4 +249,11 @@
   .links__featured-row .link-card {
     background: var(--color-bg-elevated);
   }
+}
+
+/* Section Accent Reveal — border-glow transition on scroll intersection */
+.links.section--revealed {
+  box-shadow: inset 3px 0 0 0 var(--accent-tertiary),
+              0 0 16px -4px color-mix(in srgb, var(--accent-tertiary) 25%, transparent);
+  transition: box-shadow 500ms ease-out;
 }

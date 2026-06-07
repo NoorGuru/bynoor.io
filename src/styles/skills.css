@@ -159,3 +159,10 @@
     word-break: break-word;
   }
 }
+
+/* Section Accent Reveal — border-glow transition on scroll intersection */
+.skills.section--revealed {
+  box-shadow: inset 3px 0 0 0 var(--accent-secondary),
+              0 0 16px -4px color-mix(in srgb, var(--accent-secondary) 25%, transparent);
+  transition: box-shadow 400ms ease-out;
+}

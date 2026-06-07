@@ -226,6 +226,27 @@ section[id] {
                 visibility 0s linear 0s;
   }
 
+  /* No-JS fallback: show nav links when JS hasn't loaded (hamburger won't work without JS) */
+  html:not(.js-loaded) .nav__links {
+    position: static;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
+    padding: 0;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    transition: none;
+  }
+
+  html:not(.js-loaded) .nav__hamburger {
+    display: none;
+  }
+
   .nav__link {
     display: block;
     padding: var(--space-md);

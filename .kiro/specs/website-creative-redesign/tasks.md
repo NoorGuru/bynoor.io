@@ -340,8 +340,8 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Ensure mobile menu overlay applies glassmorphism backdrop
     - _Requirements: 3.4, 10.2, 10.3_
 
-- [ ] 9. Responsive and reduced-motion final pass
-  - [~] 9.1 Add responsive overrides for mobile (<768px)
+- [x] 9. Responsive and reduced-motion final pass
+  - [x] 9.1 Add responsive overrides for mobile (<768px)
     - Disable parallax in CSS/JS for mobile
     - Simplify hero background (gradient only, no particles)
     - Ensure single-column grid reflow preserving creative styles (gradients, glows, borders)
@@ -349,26 +349,26 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Verify all touch targets ≥44x44px
     - _Requirements: 10.1, 10.4, 10.5, 10.6, 3.5_
 
-  - [~] 9.2 Verify and finalize reduced-motion behavior across all modules
+  - [x] 9.2 Verify and finalize reduced-motion behavior across all modules
     - Confirm `prefers-reduced-motion: reduce` disables: gradient mesh animation, entrance animations, parallax, cursor, magnetic, particle system, tilt, scroll indicator bounce
     - Confirm hover interactions (translateY lift, box-shadow) remain active (user-initiated)
     - Confirm all elements render in final visible state without delays
     - _Requirements: 1.6, 2.6, 4.6, 5.5, 7.5, 8.6, 9.6_
 
-  - [~] 9.3 Ensure no-JS graceful degradation
+  - [x] 9.3 Ensure no-JS graceful degradation
     - Verify all text content visible without JavaScript
     - Verify navigation links functional without JS
     - Verify images render with alt text
     - Add CSS-only defaults: no `.animate-hidden` applied without JS, native cursor preserved
     - _Requirements: 9.7_
 
-  - [~] 9.4 Update OG image for dark theme
+  - [x] 9.4 Update OG image for dark theme
     - Regenerate or replace `public/og-image.png` to match the new dark theme with neon accents
     - Ensure the image dimensions stay at recommended OG size (1200×630)
     - Verify meta tags in `index.html` still reference the correct path
     - _Requirements: 1.1_
 
-  - [~] 9.5 Add `data-section-accent` and `data-parallax` attributes to HTML sections
+  - [x] 9.5 Add `data-section-accent` and `data-parallax` attributes to HTML sections
     - Add `data-section-accent="primary|secondary|tertiary|quaternary"` to each section
     - Add `data-parallax="0.3"` (or similar factor) to decorative background elements
     - Add `.section--revealed` CSS transition rules (border-glow, 300–600ms) to section CSS files

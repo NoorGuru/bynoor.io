@@ -38,32 +38,48 @@ html.js-loaded [data-animate].animate-visible {
     transition: none;
   }
 
-  /* Remove all transform-based hover transitions globally */
-  .hero__btn,
-  .hero__btn--primary,
-  .hero__social-link,
-  .highlights__card,
-  .links__cta,
-  .link-card,
-  .project-card,
+  /* Remove continuous/entrance animation transitions but preserve
+     user-initiated hover transforms (translateY lift, box-shadow) per req 4.3.
+     Hover interactions remain active since they are user-initiated. */
   .skill-pill {
-    transition: color var(--duration-hover) ease,
-                opacity var(--duration-hover) ease,
-                background-color var(--duration-hover) ease !important;
+    transition: box-shadow var(--duration-hover) ease !important;
   }
 
-  /* Disable transform on hover states */
-  .hero__btn--primary:hover,
-  .hero__social-link:hover,
-  .highlights__card:hover,
-  .links__cta:hover,
-  .link-card:hover,
-  .project-card:hover {
+  /* Disable scale transform on skill pills (continuous effect) but keep glow */
+  .skill-pill:hover {
+    transform: none !important;
+  }
+}
+
+/* ===========================
+   Mobile (<768px): Limit entrance animations to opacity only (no transforms)
+   Disable parallax transforms via CSS fallback
+   Ensure touch targets ≥ 44x44px
+   =========================== */
+@media (max-width: 767px) {
+  /* Remove transform-based entrance animations; opacity transitions only */
+  html.js-loaded [data-animate] {
+    transform: none;
+  }
+
+  html.js-loaded [data-animate].animate-visible {
+    transition: opacity var(--duration-entrance) var(--ease-out);
+    transform: none;
+  }
+
+  /* Disable parallax transforms as CSS fallback (alongside JS) */
+  [data-parallax] {
     transform: none !important;
   }
 
-  /* Disable filter transition on skill pills */
-  .skill-pill:hover {
-    filter: none !important;
+  /* Ensure all interactive elements meet 44x44px touch target */
+  a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
   }
 }

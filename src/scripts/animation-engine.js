@@ -32,9 +32,9 @@ export function initAnimationEngine() {
     return;
   }
 
-  // Signal to CSS that JS is loaded — elements get hidden via CSS rule
-  // `html.js-loaded [data-animate] { opacity: 0 }`
-  document.documentElement.classList.add('js-loaded');
+  // JS has loaded (class added in main.js) — CSS rule
+  // `html.js-loaded [data-animate] { opacity: 0 }` hides elements
+  // until they scroll into view.
 
   // Apply stagger delays to children of containers with data-animate-stagger
   applyStaggerDelays();

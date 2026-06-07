@@ -309,6 +309,69 @@
   50% { transform: translateX(-50%) translateY(8px); }
 }
 
+/* === Mobile (<768px): Simplify hero — gradient only, no particles/canvas === */
+@media (max-width: 767px) {
+  .hero__canvas {
+    display: none;
+  }
+
+  /* Remove transform-based entrance animations on mobile */
+  .hero__photo {
+    animation: none;
+    opacity: 0;
+    transform: none;
+    animation: hero-entrance-photo-mobile var(--duration-entrance) var(--ease-out) forwards;
+  }
+
+  .hero h1 {
+    animation: none;
+    opacity: 0;
+    transform: none;
+    animation: hero-entrance-opacity var(--duration-entrance) var(--ease-out) 200ms forwards;
+  }
+
+  .hero__tagline {
+    animation: none;
+    opacity: 0;
+    transform: none;
+    animation: hero-entrance-opacity var(--duration-entrance) var(--ease-out) 400ms forwards;
+  }
+
+  .hero__subtitle {
+    animation: none;
+    opacity: 0;
+    transform: none;
+    animation: hero-entrance-opacity var(--duration-entrance) var(--ease-out) 600ms forwards;
+  }
+
+  .hero__cta-group {
+    animation: none;
+    opacity: 0;
+    transform: none;
+    animation: hero-entrance-opacity var(--duration-entrance) var(--ease-out) 800ms forwards;
+  }
+
+  .hero__social-links {
+    animation: none;
+    opacity: 0;
+    transform: none;
+    animation: hero-entrance-opacity var(--duration-entrance) var(--ease-out) 1000ms forwards;
+  }
+}
+
+/* Mobile-only opacity entrance (no transforms) */
+@keyframes hero-entrance-opacity {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes hero-entrance-photo-mobile {
+  from { opacity: 0; }
+  to {
+    opacity: 1;
+  }
+}
+
 /* === Tablet and Desktop Enhancements === */
 @media (min-width: 768px) {
   .hero__photo {
@@ -373,8 +436,6 @@
     animation: none;
   }
 
-  .hero__btn--primary:hover,
-  .hero__btn--secondary:hover {
-    transform: none;
-  }
+  /* Hover transforms on CTA buttons remain active — they are user-initiated
+     interactions (translateY lift + box-shadow) per requirement 4.3 */
 }

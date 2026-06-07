@@ -9,6 +9,10 @@ import { initTiltCards } from './tilt-cards.js';
 
 // Initialize modules when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+  // Signal that JS is loaded — used by CSS for no-JS fallbacks
+  // (e.g., show nav links on mobile when JS is disabled)
+  document.documentElement.classList.add('js-loaded');
+
   // Critical UI — initialize immediately
   initNavigation();
   initScrollSpy();

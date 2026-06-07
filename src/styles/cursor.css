@@ -31,13 +31,11 @@
   box-shadow: 0 0 12px hsla(265, 90%, 65%, 0.3), 0 0 24px hsla(265, 90%, 65%, 0.1);
 }
 
-/* Hide native cursor when custom cursor is active */
-/*
+/* Hide native cursor when custom cursor is active (class added by JS) */
 html.cursor-active,
 html.cursor-active * {
   cursor: none !important;
 }
-*/
 
 /* Hide custom cursor on smaller viewports (touch devices) */
 @media (max-width: 1023px) {
