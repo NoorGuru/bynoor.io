@@ -6,32 +6,32 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
 
 ## Tasks
 
-- [ ] 1. Set up testing infrastructure and utility modules
-  - [ ] 1.1 Add fast-check dependency and configure Vitest for property-based testing
+- [-] 1. Set up testing infrastructure and utility modules
+  - [x] 1.1 Add fast-check dependency and configure Vitest for property-based testing
     - Add `fast-check` to devDependencies in `package.json`
     - Verify Vitest config supports the `tests/unit/` and `tests/property/` directories
     - Create `tests/property/` directory for property-based test files
     - _Requirements: 9.1, 9.2_
 
-  - [ ] 1.2 Create `src/scripts/utils/reduced-motion.js` utility module
+  - [x] 1.2 Create `src/scripts/utils/reduced-motion.js` utility module
     - Implement `prefersReducedMotion()` returning boolean from `matchMedia('(prefers-reduced-motion: reduce)')`
     - Implement `onMotionPreferenceChange(callback)` that listens for live changes via `addEventListener('change', ...)`
     - Export both functions as named exports
     - _Requirements: 1.6, 2.6, 4.6, 5.5, 7.5, 8.6, 9.6_
 
-  - [ ] 1.3 Create `src/scripts/utils/lerp.js` utility module
+  - [x] 1.3 Create `src/scripts/utils/lerp.js` utility module
     - Implement `lerp(current, target, factor)` returning `current + (target - current) * factor`
     - Export as named export
     - _Requirements: 5.1_
 
-  - [ ] 1.4 Create `src/scripts/utils/breakpoints.js` utility module
+  - [x] 1.4 Create `src/scripts/utils/breakpoints.js` utility module
     - Implement `onBreakpointChange(minWidth, callback)` wrapping `matchMedia` with `addEventListener('change', ...)`
     - Callback fires immediately with current state, then on every change
     - Implement `isAbove(minWidth)` for one-shot checks
     - Export both as named exports
     - _Requirements: 5.1, 5.3, 10.4_
 
-  - [ ] 1.5 Create `src/scripts/utils/random.js` utility module
+  - [x] 1.5 Create `src/scripts/utils/random.js` utility module
     - Implement `randomBetween(min, max)` for float range
     - Implement `randomInt(min, max)` for integer range (inclusive)
     - Export both as named exports
@@ -45,7 +45,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - _Requirements: 9.4_
 
 - [ ] 2. Redesign design tokens and create new CSS foundation layers
-  - [ ] 2.1 Rewrite `src/styles/tokens.css` with dark-mode-first color system
+  - [~] 2.1 Rewrite `src/styles/tokens.css` with dark-mode-first color system
     - Replace light theme variables with dark backgrounds (hsl 240, 15%, 6%)
     - Add 4 neon accent colors (violet, cyan, magenta, amber) at 70%+ saturation
     - Add glassmorphism tokens (`--glass-bg`, `--glass-border`, `--glass-blur`)
@@ -56,7 +56,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Remove the old `prefers-color-scheme: dark` empty media query
     - _Requirements: 1.1, 1.3, 3.1_
 
-  - [ ] 2.2 Create `src/styles/gradients.css` with gradient utilities and mesh keyframes
+  - [~] 2.2 Create `src/styles/gradients.css` with gradient utilities and mesh keyframes
     - Register CSS `@property` for `--mesh-hue-1`, `--mesh-hue-2`, `--mesh-hue-3`
     - Define `.hero__mesh` class with 3-stop radial gradient background
     - Define `@keyframes mesh-cycle` (12s, ease-in-out, infinite) cycling hues within 30° range
@@ -64,36 +64,36 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Add `@media (prefers-reduced-motion: reduce)` rule to pause mesh animation
     - _Requirements: 1.2, 1.6, 2.1, 3.3_
 
-  - [ ] 2.3 Create `src/styles/glass.css` with glassmorphism utility classes
+  - [~] 2.3 Create `src/styles/glass.css` with glassmorphism utility classes
     - Define `.glass-card` with background opacity 0.05–0.15, backdrop-filter blur ≥10px, 1px border at 0.1–0.3 opacity
     - Define `.glass-card:hover` increasing background and border opacity
     - Add `@supports not (backdrop-filter: blur(1px))` fallback
     - _Requirements: 6.1, 6.2, 6.3, 6.4_
 
-  - [ ] 2.4 Create `src/styles/cursor.css` with custom cursor styles
+  - [~] 2.4 Create `src/styles/cursor.css` with custom cursor styles
     - Define `.custom-cursor` element styles (size, shape, color from tokens, position: fixed, pointer-events: none, z-index high)
     - Define `.custom-cursor--hover` state (scale 1.5x, ring expansion)
     - Define `.cursor-active` on `html` to hide native cursor
     - Add media query to hide cursor element below 1024px
     - _Requirements: 5.1, 5.2, 5.3_
 
-  - [ ] 2.5 Create `src/styles/progress.css` with scroll progress bar
+  - [~] 2.5 Create `src/styles/progress.css` with scroll progress bar
     - Define `.scroll-progress` as fixed position top bar, height 3px
     - Use `width: calc(var(--scroll-progress) * 100%)` with gradient background from tokens
     - Set z-index above all content
     - _Requirements: 4.2_
 
-  - [ ] 2.6 Create `src/styles/dividers.css` for section gradient dividers
+  - [~] 2.6 Create `src/styles/dividers.css` for section gradient dividers
     - Define `.section-divider` with 1px height, gradient background (transparent → accent → transparent), opacity 0.3
     - _Requirements: 3.4_
 
-  - [ ] 2.7 Create `src/styles/decorative.css` for background blobs and radial glows
+  - [~] 2.7 Create `src/styles/decorative.css` for background blobs and radial glows
     - Define decorative pseudo-elements or classes for gradient blobs behind at least 2 content sections
     - Set `z-index` behind content, `pointer-events: none`
     - Add `@media (prefers-reduced-motion: reduce)` to pause/remove animations
     - _Requirements: 7.4, 7.5_
 
-  - [ ] 2.8 Update `src/styles/animations.css` for entrance animation classes
+  - [~] 2.8 Update `src/styles/animations.css` for entrance animation classes
     - Define `.animate-hidden` (opacity: 0, translateY: 20px) — the pre-entrance state
     - Define `.animate-visible` (opacity: 1, translateY: 0) with transition using `--duration-entrance`
     - Add variants: `fade-up`, `fade-in`, `scale-in`
@@ -101,16 +101,16 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Ensure transitions use `will-change: transform, opacity` for compositor offloading
     - _Requirements: 4.1, 4.6, 9.4_
 
-  - [ ] 2.9 Update `src/styles/main.css` to import all new CSS modules
+  - [~] 2.9 Update `src/styles/main.css` to import all new CSS modules
     - Add imports for `gradients.css`, `glass.css`, `cursor.css`, `progress.css`, `dividers.css`, `decorative.css`
     - Maintain correct import order (reset → tokens → fonts → gradients → glass → cursor → progress → dividers → decorative → component styles → animations)
     - _Requirements: 1.1_
 
-- [ ] 3. Checkpoint — Verify CSS foundation builds correctly
+- [~] 3. Checkpoint — Verify CSS foundation builds correctly
   - Ensure `npm run build` succeeds with no errors, ask the user if questions arise.
 
 - [ ] 4. Implement JavaScript modules (animation engine, scroll progress, particles)
-  - [ ] 4.1 Create `src/scripts/animation-engine.js`
+  - [~] 4.1 Create `src/scripts/animation-engine.js`
     - Implement `initAnimationEngine()` that creates a single IntersectionObserver with threshold 0.2
     - On intersection: add `animate-visible` class, apply `transition-delay` from `data-animate-delay`
     - Unobserve element immediately after first trigger (fire-once semantics)
@@ -125,7 +125,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Mock IntersectionObserver; verify `animate-visible` added exactly once and `unobserve` called
     - **Validates: Requirements 4.1**
 
-  - [ ] 4.3 Create `src/scripts/scroll-progress.js`
+  - [~] 4.3 Create `src/scripts/scroll-progress.js`
     - Implement `initScrollProgress()` that listens to scroll event with `{ passive: true }`
     - Compute `progress = scrollTop / (scrollHeight - clientHeight)`
     - Set CSS custom property `--scroll-progress` on the progress bar element
@@ -138,7 +138,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Verify computed progress matches `scrollTop / (scrollHeight - clientHeight)` bounded to [0, 100]
     - **Validates: Requirements 4.2**
 
-  - [ ] 4.5 Create `src/scripts/particle-system.js`
+  - [~] 4.5 Create `src/scripts/particle-system.js`
     - Implement `initParticleSystem(canvas)` and `destroyParticleSystem()`
     - Initialize `min(50, area/10000)` particles with random positions, velocities, radii (2–6), opacity (0.1–0.4), hues from accent palette
     - Run `requestAnimationFrame` render loop; particles wrap toroidally
@@ -163,7 +163,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - _Requirements: 7.1, 7.2_
 
 - [ ] 5. Implement JavaScript modules (cursor, magnetic elements, tilt cards)
-  - [ ] 5.1 Create `src/scripts/custom-cursor.js`
+  - [~] 5.1 Create `src/scripts/custom-cursor.js`
     - Implement `initCustomCursor()` that creates a cursor DOM element
     - Only active at viewport ≥ 1024px (use `onBreakpointChange`)
     - Use `requestAnimationFrame` loop with lerp (factor 0.08–0.15) for smooth trailing
@@ -182,7 +182,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Verify `lerpFactor` between 0.08 and 0.15 per frame
     - **Validates: Requirements 5.1**
 
-  - [ ] 5.3 Create `src/scripts/magnetic-elements.js`
+  - [~] 5.3 Create `src/scripts/magnetic-elements.js`
     - Implement `initMagneticElements()` selecting all `[data-magnetic]` elements
     - On `mousemove` (throttled via RAF): compute distance from cursor to element center
     - If distance < 80px: translate element toward cursor with `offset = (cursorPos - centerPos) * (1 - distance/80) * maxOffset/80`
@@ -197,7 +197,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Verify translation magnitude ≤ 8px when inside threshold, equals 0 when outside
     - **Validates: Requirements 5.4**
 
-  - [ ] 5.5 Create `src/scripts/tilt-cards.js`
+  - [~] 5.5 Create `src/scripts/tilt-cards.js`
     - Implement 3D perspective tilt on hover for `.tilt-card` elements
     - On `pointermove`: calculate rotation from pointer position relative to card center
     - Map to `rotateX` / `rotateY` via CSS custom properties `--tilt-x`, `--tilt-y` (max 5deg)
@@ -205,7 +205,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Disabled when reduced-motion active (falls back to translateY lift)
     - _Requirements: 4.3, 6.4_
 
-  - [ ] 5.6 Add parallax scroll logic to `src/scripts/animation-engine.js`
+  - [~] 5.6 Add parallax scroll logic to `src/scripts/animation-engine.js`
     - On scroll (passive listener): translate elements with `[data-parallax]` attribute at ≤50% of scroll speed
     - Apply via CSS `transform: translateY(offset)` where offset = scrollDelta × parallaxFactor (factor ≤ 0.5)
     - Use `requestAnimationFrame` to batch DOM writes
@@ -214,18 +214,18 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - On breakpoint crossing below 768px: reset all parallax transforms to 0
     - _Requirements: 4.5, 10.6_
 
-  - [ ] 5.7 Add section accent color reveal to `src/scripts/animation-engine.js`
+  - [~] 5.7 Add section accent color reveal to `src/scripts/animation-engine.js`
     - Use a separate IntersectionObserver (threshold: 0.1) for `[data-section-accent]` elements
     - On intersection: add `.section--revealed` class which triggers CSS border-glow or gradient-highlight transition (300–600ms, defined in CSS)
     - Each section has a `data-section-accent` attribute mapping to its assigned accent token
     - The CSS transition is defined in the relevant section CSS files
     - _Requirements: 1.4_
 
-- [ ] 6. Checkpoint — Verify all JS modules load without errors
+- [~] 6. Checkpoint — Verify all JS modules load without errors
   - Ensure `npm run build` succeeds and `npm run test` passes, ask the user if questions arise.
 
 - [ ] 7. Update HTML structure and section styles
-  - [ ] 7.1 Update `index.html` hero section for creative redesign
+  - [~] 7.1 Update `index.html` hero section for creative redesign
     - Add `.hero__mesh` background div inside hero section
     - Add `<canvas>` element for particle system with `aria-hidden="true"`
     - Add scroll-down indicator chevron SVG after CTA group
@@ -234,7 +234,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Ensure hero retains `min-height: 100vh`
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5_
 
-  - [ ] 7.2 Update `src/styles/hero.css` for creative hero redesign
+  - [~] 7.2 Update `src/styles/hero.css` for creative hero redesign
     - Style `.hero` with dark background, full viewport height, relative positioning
     - Style `.hero__mesh` as absolute-positioned gradient background layer
     - Style profile photo with circular clip, animated border/glow ring, floating transform
@@ -244,19 +244,19 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Add `prefers-reduced-motion` overrides
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6_
 
-  - [ ] 7.3 Update `index.html` navigation and add scroll progress bar
+  - [~] 7.3 Update `index.html` navigation and add scroll progress bar
     - Add `.scroll-progress` div before the header element
     - Update nav to support glassmorphism when scrolled (`.nav--scrolled` class toggled by JS)
     - Add logo glow styles integration
     - _Requirements: 3.4, 4.2_
 
-  - [ ] 7.4 Update `src/styles/nav.css` for glassmorphism navigation
+  - [~] 7.4 Update `src/styles/nav.css` for glassmorphism navigation
     - Add `.nav--scrolled` state with `backdrop-filter: blur`, semi-transparent background
     - Add logo text-shadow glow effect on `.nav__logo-noor`
     - Update mobile menu overlay with glassmorphism backdrop blur ≥10px
     - _Requirements: 3.4, 10.2, 10.3_
 
-  - [ ] 7.5 Update `index.html` highlights section with creative markup
+  - [~] 7.5 Update `index.html` highlights section with creative markup
     - Add `data-animate-stagger="100"` to highlights grid container
     - Add `data-animate="fade-up"` to each card
     - Add `.tilt-card` class to highlight cards
@@ -264,19 +264,19 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Adjust grid to feature asymmetric spans (at least one card spans differently) at ≥768px
     - _Requirements: 3.2, 4.4, 6.1_
 
-  - [ ] 7.6 Update `src/styles/highlights.css` for glassmorphism and creative layout
+  - [~] 7.6 Update `src/styles/highlights.css` for glassmorphism and creative layout
     - Apply glass-card styling (translucent background, border, blur)
     - Create asymmetric grid layout at ≥768px (first card spans 2 columns)
     - Add hover states (vertical lift + elevated box-shadow within 200ms)
     - Style card icons with accent glow
     - _Requirements: 3.2, 4.3, 6.1, 6.4_
 
-  - [ ] 7.7 Update `index.html` skills section with creative markup
+  - [~] 7.7 Update `index.html` skills section with creative markup
     - Add `data-animate-stagger="200"` to skills container
     - Add `data-animate="fade-up"` to each category
     - _Requirements: 8.3_
 
-  - [ ] 7.8 Update `src/styles/skills.css` for creative skills redesign
+  - [~] 7.8 Update `src/styles/skills.css` for creative skills redesign
     - Style skill pills with gradient backgrounds (2+ color stops) and box-shadow glow on hover
     - Scale pills 1.05–1.1x on hover with shadow spread increase
     - Style category labels as accent-colored tags (border-radius ≥4px, distinct bg per category, font-weight ≥600)
@@ -284,7 +284,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Add `prefers-reduced-motion` overrides (no scale, preserve visual effects)
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6_
 
-  - [ ] 7.9 Update `index.html` connect section with creative markup
+  - [~] 7.9 Update `index.html` connect section with creative markup
     - Add `data-animate-stagger="80"` to link cards grid
     - Add `data-animate="fade-up"` to cards
     - Add `.tilt-card` class to link cards
@@ -292,13 +292,13 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Add `data-magnetic` to CTA button
     - _Requirements: 6.2, 5.4_
 
-  - [ ] 7.10 Update `src/styles/links.css` for glassmorphism connect section
+  - [~] 7.10 Update `src/styles/links.css` for glassmorphism connect section
     - Apply glass-card styling to link cards
     - Add border gradient activation on hover (transition ≤200ms)
     - Style CTA banner with glassmorphism
     - _Requirements: 6.2, 6.4_
 
-  - [ ] 7.11 Update `index.html` projects section with creative markup
+  - [~] 7.11 Update `index.html` projects section with creative markup
     - Add `data-animate-stagger="120"` to projects grid
     - Add `data-animate="fade-up"` to project cards
     - Add `.tilt-card` class to project cards
@@ -306,42 +306,42 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Create asymmetric grid at ≥768px
     - _Requirements: 3.2, 6.3_
 
-  - [ ] 7.12 Update `src/styles/projects.css` for glassmorphism projects
+  - [~] 7.12 Update `src/styles/projects.css` for glassmorphism projects
     - Apply glass-card styling
     - Replace solid left-border with accent glow (80% opacity)
     - Add asymmetric grid layout at ≥768px
     - _Requirements: 3.2, 6.3, 6.4_
 
-  - [ ] 7.13 Update `src/styles/footer.css` for dark theme footer redesign
+  - [~] 7.13 Update `src/styles/footer.css` for dark theme footer redesign
     - Apply dark theme background with gradient border-top (border-image)
     - Add logo text-shadow glow
     - Style beta badge with glassmorphism (glass-bg, glass-border, backdrop-filter)
     - _Requirements: 1.1_
 
-  - [ ] 7.14 Add section dividers to `index.html`
+  - [~] 7.14 Add section dividers to `index.html`
     - Insert `<hr class="section-divider" aria-hidden="true">` between each main section
     - _Requirements: 3.4_
 
-  - [ ] 7.15 Add `src/styles/reset.css` update for dark-mode body defaults
+  - [~] 7.15 Add `src/styles/reset.css` update for dark-mode body defaults
     - Set `body` background to `var(--color-bg)`, color to `var(--color-text)`
     - Ensure smooth scrolling behavior
     - _Requirements: 1.1_
 
 - [ ] 8. Wire JavaScript modules into main.js and add navigation glassmorphism toggle
-  - [ ] 8.1 Update `src/scripts/main.js` to import and initialize all new modules
+  - [~] 8.1 Update `src/scripts/main.js` to import and initialize all new modules
     - Import and call: `initAnimationEngine`, `initCustomCursor`, `initParticleSystem`, `initScrollProgress`, `initMagneticElements`, `initTiltCards`
     - Pass hero canvas element to `initParticleSystem`
     - Defer animation initialization after first paint (use `requestAnimationFrame` or `requestIdleCallback`)
     - Retain existing `initNavigation`, `initScrollSpy`, year-setting logic
     - _Requirements: 9.4, 9.5_
 
-  - [ ] 8.2 Update `src/scripts/navigation.js` to add glassmorphism scroll toggle
+  - [~] 8.2 Update `src/scripts/navigation.js` to add glassmorphism scroll toggle
     - On scroll (passive listener): add/remove `.nav--scrolled` class based on scroll position (e.g., > 100px)
     - Ensure mobile menu overlay applies glassmorphism backdrop
     - _Requirements: 3.4, 10.2, 10.3_
 
 - [ ] 9. Responsive and reduced-motion final pass
-  - [ ] 9.1 Add responsive overrides for mobile (<768px)
+  - [~] 9.1 Add responsive overrides for mobile (<768px)
     - Disable parallax in CSS/JS for mobile
     - Simplify hero background (gradient only, no particles)
     - Ensure single-column grid reflow preserving creative styles (gradients, glows, borders)
@@ -349,36 +349,36 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Verify all touch targets ≥44x44px
     - _Requirements: 10.1, 10.4, 10.5, 10.6, 3.5_
 
-  - [ ] 9.2 Verify and finalize reduced-motion behavior across all modules
+  - [~] 9.2 Verify and finalize reduced-motion behavior across all modules
     - Confirm `prefers-reduced-motion: reduce` disables: gradient mesh animation, entrance animations, parallax, cursor, magnetic, particle system, tilt, scroll indicator bounce
     - Confirm hover interactions (translateY lift, box-shadow) remain active (user-initiated)
     - Confirm all elements render in final visible state without delays
     - _Requirements: 1.6, 2.6, 4.6, 5.5, 7.5, 8.6, 9.6_
 
-  - [ ] 9.3 Ensure no-JS graceful degradation
+  - [~] 9.3 Ensure no-JS graceful degradation
     - Verify all text content visible without JavaScript
     - Verify navigation links functional without JS
     - Verify images render with alt text
     - Add CSS-only defaults: no `.animate-hidden` applied without JS, native cursor preserved
     - _Requirements: 9.7_
 
-  - [ ] 9.4 Update OG image for dark theme
+  - [~] 9.4 Update OG image for dark theme
     - Regenerate or replace `public/og-image.png` to match the new dark theme with neon accents
     - Ensure the image dimensions stay at recommended OG size (1200×630)
     - Verify meta tags in `index.html` still reference the correct path
     - _Requirements: 1.1_
 
-  - [ ] 9.5 Add `data-section-accent` and `data-parallax` attributes to HTML sections
+  - [~] 9.5 Add `data-section-accent` and `data-parallax` attributes to HTML sections
     - Add `data-section-accent="primary|secondary|tertiary|quaternary"` to each section
     - Add `data-parallax="0.3"` (or similar factor) to decorative background elements
     - Add `.section--revealed` CSS transition rules (border-glow, 300–600ms) to section CSS files
     - _Requirements: 1.4, 4.5_
 
-- [ ] 10. Checkpoint — Full build and visual verification
+- [~] 10. Checkpoint — Full build and visual verification
   - Ensure `npm run build` succeeds, `npm run test` passes, ask the user if questions arise.
 
 - [ ] 11. Write E2E and integration tests
-  - [ ] 11.0 Update existing Playwright tests for dark theme redesign
+  - [~] 11.0 Update existing Playwright tests for dark theme redesign
     - Update `tests/e2e/accessibility.spec.js` — adjust expected colors and contrast for dark theme
     - Update `tests/e2e/animations.spec.js` — update selectors and expected animation behavior for new animation engine
     - Update `tests/e2e/navigation.spec.js` — add glassmorphism scroll state checks, update menu overlay expectations
@@ -435,7 +435,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Verify ≥ 4.5:1 for normal text, ≥ 3:1 for large text
     - **Validates: Requirements 1.5, 6.5**
 
-- [ ] 12. Final checkpoint — All tests green and build verified
+- [~] 12. Final checkpoint — All tests green and build verified
   - Ensure all tests pass (`npm run test` and `npm run test:e2e`), ask the user if questions arise.
 
 ## Notes
