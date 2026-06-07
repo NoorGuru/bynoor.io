@@ -106,11 +106,11 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Maintain correct import order (reset → tokens → fonts → gradients → glass → cursor → progress → dividers → decorative → component styles → animations)
     - _Requirements: 1.1_
 
-- [~] 3. Checkpoint — Verify CSS foundation builds correctly
+- [x] 3. Checkpoint — Verify CSS foundation builds correctly
   - Ensure `npm run build` succeeds with no errors, ask the user if questions arise.
 
-- [ ] 4. Implement JavaScript modules (animation engine, scroll progress, particles)
-  - [~] 4.1 Create `src/scripts/animation-engine.js`
+- [-] 4. Implement JavaScript modules (animation engine, scroll progress, particles)
+  - [x] 4.1 Create `src/scripts/animation-engine.js`
     - Implement `initAnimationEngine()` that creates a single IntersectionObserver with threshold 0.2
     - On intersection: add `animate-visible` class, apply `transition-delay` from `data-animate-delay`
     - Unobserve element immediately after first trigger (fire-once semantics)
@@ -125,7 +125,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Mock IntersectionObserver; verify `animate-visible` added exactly once and `unobserve` called
     - **Validates: Requirements 4.1**
 
-  - [~] 4.3 Create `src/scripts/scroll-progress.js`
+  - [x] 4.3 Create `src/scripts/scroll-progress.js`
     - Implement `initScrollProgress()` that listens to scroll event with `{ passive: true }`
     - Compute `progress = scrollTop / (scrollHeight - clientHeight)`
     - Set CSS custom property `--scroll-progress` on the progress bar element
@@ -138,7 +138,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Verify computed progress matches `scrollTop / (scrollHeight - clientHeight)` bounded to [0, 100]
     - **Validates: Requirements 4.2**
 
-  - [~] 4.5 Create `src/scripts/particle-system.js`
+  - [x] 4.5 Create `src/scripts/particle-system.js`
     - Implement `initParticleSystem(canvas)` and `destroyParticleSystem()`
     - Initialize `min(50, area/10000)` particles with random positions, velocities, radii (2–6), opacity (0.1–0.4), hues from accent palette
     - Run `requestAnimationFrame` render loop; particles wrap toroidally
@@ -162,7 +162,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Verify wrap-around logic keeps particles within canvas bounds
     - _Requirements: 7.1, 7.2_
 
-- [ ] 5. Implement JavaScript modules (cursor, magnetic elements, tilt cards)
+- [-] 5. Implement JavaScript modules (cursor, magnetic elements, tilt cards)
   - [~] 5.1 Create `src/scripts/custom-cursor.js`
     - Implement `initCustomCursor()` that creates a cursor DOM element
     - Only active at viewport ≥ 1024px (use `onBreakpointChange`)
