@@ -163,7 +163,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - _Requirements: 7.1, 7.2_
 
 - [-] 5. Implement JavaScript modules (cursor, magnetic elements, tilt cards)
-  - [~] 5.1 Create `src/scripts/custom-cursor.js`
+  - [x] 5.1 Create `src/scripts/custom-cursor.js`
     - Implement `initCustomCursor()` that creates a cursor DOM element
     - Only active at viewport ≥ 1024px (use `onBreakpointChange`)
     - Use `requestAnimationFrame` loop with lerp (factor 0.08–0.15) for smooth trailing
@@ -182,7 +182,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Verify `lerpFactor` between 0.08 and 0.15 per frame
     - **Validates: Requirements 5.1**
 
-  - [~] 5.3 Create `src/scripts/magnetic-elements.js`
+  - [x] 5.3 Create `src/scripts/magnetic-elements.js`
     - Implement `initMagneticElements()` selecting all `[data-magnetic]` elements
     - On `mousemove` (throttled via RAF): compute distance from cursor to element center
     - If distance < 80px: translate element toward cursor with `offset = (cursorPos - centerPos) * (1 - distance/80) * maxOffset/80`
@@ -197,7 +197,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Verify translation magnitude ≤ 8px when inside threshold, equals 0 when outside
     - **Validates: Requirements 5.4**
 
-  - [~] 5.5 Create `src/scripts/tilt-cards.js`
+  - [x] 5.5 Create `src/scripts/tilt-cards.js`
     - Implement 3D perspective tilt on hover for `.tilt-card` elements
     - On `pointermove`: calculate rotation from pointer position relative to card center
     - Map to `rotateX` / `rotateY` via CSS custom properties `--tilt-x`, `--tilt-y` (max 5deg)
@@ -205,7 +205,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Disabled when reduced-motion active (falls back to translateY lift)
     - _Requirements: 4.3, 6.4_
 
-  - [~] 5.6 Add parallax scroll logic to `src/scripts/animation-engine.js`
+  - [x] 5.6 Add parallax scroll logic to `src/scripts/animation-engine.js`
     - On scroll (passive listener): translate elements with `[data-parallax]` attribute at ≤50% of scroll speed
     - Apply via CSS `transform: translateY(offset)` where offset = scrollDelta × parallaxFactor (factor ≤ 0.5)
     - Use `requestAnimationFrame` to batch DOM writes
@@ -214,7 +214,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - On breakpoint crossing below 768px: reset all parallax transforms to 0
     - _Requirements: 4.5, 10.6_
 
-  - [~] 5.7 Add section accent color reveal to `src/scripts/animation-engine.js`
+  - [x] 5.7 Add section accent color reveal to `src/scripts/animation-engine.js`
     - Use a separate IntersectionObserver (threshold: 0.1) for `[data-section-accent]` elements
     - On intersection: add `.section--revealed` class which triggers CSS border-glow or gradient-highlight transition (300–600ms, defined in CSS)
     - Each section has a `data-section-accent` attribute mapping to its assigned accent token
