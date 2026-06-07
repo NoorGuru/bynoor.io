@@ -66,8 +66,7 @@ section[id] {
 /* Logo "noor" with glow effect */
 .nav__logo-noor {
   font-weight: 700;
-  color: var(--accent-primary);
-  text-shadow: 0 0 8px var(--accent-primary);
+  color: var(--color-text);
   transition: text-shadow var(--duration-hover) var(--ease-out);
 }
 

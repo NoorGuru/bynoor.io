@@ -435,7 +435,7 @@ Transform bynoor.io from a light-themed personal site into a bold, dark-mode-fir
     - Verify ≥ 4.5:1 for normal text, ≥ 3:1 for large text
     - **Validates: Requirements 1.5, 6.5**
 
-- [~] 12. Final checkpoint — All tests green and build verified
+- [x] 12. Final checkpoint — All tests green and build verified
   - Ensure all tests pass (`npm run test` and `npm run test:e2e`), ask the user if questions arise.
 
 ## Notes

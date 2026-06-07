@@ -436,6 +436,10 @@
     animation: none;
   }
 
+  .hero__social-link:hover {
+    transform: none;
+  }
+
   /* Hover transforms on CTA buttons remain active — they are user-initiated
      interactions (translateY lift + box-shadow) per requirement 4.3 */
 }
