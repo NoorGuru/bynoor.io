@@ -88,12 +88,12 @@ Transform bynoor.io into an immersive, cinematic portfolio experience using the 
     - **Property 4: Cursor Cleanup**
     - **Validates: Requirements 7.6**
 
-- [ ] 8. Story Timeline Scene
-  - [ ] 8.1 Create `src/styles/scenes/timeline.css` — 2-column alternating grid layout with vertical track line, milestone nodes, expanded state styles, responsive single-column below 768px, dimming effect for non-active milestones
+- [x] 8. Story Timeline Scene
+  - [x] 8.1 Create `src/styles/scenes/timeline.css` — 2-column alternating grid layout with vertical track line, milestone nodes, expanded state styles, responsive single-column below 768px, dimming effect for non-active milestones
     - _Requirements: 4.1, 4.4, 4.5_
-  - [ ] 8.2 Create `src/scripts/scenes/timeline.js` — timeline scene module with scroll-driven progress line fill, staggered milestone entrance, hover/tap expand interaction, viewport-center emphasis (scale + opacity)
+  - [x] 8.2 Create `src/scripts/scenes/timeline.js` — timeline scene module with scroll-driven progress line fill, staggered milestone entrance, hover/tap expand interaction, viewport-center emphasis (scale + opacity)
     - _Requirements: 4.2, 4.3, 4.4, 4.6_
-  - [ ] 8.3 Add Story Timeline section to `index.html` with career milestone data from noor-data.md, using `data-scene="timeline"` and `data-year` attributes
+  - [x] 8.3 Add Story Timeline section to `index.html` with career milestone data from noor-data.md, using `data-scene="timeline"` and `data-year` attributes
     - _Requirements: 4.1, 4.2_
   - [ ]* 8.4 Write property test: Timeline milestone ordering — milestones in DOM maintain chronological order regardless of viewport width
     - **Property 8: Timeline Milestone Ordering**

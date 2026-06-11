@@ -19,7 +19,7 @@
    Scenes (placeholder — activated as scenes are built)
    ═══════════════════════════════════════════════════════ */
 @import './scenes/hero.css';
-/* @import './scenes/timeline.css'; */
+@import './scenes/timeline.css';
 /* @import './scenes/projects.css'; */
 /* @import './scenes/theater.css'; */
 /* @import './scenes/skills.css'; */
