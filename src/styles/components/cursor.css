@@ -1,0 +1,174 @@
+/* ═══════════════════════════════════════════════════════
+   Custom Cursor — Outer Ring + Inner Dot
+   Shape morphing states: default, text, action, click
+   ═══════════════════════════════════════════════════════ */
+
+/* --- Base Container --- */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: var(--depth-layer-cursor);
+}
+
+/* --- Outer Ring --- */
+.cursor__ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  border: 2px solid var(--cursor-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--depth-layer-cursor);
+  transform: translate(-50%, -50%);
+  will-change: transform, width, height, border-radius, opacity;
+  transition:
+    width var(--duration-hover) var(--ease-out),
+    height var(--duration-hover) var(--ease-out),
+    border-radius var(--duration-hover) var(--ease-out),
+    opacity var(--duration-hover) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out);
+}
+
+/* --- Inner Dot --- */
+.cursor__dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  background: var(--cursor-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--depth-layer-cursor);
+  transform: translate(-50%, -50%);
+  will-change: transform, width, height, opacity;
+  transition:
+    width var(--duration-hover) var(--ease-out),
+    height var(--duration-hover) var(--ease-out),
+    opacity var(--duration-hover) var(--ease-out),
+    background var(--duration-hover) var(--ease-out);
+}
+
+/* --- Label (shown in action state) --- */
+.cursor__label {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: var(--depth-layer-cursor);
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  white-space: nowrap;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity var(--duration-hover) var(--ease-out);
+}
+
+/* ═══════════════════════════════════════════════════════
+   State: Text — vertical bar over text content
+   ═══════════════════════════════════════════════════════ */
+.cursor--text .cursor__ring {
+  width: 3px;
+  height: 24px;
+  border-radius: 2px;
+  border-color: var(--cursor-color);
+  opacity: 0.8;
+}
+
+.cursor--text .cursor__dot {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   State: Action — expanded ring with contextual label
+   ═══════════════════════════════════════════════════════ */
+.cursor--action .cursor__ring {
+  width: var(--cursor-size-hover);
+  height: var(--cursor-size-hover);
+  border-color: var(--cursor-color);
+  opacity: 0.6;
+}
+
+.cursor--action .cursor__dot {
+  width: 6px;
+  height: 6px;
+}
+
+.cursor--action .cursor__label {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════
+   State: Click — compressed to 80% scale
+   ═══════════════════════════════════════════════════════ */
+.cursor--click .cursor__ring {
+  width: var(--cursor-size-click);
+  height: var(--cursor-size-click);
+  transition:
+    width 100ms var(--ease-spring),
+    height 100ms var(--ease-spring),
+    border-radius var(--duration-hover) var(--ease-out),
+    opacity var(--duration-hover) var(--ease-out);
+}
+
+.cursor--click .cursor__dot {
+  width: 3px;
+  height: 3px;
+  transition:
+    width 100ms var(--ease-spring),
+    height 100ms var(--ease-spring),
+    opacity var(--duration-hover) var(--ease-out);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Hide native cursor when custom cursor is active
+   ═══════════════════════════════════════════════════════ */
+html.cursor-active,
+html.cursor-active * {
+  cursor: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Hide cursor when explicitly hidden (e.g., idle timeout)
+   ═══════════════════════════════════════════════════════ */
+html.cursor-hidden .cursor,
+html.cursor-hidden .cursor__ring,
+html.cursor-hidden .cursor__dot,
+html.cursor-hidden .cursor__label {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Hide custom cursor on touch devices (< 1024px)
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 1023px) {
+  .cursor,
+  .cursor__ring,
+  .cursor__dot,
+  .cursor__label {
+    display: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Reduced motion: disable transitions
+   ═══════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .cursor__ring,
+  .cursor__dot,
+  .cursor__label {
+    transition: none;
+  }
+}

@@ -74,15 +74,15 @@ Transform bynoor.io into an immersive, cinematic portfolio experience using the 
   - [x] 5.4 Add ambient layer, grain overlay, and glow containers to `index.html` with `aria-hidden="true"`
     - _Requirements: 8.1, 8.2, 8.5_
 
-- [ ] 6. Checkpoint — Ensure all tests pass
+- [x] 6. Checkpoint — Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 7. Magnetic Cursor
-  - [ ] 7.1 Create `src/styles/components/cursor.css` — custom cursor styles with outer ring + inner dot, shape morphing states (default, text bar, action expanded with label, click compressed), smooth transitions
+- [x] 7. Magnetic Cursor
+  - [x] 7.1 Create `src/styles/components/cursor.css` — custom cursor styles with outer ring + inner dot, shape morphing states (default, text bar, action expanded with label, click compressed), smooth transitions
     - _Requirements: 7.1, 7.3, 7.4, 7.5_
-  - [ ] 7.2 Create `src/scripts/effects/cursor.js` — MagneticCursor class with lerp-smoothed position (0.15 ring, 0.3 dot), proximity detection for `[data-magnetic]` elements (80px threshold), shape state management, touch device detection and auto-disable
+  - [x] 7.2 Create `src/scripts/effects/cursor.js` — MagneticCursor class with lerp-smoothed position (0.15 ring, 0.3 dot), proximity detection for `[data-magnetic]` elements (80px threshold), shape state management, touch device detection and auto-disable
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6_
-  - [ ] 7.3 Add cursor DOM elements to `index.html` and mark interactive elements with `data-magnetic` attribute
+  - [x] 7.3 Add cursor DOM elements to `index.html` and mark interactive elements with `data-magnetic` attribute
     - _Requirements: 7.1, 7.2_
   - [ ]* 7.4 Write property test: Cursor cleanup — after destroy(), zero event listeners remain on document/window
     - **Property 4: Cursor Cleanup**

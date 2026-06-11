@@ -30,7 +30,7 @@
    Components (placeholder — activated as components are built)
    ═══════════════════════════════════════════════════════ */
 @import './components/nav.css';
-/* @import './components/cursor.css'; */
+@import './components/cursor.css';
 /* @import './components/command-palette.css'; */
 
 /* ═══════════════════════════════════════════════════════

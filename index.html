@@ -72,31 +72,32 @@
   <div class="scroll-progress" aria-hidden="true"></div>
 
   <!-- Morphing Navigation -->
+  <header>
   <nav class="nav" data-nav-state="hero" aria-label="Main navigation">
     <!-- Dots mode: shown when in hero -->
     <div class="nav__dots" aria-label="Section navigation">
-      <button class="nav__dot" data-target="hero" aria-label="Hero"></button>
-      <button class="nav__dot" data-target="highlights" aria-label="Highlights"></button>
-      <button class="nav__dot" data-target="skills" aria-label="Skills"></button>
-      <button class="nav__dot" data-target="recommendations" aria-label="Recommendations"></button>
-      <button class="nav__dot" data-target="links" aria-label="Connect"></button>
-      <button class="nav__dot" data-target="projects" aria-label="Projects"></button>
+      <button class="nav__dot" data-target="hero" data-magnetic aria-label="Hero"></button>
+      <button class="nav__dot" data-target="highlights" data-magnetic aria-label="Highlights"></button>
+      <button class="nav__dot" data-target="skills" data-magnetic aria-label="Skills"></button>
+      <button class="nav__dot" data-target="recommendations" data-magnetic aria-label="Recommendations"></button>
+      <button class="nav__dot" data-target="links" data-magnetic aria-label="Connect"></button>
+      <button class="nav__dot" data-target="projects" data-magnetic aria-label="Projects"></button>
     </div>
 
     <!-- Pill mode: compact bar shown after scrolling past hero -->
     <div class="nav__pill">
       <span class="nav__indicator" aria-hidden="true"></span>
-      <a href="#hero" class="nav__pill-link">Home</a>
-      <a href="#highlights" class="nav__pill-link">Highlights</a>
-      <a href="#skills" class="nav__pill-link">Skills</a>
-      <a href="#recommendations" class="nav__pill-link">Recommendations</a>
-      <a href="#links" class="nav__pill-link">Connect</a>
-      <a href="#projects" class="nav__pill-link">Projects</a>
-      <a href="/technical-interview-preparation-kit/" class="nav__pill-link">Resources</a>
+      <a href="#hero" class="nav__pill-link" data-magnetic>Home</a>
+      <a href="#highlights" class="nav__pill-link" data-magnetic>Highlights</a>
+      <a href="#skills" class="nav__pill-link" data-magnetic>Skills</a>
+      <a href="#recommendations" class="nav__pill-link" data-magnetic>Recommendations</a>
+      <a href="#links" class="nav__pill-link" data-magnetic>Connect</a>
+      <a href="#projects" class="nav__pill-link" data-magnetic>Projects</a>
+      <a href="/technical-interview-preparation-kit/" class="nav__pill-link" data-magnetic>Resources</a>
     </div>
 
     <!-- Mobile trigger (hamburger) -->
-    <button class="nav__trigger" aria-expanded="false" aria-controls="nav-overlay" aria-label="Toggle navigation menu"></button>
+    <button class="nav__trigger" data-magnetic aria-expanded="false" aria-controls="nav-overlay" aria-label="Toggle navigation menu"></button>
 
     <!-- Expanded overlay (mobile full-screen) -->
     <div class="nav__overlay" id="nav-overlay" role="dialog" aria-label="Navigation menu">
@@ -109,6 +110,7 @@
       <a href="/technical-interview-preparation-kit/" class="nav__overlay-link">Resources</a>
     </div>
   </nav>
+  </header>
 
   <!-- Main Content -->
   <main id="main-content">
@@ -129,22 +131,22 @@
           <a href="/mohammad-noor-abu-khlaif-software-engineer-resume.pdf" target="_blank" rel="noopener" class="hero__btn hero__btn--secondary glow--secondary" data-magnetic data-glow>Resume</a>
         </div>
         <div class="hero__social-links">
-          <a href="https://go.bynoor.io/linkedin" target="_blank" rel="noopener" aria-label="LinkedIn" class="hero__social-link">
+          <a href="https://go.bynoor.io/linkedin" target="_blank" rel="noopener" aria-label="LinkedIn" class="hero__social-link" data-magnetic>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
             </svg>
           </a>
-          <a href="https://go.bynoor.io/github" target="_blank" rel="noopener" aria-label="GitHub" class="hero__social-link">
+          <a href="https://go.bynoor.io/github" target="_blank" rel="noopener" aria-label="GitHub" class="hero__social-link" data-magnetic>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
             </svg>
           </a>
-          <a href="https://go.bynoor.io/youtube" target="_blank" rel="noopener" aria-label="Code with Noor on YouTube" class="hero__social-link">
+          <a href="https://go.bynoor.io/youtube" target="_blank" rel="noopener" aria-label="Code with Noor on YouTube" class="hero__social-link" data-magnetic>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
             </svg>
           </a>
-          <a href="https://go.bynoor.io/email" target="_blank" rel="noopener" aria-label="Email" class="hero__social-link">
+          <a href="https://go.bynoor.io/email" target="_blank" rel="noopener" aria-label="Email" class="hero__social-link" data-magnetic>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
             </svg>
@@ -331,28 +333,28 @@
 
         <h3 class="links__grid-heading">More from Noor</h3>
         <div class="links__grid" data-animate-stagger="80">
-          <a href="https://go.bynoor.io/github" target="_blank" rel="noopener" aria-label="GitHub" class="link-card tilt-card glass-card glow--secondary" data-glow data-animate="fade-up">
+          <a href="https://go.bynoor.io/github" target="_blank" rel="noopener" aria-label="GitHub" class="link-card tilt-card glass-card glow--secondary" data-glow data-magnetic data-animate="fade-up">
             <svg class="link-card__icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
             </svg>
             <span class="link-card__label">GitHub</span>
           </a>
 
-          <a href="https://go.bynoor.io/twitter" target="_blank" rel="noopener" aria-label="Twitter / X" class="link-card tilt-card glass-card glow--secondary" data-glow data-animate="fade-up">
+          <a href="https://go.bynoor.io/twitter" target="_blank" rel="noopener" aria-label="Twitter / X" class="link-card tilt-card glass-card glow--secondary" data-glow data-magnetic data-animate="fade-up">
             <svg class="link-card__icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
             </svg>
             <span class="link-card__label">Twitter / X</span>
           </a>
 
-          <a href="https://go.bynoor.io/sof" target="_blank" rel="noopener" aria-label="StackOverflow" class="link-card tilt-card glass-card glow--secondary" data-glow data-animate="fade-up">
+          <a href="https://go.bynoor.io/sof" target="_blank" rel="noopener" aria-label="StackOverflow" class="link-card tilt-card glass-card glow--secondary" data-glow data-magnetic data-animate="fade-up">
             <svg class="link-card__icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M15.725 0l-1.72 1.277 6.39 8.588 1.716-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.369-1.644-8.225-6.85zm-3.15 4.465l-.905 1.94 9.702 4.517.904-1.94-9.701-4.517zm-1.85 4.86l-.44 2.093 10.473 2.201.44-2.092-10.473-2.203zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396H1.89zm4.265 2.468v2.132h10.66v-2.132H6.154z"/>
             </svg>
             <span class="link-card__label">StackOverflow</span>
           </a>
 
-          <a href="https://go.bynoor.io/hr" target="_blank" rel="noopener" aria-label="HackerRank" class="link-card tilt-card glass-card glow--secondary" data-glow data-animate="fade-up">
+          <a href="https://go.bynoor.io/hr" target="_blank" rel="noopener" aria-label="HackerRank" class="link-card tilt-card glass-card glow--secondary" data-glow data-magnetic data-animate="fade-up">
             <svg class="link-card__icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V7.057c0-.143-.117-.258-.258-.258h-1.2c-.141 0-.258.115-.258.258v9.886c0 .143.117.258.258.258h1.2c.141 0 .258-.115.258-.258v-3.875h4.074v3.875c0 .143.115.258.258.258h1.2c.143 0 .258-.115.258-.258V7.057c0-.143-.115-.258-.258-.258h-1.2z"/>
             </svg>
@@ -361,7 +363,7 @@
         </div>
 
         <div class="links__featured-row">
-          <a href="https://go.bynoor.io/youtube" target="_blank" rel="noopener" aria-label="Code with Noor on YouTube" class="link-card tilt-card glass-card glow--secondary" data-glow data-animate="fade-up">
+          <a href="https://go.bynoor.io/youtube" target="_blank" rel="noopener" aria-label="Code with Noor on YouTube" class="link-card tilt-card glass-card glow--secondary" data-glow data-magnetic data-animate="fade-up">
             <svg class="link-card__icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
             </svg>
@@ -375,11 +377,11 @@
       <div class="projects__container">
         <h2 id="projects-heading" class="projects__heading">Recently Built by Noor</h2>
         <div class="projects__grid" data-animate-stagger="120">
-          <a href="https://areej.io/" target="_blank" rel="noopener" class="project-card tilt-card glass-card" data-glow data-animate="fade-up">
+          <a href="https://areej.io/" target="_blank" rel="noopener" class="project-card tilt-card glass-card" data-glow data-magnetic data-animate="fade-up">
             <h3 class="project-card__title">areej.io</h3>
             <p class="project-card__desc">Personal brand site for a Platform &amp; Observability Lead.</p>
           </a>
-          <a href="https://mohnoor94.github.io/hire-found/" target="_blank" rel="noopener" class="project-card tilt-card glass-card" data-glow data-animate="fade-up">
+          <a href="https://mohnoor94.github.io/hire-found/" target="_blank" rel="noopener" class="project-card tilt-card glass-card" data-glow data-magnetic data-animate="fade-up">
             <h3 class="project-card__title">HireFound</h3>
             <p class="project-card__desc">Recruitment brand and job portal for consultant Yasmin Blasi.</p>
           </a>
@@ -390,7 +392,7 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <a href="#hero" class="footer__logo"><span class="footer__logo-by">by</span><span class="footer__logo-noor">noor</span><span class="footer__logo-io">.io</span></a>
+    <a href="#hero" class="footer__logo" data-magnetic><span class="footer__logo-by">by</span><span class="footer__logo-noor">noor</span><span class="footer__logo-io">.io</span></a>
     <div class="footer__beta">
       <span class="footer__beta-badge">✨ fresh out of localhost</span>
       <p class="footer__beta-note">Brand new site. Still tweaking, still shipping.</p>
