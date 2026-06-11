@@ -1,0 +1,464 @@
+/* ═══════════════════════════════════════════════════════
+   Scene: Cinematic Hero
+   Full-viewport hero with layered backgrounds, kinetic
+   typography, luminous photo ring, and staggered entrances.
+   ═══════════════════════════════════════════════════════ */
+
+/* === Full-Viewport Scene Container === */
+[data-scene="hero"] {
+  position: relative;
+  min-height: var(--scene-min-height, 100vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+/* === Layered Backgrounds === */
+
+/* Ambient gradient orbs layer */
+.hero__ambient-layer {
+  position: absolute;
+  inset: 0;
+  z-index: var(--depth-layer-bg);
+  pointer-events: none;
+  opacity: var(--ambient-orb-opacity, 0.3);
+  background:
+    radial-gradient(
+      ellipse at 20% 40%,
+      hsl(var(--ambient-hue-1), 80%, 50%) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 75% 25%,
+      hsl(var(--ambient-hue-2), 75%, 45%) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 50% 80%,
+      hsl(var(--ambient-hue-3), 70%, 40%) 0%,
+      transparent 50%
+    );
+  filter: blur(var(--ambient-orb-blur, 80px));
+  animation: hero-ambient-drift var(--duration-ambient-cycle) ease-in-out infinite alternate;
+}
+
+/* Particle canvas layer */
+.hero__particles {
+  position: absolute;
+  inset: 0;
+  z-index: var(--depth-layer-mid);
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* Film grain overlay */
+.hero__grain {
+  position: absolute;
+  inset: 0;
+  z-index: var(--depth-layer-fg);
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: var(--grain-blend-mode);
+  background-size: var(--grain-size) var(--grain-size);
+  background-repeat: repeat;
+}
+
+/* === Hero Content (above all layers) === */
+.hero__content {
+  position: relative;
+  z-index: var(--depth-layer-content);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-md);
+  padding: var(--space-xl) var(--space-md);
+  max-width: var(--max-width);
+}
+
+/* === Luminous Photo Ring === */
+.hero__photo-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: calc(var(--ring-size) + var(--ring-gap));
+  background:
+    conic-gradient(
+      from var(--ring-angle, 0deg),
+      var(--accent-primary),
+      var(--accent-secondary),
+      var(--accent-tertiary),
+      var(--accent-primary)
+    );
+  animation: hero-ring-rotate var(--photo-luminous-duration) linear infinite;
+  /* Outer glow */
+  box-shadow:
+    0 0 20px rgba(139, 92, 246, 0.3),
+    0 0 40px rgba(6, 182, 212, 0.15);
+  /* Entrance state */
+  opacity: 0;
+  transform: scale(0.8);
+  animation: hero-ring-rotate var(--photo-luminous-duration) linear infinite,
+             hero-entrance-photo var(--duration-entrance) var(--ease-cinematic) forwards;
+}
+
+.hero__photo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: var(--ring-size);
+  border-radius: 50%;
+  background: var(--color-bg);
+}
+
+.hero__photo-wrap img {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* === Hero Name — Gradient Text === */
+.hero__name {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: var(--fw-bold);
+  line-height: 1.1;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  perspective: 600px;
+  /* Entrance state */
+  opacity: 0;
+  transform: translateY(24px);
+  animation: hero-entrance-name var(--duration-entrance) var(--ease-cinematic) 200ms forwards;
+}
+
+/* === Hero Tagline === */
+.hero__tagline {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--color-text);
+  font-weight: var(--fw-semibold);
+  perspective: 400px;
+  /* Entrance state */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: hero-entrance-fade-up var(--duration-entrance) var(--ease-cinematic) 400ms forwards;
+}
+
+/* === Hero Role === */
+.hero__role {
+  font-size: clamp(0.9rem, 2vw, 1.125rem);
+  color: var(--color-text-secondary);
+  font-weight: var(--fw-regular);
+  letter-spacing: 0.02em;
+  /* Entrance state */
+  opacity: 0;
+  transform: translateY(16px);
+  animation: hero-entrance-fade-up var(--duration-entrance) var(--ease-cinematic) 600ms forwards;
+}
+
+/* === Hero Actions (CTA Buttons) === */
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  /* Entrance state */
+  opacity: 0;
+  transform: translateY(16px);
+  animation: hero-entrance-fade-up var(--duration-entrance) var(--ease-cinematic) 800ms forwards;
+}
+
+/* === Scroll Cue === */
+.hero__scroll-cue {
+  position: absolute;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 40px;
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  opacity: 0;
+  animation: hero-entrance-fade-up var(--duration-entrance) var(--ease-cinematic) 1000ms forwards,
+             hero-scroll-cue-bounce var(--scroll-cue-bounce) ease-in-out 1500ms infinite;
+}
+
+.hero__scroll-cue::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--accent-primary);
+  animation: hero-scroll-cue-dot 1.5s ease-in-out 1500ms infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Kinetic Typography
+   ═══════════════════════════════════════════════════════ */
+
+/* Character-level animation */
+[data-kinetic="chars"] .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(var(--kinetic-char-distance)) rotateX(var(--kinetic-char-rotation));
+  transition:
+    opacity 0.4s var(--ease-cinematic),
+    transform 0.6s var(--ease-cinematic);
+  transition-delay: calc(var(--char-index, 0) * var(--kinetic-char-delay));
+  will-change: transform, opacity;
+}
+
+[data-kinetic="chars"].is-visible .char {
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg);
+}
+
+/* Word-level animation */
+[data-kinetic="words"] .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40%) rotateX(-40deg);
+  transition:
+    opacity 0.4s var(--ease-cinematic),
+    transform 0.5s var(--ease-cinematic);
+  transition-delay: calc(var(--char-index, 0) * var(--kinetic-word-delay));
+  will-change: transform, opacity;
+}
+
+[data-kinetic="words"].is-visible .word {
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg);
+}
+
+/* Space between words for kinetic splits */
+[data-kinetic] .char + .char-space,
+[data-kinetic] .word + .word {
+  margin-left: 0.25em;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Staggered Entrance Keyframes
+   ═══════════════════════════════════════════════════════ */
+
+@keyframes hero-entrance-photo {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-entrance-name {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-entrance-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Luminous Ring Rotation
+   ═══════════════════════════════════════════════════════ */
+
+@keyframes hero-ring-rotate {
+  from {
+    --ring-angle: 0deg;
+  }
+  to {
+    --ring-angle: 360deg;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Ambient Layer Drift
+   ═══════════════════════════════════════════════════════ */
+
+@keyframes hero-ambient-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(var(--ambient-scroll-shift), calc(var(--ambient-scroll-shift) * -0.5)) scale(1.05);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Scroll Cue Animations
+   ═══════════════════════════════════════════════════════ */
+
+@keyframes hero-scroll-cue-bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+
+@keyframes hero-scroll-cue-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    opacity: 0.4;
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Parallax Dissolve on Scroll Exit
+   Uses --scene-progress (0→1) set by ScrollEngine
+   ═══════════════════════════════════════════════════════ */
+
+[data-scene="hero"] .hero__content {
+  transform: translateY(calc(var(--scene-progress, 0) * -30px));
+  opacity: calc(1 - var(--scene-progress, 0) * 0.6);
+}
+
+[data-scene="hero"] .hero__ambient-layer {
+  transform: translateY(calc(var(--scene-progress, 0) * var(--ambient-scroll-shift)))
+             scale(calc(1 + var(--scene-progress, 0) * 0.1));
+}
+
+[data-scene="hero"] .hero__scroll-cue {
+  opacity: calc(1 - var(--scene-progress, 0) * 3);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Responsive — Tablet & Desktop
+   ═══════════════════════════════════════════════════════ */
+
+@media (min-width: 768px) {
+  .hero__photo-wrap img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero__content {
+    gap: var(--space-lg);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Mobile — Simplify (no particles, fewer layers)
+   ═══════════════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+  .hero__particles {
+    display: none;
+  }
+
+  .hero__ambient-layer {
+    filter: blur(60px);
+    opacity: 0.2;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Reduced Motion Overrides
+   All animations disabled, content visible immediately.
+   ═══════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__ambient-layer {
+    animation: none;
+    transform: none;
+  }
+
+  .hero__photo-wrap {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    /* Keep the conic-gradient visible but static */
+  }
+
+  .hero__name {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .hero__tagline {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .hero__role {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .hero__actions {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .hero__scroll-cue {
+    opacity: 1;
+    transform: translateX(-50%);
+    animation: none;
+  }
+
+  .hero__scroll-cue::before {
+    animation: none;
+  }
+
+  /* Kinetic text: show immediately, no transitions */
+  [data-kinetic="chars"] .char,
+  [data-kinetic="words"] .word {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  /* Disable parallax dissolve */
+  [data-scene="hero"] .hero__content {
+    transform: none;
+    opacity: 1;
+  }
+
+  [data-scene="hero"] .hero__ambient-layer {
+    transform: none;
+  }
+
+  [data-scene="hero"] .hero__scroll-cue {
+    opacity: 1;
+  }
+}

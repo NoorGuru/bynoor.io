@@ -55,6 +55,12 @@
   initial-value: 135deg;
 }
 
+@property --ring-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 :root {
   /* === Dark Background Palette (deep black → dark navy) === */
   --color-bg: hsl(240, 15%, 4%);

@@ -86,10 +86,18 @@ export class SceneManager {
   async init() {
     if (this.initialized) return;
 
-    const elements = document.querySelectorAll(this.selector);
+    const elements = Array.from(document.querySelectorAll(this.selector))
+      .filter((el) => el.getAttribute('data-scene')); // Skip empty data-scene
+
+    // Pre-populate scenes in DOM order to guarantee stable ordering
+    this.scenes = elements.map((el) => ({
+      id: el.getAttribute('data-scene') || '',
+      element: el,
+      module: null,
+    }));
 
     // Load all scene modules in parallel
-    const loadPromises = Array.from(elements).map((el) => this._loadScene(el));
+    const loadPromises = elements.map((el, index) => this._loadScene(el, index));
     await Promise.allSettled(loadPromises);
 
     this.initialized = true;
@@ -99,22 +107,20 @@ export class SceneManager {
    * Load a single scene module and wire it up.
    *
    * @param {HTMLElement} el - Scene DOM element
+   * @param {number} index - Index into the pre-populated scenes array
    * @returns {Promise<void>}
    * @private
    */
-  async _loadScene(el) {
+  async _loadScene(el, index) {
     const sceneType = el.getAttribute('data-scene');
 
     if (!sceneType) {
       console.warn('[SceneManager] Element missing data-scene value:', el);
+      this._registerWithEngine(this.scenes[index]);
       return;
     }
 
-    const entry = {
-      id: sceneType,
-      element: el,
-      module: null,
-    };
+    const entry = this.scenes[index];
 
     // Attempt dynamic import of the scene module
     try {
@@ -123,7 +129,6 @@ export class SceneManager {
 
       if (!sceneModule) {
         console.warn(`[SceneManager] Scene module "${sceneType}" does not export a valid interface`);
-        this.scenes.push(entry);
         this._registerWithEngine(entry);
         return;
       }
@@ -137,7 +142,6 @@ export class SceneManager {
       console.warn(`[SceneManager] Could not load scene module "${sceneType}":`, err.message);
     }
 
-    this.scenes.push(entry);
     this._registerWithEngine(entry);
   }
 

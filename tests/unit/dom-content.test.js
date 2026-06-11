@@ -31,7 +31,7 @@ describe('Hero Section', () => {
   });
 
   it('has the subtitle text', () => {
-    const subtitle = document.querySelector('.hero__subtitle');
+    const subtitle = document.querySelector('.hero__role');
     expect(subtitle).not.toBeNull();
     expect(subtitle.textContent).toBe('Software Engineer · AI Advocate · Tech Educator');
   });

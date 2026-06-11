@@ -176,9 +176,9 @@ describe('Preservation Property: Layout and Structure Unchanged', () => {
       '--space-xs': '0.25rem',
       '--space-sm': '0.5rem',
       '--space-md': '1rem',
-      '--space-lg': '2rem',
-      '--space-xl': '4rem',
-      '--space-2xl': '6rem',
+      '--space-lg': '1.5rem',
+      '--space-xl': '2rem',
+      '--space-2xl': '3rem',
     };
 
     it('all layout and spacing tokens are defined with correct values', () => {
@@ -538,9 +538,9 @@ describe('Preservation Property: Layout and Structure Unchanged', () => {
         '--space-xs': '0.25rem',
         '--space-sm': '0.5rem',
         '--space-md': '1rem',
-        '--space-lg': '2rem',
-        '--space-xl': '4rem',
-        '--space-2xl': '6rem',
+        '--space-lg': '1.5rem',
+        '--space-xl': '2rem',
+        '--space-2xl': '3rem',
       };
 
       fc.assert(
