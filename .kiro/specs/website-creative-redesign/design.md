@@ -2,732 +2,642 @@
 
 ## Overview
 
-This design transforms bynoor.io from a clean light-themed personal site into a bold, dark-mode-first experience featuring animated gradient meshes, a custom cursor system, particle effects, glassmorphism cards, and scroll-driven animations — all built with vanilla HTML, CSS, and JavaScript (ES modules) served via Vite.
-
-The architecture prioritizes progressive enhancement: the site remains fully functional without JavaScript, and all creative enhancements layer on top. Performance stays within Lighthouse 90+ targets by offloading animation to the compositor thread (CSS transitions + transforms) and deferring non-critical scripts.
-
-### Key Design Decisions
-
-| Decision | Rationale |
-|----------|-----------|
-| Canvas-based particle system | Canvas gives per-pixel control and avoids DOM thrashing for 50 moving elements |
-| CSS custom properties for theming | Already in use; extending the token system avoids a refactor |
-| Single animation orchestrator module | Centralizes IntersectionObserver lifecycle and reduced-motion checks |
-| Lerp-based cursor tracking | Smooth trailing without spring physics complexity; tunable via a single factor |
-| CSS `@property` for gradient animation | GPU-composited hue rotation without JS frame loops |
-| BEM naming preserved | Existing convention; no reason to break consistency |
-| ResizeObserver for canvas | Handles viewport resizes without polling; recalculates particle bounds dynamically |
-| Perspective-based 3D tilt | Pure CSS + minimal JS pointer tracking for card hover; more immersive than flat translateY |
-| Section gradient dividers | Visual continuity between dark sections; avoids harsh edges |
+This design transforms bynoor.io into a cinematic, scroll-driven personal brand experience. The architecture retains the current Vite + vanilla JS + CSS stack (no framework migration), but introduces a modular scene-based system, scroll-driven animation API, and layered visual effects pipeline. Every section becomes a "Scene" with entrance/exit choreography, parallax depth, and ambient atmospheric effects.
 
 ## Architecture
 
-```mermaid
-graph TD
-    subgraph HTML["index.html"]
-        DOM[DOM Structure]
-    end
+### High-Level Architecture
 
-    subgraph Styles["CSS Layer"]
-        TK[tokens.css] --> Main[main.css]
-        GL[glass.css] --> Main
-        GR[gradients.css] --> Main
-        AN[animations.css] --> Main
-        CU[cursor.css] --> Main
-        PR[progress.css] --> Main
-        Section_CSS["hero / highlights / skills / ..."] --> Main
-    end
+```
+┌─────────────────────────────────────────────────────────┐
+│                    index.html                            │
+│  ┌─────────────────────────────────────────────────────┐│
+│  │  Scene: Cinematic Hero                              ││
+│  │  Scene: Highlights (Career Impact)                  ││
+│  │  Scene: Story Timeline (Career Journey)             ││
+│  │  Scene: Skills Constellation                        ││
+│  │  Scene: Spotlight Projects                          ││
+│  │  Scene: Testimonial Theater                         ││
+│  │  Scene: Connect (Links + CTA)                       ││
+│  └─────────────────────────────────────────────────────┘│
+└─────────────────────────────────────────────────────────┘
 
-    subgraph Scripts["JS Layer (ES Modules)"]
-        Entry[main.js]
-        Entry --> AnimEngine[animation-engine.js]
-        Entry --> Cursor[custom-cursor.js]
-        Entry --> Particles[particle-system.js]
-        Entry --> ScrollProg[scroll-progress.js]
-        Entry --> Magnetic[magnetic-elements.js]
-        Entry --> Nav[navigation.js]
-        Entry --> ScrollSpy[scroll-spy.js]
-    end
+┌─────────────────────────────────────────────────────────┐
+│                  src/scripts/                            │
+│  ┌──────────────┐ ┌──────────────┐ ┌─────────────────┐ │
+│  │ core/        │ │ scenes/      │ │ effects/        │ │
+│  │ ├ app.js     │ │ ├ hero.js    │ │ ├ ambient.js    │ │
+│  │ ├ scroll-    │ │ ├ highlights.│ │ ├ grain.js      │ │
+│  │ │  engine.js │ │ │  js        │ │ ├ glow.js       │ │
+│  │ ├ scene-     │ │ ├ timeline.js│ │ ├ cursor.js     │ │
+│  │ │  manager.js│ │ ├ projects.js│ │ └ particles.js  │ │
+│  │ └ nav.js     │ │ ├ theater.js │ │                 │ │
+│  │              │ │ └ skills.js  │ │                 │ │
+│  └──────────────┘ └──────────────┘ └─────────────────┘ │
+│  ┌──────────────┐ ┌──────────────┐                     │
+│  │ ui/          │ │ utils/       │                     │
+│  │ ├ command-   │ │ ├ lerp.js    │                     │
+│  │ │  palette.js│ │ ├ raf.js     │                     │
+│  │ ├ sound.js   │ │ ├ observer.js│                     │
+│  │ └ easter-    │ │ └ motion.js  │                     │
+│  │    eggs.js   │ │              │                     │
+│  └──────────────┘ └──────────────┘                     │
+└─────────────────────────────────────────────────────────┘
 
-    DOM --> Styles
-    DOM --> Scripts
-    AnimEngine -->|IntersectionObserver| DOM
-    Cursor -->|mousemove| DOM
-    Particles -->|canvas requestAnimationFrame| DOM
-    ScrollProg -->|scroll event| DOM
-    Magnetic -->|mousemove proximity| DOM
+┌─────────────────────────────────────────────────────────┐
+│                  src/styles/                             │
+│  tokens.css → reset.css → fonts.css                     │
+│  layers/ (ambient, grain, glow, depth)                  │
+│  scenes/ (hero, timeline, projects, theater, skills)    │
+│  components/ (nav, cursor, command-palette, cards)       │
+│  animations.css (keyframes + scroll-driven)             │
+└─────────────────────────────────────────────────────────┘
 ```
 
-### Module Dependency Graph
+### Technology Decisions
 
-```mermaid
-graph LR
-    main.js --> animation-engine.js
-    main.js --> custom-cursor.js
-    main.js --> particle-system.js
-    main.js --> scroll-progress.js
-    main.js --> magnetic-elements.js
-    main.js --> tilt-cards.js
-    main.js --> navigation.js
-    main.js --> scroll-spy.js
-    animation-engine.js --> utils/reduced-motion.js
-    custom-cursor.js --> utils/reduced-motion.js
-    custom-cursor.js --> utils/breakpoints.js
-    particle-system.js --> utils/reduced-motion.js
-    particle-system.js --> utils/breakpoints.js
-    magnetic-elements.js --> utils/reduced-motion.js
-    magnetic-elements.js --> utils/breakpoints.js
-    tilt-cards.js --> utils/reduced-motion.js
-    custom-cursor.js --> utils/lerp.js
-    magnetic-elements.js --> utils/lerp.js
-    particle-system.js --> utils/random.js
+| Concern | Choice | Rationale |
+|---------|--------|-----------|
+| Build tool | Vite 6 | Already in use, excellent DX, fast HMR |
+| Language | Vanilla JS (ES modules) | No framework overhead, maximum performance control |
+| Styling | CSS Custom Properties + `@property` | Animatable custom properties for gradient transitions |
+| Scroll Animations | CSS Scroll-Driven Animations API + JS fallback | Native performance, progressive enhancement |
+| 3D/Canvas | HTML5 Canvas 2D (particles) | Lightweight, no WebGL dependency |
+| Audio | Web Audio API | Low-latency, precise volume control |
+| Typography | Variable fonts (Inter, Space Grotesk) | Already loaded, support weight/width animation |
+| Deployment | GitHub Pages (existing) | No change needed |
+
+### Scroll Engine Design
+
+The Scroll Engine is the central orchestrator. It uses the native CSS `animation-timeline: scroll()` and `view()` for browsers that support it, with an IntersectionObserver + requestAnimationFrame fallback.
+
+```
+ScrollEngine
+├── Registers scenes via data-scene attributes
+├── Computes normalized progress [0,1] per scene
+├── Dispatches scene-enter / scene-active / scene-exit events
+├── Controls Depth_System parallax multipliers
+└── Respects prefers-reduced-motion
+```
+
+### Scene Lifecycle
+
+Each scene module exports:
+- `init(sceneEl)` — set up DOM references, bind events
+- `enter(progress)` — entrance animation (0→1)
+- `active(progress)` — while in viewport
+- `exit(progress)` — exit animation (0→1)
+- `destroy()` — cleanup
+
+### Navigation State Machine
+
+```
+States: HERO_MODE → PILL_MODE → EXPANDED_MODE (mobile)
+
+HERO_MODE:
+  - Minimal floating dots
+  - Triggered: scroll position < hero height
+
+PILL_MODE:
+  - Compact bar with labels + sliding indicator
+  - Triggered: scroll position >= hero height
+
+EXPANDED_MODE:
+  - Full-screen overlay (mobile hamburger)
+  - Triggered: user tap on hamburger
 ```
 
 ## Components and Interfaces
 
-### 1. Animation Engine (`animation-engine.js`)
+### External Interfaces
 
-Replaces the existing `animations.js`. Manages all scroll-triggered entrance animations and section accent reveals.
+| Interface | Type | Description |
+|-----------|------|-------------|
+| Google Analytics | Script (external) | GA4 measurement via gtag.js (ID: G-XHXB3G7XDR) |
+| Cal.com | External link | Scheduling CTA opens in new tab |
+| GitHub Pages | Deployment | Static hosting, no server-side logic |
+| go.bynoor.io | Redirect service | Short-link redirects for social profiles |
 
-```javascript
-// Public interface
-export function initAnimationEngine(): void;
+### Internal Module Interfaces
 
-// Internal
-// - Creates a single IntersectionObserver (threshold: 0.2)
-// - On intersection: adds .animate-visible, applies transition-delay from data-animate-delay
-// - Unobserves element after first trigger (fire-once semantics)
-// - If prefers-reduced-motion: skips adding .animate-hidden, all elements visible immediately
-// - Stagger logic: reads data-animate-stagger on parent, auto-calculates child delays
-```
+| Module | Exports | Consumers |
+|--------|---------|-----------|
+| ScrollEngine | `registerScene()`, `getProgress()`, `onSceneChange()`, `destroy()` | SceneManager, Nav, Ambient |
+| SceneManager | `init()`, `getActiveScene()` | App entry point |
+| Nav | `initNav()`, `setActiveSection()` | App, ScrollEngine events |
+| KineticType | `splitText(el, mode)`, `triggerReveal(el)` | Hero, Theater, Highlights |
+| Ambient | `initAmbient()`, `setAccentHue(hue)` | SceneManager (on section change) |
+| Grain | `initGrain()`, `destroy()` | App entry point |
+| Glow | `initGlow(selector)` | Projects, Highlights, Connect |
+| MagneticCursor | `init()`, `destroy()` | App entry point |
+| CommandPalette | `open()`, `close()`, `registerCommand()` | App, Easter Eggs |
+| SoundToggle | `init()`, `toggle()`, `getState()` | App entry point |
+| Particles | `initParticles(canvas, config)`, `destroy()` | Hero scene |
 
-**Configuration via data attributes:**
-- `data-animate="fade-up|fade-in|scale-in"` — animation type
-- `data-animate-delay="<ms>"` — explicit delay
-- `data-animate-stagger="<ms>"` — parent-level: auto-delays children by increment
+### Scene Module Interface (shared contract)
 
-**Sections with staggered animations:**
-- Highlights grid cards: 100ms stagger
-- Skills categories: 150–250ms stagger
-- Connect link cards: 80ms stagger
-- Projects grid cards: 120ms stagger
-
-### 2. Custom Cursor (`custom-cursor.js`)
-
-A floating DOM element that tracks the mouse with a lerp-based trailing delay.
-
-```javascript
-// Public interface
-export function initCustomCursor(): void;
-
-// Internal state
-interface CursorState {
-  targetX: number;      // actual mouse X
-  targetY: number;      // actual mouse Y
-  currentX: number;     // rendered cursor X
-  currentY: number;     // rendered cursor Y
-  isVisible: boolean;
-  isHovering: boolean;  // over interactive element
-  lerpFactor: number;   // 0.08–0.15 (controls trailing lag)
-}
-
-// Behavior:
-// - Only active when viewport >= 1024px
-// - Uses requestAnimationFrame loop for smooth interpolation
-// - Lerp formula: current += (target - current) * lerpFactor
-// - On mouseenter/mouseleave on document: toggle visibility
-// - On pointerover on 'a, button, [role="button"]': set isHovering → scale 1.5x
-// - Adds .cursor-active to <html> to hide native cursor via CSS
-// - Destroyed/paused when reduced-motion is active or viewport < 1024px
-// - Listens for window resize: if viewport crosses below 1024px mid-session, destroys cursor and restores native
-// - If viewport crosses above 1024px after being below, re-initializes cursor
-// - Uses matchMedia('(min-width: 1024px)').addEventListener('change', ...) for efficient breakpoint detection
-```
-
-### 3. Particle System (`particle-system.js`)
-
-Canvas-based floating orbs rendered in the hero section background.
-
-```javascript
-// Public interface
-export function initParticleSystem(canvas: HTMLCanvasElement): void;
-export function destroyParticleSystem(): void;
-
-// Internal
-interface Particle {
-  x: number;
-  y: number;
-  radius: number;       // 2–6 (rendered at 4–12px with devicePixelRatio)
-  velocityX: number;    // -0.3 to 0.3
-  velocityY: number;    // -0.2 to 0.2
-  opacity: number;      // 0.1–0.4
-  hue: number;          // from accent palette
-}
-
-// Behavior:
-// - Initializes with min(50, area/10000) particles
-// - Runs requestAnimationFrame loop
-// - Particles wrap around edges (toroidal space)
-// - Container opacity controlled by scroll position: opacity = max(0, 1 - scrollPastHero/200)
-// - On mobile (< 768px): not initialized
-// - On reduced-motion: not initialized
-// - Canvas has pointer-events: none
-// - Pauses RAF when tab is not visible (document.hidden)
-// - Uses ResizeObserver on hero section to re-dimension canvas on viewport changes
-// - On resize: recalculates canvas width/height, redistributes particles within new bounds
-```
-
-**Canvas Resize Handling:**
-```javascript
-// ResizeObserver on the hero section container
-// On resize callback:
-//   - canvas.width = entry.contentRect.width * Math.min(devicePixelRatio, 2)
-//   - canvas.height = entry.contentRect.height * Math.min(devicePixelRatio, 2)
-//   - canvas.style.width = entry.contentRect.width + 'px'
-//   - canvas.style.height = entry.contentRect.height + 'px'
-//   - Clamp existing particle positions to new bounds (no respawn)
-```
-
-### 4. Scroll Progress (`scroll-progress.js`)
-
-Fixed gradient bar at the top showing scroll percentage.
-
-```javascript
-// Public interface
-export function initScrollProgress(): void;
-
-// Internal
-// - Listens to scroll event (passive: true)
-// - Computes: progress = scrollTop / (scrollHeight - clientHeight)
-// - Sets CSS custom property --scroll-progress on the progress element
-// - The element uses: width: calc(var(--scroll-progress) * 100%)
-// - Uses requestAnimationFrame to batch DOM writes
-// - Gradient defined in CSS via tokens
-```
-
-### 5. Magnetic Elements (`magnetic-elements.js`)
-
-CTA buttons that subtly pull toward the cursor when nearby.
-
-```javascript
-// Public interface
-export function initMagneticElements(): void;
-
-// Internal
-// - Selects all elements with [data-magnetic] attribute
-// - On mousemove (throttled via RAF):
-//   - For each magnetic element, compute distance from cursor to element center
-//   - If distance < 80px: translate element toward cursor
-//   - Translation formula: offset = (cursorPos - centerPos) * (1 - distance/80) * maxOffset/80
-//   - Maximum translation: 8px in any direction
-//   - Apply via CSS transform: translate(dx, dy)
-// - On mouseleave from element: animate back to translate(0,0) over 300ms
-// - Disabled when reduced-motion is active
-// - Disabled when viewport < 1024px
-```
-
-### 6. Utility Modules
-
-#### `utils/reduced-motion.js`
-```javascript
-export function prefersReducedMotion(): boolean;
-export function onMotionPreferenceChange(callback: (reduced: boolean) => void): void;
-// Uses matchMedia('(prefers-reduced-motion: reduce)')
-// Provides reactive listener for live changes
-```
-
-#### `utils/lerp.js`
-```javascript
-export function lerp(current: number, target: number, factor: number): number;
-// Returns: current + (target - current) * factor
-```
-
-#### `utils/random.js`
-```javascript
-export function randomBetween(min: number, max: number): number;
-export function randomInt(min: number, max: number): number;
-```
-
-#### `utils/breakpoints.js`
-```javascript
-export function onBreakpointChange(minWidth: number, callback: (matches: boolean) => void): void;
-// Wraps matchMedia(`(min-width: ${minWidth}px)`).addEventListener('change', ...)
-// Calls callback immediately with current match state, then on every change
-// Used by cursor, particles, magnetic, and parallax to handle mid-session resizes
-
-export function isAbove(minWidth: number): boolean;
-// One-shot check: returns matchMedia result for current viewport
-```
-
-### 7. Gradient Mesh Background (CSS-only)
-
-The hero gradient mesh uses CSS `@property` registered custom properties for GPU-composited hue animation:
-
-```css
-@property --mesh-hue-1 { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
-@property --mesh-hue-2 { syntax: '<angle>'; inherits: false; initial-value: 120deg; }
-@property --mesh-hue-3 { syntax: '<angle>'; inherits: false; initial-value: 240deg; }
-
-.hero__mesh {
-  background: 
-    radial-gradient(ellipse at 20% 50%, hsl(var(--mesh-hue-1), 80%, 50%) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, hsl(var(--mesh-hue-2), 75%, 45%) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, hsl(var(--mesh-hue-3), 85%, 55%) 0%, transparent 50%);
-  animation: mesh-cycle 12s ease-in-out infinite;
-}
-
-@keyframes mesh-cycle {
-  0%   { --mesh-hue-1: 260deg; --mesh-hue-2: 200deg; --mesh-hue-3: 320deg; }
-  33%  { --mesh-hue-1: 280deg; --mesh-hue-2: 220deg; --mesh-hue-3: 340deg; }
-  66%  { --mesh-hue-1: 240deg; --mesh-hue-2: 180deg; --mesh-hue-3: 300deg; }
-  100% { --mesh-hue-1: 260deg; --mesh-hue-2: 200deg; --mesh-hue-3: 320deg; }
-}
-```
-
-### 8. Scroll-Down Indicator
-
-A chevron element at the bottom of the hero section with a looping bounce animation:
-
-```html
-<!-- Added inside the hero section, after .hero__cta-group -->
-<div class="hero__scroll-indicator" aria-hidden="true">
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-  </svg>
-</div>
-```
-
-```css
-.hero__scroll-indicator {
-  position: absolute;
-  bottom: var(--space-lg);
-  left: 50%;
-  transform: translateX(-50%);
-  color: rgba(255, 255, 255, 0.7);
-  animation: bounce-down 1.5s ease-in-out infinite;
-}
-
-@keyframes bounce-down {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(8px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero__scroll-indicator { animation: none; }
-}
-```
-
-### 9. Section Dividers
-
-Gradient-based transitions between sections prevent harsh visual cuts in the dark theme:
-
-```css
-.section-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent-primary), var(--accent-secondary), transparent);
-  opacity: 0.3;
-  border: none;
-  margin: 0;
-}
-```
-
-Each section boundary in the HTML receives a `<hr class="section-divider" aria-hidden="true">` element. The gradient color matches the upcoming section's assigned accent.
-
-### 10. Nav Logo Glow Effect
-
-The "bynoor.io" logo in the navigation gets a subtle animated text glow:
-
-```css
-.nav__logo-noor {
-  text-shadow: 0 0 8px var(--accent-primary);
-  transition: text-shadow var(--duration-hover) var(--ease-out);
-}
-
-.nav__logo-noor:hover {
-  text-shadow: 0 0 16px var(--accent-primary), 0 0 32px var(--accent-secondary);
-}
-
-/* When nav is in glassmorphism state (scrolled) */
-.nav--scrolled .nav__logo-noor {
-  text-shadow: 0 0 12px var(--accent-primary);
-}
-```
-
-### 11. 3D Tilt Effect on Cards
-
-Perspective-based tilt on hover using pointer position tracking. Applied to highlight cards, project cards, and connect link cards:
-
-```css
-.tilt-card {
-  transform-style: preserve-3d;
-  transition: transform var(--duration-hover) var(--ease-out);
-}
-
-.tilt-card:hover {
-  /* Base transform overridden by JS with actual rotation values */
-  transform: perspective(800px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(10px);
-}
-```
-
-```javascript
-// Integrated into animation-engine.js or as a separate lightweight handler
-// On pointermove over .tilt-card elements:
-//   - Calculate pointer position relative to card center
-//   - Map to rotation: rotateY = (pointerX - centerX) / halfWidth * maxAngle
-//   - Map to rotation: rotateX = -(pointerY - centerY) / halfHeight * maxAngle
-//   - maxAngle: 5deg (subtle, not nauseating)
-//   - Apply via CSS custom properties --tilt-x, --tilt-y
-// On pointerleave: reset to 0deg with transition
-// Disabled when reduced-motion is active (hover falls back to translateY lift)
-```
-
-### 12. Footer Redesign
-
-The footer gets dark-theme treatment with creative elements:
-
-```css
-.footer {
-  background: var(--color-bg);
-  border-top: 1px solid transparent;
-  border-image: linear-gradient(90deg, transparent, var(--accent-primary), var(--accent-secondary), transparent) 1;
-  padding: var(--space-xl) var(--space-md);
-  text-align: center;
-  color: var(--color-text-secondary);
-}
-
-.footer__logo-noor {
-  text-shadow: 0 0 8px var(--accent-primary);
-}
-
-.footer__beta-badge {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(var(--glass-blur));
-  padding: var(--space-xs) var(--space-md);
-  border-radius: 9999px;
-  font-size: 0.85rem;
-  color: var(--accent-quaternary);
+```typescript
+interface SceneModule {
+  init(sceneEl: HTMLElement): void;
+  enter(progress: number): void;   // 0→1
+  active(progress: number): void;  // 0→1 within viewport
+  exit(progress: number): void;    // 0→1
+  destroy(): void;
 }
 ```
 
 ## Data Models
 
-### Design Token System (CSS Custom Properties)
+### Command Registry Entry
+
+```js
+{
+  id: string,          // unique identifier
+  label: string,       // display name in palette
+  action: () => void,  // execution callback
+  shortcut?: string,   // keyboard shortcut display
+  category: string,    // grouping: 'navigation' | 'action' | 'easter-egg'
+  keywords: string[]   // search terms for fuzzy matching
+}
+```
+
+### Scene Configuration
+
+```js
+{
+  id: string,            // matches data-scene attribute
+  element: HTMLElement,  // DOM reference
+  accentHue: number,     // 0-360 hue for ambient layer
+  parallaxLayers: {
+    background: number,  // speed multiplier (0.1-0.3)
+    midground: number,   // speed multiplier (0.3-0.6)
+    foreground: number   // speed multiplier (0.6-1.0)
+  }
+}
+```
+
+### Timeline Milestone Data
+
+```js
+{
+  year: string,        // e.g., "2025"
+  title: string,       // role title
+  company: string,     // company name
+  side: 'left'|'right', // alternating position
+  achievements: string[], // expanded details
+  accentColor: string  // CSS color for node glow
+}
+```
+
+### Sound State
+
+```js
+{
+  enabled: boolean,    // current toggle state
+  volume: number,      // 0.0-1.0 gain value
+  context: AudioContext | null,
+  source: AudioBufferSourceNode | null
+}
+```
+
+## Components
+
+### 1. Cinematic Hero Scene
+
+**Structure:**
+```html
+<section data-scene="hero" class="scene scene--hero">
+  <div class="hero__ambient-layer" aria-hidden="true"></div>
+  <canvas class="hero__particles" aria-hidden="true"></canvas>
+  <div class="hero__grain" aria-hidden="true"></div>
+  <div class="hero__content">
+    <picture class="hero__photo-wrap">...</picture>
+    <h1 class="hero__name" data-kinetic="chars">Mohammad Noor</h1>
+    <p class="hero__tagline" data-kinetic="words">I build tools that help engineers move faster.</p>
+    <p class="hero__role">Software Engineer · AI Advocate · Tech Educator</p>
+    <div class="hero__actions">...</div>
+  </div>
+  <div class="hero__scroll-cue" aria-hidden="true"></div>
+</section>
+```
+
+**Kinetic Name Reveal:** Each character wrapped in a `<span>` with staggered `animation-delay`. Characters slide up from below with rotation, then settle. Uses `@property` registered `--char-progress` for smooth interpolation.
+
+**Photo Treatment:** Luminous double-ring with rotating gradient border using `conic-gradient` + animation.
+
+### 2. Scroll Engine (core/scroll-engine.js)
+
+**API:**
+```js
+class ScrollEngine {
+  constructor(options = {}) {}
+  registerScene(element, callbacks) {}
+  getProgress(sceneId) {} // returns 0-1
+  onSceneChange(callback) {}
+  destroy() {}
+}
+```
+
+**Implementation Strategy:**
+- Uses `IntersectionObserver` with multiple thresholds (0, 0.1, 0.25, 0.5, 0.75, 1.0) for coarse lifecycle
+- Uses `scroll` event with `requestAnimationFrame` throttle for smooth per-frame progress
+- Exposes `--scene-progress` CSS variable on each scene element for CSS-only animations
+- Progressive: if `CSS.supports('animation-timeline: scroll()')`, delegates to native CSS scroll animations
+
+### 3. Morphing Navigation (core/nav.js)
+
+**DOM Structure:**
+```html
+<nav class="nav" data-nav-state="hero">
+  <div class="nav__dots"><!-- dot per scene --></div>
+  <div class="nav__pill">
+    <span class="nav__indicator"></span>
+    <a href="#hero">Home</a>
+    <a href="#timeline">Journey</a>
+    ...
+  </div>
+  <button class="nav__trigger" aria-expanded="false">Menu</button>
+</nav>
+```
+
+**Morph Animation:** Uses `clip-path` transitions and `transform` to smoothly reshape between dot layout and pill bar. The `--nav-morph-progress` variable (driven by scroll) interpolates between states.
+
+### 4. Story Timeline (scenes/timeline.js)
+
+**Layout:** CSS Grid with 2-column alternating pattern. Each milestone is a node on a vertical line:
+
+```html
+<section data-scene="timeline" class="scene scene--timeline">
+  <div class="timeline__track" aria-hidden="true"></div>
+  <article class="timeline__milestone" data-year="2025" data-side="right">
+    <div class="timeline__node"></div>
+    <div class="timeline__content">
+      <h3>SDE III — Gateway Foundations</h3>
+      <p>Expedia Group</p>
+      <div class="timeline__expanded"><!-- details on hover/focus --></div>
+    </div>
+  </article>
+  ...
+</section>
+```
+
+**Scroll Behavior:** As the timeline scrolls, a "progress line" fills the track. Milestones animate in with scale + opacity when they cross a threshold. The active (centered) milestone gets `scale(1.05)` and full opacity; others dim to 60%.
+
+### 5. Spotlight Cards (scenes/projects.js)
+
+**Layout:** CSS Grid with `grid-template-rows: masonry` (with fallback to staggered heights via nth-child rules).
+
+**Glow Effect:** A `<div class="card__glow">` is positioned absolute within each card. On `mousemove`, its `background: radial-gradient(...)` position updates to follow the cursor via CSS variables `--glow-x` and `--glow-y`.
 
 ```css
-:root {
-  /* === Dark Background === */
-  --color-bg: hsl(240, 15%, 6%);              /* ~6% lightness */
-  --color-bg-section: hsl(240, 12%, 9%);      /* card backgrounds */
-  --color-bg-elevated: hsl(240, 10%, 12%);    /* elevated surfaces */
-
-  /* === Neon Accents (max 4, saturation 70%+) === */
-  --accent-primary: hsl(265, 90%, 65%);       /* violet */
-  --accent-secondary: hsl(195, 85%, 55%);     /* cyan */
-  --accent-tertiary: hsl(330, 80%, 60%);      /* magenta/pink */
-  --accent-quaternary: hsl(45, 90%, 60%);     /* amber/gold */
-
-  /* === Text === */
-  --color-text: hsl(0, 0%, 93%);             /* primary text */
-  --color-text-secondary: hsl(0, 0%, 68%);   /* secondary text */
-  --color-text-muted: hsl(0, 0%, 45%);       /* muted text */
-
-  /* === Glassmorphism === */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-bg-hover: rgba(255, 255, 255, 0.10);
-  --glass-border: rgba(255, 255, 255, 0.10);
-  --glass-border-hover: rgba(255, 255, 255, 0.20);
-  --glass-blur: 12px;
-
-  /* === Gradients === */
-  --gradient-text: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  --gradient-progress: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
-  --gradient-hero-mesh: radial-gradient(ellipse at 20% 50%, var(--accent-primary), transparent 50%);
-
-  /* === Spacing (unchanged) === */
-  --space-xs: 0.25rem;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 2rem;
-  --space-xl: 4rem;
-  --space-2xl: 6rem;
-
-  /* === Typography (unchanged fonts, new weights) === */
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-heading: 'Space Grotesk', var(--font-primary);
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  --fw-light: 300;
-  --fw-regular: 400;
-  --fw-semibold: 600;
-  --fw-bold: 700;
-
-  /* === Animation === */
-  --duration-entrance: 500ms;
-  --duration-hover: 200ms;
-  --duration-mesh: 12s;
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  /* === Layout === */
-  --max-width: 1200px;
-  --header-height: 64px;
-
-  /* === Cursor === */
-  --cursor-size: 20px;
-  --cursor-size-hover: 40px;
-  --cursor-color: var(--accent-primary);
-
-  /* === Particles === */
-  --particle-max-count: 50;
-  --particle-min-size: 4px;
-  --particle-max-size: 12px;
-
-  /* === Scroll Progress === */
-  --scroll-progress: 0;
+.card__glow {
+  background: radial-gradient(
+    300px circle at var(--glow-x) var(--glow-y),
+    rgba(139, 92, 246, 0.15),
+    transparent 70%
+  );
 }
 ```
 
-### Particle State Model
+### 6. Testimonial Theater (scenes/theater.js)
 
-```
-Particle {
-  x: float [0, canvasWidth]
-  y: float [0, canvasHeight]
-  radius: float [2, 6]  (CSS px = radius * devicePixelRatio)
-  vx: float [-0.3, 0.3]
-  vy: float [-0.2, 0.2]
-  opacity: float [0.1, 0.4]
-  hue: int (from accent palette angles: 265, 195, 330, 45)
+**Structure:** A scroll-snapped container where each testimonial occupies ~80vh. As the testimonial enters center viewport, words animate in sequentially. Key phrases (marked with `<mark>`) get a gradient sweep.
+
+**Crossfade:** Uses `scroll-snap-type: y mandatory` with CSS `view-timeline` for each testimonial card. Opacity and translateY are animated via scroll progress.
+
+### 7. Magnetic Cursor (effects/cursor.js)
+
+**Approach:** Two elements — an outer ring and inner dot. Position updated via `requestAnimationFrame` with lerp-based smoothing (factor 0.15 for ring, 0.3 for dot). 
+
+**Magnetic Pull:** Elements with `data-magnetic` attribute. On `mousemove`, calculate distance; if within 80px threshold, offset the cursor toward element center using exponential decay.
+
+**Shape Morphing:** CSS classes toggled via JS: `.cursor--text` (vertical bar), `.cursor--action` (expanded with label), `.cursor--click` (compressed).
+
+### 8. Ambient Layer (effects/ambient.js)
+
+**Implementation:** Multiple `<div>` elements with large `border-radius: 50%`, blurred (`filter: blur(80px)`), positioned absolute, animated with CSS keyframes at different speeds/directions. Colors driven by `--ambient-hue-1`, `--ambient-hue-2` custom properties that transition when sections change.
+
+### 9. Grain Overlay (effects/grain.js)
+
+**Implementation:** A small (256×256) canvas with procedural noise, rendered to a data URL, applied as `background-image` with `background-size: 128px` and `opacity: 0.04`. Re-rendered every 100ms (10fps) for subtle animation. Uses `pointer-events: none` and `position: fixed`.
+
+### 10. Kinetic Typography (shared utility)
+
+**Approach:** On `DOMContentLoaded`, elements with `data-kinetic="chars"` or `data-kinetic="words"` are split into spans. Each span gets `animation-delay` based on index. Actual animation triggers via IntersectionObserver (adds `.is-visible` class).
+
+```css
+[data-kinetic="chars"] .char {
+  opacity: 0;
+  transform: translateY(100%) rotateX(-80deg);
+  transition: opacity 0.4s, transform 0.6s;
+  transition-delay: calc(var(--char-index) * 30ms);
+}
+
+[data-kinetic="chars"].is-visible .char {
+  opacity: 1;
+  transform: translateY(0) rotateX(0);
 }
 ```
 
-### Cursor State Model
+### 11. Command Palette (ui/command-palette.js)
+
+**Implementation:** A `<dialog>` element with a search input. Commands are a static array of `{ label, action, shortcut, category }`. Filter uses simple substring match. Arrow keys navigate, Enter selects.
+
+### 12. Sound Toggle (ui/sound.js)
+
+**Implementation:** Web Audio API with `AudioContext`. A single ambient audio file (looping, ~30s). Gain node controls volume (fade in/out over 500ms). State persisted to `localStorage('bynoor-sound')`.
+
+### 13. Easter Egg Engine (ui/easter-eggs.js)
+
+**Implementation:** Konami code listener (`↑↑↓↓←→←→BA`). On trigger, a brief confetti burst using canvas particles (reuses particle system). Additional easter egg: clicking the logo 7 times triggers a "Matrix rain" effect for 3 seconds.
+
+### 14. Highlights Scene (scenes/highlights.js)
+
+**Structure:**
+```html
+<section data-scene="highlights" class="scene scene--highlights">
+  <div class="highlights__container">
+    <h2 data-kinetic="words">Highlights</h2>
+    <div class="highlights__grid">
+      <article class="highlights__card" data-glow data-animate-dir="left">
+        <span class="highlights__icon" aria-hidden="true">🤖</span>
+        <h3>AI Platform Builder</h3>
+        <p>Built an AI-powered migration platform that turned weeks of work into hours</p>
+      </article>
+      <!-- ... more cards -->
+    </div>
+  </div>
+</section>
+```
+
+**Layout:** Asymmetric CSS Grid — first card spans 2 columns on desktop (3-col grid), falls to single column below 768px.
+
+**Scroll Behavior:** Cards animate in with staggered delays from alternating directions (odd from left, even from right) using `translateX` + opacity. The Glow system attaches to each card for cursor-following radial highlight.
+
+**Accent:** Section uses warm amber/gold (`--accent-quaternary`) as its ambient hue shift.
+
+### 15. Footer Scene
+
+**Structure:**
+```html
+<footer class="footer scene scene--footer" data-scene="footer">
+  <a href="#hero" class="footer__logo">
+    <span class="footer__logo-by">by</span>
+    <span class="footer__logo-noor">noor</span>
+    <span class="footer__logo-io">.io</span>
+  </a>
+  <div class="footer__beta">
+    <span class="footer__beta-badge">✨ fresh out of localhost</span>
+    <p class="footer__beta-note">Brand new site. Still tweaking, still shipping.</p>
+  </div>
+  <p class="footer__copyright">2012 – <span id="year"></span> · Built with 🤍</p>
+  <button class="footer__back-to-top" aria-label="Back to top">↑</button>
+</footer>
+```
+
+**Behavior:** Fade-up entrance on scroll. Back-to-top button smooth-scrolls to hero. Logo click also returns to top. Ambient layer and grain overlay remain active through footer.
+
+## Error Handling
+
+| Scenario | Fallback | Implementation |
+|----------|----------|----------------|
+| Canvas 2D not supported | Hide particle canvas, show static gradient | Feature-detect `canvas.getContext('2d')` in particles.js |
+| Web Audio API blocked | Keep Sound_Toggle muted, disable interaction feedback | Catch `AudioContext` creation error in sound.js |
+| IntersectionObserver unsupported | Load all scenes immediately, skip entrance animations | Check `window.IntersectionObserver` in observer.js factory |
+| CSS Scroll-Driven Animations unsupported | Fall back to JS-based scroll progress via rAF | `CSS.supports('animation-timeline: scroll()')` check in scroll-engine.js |
+| `@property` not supported | Gradients animate as step transitions (no smooth interpolation) | No JS fallback needed — visual degradation only |
+| Reduced motion active | All animations disabled, content visible immediately | `motion.js` utility sets class on `<html>`, CSS does the rest |
+| Font load failure | System font stack (`-apple-system, sans-serif`) takes over | Already defined in font stack fallbacks |
+| Audio file fetch failure | Sound_Toggle shows muted state, no error UI | Catch in `fetch()` promise, log silently |
+| LocalStorage unavailable (private browsing) | Sound preference not persisted, defaults to muted each visit | Try/catch around `localStorage` access |
+
+## Testing Strategy
+
+### Frameworks
+
+| Type | Tool | Location |
+|------|------|----------|
+| Unit tests | Vitest | `tests/unit/` |
+| Property tests | Vitest + fast-check | `tests/property/` |
+| E2E tests | Playwright | `tests/e2e/` |
+| Integration | Vitest | `tests/integration/` |
+
+### Property-Based Tests (Correctness Properties)
+
+| Property | Test File | Approach |
+|----------|-----------|----------|
+| Scene Progress Invariant | `tests/property/scroll-engine.test.js` | Generate random scroll positions, assert sum ≈ 1.0 |
+| Navigation State Consistency | `tests/property/nav-state.test.js` | Generate scrollY values, assert state matches threshold |
+| Reduced Motion Idempotence | `tests/property/reduced-motion.test.js` | With flag set, assert all elements have identity transforms |
+| Cursor Cleanup | `tests/property/cursor-cleanup.test.js` | Init + destroy, count remaining listeners via spy |
+| Command Palette Focus Trap | `tests/property/command-palette.test.js` | Open palette, simulate Tab cycles, assert focus stays within |
+| Sound State Round-Trip | `tests/property/sound-state.test.js` | Generate random toggle sequences, assert localStorage consistency |
+| Kinetic Typography Completeness | `tests/property/kinetic-type.test.js` | Trigger reveal, assert all spans opacity=1, transform=none |
+| Timeline Milestone Ordering | `tests/property/timeline-order.test.js` | Resize viewport randomly, assert DOM order unchanged |
+
+### E2E Tests
+
+| Test | Coverage |
+|------|----------|
+| Navigation morphing | Scroll past hero → verify pill mode renders |
+| Timeline interaction | Hover/tap milestones → verify expand behavior |
+| Command Palette | Cmd+K → type → select → verify navigation |
+| Sound Toggle | Click → verify audio plays → click again → verify silent |
+| Responsive adaptation | Resize viewport → verify parallax disabled below 768px |
+| Accessibility | axe-core audit on all scenes |
+| Performance | Lighthouse CI assertions (LCP ≤ 2.5s, CLS < 0.1) |
+
+## Data Flow
 
 ```
-CursorState {
-  targetX: float
-  targetY: float
-  currentX: float
-  currentY: float
-  isVisible: boolean
-  isHovering: boolean
-  lerpFactor: 0.1 (configurable 0.08–0.15)
-}
+User Scroll Input
+       │
+       ▼
+┌─────────────────┐
+│  ScrollEngine   │ ── updates --scene-progress CSS vars
+│  (core)         │ ── dispatches scene lifecycle events
+└────────┬────────┘
+         │
+    ┌────┴────┬──────────┬─────────────┐
+    ▼         ▼          ▼             ▼
+┌────────┐ ┌────────┐ ┌────────┐ ┌──────────┐
+│ Scene  │ │ Nav    │ │Ambient │ │ Depth    │
+│Modules │ │ State  │ │ Layer  │ │ System   │
+└────────┘ └────────┘ └────────┘ └──────────┘
 ```
 
-### Magnetic Element Calculation Model
-
+**Cursor data flow:**
 ```
-Input:
-  cursorX, cursorY: mouse position
-  centerX, centerY: element bounding box center
-  threshold: 80px
-  maxOffset: 8px
-
-Output:
-  dx, dy: translation in px
-
-Formula:
-  distance = sqrt((cursorX - centerX)² + (cursorY - centerY)²)
-  if distance > threshold: dx = 0, dy = 0
-  else:
-    strength = 1 - (distance / threshold)
-    dx = clamp((cursorX - centerX) * strength * (maxOffset / threshold), -maxOffset, maxOffset)
-    dy = clamp((cursorY - centerY) * strength * (maxOffset / threshold), -maxOffset, maxOffset)
+Mouse Move Event
+       │
+       ▼
+┌─────────────────┐
+│ Magnetic Cursor │ ── lerp position to target
+│                 │ ── check proximity to [data-magnetic]
+│                 │ ── morph shape based on hovered element
+└─────────────────┘
 ```
+
+## Key Decisions
+
+### Why Vanilla JS over a Framework?
+
+The site is a single-page portfolio with no dynamic data fetching, no complex state, and no user-generated content. A framework would add bundle weight (50-100KB+) with zero benefit. The modular ES module approach gives us tree-shaking, code splitting (dynamic imports for below-fold scenes), and full control over animation timing.
+
+### Why CSS Scroll-Driven Animations?
+
+Chrome 115+ supports `animation-timeline: scroll()` natively on the compositor thread — zero JS, zero jank. For Safari/Firefox fallback, we use IntersectionObserver + rAF which is already proven in the current site. Progressive enhancement means the experience upgrades automatically as browser support grows.
+
+### Why Not Three.js / WebGL?
+
+The dreamy atmosphere doesn't require 3D geometry. Canvas 2D particles + CSS blur/gradient layers achieve the desired visual with 10x less code and no heavy library. The site must hit 90+ Lighthouse — a 200KB WebGL library would be counterproductive.
+
+### Why `@property` Registered Custom Properties?
+
+Animating `hsl()` colors within gradients requires the browser to understand the property type. `@property --hue` with `syntax: "<number>"` enables smooth gradient mesh animations that are impossible with regular custom properties.
 
 ## File Structure
 
 ```
 src/
-├── styles/
-│   ├── main.css              # Import aggregator
-│   ├── reset.css             # CSS reset (existing)
-│   ├── tokens.css            # Design tokens (redesigned for dark theme)
-│   ├── fonts.css             # Font-face declarations (existing)
-│   ├── gradients.css         # NEW: gradient utilities, mesh keyframes, @property defs
-│   ├── glass.css             # NEW: glassmorphism utility classes
-│   ├── cursor.css            # NEW: custom cursor styles
-│   ├── progress.css          # NEW: scroll progress bar
-│   ├── dividers.css          # NEW: section divider gradients
-│   ├── decorative.css        # NEW: background blobs, radial glows
-│   ├── animations.css        # Entrance animation classes (updated)
-│   ├── hero.css              # Hero section (redesigned, includes scroll indicator)
-│   ├── nav.css               # Navigation (updated for glassmorphism + logo glow)
-│   ├── highlights.css        # Highlights section (updated with tilt + glass)
-│   ├── skills.css            # Skills section (redesigned)
-│   ├── links.css             # Connect section (updated with stagger + glass)
-│   ├── projects.css          # Projects section (updated with tilt + glass)
-│   └── footer.css            # Footer (redesigned for dark theme)
 ├── scripts/
-│   ├── main.js               # Entry point, module orchestrator
-│   ├── animation-engine.js   # NEW: IntersectionObserver-based animation system
-│   ├── custom-cursor.js      # NEW: lerp-based cursor tracking
-│   ├── particle-system.js    # NEW: canvas particle renderer
-│   ├── scroll-progress.js    # NEW: scroll percentage indicator
-│   ├── magnetic-elements.js  # NEW: proximity-based element attraction
-│   ├── tilt-cards.js         # NEW: 3D perspective tilt on hover
-│   ├── navigation.js         # Navigation (existing, updated)
-│   ├── scroll-spy.js         # Scroll spy (existing)
+│   ├── core/
+│   │   ├── app.js              (entry point, module init)
+│   │   ├── scroll-engine.js    (scroll orchestrator)
+│   │   ├── scene-manager.js    (scene lifecycle)
+│   │   └── nav.js              (morphing navigation)
+│   ├── scenes/
+│   │   ├── hero.js             (cinematic hero animations)
+│   │   ├── highlights.js       (career impact cards scene)
+│   │   ├── timeline.js         (career timeline interactions)
+│   │   ├── projects.js         (spotlight cards)
+│   │   ├── theater.js          (testimonial theater)
+│   │   └── skills.js           (skills constellation)
+│   ├── effects/
+│   │   ├── ambient.js          (gradient orbs, color shifts)
+│   │   ├── grain.js            (film grain overlay)
+│   │   ├── glow.js             (cursor-following glows)
+│   │   ├── cursor.js           (magnetic cursor)
+│   │   ├── particles.js        (canvas particle system)
+│   │   └── kinetic-type.js     (text splitting + animation triggers)
+│   ├── ui/
+│   │   ├── command-palette.js  (Cmd+K overlay)
+│   │   ├── sound.js            (ambient audio toggle)
+│   │   └── easter-eggs.js      (hidden interactions)
 │   └── utils/
-│       ├── reduced-motion.js # NEW: reduced-motion detection utility
-│       ├── lerp.js           # NEW: linear interpolation utility
-│       ├── breakpoints.js    # NEW: matchMedia breakpoint listeners
-│       └── random.js         # NEW: random number utilities
+│       ├── lerp.js             (linear interpolation)
+│       ├── raf.js              (rAF scheduler / throttle)
+│       ├── observer.js         (IntersectionObserver factory)
+│       └── motion.js           (reduced-motion detection)
+├── styles/
+│   ├── tokens.css              (design tokens + @property)
+│   ├── reset.css               (CSS reset)
+│   ├── fonts.css               (font-face declarations)
+│   ├── layers/
+│   │   ├── ambient.css         (gradient mesh, orbs)
+│   │   ├── grain.css           (noise overlay)
+│   │   ├── glow.css            (radial glow effects)
+│   │   └── depth.css           (parallax layer rules)
+│   ├── scenes/
+│   │   ├── hero.css            (cinematic hero)
+│   │   ├── highlights.css      (career impact cards)
+│   │   ├── timeline.css        (story timeline)
+│   │   ├── projects.css        (spotlight cards)
+│   │   ├── theater.css         (testimonial theater)
+│   │   ├── skills.css          (skills section)
+│   │   └── connect.css         (links/CTA section)
+│   ├── components/
+│   │   ├── nav.css             (morphing navigation)
+│   │   ├── cursor.css          (magnetic cursor styles)
+│   │   ├── command-palette.css (overlay styles)
+│   │   ├── cards.css           (shared card styles)
+│   │   └── buttons.css         (CTA buttons)
+│   ├── animations.css          (keyframes + scroll-driven)
+│   └── main.css                (import orchestrator)
 └── assets/
-    └── fonts/                # Existing font files
+    ├── fonts/                   (existing variable fonts)
+    └── audio/
+        └── ambient-loop.mp3    (subtle ambient soundscape, ~30s loop)
 ```
+
+## Performance Strategy
+
+| Metric | Target | Strategy |
+|--------|--------|----------|
+| LCP | < 2.5s | Preload hero image + critical CSS inline |
+| CLS | < 0.1 | Reserve space for all animated elements |
+| FPS | 60fps | CSS animations on compositor, rAF batching |
+| Bundle | < 50KB gzipped JS | Dynamic imports for below-fold scenes |
+| Fonts | < 100KB | Already using variable fonts (subset) |
+| Audio | Lazy-loaded | Only fetched on Sound_Toggle activation |
+
+**Code Splitting Strategy:**
+```js
+// core/app.js — critical path
+import { ScrollEngine } from './scroll-engine.js';
+import { initNav } from './nav.js';
+
+// Lazy load scenes after first paint
+const loadScenes = () => Promise.all([
+  import('../scenes/hero.js'),
+  import('../scenes/timeline.js'),
+  import('../scenes/projects.js'),
+  import('../scenes/theater.js'),
+]);
+```
+
+## Accessibility Strategy
+
+- All animations respect `prefers-reduced-motion: reduce`
+- Grain overlay and ambient layers use `aria-hidden="true"`
+- Skip navigation link preserved
+- Logical heading hierarchy (h1 → h2 → h3)
+- All interactive elements have 44×44px minimum touch targets
+- Keyboard navigation works without cursor effects
+- Command palette is fully keyboard-navigable (dialog element handles focus trapping)
+- Sound toggle has explicit aria-label and aria-pressed state
+- Color contrast meets WCAG AA (4.5:1 minimum for text)
 
 ## Correctness Properties
 
-*A property is a characteristic or behavior that should hold true across all valid executions of a system — essentially, a formal statement about what the system should do. Properties serve as the bridge between human-readable specifications and machine-verifiable correctness guarantees.*
+### Property 1: Scene Progress Invariant
+For any scroll position, the sum of all visible scene progress values equals exactly 1.0 (±0.01 tolerance for transition overlap).
 
-### Property 1: Text contrast meets WCAG thresholds
+**Validates: Requirements 2.1, 2.2**
 
-*For any* text element on the page (both body text and headings, including text on glassmorphism cards), the computed contrast ratio between its foreground color and effective background color SHALL be at least 4.5:1 for normal text and at least 3:1 for large text (≥ 18px bold or ≥ 24px regular).
+### Property 2: Navigation State Consistency
+The Morphing_Navigation state always reflects the current scroll position — if scrollY > heroHeight, nav state is PILL_MODE.
 
-**Validates: Requirements 1.5, 6.5**
+**Validates: Requirements 3.1, 3.2**
 
-### Property 2: Entrance animations fire exactly once
+### Property 3: Reduced Motion Idempotence
+With `prefers-reduced-motion: reduce`, calling any animation init function produces the same visual result as not calling it (all elements visible, no transforms).
 
-*For any* DOM element with a `data-animate` attribute, when the element's intersection ratio crosses the 0.2 threshold from below, the element SHALL receive the `animate-visible` class exactly once, and the IntersectionObserver SHALL unobserve that element immediately after triggering — preventing any re-trigger on subsequent scroll passes.
+**Validates: Requirements 12.6, 8.6**
 
-**Validates: Requirements 4.1**
+### Property 4: Cursor Cleanup
+When the cursor module destroys (e.g., on touch device detection), zero event listeners remain attached to document or window.
 
-### Property 3: Scroll progress maps linearly to scroll position
+**Validates: Requirements 7.6**
 
-*For any* scroll position `scrollTop` where `scrollHeight > clientHeight`, the scroll progress bar width percentage SHALL equal `(scrollTop / (scrollHeight - clientHeight)) * 100`, bounded to [0, 100].
+### Property 5: Command Palette Focus Trap
+While the Command_Palette is open, Tab/Shift+Tab cycles focus only within the palette dialog.
 
-**Validates: Requirements 4.2**
+**Validates: Requirements 10.1, 10.6**
 
-### Property 4: Parallax translation bounded to 50% of scroll speed
+### Property 6: Sound State Round-Trip
+`localStorage.setItem('bynoor-sound', state)` → page reload → `localStorage.getItem('bynoor-sound')` returns the same state.
 
-*For any* scroll delta applied to the page, decorative background elements with parallax SHALL translate by at most 50% of that scroll delta relative to foreground content movement.
+**Validates: Requirements 11.5**
 
-**Validates: Requirements 4.5**
+### Property 7: Kinetic Typography Completeness
+After a kinetic element's animation completes, 100% of its text content is visible with opacity 1 and transform identity.
 
-### Property 5: Custom cursor converges toward target via lerp
+**Validates: Requirements 9.1, 9.5**
 
-*For any* sequence of mouse positions, the custom cursor's rendered position SHALL converge toward the latest mouse position following the formula `current += (target - current) * lerpFactor` per animation frame, where `lerpFactor` is between 0.08 and 0.15, producing a trailing delay between 50ms and 150ms equivalent.
+### Property 8: Timeline Milestone Ordering
+Milestones in the DOM maintain chronological order (most recent first) regardless of viewport width or animation state.
 
-**Validates: Requirements 5.1**
+**Validates: Requirements 4.1, 4.5**
 
-### Property 6: Magnetic element translation bounded to 8px
-
-*For any* cursor position within 80px of a magnetic element's bounding box center, the element's computed CSS translation magnitude (sqrt(dx² + dy²)) SHALL be less than or equal to 8px. For any cursor position beyond 80px, the translation SHALL be 0px.
-
-**Validates: Requirements 5.4**
-
-### Property 7: Particle system opacity fades linearly past hero
-
-*For any* scroll position where the viewport top is beyond the hero section's bottom edge, the particle system container's opacity SHALL equal `max(0, 1 - distancePastHeroBottom / 200)`, reaching 0 at exactly 200px past the hero bottom.
-
-**Validates: Requirements 7.3**
-
-### Property 8: No horizontal overflow across viewport range
-
-*For any* viewport width between 320px and 2560px (inclusive), the document body's `scrollWidth` SHALL not exceed the viewport's `clientWidth`, ensuring no horizontal scrollbar appears.
-
-**Validates: Requirements 10.1**
-
-### Property 9: Touch targets meet minimum size on mobile
-
-*For any* interactive element (elements matching `a, button, [role="button"], input, select, textarea`) when the viewport width is below 768px, both the computed `offsetWidth` and `offsetHeight` SHALL be at least 44px.
-
-**Validates: Requirements 10.5**
-
-## Error Handling
-
-### Graceful Degradation Strategy
-
-| Failure Mode | Handling |
-|---|---|
-| JavaScript disabled | All content visible via CSS defaults; `animate-hidden` never applied; native cursor remains |
-| Canvas unsupported | Particle system checks `canvas.getContext('2d')` — if null, silently skips initialization |
-| `@property` unsupported | Gradient mesh falls back to a static gradient (no hue animation); feature-detected via CSS.registerProperty |
-| `backdrop-filter` unsupported | `@supports` block provides opaque fallback background for glassmorphism elements |
-| IntersectionObserver unsupported | Animation engine skips; all elements remain in their natural visible state |
-| matchMedia unsupported | `prefersReducedMotion()` returns false (animations enabled by default) |
-| requestAnimationFrame unavailable | Cursor and particle modules skip initialization |
-| Tab hidden (Page Visibility API) | Particle RAF loop pauses; cursor loop pauses — resumes on visibility change |
-
-### CSS Fallbacks
-
-```css
-/* Glassmorphism fallback for browsers without backdrop-filter */
-@supports not (backdrop-filter: blur(1px)) {
-  .glass-card {
-    background: var(--color-bg-elevated);
-    border: 1px solid var(--glass-border);
-  }
-}
-
-/* Gradient text fallback */
-@supports not (-webkit-background-clip: text) {
-  .gradient-text {
-    color: var(--accent-primary);
-  }
-}
-```
-
-### Performance Safeguards
-
-- Particle count auto-reduces on devices with `navigator.hardwareConcurrency < 4` (halve count)
-- All scroll listeners use `{ passive: true }`
-- Cursor and magnetic calculations throttled to RAF cadence (no redundant frame work)
-- Canvas renders at `devicePixelRatio` but caps at 2x to avoid memory bloat on 3x displays
-
-### Responsive Breakpoint Handling
-
-All interactive modules respond to viewport changes mid-session:
-
-| Module | Breakpoint | Behavior on cross below | Behavior on cross above |
-|--------|-----------|------------------------|------------------------|
-| Custom Cursor | 1024px | Destroys cursor DOM, removes `.cursor-active`, stops RAF loop | Re-creates cursor DOM, re-adds class, starts RAF |
-| Magnetic Elements | 1024px | Removes event listeners, resets all transforms to 0 | Re-attaches listeners |
-| Particle System | 768px | Stops RAF, hides canvas (display: none) | Re-initializes with current hero dimensions |
-| Parallax Effects | 768px | Removes scroll listener, resets transforms | Re-attaches listener |
-
-Detection method: `matchMedia('(min-width: Xpx)').addEventListener('change', handler)` — no polling, no resize debounce needed.
-
-## Testing Strategy
-
-### Unit Tests (Vitest)
-
-Focus on pure logic modules:
-- `utils/lerp.js` — verify interpolation math
-- `utils/reduced-motion.js` — verify boolean detection with mocked matchMedia
-- `magnetic-elements.js` — verify translation calculation formula (clamping, threshold)
-- `scroll-progress.js` — verify progress percentage calculation
-- `particle-system.js` — verify particle initialization bounds, wrap-around logic
-- `animation-engine.js` — verify fire-once semantics with mocked IntersectionObserver
-
-### Property-Based Tests (fast-check)
-
-The project will use [fast-check](https://github.com/dubzzz/fast-check) for property-based testing. Each property test runs a minimum of 100 iterations.
-
-- **Property 1**: Generate random foreground/background color pairs from the token palette, compute relative luminance and contrast ratio, verify WCAG thresholds.
-- **Property 2**: Generate random sequences of intersection events, verify class is added exactly once and observer.unobserve is called.
-- **Property 3**: Generate random scrollTop values (0 to scrollHeight-clientHeight), verify progress calculation matches expected percentage.
-- **Property 4**: Generate random scroll deltas, verify parallax offset ≤ 0.5 * delta.
-- **Property 5**: Generate random mouse position sequences, simulate lerp loop, verify convergence within expected frame count.
-- **Property 6**: Generate random cursor positions relative to element center (both within and outside 80px), verify translation magnitude ≤ 8px within threshold and = 0 outside.
-- **Property 7**: Generate random scroll distances past hero bottom (0 to 400px), verify opacity = max(0, 1 - distance/200).
-- **Property 8**: Test with generated viewport widths (320–2560), verify no overflow (E2E with Playwright).
-- **Property 9**: Generate interactive elements at mobile viewport, verify dimensions ≥ 44px (E2E with Playwright).
-
-Tag format: `// Feature: website-creative-redesign, Property {N}: {title}`
-
-### E2E Tests (Playwright)
-
-- Visual regression snapshots at 375px, 768px, 1440px viewports
-- Accessibility audit via axe-core (existing)
-- Reduced-motion behavior verification
-- Navigation hamburger menu functionality
-- Scroll progress bar correctness
-- Custom cursor visibility/hiding at breakpoints
-
-### Performance Testing
-
-- Lighthouse CI in GitHub Actions (score thresholds: Performance ≥ 90, Accessibility ≥ 95)
-- Web Vitals measurement (LCP < 2s on simulated 4G)
+**Validates: Requirement 4.1, 4.5**

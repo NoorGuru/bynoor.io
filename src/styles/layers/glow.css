@@ -1,0 +1,106 @@
+/* Glow System — Radial glow utilities & cursor-following glow card styles */
+/* Validates: Requirement 8.5 (radial glows behind headings/elements) */
+/* Validates: Requirement 5.3 (cursor-following glow on Spotlight Cards) */
+
+/* === Base glow container === */
+[data-glow] {
+  position: relative;
+  overflow: hidden;
+}
+
+/* === Cursor-following glow pseudo-element === */
+[data-glow]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    var(--glow-radius, 300px) circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    var(--glow-color-primary, rgba(139, 92, 246, 0.15)),
+    transparent var(--glow-spread, 70%)
+  );
+  opacity: 0;
+  transition: opacity var(--duration-hover, 200ms) var(--ease-smooth, cubic-bezier(0.4, 0, 0.2, 1));
+  z-index: 1;
+  border-radius: inherit;
+}
+
+/* === Hover state — reveal glow === */
+[data-glow]:hover::before {
+  opacity: var(--glow-intensity-hover, 0.25);
+}
+
+/* === Glow color variants === */
+.glow--primary {
+  --glow-color-primary: rgba(139, 92, 246, 0.15);
+}
+
+.glow--secondary {
+  --glow-color-primary: rgba(6, 182, 212, 0.12);
+}
+
+.glow--tertiary {
+  --glow-color-primary: rgba(236, 72, 153, 0.12);
+}
+
+/* === Card glow child element (alternative to pseudo) === */
+.card__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+    var(--glow-radius, 300px) circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    var(--glow-color-primary, rgba(139, 92, 246, 0.15)),
+    transparent var(--glow-spread, 70%)
+  );
+  opacity: 0;
+  transition: opacity var(--duration-hover, 200ms) var(--ease-smooth, cubic-bezier(0.4, 0, 0.2, 1));
+  z-index: 1;
+}
+
+[data-glow]:hover .card__glow {
+  opacity: var(--glow-intensity-hover, 0.25);
+}
+
+/* === Static heading glow === */
+.glow-heading {
+  position: relative;
+}
+
+.glow-heading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 200%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    var(--glow-color-primary, rgba(139, 92, 246, 0.1)),
+    transparent 60%
+  );
+  opacity: var(--glow-intensity, 0.15);
+  z-index: -1;
+  border-radius: 50%;
+}
+
+/* === Prefers reduced motion — disable glow transitions === */
+@media (prefers-reduced-motion: reduce) {
+  [data-glow]::before,
+  .card__glow {
+    transition: none;
+    opacity: 0;
+  }
+
+  [data-glow]:hover::before,
+  [data-glow]:hover .card__glow {
+    opacity: 0;
+  }
+
+  .glow-heading::after {
+    opacity: 0;
+  }
+}

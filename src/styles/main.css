@@ -1,11 +1,41 @@
 /* Main stylesheet entry point */
 
-/* Foundation: reset, tokens, typography */
-@import './reset.css';
+/* ═══════════════════════════════════════════════════════
+   Foundation: reset, tokens, typography
+   ═══════════════════════════════════════════════════════ */
 @import './tokens.css';
+@import './reset.css';
 @import './fonts.css';
 
-/* Design system layers: gradients, glass, cursor, progress, dividers, decorative */
+/* ═══════════════════════════════════════════════════════
+   Layers: ambient atmosphere, grain, glow, depth
+   ═══════════════════════════════════════════════════════ */
+@import './layers/ambient.css';
+@import './layers/grain.css';
+@import './layers/glow.css';
+@import './layers/depth.css';
+
+/* ═══════════════════════════════════════════════════════
+   Scenes (placeholder — activated as scenes are built)
+   ═══════════════════════════════════════════════════════ */
+/* @import './scenes/hero.css'; */
+/* @import './scenes/timeline.css'; */
+/* @import './scenes/projects.css'; */
+/* @import './scenes/theater.css'; */
+/* @import './scenes/skills.css'; */
+/* @import './scenes/highlights.css'; */
+/* @import './scenes/connect.css'; */
+
+/* ═══════════════════════════════════════════════════════
+   Components (placeholder — activated as components are built)
+   ═══════════════════════════════════════════════════════ */
+/* @import './components/nav.css'; */
+/* @import './components/cursor.css'; */
+/* @import './components/command-palette.css'; */
+
+/* ═══════════════════════════════════════════════════════
+   Design system layers: gradients, glass, cursor, progress, dividers, decorative
+   ═══════════════════════════════════════════════════════ */
 @import './gradients.css';
 @import './glass.css';
 @import './cursor.css';
@@ -13,7 +43,9 @@
 @import './dividers.css';
 @import './decorative.css';
 
-/* Component styles */
+/* ═══════════════════════════════════════════════════════
+   Component styles (existing)
+   ═══════════════════════════════════════════════════════ */
 @import './hero.css';
 @import './nav.css';
 @import './links.css';
@@ -24,5 +56,7 @@
 @import './resources.css';
 @import './footer.css';
 
-/* Animations (last, so they can override) */
+/* ═══════════════════════════════════════════════════════
+   Animations (last, so they can override)
+   ═══════════════════════════════════════════════════════ */
 @import './animations.css';

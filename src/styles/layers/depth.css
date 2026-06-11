@@ -1,0 +1,77 @@
+/* Parallax Depth Layer System
+ * Uses --scroll-y (set by JS scroll engine) to translate layers at different speeds.
+ * Token values from tokens.css control speeds and z-index stacking.
+ */
+
+/* === Base parallax layer === */
+.parallax-layer {
+  position: relative;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+/* === Background layer (slowest) === */
+.parallax-layer--bg {
+  z-index: var(--depth-layer-bg);
+  transform: translateY(calc(var(--scroll-y, 0) * var(--parallax-speed-bg) * -1px));
+}
+
+/* === Midground layer === */
+.parallax-layer--mid {
+  z-index: var(--depth-layer-mid);
+  transform: translateY(calc(var(--scroll-y, 0) * var(--parallax-speed-mid) * -1px));
+}
+
+/* === Foreground layer (fastest) === */
+.parallax-layer--fg {
+  z-index: var(--depth-layer-fg);
+  transform: translateY(calc(var(--scroll-y, 0) * var(--parallax-speed-fg) * -1px));
+}
+
+/* === Content layer (reference, no parallax) === */
+.parallax-layer--content {
+  z-index: var(--depth-layer-content);
+}
+
+/* === Tablet: reduce parallax by 50% === */
+@media (max-width: 1023px) {
+  .parallax-layer--bg {
+    transform: translateY(calc(var(--scroll-y, 0) * var(--parallax-speed-bg) * var(--parallax-speed-reduced) * -1px));
+  }
+
+  .parallax-layer--mid {
+    transform: translateY(calc(var(--scroll-y, 0) * var(--parallax-speed-mid) * var(--parallax-speed-reduced) * -1px));
+  }
+
+  .parallax-layer--fg {
+    transform: translateY(calc(var(--scroll-y, 0) * var(--parallax-speed-fg) * var(--parallax-speed-reduced) * -1px));
+  }
+}
+
+/* === Mobile: disable parallax entirely === */
+@media (max-width: 767px) {
+  .parallax-layer {
+    will-change: auto;
+    transform-style: flat;
+  }
+
+  .parallax-layer--bg,
+  .parallax-layer--mid,
+  .parallax-layer--fg {
+    transform: none;
+  }
+}
+
+/* === Reduced motion: disable parallax entirely === */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-layer {
+    will-change: auto;
+    transform-style: flat;
+  }
+
+  .parallax-layer--bg,
+  .parallax-layer--mid,
+  .parallax-layer--fg {
+    transform: none;
+  }
+}

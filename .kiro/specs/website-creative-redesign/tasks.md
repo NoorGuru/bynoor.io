@@ -2,474 +2,275 @@
 
 ## Overview
 
-Transform bynoor.io from a light-themed personal site into a bold, dark-mode-first experience with animated gradient meshes, custom cursor, particle effects, glassmorphism cards, and scroll-driven animations. Implementation uses vanilla HTML, CSS, and JavaScript (ES modules) served via Vite. Tasks are ordered foundation-first: design tokens and utilities, then CSS layers, then JS modules, then HTML wiring, and finally testing.
+Transform bynoor.io into an immersive, cinematic portfolio experience using the existing Vite + vanilla JS + CSS stack. Implementation follows a modular scene-based architecture with a scroll-driven animation engine, layered visual effects, and progressive enhancement. Tasks progress from foundational infrastructure through individual scene implementations to final integration, optimization, and accessibility audits.
 
 ## Tasks
 
-- [x] 1. Set up testing infrastructure and utility modules
-  - [x] 1.1 Add fast-check dependency and configure Vitest for property-based testing
-    - Add `fast-check` to devDependencies in `package.json`
-    - Verify Vitest config supports the `tests/unit/` and `tests/property/` directories
-    - Create `tests/property/` directory for property-based test files
-    - _Requirements: 9.1, 9.2_
+- [-] 1. Foundation — Design Tokens, Reset, and File Structure
+  - [x] 1.1 Create the new `src/styles/tokens.css` with expanded design tokens including `@property` registered custom properties for animatable hues, new spacing scale, and updated color palette (deep black/navy base, electric violet/cyan/magenta accents)
+    - Define all colors as CSS custom properties for future theming
+    - _Requirements: 14.1, 14.2, 14.6_
+  - [x] 1.2 Create `src/styles/layers/ambient.css` with gradient mesh orbs (large border-radius divs, blur 80px, absolute positioned, keyframe-animated drift)
+    - _Requirements: 8.1, 8.3_
+  - [x] 1.3 Create `src/styles/layers/grain.css` with film grain overlay styles (fixed position, pointer-events none, low opacity, tiled background)
+    - _Requirements: 8.2_
+  - [x] 1.4 Create `src/styles/layers/glow.css` with radial glow utility classes and cursor-following glow card styles using `--glow-x` / `--glow-y` custom properties
+    - _Requirements: 8.5, 5.3_
+  - [x] 1.5 Create `src/styles/layers/depth.css` with parallax layer rules (foreground, midground, background transform speeds)
+    - _Requirements: 2.7_
+  - [x] 1.6 Update `src/styles/main.css` to import new layer and scene stylesheets in correct cascade order
+    - _Requirements: 14.6_
+  - [x] 1.7 Set up the new `src/scripts/` directory structure with `core/`, `scenes/`, `effects/`, `ui/`, and `utils/` folders
+    - _Requirements: 2.1_
 
-  - [x] 1.2 Create `src/scripts/utils/reduced-motion.js` utility module
-    - Implement `prefersReducedMotion()` returning boolean from `matchMedia('(prefers-reduced-motion: reduce)')`
-    - Implement `onMotionPreferenceChange(callback)` that listens for live changes via `addEventListener('change', ...)`
-    - Export both functions as named exports
-    - _Requirements: 1.6, 2.6, 4.6, 5.5, 7.5, 8.6, 9.6_
-
-  - [x] 1.3 Create `src/scripts/utils/lerp.js` utility module
-    - Implement `lerp(current, target, factor)` returning `current + (target - current) * factor`
-    - Export as named export
-    - _Requirements: 5.1_
-
-  - [x] 1.4 Create `src/scripts/utils/breakpoints.js` utility module
-    - Implement `onBreakpointChange(minWidth, callback)` wrapping `matchMedia` with `addEventListener('change', ...)`
-    - Callback fires immediately with current state, then on every change
-    - Implement `isAbove(minWidth)` for one-shot checks
-    - Export both as named exports
-    - _Requirements: 5.1, 5.3, 10.4_
-
-  - [x] 1.5 Create `src/scripts/utils/random.js` utility module
-    - Implement `randomBetween(min, max)` for float range
-    - Implement `randomInt(min, max)` for integer range (inclusive)
-    - Export both as named exports
-    - _Requirements: 7.1_
-
-  - [x]* 1.6 Write unit tests for utility modules
-    - Test `lerp.js`: verify interpolation for factor 0, 0.5, 1, and edge cases
-    - Test `reduced-motion.js`: mock matchMedia, verify boolean detection and callback firing
-    - Test `random.js`: verify output bounds
-    - Test `breakpoints.js`: mock matchMedia, verify callback behavior
-    - _Requirements: 9.4_
-
-- [x] 2. Redesign design tokens and create new CSS foundation layers
-  - [x] 2.1 Rewrite `src/styles/tokens.css` with dark-mode-first color system
-    - Replace light theme variables with dark backgrounds (hsl 240, 15%, 6%)
-    - Add 4 neon accent colors (violet, cyan, magenta, amber) at 70%+ saturation
-    - Add glassmorphism tokens (`--glass-bg`, `--glass-border`, `--glass-blur`)
-    - Add gradient tokens (`--gradient-text`, `--gradient-progress`)
-    - Add cursor tokens, particle tokens, scroll-progress custom property
-    - Add font-weight tokens (300, 400, 600, 700)
-    - Add `--duration-mesh`, `--ease-spring` animation tokens
-    - Remove the old `prefers-color-scheme: dark` empty media query
-    - _Requirements: 1.1, 1.3, 3.1_
-
-  - [x] 2.2 Create `src/styles/gradients.css` with gradient utilities and mesh keyframes
-    - Register CSS `@property` for `--mesh-hue-1`, `--mesh-hue-2`, `--mesh-hue-3`
-    - Define `.hero__mesh` class with 3-stop radial gradient background
-    - Define `@keyframes mesh-cycle` (12s, ease-in-out, infinite) cycling hues within 30° range
-    - Add `.gradient-text` utility using `background-clip: text`
-    - Add `@media (prefers-reduced-motion: reduce)` rule to pause mesh animation
-    - _Requirements: 1.2, 1.6, 2.1, 3.3_
-
-  - [x] 2.3 Create `src/styles/glass.css` with glassmorphism utility classes
-    - Define `.glass-card` with background opacity 0.05–0.15, backdrop-filter blur ≥10px, 1px border at 0.1–0.3 opacity
-    - Define `.glass-card:hover` increasing background and border opacity
-    - Add `@supports not (backdrop-filter: blur(1px))` fallback
-    - _Requirements: 6.1, 6.2, 6.3, 6.4_
-
-  - [x] 2.4 Create `src/styles/cursor.css` with custom cursor styles
-    - Define `.custom-cursor` element styles (size, shape, color from tokens, position: fixed, pointer-events: none, z-index high)
-    - Define `.custom-cursor--hover` state (scale 1.5x, ring expansion)
-    - Define `.cursor-active` on `html` to hide native cursor
-    - Add media query to hide cursor element below 1024px
-    - _Requirements: 5.1, 5.2, 5.3_
-
-  - [x] 2.5 Create `src/styles/progress.css` with scroll progress bar
-    - Define `.scroll-progress` as fixed position top bar, height 3px
-    - Use `width: calc(var(--scroll-progress) * 100%)` with gradient background from tokens
-    - Set z-index above all content
-    - _Requirements: 4.2_
-
-  - [x] 2.6 Create `src/styles/dividers.css` for section gradient dividers
-    - Define `.section-divider` with 1px height, gradient background (transparent → accent → transparent), opacity 0.3
-    - _Requirements: 3.4_
-
-  - [x] 2.7 Create `src/styles/decorative.css` for background blobs and radial glows
-    - Define decorative pseudo-elements or classes for gradient blobs behind at least 2 content sections
-    - Set `z-index` behind content, `pointer-events: none`
-    - Add `@media (prefers-reduced-motion: reduce)` to pause/remove animations
-    - _Requirements: 7.4, 7.5_
-
-  - [x] 2.8 Update `src/styles/animations.css` for entrance animation classes
-    - Define `.animate-hidden` (opacity: 0, translateY: 20px) — the pre-entrance state
-    - Define `.animate-visible` (opacity: 1, translateY: 0) with transition using `--duration-entrance`
-    - Add variants: `fade-up`, `fade-in`, `scale-in`
-    - Add `@media (prefers-reduced-motion: reduce)` to disable transforms and show elements immediately
-    - Ensure transitions use `will-change: transform, opacity` for compositor offloading
-    - _Requirements: 4.1, 4.6, 9.4_
-
-  - [x] 2.9 Update `src/styles/main.css` to import all new CSS modules
-    - Add imports for `gradients.css`, `glass.css`, `cursor.css`, `progress.css`, `dividers.css`, `decorative.css`
-    - Maintain correct import order (reset → tokens → fonts → gradients → glass → cursor → progress → dividers → decorative → component styles → animations)
-    - _Requirements: 1.1_
-
-- [x] 3. Checkpoint — Verify CSS foundation builds correctly
-  - Ensure `npm run build` succeeds with no errors, ask the user if questions arise.
-
-- [-] 4. Implement JavaScript modules (animation engine, scroll progress, particles)
-  - [x] 4.1 Create `src/scripts/animation-engine.js`
-    - Implement `initAnimationEngine()` that creates a single IntersectionObserver with threshold 0.2
-    - On intersection: add `animate-visible` class, apply `transition-delay` from `data-animate-delay`
-    - Unobserve element immediately after first trigger (fire-once semantics)
-    - Implement stagger logic: read `data-animate-stagger` on parent, auto-calculate child delays
-    - If `prefersReducedMotion()`: skip adding `animate-hidden`, all elements visible immediately
-    - Observe all `[data-animate]` elements
-    - _Requirements: 4.1, 4.4, 9.4, 9.5_
-
-  - [ ]* 4.2 Write property test for animation engine fire-once semantics
-    - **Property 2: Entrance animations fire exactly once**
-    - Generate random sequences of intersection events using fast-check
-    - Mock IntersectionObserver; verify `animate-visible` added exactly once and `unobserve` called
-    - **Validates: Requirements 4.1**
-
-  - [x] 4.3 Create `src/scripts/scroll-progress.js`
-    - Implement `initScrollProgress()` that listens to scroll event with `{ passive: true }`
-    - Compute `progress = scrollTop / (scrollHeight - clientHeight)`
-    - Set CSS custom property `--scroll-progress` on the progress bar element
-    - Use `requestAnimationFrame` to batch DOM writes
-    - _Requirements: 4.2_
-
-  - [ ]* 4.4 Write property test for scroll progress linear mapping
-    - **Property 3: Scroll progress maps linearly to scroll position**
-    - Generate random `scrollTop` values (0 to scrollHeight-clientHeight) with fast-check
-    - Verify computed progress matches `scrollTop / (scrollHeight - clientHeight)` bounded to [0, 100]
-    - **Validates: Requirements 4.2**
-
-  - [x] 4.5 Create `src/scripts/particle-system.js`
-    - Implement `initParticleSystem(canvas)` and `destroyParticleSystem()`
-    - Initialize `min(50, area/10000)` particles with random positions, velocities, radii (2–6), opacity (0.1–0.4), hues from accent palette
-    - Run `requestAnimationFrame` render loop; particles wrap toroidally
-    - Control container opacity based on scroll: `opacity = max(0, 1 - scrollPastHero / 200)`
-    - Skip initialization on mobile (<768px) or reduced-motion
-    - Canvas has `pointer-events: none`
-    - Pause RAF when `document.hidden`
-    - Use `ResizeObserver` on hero to resize canvas on viewport changes (cap devicePixelRatio at 2)
-    - Auto-reduce particle count on `navigator.hardwareConcurrency < 4`
-    - _Requirements: 7.1, 7.2, 7.3, 7.5, 7.6, 9.4_
-
-  - [ ]* 4.6 Write property test for particle opacity fade
-    - **Property 7: Particle system opacity fades linearly past hero**
-    - Generate random scroll distances (0–400px) past hero bottom with fast-check
-    - Verify opacity equals `max(0, 1 - distance / 200)`, reaching 0 at 200px
-    - **Validates: Requirements 7.3**
-
-  - [ ]* 4.7 Write unit tests for particle initialization bounds
-    - Verify particle count ≤ 50
-    - Verify each particle radius in [2, 6], velocity in bounds, opacity in [0.1, 0.4]
-    - Verify wrap-around logic keeps particles within canvas bounds
-    - _Requirements: 7.1, 7.2_
-
-- [-] 5. Implement JavaScript modules (cursor, magnetic elements, tilt cards)
-  - [x] 5.1 Create `src/scripts/custom-cursor.js`
-    - Implement `initCustomCursor()` that creates a cursor DOM element
-    - Only active at viewport ≥ 1024px (use `onBreakpointChange`)
-    - Use `requestAnimationFrame` loop with lerp (factor 0.08–0.15) for smooth trailing
-    - On `mouseenter`/`mouseleave` on document: toggle visibility
-    - On `pointerover` on `a, button, [role="button"]`: set hover state (scale 1.5x)
-    - Add `.cursor-active` to `<html>` to hide native cursor
-    - Destroy/pause when reduced-motion active or viewport < 1024px
-    - On viewport crossing 1024px: destroy/re-create cursor dynamically
-    - Hide cursor when mouse leaves browser viewport
-    - _Requirements: 5.1, 5.2, 5.3, 5.5, 5.6_
-
-  - [ ]* 5.2 Write property test for cursor lerp convergence
-    - **Property 5: Custom cursor converges toward target via lerp**
-    - Generate random mouse position sequences with fast-check
-    - Simulate lerp loop frames, verify cursor position converges toward target
-    - Verify `lerpFactor` between 0.08 and 0.15 per frame
-    - **Validates: Requirements 5.1**
-
-  - [x] 5.3 Create `src/scripts/magnetic-elements.js`
-    - Implement `initMagneticElements()` selecting all `[data-magnetic]` elements
-    - On `mousemove` (throttled via RAF): compute distance from cursor to element center
-    - If distance < 80px: translate element toward cursor with `offset = (cursorPos - centerPos) * (1 - distance/80) * maxOffset/80`
-    - Maximum translation: 8px in any direction, applied via CSS transform
-    - On `mouseleave`: animate back to `translate(0, 0)` over 300ms
-    - Disabled when reduced-motion active or viewport < 1024px
-    - _Requirements: 5.4, 5.5_
-
-  - [ ]* 5.4 Write property test for magnetic element translation bounds
-    - **Property 6: Magnetic element translation bounded to 8px**
-    - Generate random cursor positions (within and outside 80px threshold) with fast-check
-    - Verify translation magnitude ≤ 8px when inside threshold, equals 0 when outside
-    - **Validates: Requirements 5.4**
-
-  - [x] 5.5 Create `src/scripts/tilt-cards.js`
-    - Implement 3D perspective tilt on hover for `.tilt-card` elements
-    - On `pointermove`: calculate rotation from pointer position relative to card center
-    - Map to `rotateX` / `rotateY` via CSS custom properties `--tilt-x`, `--tilt-y` (max 5deg)
-    - On `pointerleave`: reset to 0deg with transition
-    - Disabled when reduced-motion active (falls back to translateY lift)
-    - _Requirements: 4.3, 6.4_
-
-  - [x] 5.6 Add parallax scroll logic to `src/scripts/animation-engine.js`
-    - On scroll (passive listener): translate elements with `[data-parallax]` attribute at ≤50% of scroll speed
-    - Apply via CSS `transform: translateY(offset)` where offset = scrollDelta × parallaxFactor (factor ≤ 0.5)
-    - Use `requestAnimationFrame` to batch DOM writes
-    - Disabled on mobile (<768px) via `onBreakpointChange`
-    - Disabled when reduced-motion active
-    - On breakpoint crossing below 768px: reset all parallax transforms to 0
-    - _Requirements: 4.5, 10.6_
-
-  - [x] 5.7 Add section accent color reveal to `src/scripts/animation-engine.js`
-    - Use a separate IntersectionObserver (threshold: 0.1) for `[data-section-accent]` elements
-    - On intersection: add `.section--revealed` class which triggers CSS border-glow or gradient-highlight transition (300–600ms, defined in CSS)
-    - Each section has a `data-section-accent` attribute mapping to its assigned accent token
-    - The CSS transition is defined in the relevant section CSS files
-    - _Requirements: 1.4_
-
-- [x] 6. Checkpoint — Verify all JS modules load without errors
-  - Ensure `npm run build` succeeds and `npm run test` passes, ask the user if questions arise.
-
-- [x] 7. Update HTML structure and section styles
-  - [x] 7.1 Update `index.html` hero section for creative redesign
-    - Add `.hero__mesh` background div inside hero section
-    - Add `<canvas>` element for particle system with `aria-hidden="true"`
-    - Add scroll-down indicator chevron SVG after CTA group
-    - Update hero layout classes for dark-theme styling
-    - Add `data-animate` attributes to hero child elements (photo, heading, tagline) with staggered delays
-    - Ensure hero retains `min-height: 100vh`
+- [-] 2. Scroll Engine and Scene Manager
+  - [x] 2.1 Create `src/scripts/utils/raf.js` — requestAnimationFrame scheduler with batched reads/writes
+    - _Requirements: 2.1, 12.4_
+  - [x] 2.2 Create `src/scripts/utils/observer.js` — IntersectionObserver factory with configurable thresholds
+    - _Requirements: 2.3, 2.4_
+  - [x] 2.3 Create `src/scripts/utils/motion.js` — reduced-motion detection utility exporting `prefersReducedMotion()` and media query listener
+    - _Requirements: 12.6, 8.6_
+  - [x] 2.4 Create `src/scripts/core/scroll-engine.js` — ScrollEngine class that registers scenes, computes per-scene progress [0,1], updates `--scene-progress` CSS variable, and dispatches lifecycle events (enter, active, exit)
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5_
+  - [-] 2.5 Create `src/scripts/core/scene-manager.js` — SceneManager that discovers `[data-scene]` elements, instantiates scene modules, and wires them to ScrollEngine lifecycle events
+    - _Requirements: 2.1, 2.3, 2.4_
+  - [ ]* 2.6 Write property test: ScrollEngine progress invariant — for any simulated scroll position, total visible scene progress sums to ~1.0
+    - **Property 1: Scene Progress Invariant**
+    - **Validates: Requirements 2.1, 2.2**
 
-  - [x] 7.2 Update `src/styles/hero.css` for creative hero redesign
-    - Style `.hero` with dark background, full viewport height, relative positioning
-    - Style `.hero__mesh` as absolute-positioned gradient background layer
-    - Style profile photo with circular clip, animated border/glow ring, floating transform
-    - Style name heading with gradient text fill (background-clip: text) at 28px–48px responsive sizing
-    - Style scroll-down indicator with bounce animation (1.5s cycle)
-    - Add staggered entrance animation styles completing within 1500ms
-    - Add `prefers-reduced-motion` overrides
-    - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6_
+- [ ] 3. Cinematic Hero Scene
+  - [~] 3.1 Create `src/styles/scenes/hero.css` — full-viewport hero with layered backgrounds (ambient, particles, grain), kinetic typography setup, luminous photo ring (conic-gradient border animation), staggered entrance keyframes
+    - _Requirements: 1.1, 1.2, 1.6_
+  - [~] 3.2 Create `src/scripts/effects/kinetic-type.js` — text splitting utility that wraps characters/words in spans with `--char-index` CSS variables, triggers visibility via IntersectionObserver
+    - _Requirements: 9.1, 9.3, 9.5_
+  - [~] 3.3 Create `src/scripts/scenes/hero.js` — hero scene module implementing init/enter/active/exit lifecycle, name reveal orchestration, parallax dissolve on scroll exit
+    - _Requirements: 1.1, 1.2, 1.5_
+  - [~] 3.4 Create `src/scripts/effects/particles.js` — Canvas 2D particle system (refactor existing) with configurable density, drift speed, and color matching ambient palette
+    - _Requirements: 1.3, 13.1_
+  - [~] 3.5 Update `index.html` hero section markup to use new `data-scene="hero"`, `data-kinetic="chars"` attributes, and restructured content layout
+    - _Requirements: 1.1, 1.6, 1.7_
+  - [ ]* 3.6 Write property test: Kinetic Typography completeness — after triggering visibility, all character spans have opacity 1 and transform identity
+    - **Property 7: Kinetic Typography Completeness**
+    - **Validates: Requirements 9.1, 9.5**
 
-  - [x] 7.3 Update `index.html` navigation and add scroll progress bar
-    - Add `.scroll-progress` div before the header element
-    - Update nav to support glassmorphism when scrolled (`.nav--scrolled` class toggled by JS)
-    - Add logo glow styles integration
-    - _Requirements: 3.4, 4.2_
+- [ ] 4. Morphing Navigation
+  - [~] 4.1 Create `src/styles/components/nav.css` — styles for dot mode (small circles), pill mode (compact bar with sliding indicator), and expanded mobile overlay with transitions using `clip-path` and `transform`
+    - _Requirements: 3.1, 3.2, 3.5_
+  - [~] 4.2 Create `src/scripts/core/nav.js` — navigation module implementing state machine (HERO_MODE → PILL_MODE → EXPANDED_MODE), morph transitions driven by scroll position, active section indicator
+    - _Requirements: 3.1, 3.2, 3.3, 3.4_
+  - [~] 4.3 Update `index.html` navigation markup to support dot/pill dual structure with `data-nav-state` attribute, including "Resources" link to /technical-interview-preparation-kit/
+    - _Requirements: 3.6, 18.1, 18.4_
+  - [ ]* 4.4 Write property test: Navigation state consistency — if scrollY > heroHeight then nav state is always PILL_MODE
+    - **Property 2: Navigation State Consistency**
+    - **Validates: Requirements 3.1, 3.2**
 
-  - [x] 7.4 Update `src/styles/nav.css` for glassmorphism navigation
-    - Add `.nav--scrolled` state with `backdrop-filter: blur`, semi-transparent background
-    - Add logo text-shadow glow effect on `.nav__logo-noor`
-    - Update mobile menu overlay with glassmorphism backdrop blur ≥10px
-    - _Requirements: 3.4, 10.2, 10.3_
+- [ ] 5. Ambient Atmosphere Effects
+  - [~] 5.1 Create `src/scripts/effects/ambient.js` — ambient layer controller that manages gradient orb elements, updates `--ambient-hue-*` CSS variables on section transitions (800ms ease), responds to scroll velocity for position shifts
+    - _Requirements: 8.1, 8.3, 8.4_
+  - [~] 5.2 Create `src/scripts/effects/grain.js` — procedural grain generator using 256×256 canvas noise rendered to data URL, re-rendered at 10fps, applied as fixed background
+    - _Requirements: 8.2_
+  - [~] 5.3 Create `src/scripts/effects/glow.js` — glow system that attaches `mousemove` listeners to `[data-glow]` elements and updates `--glow-x`/`--glow-y` CSS variables for radial gradient positioning
+    - _Requirements: 8.5, 5.3_
+  - [~] 5.4 Add ambient layer, grain overlay, and glow containers to `index.html` with `aria-hidden="true"`
+    - _Requirements: 8.1, 8.2, 8.5_
+  - [~] 5.5 Implement reduced-motion overrides — when `prefers-reduced-motion: reduce` is active, all ambient animations display static gradients, grain is still, and glow is disabled
+    - _Requirements: 8.6, 12.6_
 
-  - [x] 7.5 Update `index.html` highlights section with creative markup
-    - Add `data-animate-stagger="100"` to highlights grid container
-    - Add `data-animate="fade-up"` to each card
-    - Add `.tilt-card` class to highlight cards
-    - Add glassmorphism classes to cards
-    - Adjust grid to feature asymmetric spans (at least one card spans differently) at ≥768px
-    - _Requirements: 3.2, 4.4, 6.1_
+- [~] 6. Checkpoint — Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
 
-  - [x] 7.6 Update `src/styles/highlights.css` for glassmorphism and creative layout
-    - Apply glass-card styling (translucent background, border, blur)
-    - Create asymmetric grid layout at ≥768px (first card spans 2 columns)
-    - Add hover states (vertical lift + elevated box-shadow within 200ms)
-    - Style card icons with accent glow
-    - _Requirements: 3.2, 4.3, 6.1, 6.4_
+- [ ] 7. Magnetic Cursor
+  - [~] 7.1 Create `src/styles/components/cursor.css` — custom cursor styles with outer ring + inner dot, shape morphing states (default, text bar, action expanded with label, click compressed), smooth transitions
+    - _Requirements: 7.1, 7.3, 7.4, 7.5_
+  - [~] 7.2 Create `src/scripts/effects/cursor.js` — MagneticCursor class with lerp-smoothed position (0.15 ring, 0.3 dot), proximity detection for `[data-magnetic]` elements (80px threshold), shape state management, touch device detection and auto-disable
+    - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6_
+  - [~] 7.3 Add cursor DOM elements to `index.html` and mark interactive elements with `data-magnetic` attribute
+    - _Requirements: 7.1, 7.2_
+  - [ ]* 7.4 Write property test: Cursor cleanup — after destroy(), zero event listeners remain on document/window
+    - **Property 4: Cursor Cleanup**
+    - **Validates: Requirements 7.6**
 
-  - [x] 7.7 Update `index.html` skills section with creative markup
-    - Add `data-animate-stagger="200"` to skills container
-    - Add `data-animate="fade-up"` to each category
-    - _Requirements: 8.3_
+- [ ] 8. Story Timeline Scene
+  - [~] 8.1 Create `src/styles/scenes/timeline.css` — 2-column alternating grid layout with vertical track line, milestone nodes, expanded state styles, responsive single-column below 768px, dimming effect for non-active milestones
+    - _Requirements: 4.1, 4.4, 4.5_
+  - [~] 8.2 Create `src/scripts/scenes/timeline.js` — timeline scene module with scroll-driven progress line fill, staggered milestone entrance, hover/tap expand interaction, viewport-center emphasis (scale + opacity)
+    - _Requirements: 4.2, 4.3, 4.4, 4.6_
+  - [~] 8.3 Add Story Timeline section to `index.html` with career milestone data from noor-data.md, using `data-scene="timeline"` and `data-year` attributes
+    - _Requirements: 4.1, 4.2_
+  - [ ]* 8.4 Write property test: Timeline milestone ordering — milestones in DOM maintain chronological order regardless of viewport width
+    - **Property 8: Timeline Milestone Ordering**
+    - **Validates: Requirements 4.1, 4.5**
 
-  - [x] 7.8 Update `src/styles/skills.css` for creative skills redesign
-    - Style skill pills with gradient backgrounds (2+ color stops) and box-shadow glow on hover
-    - Scale pills 1.05–1.1x on hover with shadow spread increase
-    - Style category labels as accent-colored tags (border-radius ≥4px, distinct bg per category, font-weight ≥600)
-    - Ensure flex-wrap layout without horizontal scroll on mobile
-    - Add `prefers-reduced-motion` overrides (no scale, preserve visual effects)
-    - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6_
+- [ ] 9. Spotlight Project Cards
+  - [~] 9.1 Create `src/styles/scenes/projects.css` — staggered grid layout with varying card sizes, hover elevation with increased shadow, slide-up description reveal, cursor-following glow integration
+    - _Requirements: 5.1, 5.2, 5.6_
+  - [~] 9.2 Create `src/scripts/scenes/projects.js` — project scene module with scroll entrance animations (opacity + rotation from alternating directions), glow effect initialization per card
+    - _Requirements: 5.3, 5.5_
+  - [~] 9.3 Update project section in `index.html` with `data-scene="projects"` and `data-glow` attributes on cards, add project descriptions for hover reveal
+    - _Requirements: 5.1, 5.4, 5.6_
 
-  - [x] 7.9 Update `index.html` connect section with creative markup
-    - Add `data-animate-stagger="80"` to link cards grid
-    - Add `data-animate="fade-up"` to cards
-    - Add `.tilt-card` class to link cards
-    - Add glassmorphism classes
-    - Add `data-magnetic` to CTA button
-    - _Requirements: 6.2, 5.4_
+- [ ] 10. Testimonial Theater Scene
+  - [~] 10.1 Create `src/styles/scenes/theater.css` — full-width testimonial layout with large typography, scroll-snap, word-by-word kinetic reveal, gradient sweep on `<mark>` elements, crossfade transitions between quotes
+    - _Requirements: 6.1, 6.2, 6.5_
+  - [~] 10.2 Create `src/scripts/scenes/theater.js` — theater scene module implementing scroll-snapped testimonial navigation, word-by-word reveal via kinetic-type utility, ambient color shift dispatch on active testimonial change, swipe gesture support on touch
+    - _Requirements: 6.2, 6.3, 6.5, 6.6_
+  - [~] 10.3 Update testimonials section in `index.html` with `data-scene="theater"` and kinetic typography attributes on quote text
+    - _Requirements: 6.1, 6.4_
 
-  - [x] 7.10 Update `src/styles/links.css` for glassmorphism connect section
-    - Apply glass-card styling to link cards
-    - Add border gradient activation on hover (transition ≤200ms)
-    - Style CTA banner with glassmorphism
-    - _Requirements: 6.2, 6.4_
+- [ ] 11. Skills Section Redesign
+  - [~] 11.1 Create `src/styles/scenes/skills.css` — redesigned skills section with category grouping, animated pill entrance on scroll, subtle glow on hover, visual hierarchy through size/color variation
+    - _Requirements: 13.1, 14.3_
+  - [~] 11.2 Create `src/scripts/scenes/skills.js` — skills scene module with staggered entrance animation and scroll-triggered reveals
+    - _Requirements: 2.3_
 
-  - [x] 7.11 Update `index.html` projects section with creative markup
-    - Add `data-animate-stagger="120"` to projects grid
-    - Add `data-animate="fade-up"` to project cards
-    - Add `.tilt-card` class to project cards
-    - Add glassmorphism classes
-    - Create asymmetric grid at ≥768px
-    - _Requirements: 3.2, 6.3_
+- [ ] 12. Highlights Impact Scene
+  - [~] 12.1 Create `src/styles/scenes/highlights.css` — asymmetric CSS grid layout (3-col desktop, 2-col tablet, 1-col mobile), glassmorphism cards with glow-on-hover, staggered entrance from alternating directions, accent color category system
+    - _Requirements: 15.1, 15.3, 15.4, 15.7_
+  - [~] 12.2 Create `src/scripts/scenes/highlights.js` — highlights scene module implementing staggered card entrance animations (odd from left, even from right), glow system integration per card, scroll-triggered reveals
+    - _Requirements: 15.2, 15.4, 15.6_
+  - [~] 12.3 Update `index.html` highlights section markup with `data-scene="highlights"`, `data-glow` attributes on cards, and `data-animate-dir` attributes for alternating entrance direction
+    - _Requirements: 15.1, 15.5_
 
-  - [x] 7.12 Update `src/styles/projects.css` for glassmorphism projects
-    - Apply glass-card styling
-    - Replace solid left-border with accent glow (80% opacity)
-    - Add asymmetric grid layout at ≥768px
-    - _Requirements: 3.2, 6.3, 6.4_
+- [~] 13. Checkpoint — Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
 
-  - [x] 7.13 Update `src/styles/footer.css` for dark theme footer redesign
-    - Apply dark theme background with gradient border-top (border-image)
-    - Add logo text-shadow glow
-    - Style beta badge with glassmorphism (glass-bg, glass-border, backdrop-filter)
-    - _Requirements: 1.1_
+- [ ] 14. Command Palette and Easter Eggs
+  - [~] 14.1 Create `src/styles/components/command-palette.css` — centered overlay using `<dialog>`, backdrop blur, search input, command list with keyboard highlight, enter/exit animations
+    - _Requirements: 10.1_
+  - [~] 14.2 Create `src/scripts/ui/command-palette.js` — CommandPalette class with Cmd+K/Ctrl+K trigger, command registry, substring filtering, arrow key navigation, Enter to execute, Escape to close, focus trap management
+    - _Requirements: 10.1, 10.2, 10.3, 10.6_
+  - [~] 14.3 Create `src/scripts/ui/easter-eggs.js` — Konami code listener (confetti burst) and logo multi-click handler (Matrix rain effect for 3 seconds)
+    - _Requirements: 10.4, 10.5_
+  - [~] 14.4 Add `<dialog>` element for Command Palette to `index.html`
+    - _Requirements: 10.1_
+  - [~] 14.5 Register "Resources" command in Command Palette that navigates to /technical-interview-preparation-kit/
+    - _Requirements: 18.2_
+  - [ ]* 14.6 Write property test: Command Palette focus trap — while open, Tab/Shift+Tab cycles only within dialog
+    - **Property 5: Command Palette Focus Trap**
+    - **Validates: Requirements 10.1, 10.6**
 
-  - [x] 7.14 Add section dividers to `index.html`
-    - Insert `<hr class="section-divider" aria-hidden="true">` between each main section
-    - _Requirements: 3.4_
+- [ ] 15. Sound Design Toggle
+  - [~] 15.1 Create `src/scripts/ui/sound.js` — SoundToggle class using Web Audio API, AudioContext + GainNode for volume control, 500ms fade in/out, localStorage persistence, autoplay-block detection
+    - _Requirements: 11.3, 11.4, 11.5, 11.6_
+  - [~] 15.2 Add sound toggle button to `index.html` with `aria-label` and `aria-pressed` attributes, fixed positioning
+    - _Requirements: 11.1, 11.2_
+  - [~] 15.3 Create or source a subtle ambient audio loop file (~30s) and place in `src/assets/audio/`
+    - _Requirements: 11.3_
+  - [ ]* 15.4 Write property test: Sound state round-trip — localStorage persistence matches toggled state after simulated reload
+    - **Property 6: Sound State Round-Trip**
+    - **Validates: Requirements 11.5**
 
-  - [x] 7.15 Add `src/styles/reset.css` update for dark-mode body defaults
-    - Set `body` background to `var(--color-bg)`, color to `var(--color-text)`
-    - Ensure smooth scrolling behavior
-    - _Requirements: 1.1_
+- [ ] 16. Connect Section and Cinematic Footer
+  - [~] 16.1 Create `src/styles/scenes/connect.css` — connect/links section with bold CTA banner, social link cards with glow effects, cinematic ambient background matching overall system
+    - _Requirements: 14.3, 8.5_
+  - [~] 16.2 Update connect section in `index.html` with `data-scene="connect"` and glow/magnetic attributes, preserving ALL existing social links (GitHub, Twitter/X, StackOverflow, HackerRank, YouTube, Email, Resume)
+    - _Requirements: 16.3_
+  - [~] 16.3 Create footer styles with fade-up entrance animation, back-to-top button, logo treatment, "fresh out of localhost" badge, and dynamic year display
+    - _Requirements: 17.1, 17.2, 17.3, 17.4, 17.5_
+  - [~] 16.4 Update footer in `index.html` with `data-scene="footer"` attribute, back-to-top button with smooth scroll to hero
+    - _Requirements: 17.4, 17.5, 17.6_
 
-- [x] 8. Wire JavaScript modules into main.js and add navigation glassmorphism toggle
-  - [~] 8.1 Update `src/scripts/main.js` to import and initialize all new modules
-    - Import and call: `initAnimationEngine`, `initCustomCursor`, `initParticleSystem`, `initScrollProgress`, `initMagneticElements`, `initTiltCards`
-    - Pass hero canvas element to `initParticleSystem`
-    - Defer animation initialization after first paint (use `requestAnimationFrame` or `requestIdleCallback`)
-    - Retain existing `initNavigation`, `initScrollSpy`, year-setting logic
-    - _Requirements: 9.4, 9.5_
+- [ ] 17. SEO, Metadata, and Analytics
+  - [~] 17.1 Preserve all Open Graph meta tags (og:title, og:description, og:image, og:url) in the redesigned `index.html`
+    - _Requirements: 16.1_
+  - [~] 17.2 Preserve Twitter Card meta tags (summary_large_image) in the redesigned `index.html`
+    - _Requirements: 16.2_
+  - [~] 17.3 Preserve JSON-LD Person schema markup with name, URL, jobTitle, and sameAs social links
+    - _Requirements: 16.3_
+  - [~] 17.4 Preserve Google Analytics tracking script (gtag.js with measurement ID G-XHXB3G7XDR)
+    - _Requirements: 16.4_
+  - [~] 17.5 Maintain asset preload links for LCP image and critical fonts
+    - _Requirements: 16.5, 12.8_
 
-  - [~] 8.2 Update `src/scripts/navigation.js` to add glassmorphism scroll toggle
-    - On scroll (passive listener): add/remove `.nav--scrolled` class based on scroll position (e.g., > 100px)
-    - Ensure mobile menu overlay applies glassmorphism backdrop
-    - _Requirements: 3.4, 10.2, 10.3_
+- [ ] 18. App Entry Point and Integration
+  - [~] 18.1 Create `src/scripts/core/app.js` — new main entry point that initializes ScrollEngine, SceneManager, navigation, ambient effects, cursor, and lazy-loads below-fold scene modules via dynamic import
+    - _Requirements: 12.8, 2.1_
+  - [~] 18.2 Update `index.html` script entry to point to new `src/scripts/core/app.js`
+    - _Requirements: 2.1_
+  - [~] 18.3 Remove old script files that are fully replaced by new modules (animation-engine.js, animations.js, custom-cursor.js, etc.) after confirming feature parity
+    - _Requirements: 2.1_
 
-- [x] 9. Responsive and reduced-motion final pass
-  - [x] 9.1 Add responsive overrides for mobile (<768px)
-    - Disable parallax in CSS/JS for mobile
-    - Simplify hero background (gradient only, no particles)
-    - Ensure single-column grid reflow preserving creative styles (gradients, glows, borders)
-    - Remove transform-based entrance animations; limit to opacity and color transitions
-    - Verify all touch targets ≥44x44px
-    - _Requirements: 10.1, 10.4, 10.5, 10.6, 3.5_
+- [~] 19. Checkpoint — Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
 
-  - [x] 9.2 Verify and finalize reduced-motion behavior across all modules
-    - Confirm `prefers-reduced-motion: reduce` disables: gradient mesh animation, entrance animations, parallax, cursor, magnetic, particle system, tilt, scroll indicator bounce
-    - Confirm hover interactions (translateY lift, box-shadow) remain active (user-initiated)
-    - Confirm all elements render in final visible state without delays
-    - _Requirements: 1.6, 2.6, 4.6, 5.5, 7.5, 8.6, 9.6_
+- [ ] 20. Responsive Adaptation
+  - [~] 20.1 Add responsive breakpoint rules to all scene CSS files — full effects at 1024px+, 50% parallax reduction at 768-1023px, no parallax + touch equivalents below 768px
+    - _Requirements: 13.1, 13.2, 13.3_
+  - [~] 20.2 Add fluid typography via CSS `clamp()` for all headings and body text (320px–1440px range)
+    - _Requirements: 13.4_
+  - [~] 20.3 Test and fix mobile navigation expanded overlay, touch swipe in theater, timeline single-column collapse
+    - _Requirements: 13.5, 13.6, 3.5_
 
-  - [x] 9.3 Ensure no-JS graceful degradation
-    - Verify all text content visible without JavaScript
-    - Verify navigation links functional without JS
-    - Verify images render with alt text
-    - Add CSS-only defaults: no `.animate-hidden` applied without JS, native cursor preserved
-    - _Requirements: 9.7_
+- [ ] 21. Performance Optimization
+  - [~] 21.1 Implement critical CSS inlining for above-fold hero styles in `index.html`
+    - _Requirements: 12.1, 12.2_
+  - [~] 21.2 Add `will-change` properties to animated elements and ensure compositor-only animations (transform, opacity)
+    - _Requirements: 12.4, 9.3_
+  - [~] 21.3 Implement dynamic imports for non-critical modules (easter-eggs, command-palette, sound) — load on idle or user interaction
+    - _Requirements: 12.8_
+  - [~] 21.4 Audit and verify Lighthouse Performance score ≥ 90, LCP ≤ 2.5s, CLS < 0.1
+    - _Requirements: 12.1, 12.2, 12.3_
 
-  - [x] 9.4 Update OG image for dark theme
-    - Regenerate or replace `public/og-image.png` to match the new dark theme with neon accents
-    - Ensure the image dimensions stay at recommended OG size (1200×630)
-    - Verify meta tags in `index.html` still reference the correct path
-    - _Requirements: 1.1_
+- [ ] 22. Final Accessibility Audit
+  - [~] 22.1 Verify skip-navigation link, logical heading hierarchy, and landmark regions
+    - _Requirements: 12.7_
+  - [~] 22.2 Verify all interactive elements have 44×44px touch targets and visible focus indicators
+    - _Requirements: 12.5, 3.6_
+  - [~] 22.3 Verify `prefers-reduced-motion` completely disables all continuous animations while preserving content visibility
+    - _Requirements: 12.6, 8.6, 9.4_
+  - [~] 22.4 Verify color contrast meets WCAG AA (4.5:1) for all text against dark backgrounds
+    - _Requirements: 12.5, 14.4_
+  - [~] 22.5 Run axe-core audit and fix any remaining violations
+    - _Requirements: 12.5_
 
-  - [x] 9.5 Add `data-section-accent` and `data-parallax` attributes to HTML sections
-    - Add `data-section-accent="primary|secondary|tertiary|quaternary"` to each section
-    - Add `data-parallax="0.3"` (or similar factor) to decorative background elements
-    - Add `.section--revealed` CSS transition rules (border-glow, 300–600ms) to section CSS files
-    - _Requirements: 1.4, 4.5_
-
-- [~] 10. Checkpoint — Full build and visual verification
-  - Ensure `npm run build` succeeds, `npm run test` passes, ask the user if questions arise.
-
-- [ ] 11. Write E2E and integration tests
-  - [~] 11.0 Update existing Playwright tests for dark theme redesign
-    - Update `tests/e2e/accessibility.spec.js` — adjust expected colors and contrast for dark theme
-    - Update `tests/e2e/animations.spec.js` — update selectors and expected animation behavior for new animation engine
-    - Update `tests/e2e/navigation.spec.js` — add glassmorphism scroll state checks, update menu overlay expectations
-    - Update `tests/e2e/responsive.spec.js` — update expected layouts for asymmetric grids, dark backgrounds
-    - Update `tests/unit/dom-content.test.js` — update expected DOM structure for new elements (canvas, scroll-progress, dividers)
-    - _Requirements: 9.1, 9.2_
-
-  - [ ]* 11.1 Write E2E test for responsive no-overflow (Playwright)
-    - **Property 8: No horizontal overflow across viewport range**
-    - Test at viewports 320px, 375px, 768px, 1024px, 1440px, 2560px
-    - Verify `document.body.scrollWidth <= viewport.clientWidth` at each size
-    - **Validates: Requirements 10.1**
-
-  - [ ]* 11.2 Write E2E test for touch target sizes on mobile (Playwright)
-    - **Property 9: Touch targets meet minimum size on mobile**
-    - Set viewport to 375px
-    - Query all `a, button, [role="button"]` elements
-    - Verify each has `offsetWidth ≥ 44` and `offsetHeight ≥ 44`
-    - **Validates: Requirements 10.5**
-
-  - [ ]* 11.3 Write E2E test for reduced-motion behavior (Playwright)
-    - Emulate `prefers-reduced-motion: reduce`
-    - Verify no CSS animations running (animation-play-state: paused or none)
-    - Verify all `data-animate` elements are visible without `.animate-hidden`
-    - Verify cursor element not present
-    - _Requirements: 1.6, 2.6, 4.6, 5.5, 9.6_
-
-  - [ ]* 11.4 Write E2E test for scroll progress bar (Playwright)
-    - Scroll to various positions (0%, 25%, 50%, 75%, 100%)
-    - Verify progress bar width matches expected percentage (±2% tolerance)
-    - _Requirements: 4.2_
-
-  - [ ]* 11.5 Write E2E test for navigation glassmorphism and hamburger menu (Playwright)
-    - Scroll past hero; verify `.nav--scrolled` class and backdrop-filter applied
-    - At mobile viewport: verify hamburger reveals full-viewport overlay with glassmorphism
-    - _Requirements: 3.4, 10.2, 10.3_
-
-  - [ ]* 11.6 Update existing accessibility E2E test to verify contrast and scores
-    - Run axe-core accessibility audit
-    - Verify no critical or serious violations
-    - Verify color contrast ratios meet WCAG 4.5:1 for body text, 3:1 for large text
-    - _Requirements: 1.5, 6.5, 9.2_
-
-  - [ ]* 11.7 Write property test for parallax bound
-    - **Property 4: Parallax translation bounded to 50% of scroll speed**
-    - Generate random scroll deltas with fast-check
-    - Verify parallax offset ≤ 0.5 × delta
-    - **Validates: Requirements 4.5**
-
-  - [ ]* 11.8 Write property test for WCAG contrast
-    - **Property 1: Text contrast meets WCAG thresholds**
-    - Generate random foreground/background color pairs from token palette with fast-check
-    - Compute relative luminance and contrast ratio
-    - Verify ≥ 4.5:1 for normal text, ≥ 3:1 for large text
-    - **Validates: Requirements 1.5, 6.5**
-
-- [x] 12. Final checkpoint — All tests green and build verified
-  - Ensure all tests pass (`npm run test` and `npm run test:e2e`), ask the user if questions arise.
+- [~] 23. Final checkpoint — Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
 
 ## Notes
 
-- Tasks marked with `*` are optional and can be skipped for faster MVP
+- Tasks marked with `*` are optional property-based test tasks and can be skipped for faster MVP
 - Each task references specific requirements for traceability
-- Checkpoints ensure incremental validation
-- Property tests validate universal correctness properties from the design document
-- Unit tests validate specific examples and edge cases
-- The project uses vanilla JavaScript (ES modules) with Vite for bundling — no framework
-- Existing BEM naming convention is preserved throughout
-- All scroll listeners must use `{ passive: true }` for performance
-- Animation rendering must be offloaded to compositor thread (transforms + opacity only)
+- Checkpoints ensure incremental validation at logical breakpoints
+- Property tests validate universal correctness properties defined in the design document
+- The implementation uses vanilla JS ES modules with Vite — no framework migration
+- All ambient/decorative elements must include `aria-hidden="true"`
+- Reduced-motion support must be verified for every animation-related module
+- Old script files should only be removed after confirming feature parity in Task 18.3
 
 ## Task Dependency Graph
 
 ```json
 {
   "waves": [
-    { "id": 0, "tasks": ["1.1", "1.2", "1.3", "1.4", "1.5"] },
-    { "id": 1, "tasks": ["1.6", "2.1"] },
-    { "id": 2, "tasks": ["2.2", "2.3", "2.4", "2.5", "2.6", "2.7", "2.8"] },
-    { "id": 3, "tasks": ["2.9", "7.15"] },
-    { "id": 4, "tasks": ["3"] },
-    { "id": 5, "tasks": ["4.1", "4.3", "4.5"] },
-    { "id": 6, "tasks": ["4.2", "4.4", "4.6", "4.7", "5.1", "5.3", "5.5", "5.6", "5.7"] },
-    { "id": 7, "tasks": ["5.2", "5.4"] },
-    { "id": 8, "tasks": ["6"] },
-    { "id": 9, "tasks": ["7.1", "7.2", "7.3", "7.4", "7.5", "7.6", "7.7", "7.8", "7.9", "7.10", "7.11", "7.12", "7.13", "7.14"] },
-    { "id": 10, "tasks": ["8.1", "8.2"] },
-    { "id": 11, "tasks": ["9.1", "9.2", "9.3", "9.4", "9.5"] },
-    { "id": 12, "tasks": ["10"] },
-    { "id": 13, "tasks": ["11.0", "11.1", "11.2", "11.3", "11.4", "11.5", "11.6", "11.7", "11.8"] },
-    { "id": 14, "tasks": ["12"] }
+    { "id": 0, "tasks": ["1.1", "1.7"] },
+    { "id": 1, "tasks": ["1.2", "1.3", "1.4", "1.5", "1.6"] },
+    { "id": 2, "tasks": ["2.1", "2.2", "2.3"] },
+    { "id": 3, "tasks": ["2.4", "2.5"] },
+    { "id": 4, "tasks": ["2.6", "3.1", "3.2"] },
+    { "id": 5, "tasks": ["3.3", "3.4", "4.1"] },
+    { "id": 6, "tasks": ["3.5", "3.6", "4.2"] },
+    { "id": 7, "tasks": ["4.3", "4.4", "5.1", "5.2", "5.3"] },
+    { "id": 8, "tasks": ["5.4", "5.5"] },
+    { "id": 9, "tasks": ["7.1", "7.2"] },
+    { "id": 10, "tasks": ["7.3", "7.4", "8.1"] },
+    { "id": 11, "tasks": ["8.2", "8.3", "9.1"] },
+    { "id": 12, "tasks": ["8.4", "9.2", "9.3", "10.1"] },
+    { "id": 13, "tasks": ["10.2", "10.3", "11.1"] },
+    { "id": 14, "tasks": ["11.2", "12.1"] },
+    { "id": 15, "tasks": ["12.2", "12.3"] },
+    { "id": 16, "tasks": ["14.1", "14.2", "14.3"] },
+    { "id": 17, "tasks": ["14.4", "14.5", "14.6", "15.1"] },
+    { "id": 18, "tasks": ["15.2", "15.3", "15.4"] },
+    { "id": 19, "tasks": ["16.1", "16.2", "16.3"] },
+    { "id": 20, "tasks": ["16.4", "17.1", "17.2", "17.3", "17.4", "17.5"] },
+    { "id": 21, "tasks": ["18.1"] },
+    { "id": 22, "tasks": ["18.2", "18.3"] },
+    { "id": 23, "tasks": ["20.1", "20.2"] },
+    { "id": 24, "tasks": ["20.3"] },
+    { "id": 25, "tasks": ["21.1", "21.2", "21.3"] },
+    { "id": 26, "tasks": ["21.4"] },
+    { "id": 27, "tasks": ["22.1", "22.2", "22.3", "22.4"] },
+    { "id": 28, "tasks": ["22.5"] }
   ]
 }
 ```

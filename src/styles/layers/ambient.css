@@ -1,0 +1,145 @@
+/* Ambient Layer — Gradient Mesh Orbs
+ * Continuous animated gradient mesh across the page background.
+ * Shifts hue over a 20-second cycle (--duration-ambient-cycle).
+ * Orbs drift with organic keyframe animations and respond to scroll via JS-set custom properties.
+ */
+
+/* === Container === */
+.ambient-layer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: var(--depth-layer-bg);
+  overflow: hidden;
+}
+
+/* === Orb Base === */
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  width: var(--ambient-orb-size);
+  height: var(--ambient-orb-size);
+  filter: blur(var(--ambient-orb-blur));
+  opacity: var(--ambient-orb-opacity);
+  will-change: transform, opacity;
+  translate: var(--ambient-scroll-x, 0px) var(--ambient-scroll-y, 0px);
+}
+
+/* === Orb Variants === */
+
+/* Orb 1 — top-left, electric violet */
+.ambient-orb--1 {
+  top: -10%;
+  left: -5%;
+  width: calc(var(--ambient-orb-size) * 1.2);
+  height: calc(var(--ambient-orb-size) * 1.2);
+  background: radial-gradient(
+    circle,
+    hsl(var(--ambient-hue-1), 80%, 55%) 0%,
+    hsl(var(--ambient-hue-1), 70%, 35%) 50%,
+    transparent 70%
+  );
+  animation: ambient-drift-1 var(--duration-ambient-cycle) ease-in-out infinite alternate;
+}
+
+/* Orb 2 — bottom-right, cyan */
+.ambient-orb--2 {
+  bottom: -15%;
+  right: -10%;
+  width: calc(var(--ambient-orb-size) * 1);
+  height: calc(var(--ambient-orb-size) * 1);
+  background: radial-gradient(
+    circle,
+    hsl(var(--ambient-hue-2), 75%, 50%) 0%,
+    hsl(var(--ambient-hue-2), 65%, 30%) 50%,
+    transparent 70%
+  );
+  animation: ambient-drift-2 calc(var(--duration-ambient-cycle) * 1.3) ease-in-out infinite alternate;
+}
+
+/* Orb 3 — center-top, magenta */
+.ambient-orb--3 {
+  top: 30%;
+  right: 20%;
+  width: calc(var(--ambient-orb-size) * 0.8);
+  height: calc(var(--ambient-orb-size) * 0.8);
+  background: radial-gradient(
+    circle,
+    hsl(var(--ambient-hue-3), 70%, 50%) 0%,
+    hsl(var(--ambient-hue-3), 60%, 30%) 50%,
+    transparent 70%
+  );
+  animation: ambient-drift-3 calc(var(--duration-ambient-cycle) * 1.6) ease-in-out infinite alternate;
+}
+
+/* === Keyframe Animations — Organic Drift === */
+
+@keyframes ambient-drift-1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(5%, 8%) scale(1.05);
+  }
+  50% {
+    transform: translate(-3%, 12%) scale(0.98);
+  }
+  75% {
+    transform: translate(8%, 4%) scale(1.02);
+  }
+  100% {
+    transform: translate(3%, -5%) scale(1.04);
+  }
+}
+
+@keyframes ambient-drift-2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-6%, -4%) scale(1.03);
+  }
+  50% {
+    transform: translate(4%, -10%) scale(0.96);
+  }
+  75% {
+    transform: translate(-8%, 3%) scale(1.06);
+  }
+  100% {
+    transform: translate(-4%, 7%) scale(1);
+  }
+}
+
+@keyframes ambient-drift-3 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(7%, -6%) scale(0.97);
+  }
+  50% {
+    transform: translate(-5%, -3%) scale(1.04);
+  }
+  75% {
+    transform: translate(3%, 9%) scale(1.01);
+  }
+  100% {
+    transform: translate(-6%, 5%) scale(0.98);
+  }
+}
+
+/* === Scroll-Responsive Shift (driven by JS setting --ambient-scroll-x/y) === */
+.ambient-layer[data-scroll-active] .ambient-orb {
+  transition: translate var(--duration-ambient-shift) var(--ease-smooth);
+}
+
+/* === Reduced Motion === */
+@media (prefers-reduced-motion: reduce) {
+  .ambient-orb {
+    animation: none !important;
+    transition: none !important;
+    translate: 0 0 !important;
+  }
+}
