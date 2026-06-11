@@ -50,6 +50,22 @@
 - Arabic (Native)
 - English (Professional Working)
 
+## LinkedIn Recommendations
+
+### Aamer Abbas
+- **LinkedIn:** https://www.linkedin.com/in/abbasaamer/
+- **Title:** Software Engineering Management
+- **Relationship:** Former Manager at Amazon
+- **Date:** December 2021
+- **Quote:** "Noor was part of my team for about a year. I was impressed with his ability to learn quickly and deliver under tight deadlines. He always came across as an organized professional and I could always rely on him to give a clear picture of his progress on a weekly basis. I'd happily recommend him as a motivated software engineer."
+
+### Nagarajan Raju
+- **LinkedIn:** https://www.linkedin.com/in/nagarajanraju/
+- **Title:** Engineering Leader at Amazon | Building AI Solutions | Bar Raiser | ex-Microsoft & Oracle
+- **Relationship:** Former Manager at Amazon (directly managed Noor)
+- **Date:** November 2020
+- **Quote:** "Noor is a rising star. He was less than a month old in the company when he took ownership of a time sensitive, business critical emerging market solution implementation for Amazon MENA customers. The solution was not only well defined but also involved making changes in multiple platform teams code base across Amazon. With little supervision and guidance he was able to work with different code bases and single handedly code completed, drove code reviews with remote teams and successfully executed the deployment on time. His passion for continuous learning and sharing knowledge are commendable. He is an asset to any team and will have him in the team anytime, anywhere."
+
 ## Notable Traits
 - Built one of the earliest real-production AI use cases at Expedia
 - Consistently operates beyond level

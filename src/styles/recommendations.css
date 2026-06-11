@@ -1,0 +1,295 @@
+/* Recommendations Section — Bold, Creative, Big Typography */
+.recommendations {
+  padding: var(--space-2xl) var(--space-md);
+  background: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.recommendations__container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Hero-sized heading */
+.recommendations__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.75rem, 7vw, 4.5rem);
+  font-weight: var(--fw-bold);
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+/* Grid — single column, stacked horizontally (full width cards) */
+.recommendations__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+/* Card — generous space, rounded, premium glass */
+.recommendations__card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 2rem;
+  padding: clamp(2rem, 5vw, 3rem);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 300ms var(--ease-out),
+    box-shadow 300ms var(--ease-out),
+    background 300ms var(--ease-out),
+    border-color 300ms var(--ease-out);
+}
+
+/* Gradient accent bar at top of card */
+.recommendations__card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-tertiary), var(--accent-primary), var(--accent-secondary));
+  opacity: 0.7;
+  transition: opacity 300ms var(--ease-out);
+}
+
+/* Large decorative quote mark */
+.recommendations__card::after {
+  content: "\201C";
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-family: var(--font-heading);
+  font-size: clamp(5rem, 10vw, 8rem);
+  line-height: 1;
+  color: var(--accent-tertiary);
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+/* Card hover */
+.recommendations__card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.4),
+    0 0 24px hsla(330, 80%, 60%, 0.06),
+    0 0 80px hsla(265, 90%, 65%, 0.03);
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+}
+
+.recommendations__card:hover::before {
+  opacity: 1;
+}
+
+/* Quote — big, clean, readable */
+.recommendations__quote {
+  margin: 0 0 var(--space-lg);
+  padding: 0;
+  border: none;
+}
+
+.recommendations__quote p {
+  font-family: var(--font-primary);
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  line-height: 1.75;
+  color: var(--color-text);
+  font-style: normal;
+  font-weight: var(--fw-regular);
+  letter-spacing: 0.005em;
+}
+
+/* Attribution — name + context + badge */
+.recommendations__attribution {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Recommender block — stacks on mobile, row on desktop */
+.recommendations__recommender {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Big bold name */
+.recommendations__name {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+/* Professional title */
+.recommendations__title {
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.01em;
+}
+
+/* Context line — "My manager at Amazon · 2021" */
+.recommendations__context {
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.01em;
+}
+
+/* LinkedIn badge — pill-shaped, glass */
+.recommendations__linkedin-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: var(--color-text-secondary);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  flex-shrink: 0;
+  transition:
+    color 200ms var(--ease-out),
+    background 200ms var(--ease-out),
+    border-color 200ms var(--ease-out),
+    transform 200ms var(--ease-out),
+    box-shadow 200ms var(--ease-out);
+}
+
+.recommendations__linkedin-badge svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.recommendations__linkedin-badge:hover {
+  color: #fff;
+  background: hsla(330, 80%, 60%, 0.15);
+  border-color: hsla(330, 80%, 60%, 0.4);
+  transform: scale(1.1);
+  box-shadow: 0 0 16px hsla(330, 80%, 60%, 0.15);
+}
+
+.recommendations__linkedin-badge:focus-visible {
+  outline: 2px solid var(--accent-tertiary);
+  outline-offset: 3px;
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .recommendations__card {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--glass-border);
+  }
+}
+
+/* === Quote Highlights — clean colored underlines, no glow === */
+.recommendations__highlight {
+  background: transparent;
+  color: inherit;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  font-weight: var(--fw-semibold);
+  position: relative;
+  text-shadow: none;
+}
+
+/* Primary highlight — violet underline */
+.recommendations__highlight--primary {
+  color: hsl(265, 80%, 82%);
+  border-bottom: 2px solid hsla(265, 90%, 65%, 0.5);
+}
+
+/* Secondary highlight — cyan underline */
+.recommendations__highlight--secondary {
+  color: hsl(195, 75%, 76%);
+  border-bottom: 2px solid hsla(195, 85%, 55%, 0.5);
+}
+
+/* Tertiary highlight — magenta underline */
+.recommendations__highlight--tertiary {
+  color: hsl(330, 70%, 78%);
+  border-bottom: 2px solid hsla(330, 80%, 60%, 0.5);
+}
+
+/* No hover glow effects — keep it clean */
+.recommendations__card:hover .recommendations__highlight--primary,
+.recommendations__card:hover .recommendations__highlight--secondary,
+.recommendations__card:hover .recommendations__highlight--tertiary {
+  text-shadow: none;
+  background: transparent;
+}
+
+/* No column switch — cards stay full-width horizontal at all sizes */
+@media (min-width: 768px) {
+  .recommendations__grid {
+    gap: var(--space-xl);
+  }
+
+  /* On desktop, put metadata inline next to name */
+  .recommendations__recommender {
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .recommendations__name {
+    margin-right: var(--space-xs);
+  }
+
+  .recommendations__title,
+  .recommendations__context {
+    position: relative;
+    padding-left: var(--space-sm);
+  }
+
+  .recommendations__title::before,
+  .recommendations__context::before {
+    content: "·";
+    position: absolute;
+    left: 0;
+    color: var(--color-text-muted);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .recommendations__card {
+    transition: none;
+  }
+
+  .recommendations__card:hover {
+    transform: none;
+  }
+
+  .recommendations__linkedin-badge {
+    transition: none;
+  }
+
+  .recommendations__linkedin-badge:hover {
+    transform: none;
+  }
+}
+
+/* Section Accent Reveal — border-glow transition on scroll intersection */
+.recommendations.section--revealed {
+  box-shadow: inset 3px 0 0 0 var(--accent-tertiary),
+              0 0 16px -4px color-mix(in srgb, var(--accent-tertiary) 25%, transparent);
+  transition: box-shadow 400ms ease-out;
+}

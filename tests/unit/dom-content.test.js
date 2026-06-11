@@ -199,7 +199,7 @@ describe('Navigation', () => {
 
 describe('Footer', () => {
   it('has footer with branding and year placeholder', () => {
-    const footer = document.querySelector('footer');
+    const footer = document.querySelector('footer.footer');
     expect(footer).not.toBeNull();
     expect(footer.textContent).toContain('noor');
     // The year is filled by JS at runtime; check the span exists
