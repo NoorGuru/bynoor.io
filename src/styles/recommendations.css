@@ -11,10 +11,10 @@
   margin: 0 auto;
 }
 
-/* Hero-sized heading */
+/* Heading — matches other section headings */
 .recommendations__heading {
   font-family: var(--font-heading);
-  font-size: clamp(2.75rem, 7vw, 4.5rem);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: var(--fw-bold);
   text-align: center;
   margin-bottom: var(--space-xl);
@@ -22,8 +22,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 /* Grid — single column, stacked horizontally (full width cards) */
