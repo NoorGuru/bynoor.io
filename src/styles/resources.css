@@ -171,8 +171,8 @@
   margin: var(--space-md) 0;
   font-style: italic;
   color: var(--color-text-secondary);
-  background-color: #f8fafc;
-  border-radius: 0 4px 4px 0;
+  background-color: var(--glass-bg);
+  border-radius: 6px;
 }
 
 .resources blockquote p {
@@ -183,18 +183,19 @@
 .resources code {
   font-family: var(--font-mono);
   font-size: 0.875em;
-  background-color: #f1f5f9;
+  background-color: rgba(255, 255, 255, 0.08);
   padding: 0.15em 0.4em;
   border-radius: 4px;
 }
 
 /* Code blocks */
 .resources pre {
-  background-color: #f1f5f9;
+  background-color: var(--color-bg-elevated);
   border-radius: 8px;
   padding: var(--space-md);
   margin: var(--space-md) 0;
   overflow-x: auto;
+  border: 1px solid var(--color-border);
 }
 
 .resources pre code {
@@ -220,7 +221,7 @@
 }
 
 .resources thead {
-  background-color: #f1f5f9;
+  background-color: var(--color-bg-elevated);
 }
 
 .resources th {
@@ -238,17 +239,17 @@
 }
 
 .resources tbody tr:nth-child(even) {
-  background-color: #f8fafc;
+  background-color: rgba(255, 255, 255, 0.02);
 }
 
 .resources tbody tr:hover {
-  background-color: #f1f5f9;
+  background-color: var(--glass-bg-hover);
 }
 
 /* Table group headers */
 .resources .table-group-header td {
   font-weight: 700;
-  background-color: #e2e8f0;
+  background-color: rgba(255, 255, 255, 0.06);
   padding: var(--space-xs) var(--space-md);
 }
 

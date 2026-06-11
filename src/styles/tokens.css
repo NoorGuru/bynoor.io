@@ -16,6 +16,11 @@
   --color-text-secondary: hsl(0, 0%, 68%);
   --color-text-muted: hsl(0, 0%, 45%);
 
+  /* === Borders & Primary === */
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-primary: var(--accent-primary);
+  --color-primary-hover: hsl(265, 90%, 75%);
+
   /* === Skill Pill Colors (adjusted for dark backgrounds) === */
   --skill-languages-bg: hsl(210, 70%, 50%);
   --skill-technologies-bg: hsl(150, 60%, 42%);
