@@ -1,0 +1,465 @@
+/* ═══════════════════════════════════════════════════════
+   Morphing Navigation Component
+   States: hero (dots) → pill (compact bar) → expanded (mobile overlay)
+   Driven by data-nav-state attribute and --nav-morph-progress
+   ═══════════════════════════════════════════════════════ */
+
+/* === Base Navigation Container === */
+.nav[data-nav-state] {
+  position: fixed;
+  z-index: var(--depth-layer-nav);
+  pointer-events: none;
+}
+
+.nav[data-nav-state] * {
+  pointer-events: auto;
+}
+
+/* === DOT MODE (hero state) ===
+   Minimal floating dots on the right side of viewport.
+   Each dot represents a scene/section.
+   Validates: Requirement 3.1 */
+.nav__dots {
+  position: fixed;
+  top: 50%;
+  right: var(--space-lg);
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  opacity: 1;
+  transition:
+    opacity var(--duration-scene-transition) var(--ease-cinematic),
+    transform var(--duration-scene-transition) var(--ease-cinematic);
+}
+
+.nav__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-text-secondary);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  transition:
+    background-color var(--duration-hover) var(--ease-out),
+    transform var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out);
+}
+
+/* 44×44px touch target via pseudo-element */
+.nav__dot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+}
+
+.nav__dot:hover,
+.nav__dot:focus-visible {
+  background: var(--accent-primary);
+  transform: scale(1.5);
+  box-shadow: 0 0 8px var(--accent-primary), 0 0 16px rgba(139, 92, 246, 0.3);
+}
+
+.nav__dot--active {
+  background: var(--accent-primary);
+  transform: scale(1.4);
+  box-shadow: 0 0 6px var(--accent-primary);
+}
+
+.nav__dot:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 6px;
+}
+
+/* Hide dots in pill and expanded states */
+.nav[data-nav-state="pill"] .nav__dots,
+.nav[data-nav-state="expanded"] .nav__dots {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.5);
+}
+
+/* === PILL MODE (compact bar) ===
+   Fixed top bar with glassmorphism + sliding indicator.
+   Validates: Requirement 3.2 */
+.nav__pill {
+  position: fixed;
+  top: var(--space-md);
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 999px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  opacity: 0;
+  pointer-events: none;
+  clip-path: inset(0 45% 0 45% round 999px);
+  transition:
+    opacity var(--duration-scene-transition) var(--ease-cinematic),
+    transform var(--duration-scene-transition) var(--ease-cinematic),
+    clip-path var(--duration-scene-transition) var(--ease-cinematic);
+}
+
+/* Pill visible in pill state */
+.nav[data-nav-state="pill"] .nav__pill {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+  clip-path: inset(0 0 0 0 round 999px);
+}
+
+/* Pill links */
+.nav__pill-link {
+  position: relative;
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 999px;
+  white-space: nowrap;
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    color var(--duration-hover) var(--ease-out),
+    background-color var(--duration-hover) var(--ease-out);
+}
+
+.nav__pill-link:hover,
+.nav__pill-link:focus-visible {
+  color: var(--color-text);
+}
+
+.nav__pill-link--active {
+  color: var(--color-text);
+}
+
+.nav__pill-link:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Sliding indicator behind active pill link */
+.nav__indicator {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: calc(100% - var(--space-xs) * 2);
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  pointer-events: none;
+  transition:
+    left var(--duration-hover) var(--ease-spring),
+    width var(--duration-hover) var(--ease-spring);
+}
+
+/* Hide pill in hero and expanded states */
+.nav[data-nav-state="hero"] .nav__pill {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-20px);
+  clip-path: inset(0 45% 0 45% round 999px);
+}
+
+.nav[data-nav-state="expanded"] .nav__pill {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* === MOBILE TRIGGER (hamburger) === */
+.nav__trigger {
+  position: fixed;
+  top: var(--space-md);
+  right: var(--space-md);
+  width: 44px;
+  height: 44px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  color: var(--color-text);
+  font-size: 0;
+  cursor: pointer;
+  z-index: calc(var(--depth-layer-nav) + 1);
+  transition:
+    background-color var(--duration-hover) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out),
+    transform var(--duration-hover) var(--ease-out);
+}
+
+.nav__trigger:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+}
+
+.nav__trigger:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Hamburger icon lines */
+.nav__trigger::before,
+.nav__trigger::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 1px;
+  transition: transform var(--duration-hover) var(--ease-out);
+}
+
+.nav__trigger::before {
+  transform: translateY(-4px);
+}
+
+.nav__trigger::after {
+  transform: translateY(4px);
+}
+
+/* X icon when expanded */
+.nav__trigger[aria-expanded="true"]::before {
+  transform: rotate(45deg);
+}
+
+.nav__trigger[aria-expanded="true"]::after {
+  transform: rotate(-45deg);
+}
+
+/* === EXPANDED MODE (mobile full-screen overlay) ===
+   Full-screen navigation with centered items and ambient effects.
+   Validates: Requirement 3.5 */
+.nav__overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xl);
+  background: var(--color-bg-overlay);
+  backdrop-filter: blur(var(--glass-blur-heavy));
+  -webkit-backdrop-filter: blur(var(--glass-blur-heavy));
+  z-index: var(--depth-layer-nav);
+  opacity: 0;
+  pointer-events: none;
+  clip-path: circle(0% at calc(100% - 40px) 40px);
+  transition:
+    opacity var(--duration-scene-transition) var(--ease-cinematic),
+    clip-path var(--duration-scene-transition) var(--ease-cinematic);
+}
+
+/* Overlay visible in expanded state */
+.nav[data-nav-state="expanded"] .nav__overlay {
+  opacity: 1;
+  pointer-events: auto;
+  clip-path: circle(150% at calc(100% - 40px) 40px);
+}
+
+/* Ambient background effects inside overlay */
+.nav__overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse at 30% 40%,
+      rgba(139, 92, 246, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 70% 60%,
+      rgba(6, 182, 212, 0.06) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  animation: nav-ambient-drift 12s ease-in-out infinite alternate;
+}
+
+@keyframes nav-ambient-drift {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.1) translate(2%, -2%);
+    opacity: 1;
+  }
+}
+
+/* Overlay navigation links */
+.nav__overlay-link {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  padding: var(--space-sm) var(--space-lg);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  transform: translateY(20px);
+  opacity: 0;
+  transition:
+    color var(--duration-hover) var(--ease-out),
+    transform var(--duration-scene-transition) var(--ease-cinematic),
+    opacity var(--duration-scene-transition) var(--ease-cinematic);
+}
+
+/* Staggered entrance for overlay links */
+.nav[data-nav-state="expanded"] .nav__overlay-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav[data-nav-state="expanded"] .nav__overlay-link:nth-child(1) { transition-delay: 100ms; }
+.nav[data-nav-state="expanded"] .nav__overlay-link:nth-child(2) { transition-delay: 150ms; }
+.nav[data-nav-state="expanded"] .nav__overlay-link:nth-child(3) { transition-delay: 200ms; }
+.nav[data-nav-state="expanded"] .nav__overlay-link:nth-child(4) { transition-delay: 250ms; }
+.nav[data-nav-state="expanded"] .nav__overlay-link:nth-child(5) { transition-delay: 300ms; }
+.nav[data-nav-state="expanded"] .nav__overlay-link:nth-child(6) { transition-delay: 350ms; }
+.nav[data-nav-state="expanded"] .nav__overlay-link:nth-child(7) { transition-delay: 400ms; }
+
+.nav__overlay-link:hover,
+.nav__overlay-link:focus-visible {
+  color: var(--color-text);
+}
+
+/* Accent underline on hover */
+.nav__overlay-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: var(--space-lg);
+  right: var(--space-lg);
+  height: 2px;
+  background: var(--gradient-text);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-hover) var(--ease-out);
+}
+
+.nav__overlay-link:hover::after,
+.nav__overlay-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.nav__overlay-link--active {
+  color: var(--accent-primary);
+}
+
+.nav__overlay-link:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* === MORPH TRANSITION (clip-path + transform interpolation) ===
+   Uses --nav-morph-progress (0 = dots, 1 = pill) driven by scroll JS */
+
+/* Intermediate morph state — dots collapse toward center as progress increases */
+@supports (clip-path: inset(0)) {
+  .nav__dots {
+    clip-path: inset(
+      calc(var(--nav-morph-progress, 0) * 30%) 0
+      calc(var(--nav-morph-progress, 0) * 30%) 0
+    );
+  }
+}
+
+/* === RESPONSIVE: Show trigger on mobile === */
+@media (max-width: 767px) {
+  .nav__trigger {
+    display: flex;
+  }
+
+  /* Hide pill on mobile — use overlay instead */
+  .nav__pill {
+    display: none;
+  }
+
+  /* Dots remain visible in hero state on mobile */
+  .nav[data-nav-state="hero"] .nav__dots {
+    right: var(--space-md);
+  }
+}
+
+/* Desktop: hide trigger, never show overlay */
+@media (min-width: 768px) {
+  .nav__trigger {
+    display: none;
+  }
+
+  .nav__overlay {
+    display: none;
+  }
+}
+
+/* === ACCESSIBILITY: Reduced Motion === */
+@media (prefers-reduced-motion: reduce) {
+  .nav__dots,
+  .nav__pill,
+  .nav__overlay,
+  .nav__dot,
+  .nav__pill-link,
+  .nav__indicator,
+  .nav__overlay-link,
+  .nav__trigger::before,
+  .nav__trigger::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .nav__overlay::before {
+    animation: none;
+  }
+
+  /* Immediately show/hide without clip-path animation */
+  .nav__pill {
+    clip-path: none !important;
+  }
+
+  .nav__overlay {
+    clip-path: none !important;
+  }
+}
+
+/* === Fallback for browsers without backdrop-filter === */
+@supports not (backdrop-filter: blur(1px)) {
+  .nav__pill {
+    background: rgba(14, 14, 20, 0.95);
+  }
+
+  .nav__trigger {
+    background: rgba(14, 14, 20, 0.95);
+  }
+
+  .nav__overlay {
+    background: rgba(14, 14, 20, 0.97);
+  }
+}

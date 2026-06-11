@@ -53,12 +53,12 @@ Transform bynoor.io into an immersive, cinematic portfolio experience using the 
     - **Property 7: Kinetic Typography Completeness**
     - **Validates: Requirements 9.1, 9.5**
 
-- [ ] 4. Morphing Navigation
-  - [ ] 4.1 Create `src/styles/components/nav.css` — styles for dot mode (small circles), pill mode (compact bar with sliding indicator), and expanded mobile overlay with transitions using `clip-path` and `transform`
+- [x] 4. Morphing Navigation
+  - [x] 4.1 Create `src/styles/components/nav.css` — styles for dot mode (small circles), pill mode (compact bar with sliding indicator), and expanded mobile overlay with transitions using `clip-path` and `transform`
     - _Requirements: 3.1, 3.2, 3.5_
-  - [ ] 4.2 Create `src/scripts/core/nav.js` — navigation module implementing state machine (HERO_MODE → PILL_MODE → EXPANDED_MODE), morph transitions driven by scroll position, active section indicator
+  - [x] 4.2 Create `src/scripts/core/nav.js` — navigation module implementing state machine (HERO_MODE → PILL_MODE → EXPANDED_MODE), morph transitions driven by scroll position, active section indicator
     - _Requirements: 3.1, 3.2, 3.3, 3.4_
-  - [ ] 4.3 Update `index.html` navigation markup to support dot/pill dual structure with `data-nav-state` attribute, including "Resources" link to /technical-interview-preparation-kit/
+  - [x] 4.3 Update `index.html` navigation markup to support dot/pill dual structure with `data-nav-state` attribute, including "Resources" link to /technical-interview-preparation-kit/
     - _Requirements: 3.6, 18.1, 18.4_
   - [ ]* 4.4 Write property test: Navigation state consistency — if scrollY > heroHeight then nav state is always PILL_MODE
     - **Property 2: Navigation State Consistency**

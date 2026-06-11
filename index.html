@@ -61,28 +61,44 @@
   <!-- Scroll Progress Bar -->
   <div class="scroll-progress" aria-hidden="true"></div>
 
-  <!-- Header / Navigation -->
-  <header class="header">
-    <nav class="nav" aria-label="Main navigation">
-      <a href="#hero" class="nav__logo"><span class="nav__logo-by">by</span><span class="nav__logo-noor">noor</span><span class="nav__logo-io">.io</span></a>
-      <button
-        class="nav__hamburger"
-        aria-expanded="false"
-        aria-controls="nav-links"
-        aria-label="Toggle navigation menu"
-      >
-        <span class="nav__hamburger-icon"></span>
-      </button>
-      <ul class="nav__links" id="nav-links">
-        <li><a href="#highlights" class="nav__link">Highlights</a></li>
-        <li><a href="#skills" class="nav__link">Skills</a></li>
-        <li><a href="#recommendations" class="nav__link">Recommendations</a></li>
-        <li><a href="#links" class="nav__link">Connect</a></li>
-        <li><a href="#projects" class="nav__link">Projects</a></li>
-        <li><a href="/technical-interview-preparation-kit/" class="nav__link">Resources</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Morphing Navigation -->
+  <nav class="nav" data-nav-state="hero" aria-label="Main navigation">
+    <!-- Dots mode: shown when in hero -->
+    <div class="nav__dots" aria-label="Section navigation">
+      <button class="nav__dot" data-target="hero" aria-label="Hero"></button>
+      <button class="nav__dot" data-target="highlights" aria-label="Highlights"></button>
+      <button class="nav__dot" data-target="skills" aria-label="Skills"></button>
+      <button class="nav__dot" data-target="recommendations" aria-label="Recommendations"></button>
+      <button class="nav__dot" data-target="links" aria-label="Connect"></button>
+      <button class="nav__dot" data-target="projects" aria-label="Projects"></button>
+    </div>
+
+    <!-- Pill mode: compact bar shown after scrolling past hero -->
+    <div class="nav__pill">
+      <span class="nav__indicator" aria-hidden="true"></span>
+      <a href="#hero" class="nav__pill-link">Home</a>
+      <a href="#highlights" class="nav__pill-link">Highlights</a>
+      <a href="#skills" class="nav__pill-link">Skills</a>
+      <a href="#recommendations" class="nav__pill-link">Recommendations</a>
+      <a href="#links" class="nav__pill-link">Connect</a>
+      <a href="#projects" class="nav__pill-link">Projects</a>
+      <a href="/technical-interview-preparation-kit/" class="nav__pill-link">Resources</a>
+    </div>
+
+    <!-- Mobile trigger (hamburger) -->
+    <button class="nav__trigger" aria-expanded="false" aria-controls="nav-overlay" aria-label="Toggle navigation menu"></button>
+
+    <!-- Expanded overlay (mobile full-screen) -->
+    <div class="nav__overlay" id="nav-overlay" role="dialog" aria-label="Navigation menu">
+      <a href="#hero" class="nav__overlay-link">Home</a>
+      <a href="#highlights" class="nav__overlay-link">Highlights</a>
+      <a href="#skills" class="nav__overlay-link">Skills</a>
+      <a href="#recommendations" class="nav__overlay-link">Recommendations</a>
+      <a href="#links" class="nav__overlay-link">Connect</a>
+      <a href="#projects" class="nav__overlay-link">Projects</a>
+      <a href="/technical-interview-preparation-kit/" class="nav__overlay-link">Resources</a>
+    </div>
+  </nav>
 
   <!-- Main Content -->
   <main id="main-content">
