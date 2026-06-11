@@ -6,7 +6,7 @@ Transform bynoor.io into an immersive, cinematic portfolio experience using the 
 
 ## Tasks
 
-- [ ] 1. Foundation — Design Tokens, Reset, and File Structure
+- [x] 1. Foundation — Design Tokens, Reset, and File Structure
   - [x] 1.1 Create the new `src/styles/tokens.css` with expanded design tokens including `@property` registered custom properties for animatable hues, new spacing scale, and updated color palette (deep black/navy base, electric violet/cyan/magenta accents)
     - Define all colors as CSS custom properties for future theming
     - _Requirements: 14.1, 14.2, 14.6_
@@ -64,17 +64,15 @@ Transform bynoor.io into an immersive, cinematic portfolio experience using the 
     - **Property 2: Navigation State Consistency**
     - **Validates: Requirements 3.1, 3.2**
 
-- [ ] 5. Ambient Atmosphere Effects
-  - [ ] 5.1 Create `src/scripts/effects/ambient.js` — ambient layer controller that manages gradient orb elements, updates `--ambient-hue-*` CSS variables on section transitions (800ms ease), responds to scroll velocity for position shifts
+- [-] 5. Ambient Atmosphere Effects
+  - [x] 5.1 Create `src/scripts/effects/ambient.js` — ambient layer controller that manages gradient orb elements, updates `--ambient-hue-*` CSS variables on section transitions (800ms ease), responds to scroll velocity for position shifts
     - _Requirements: 8.1, 8.3, 8.4_
-  - [ ] 5.2 Create `src/scripts/effects/grain.js` — procedural grain generator using 256×256 canvas noise rendered to data URL, re-rendered at 10fps, applied as fixed background
+  - [x] 5.2 Create `src/scripts/effects/grain.js` — procedural grain generator using 256×256 canvas noise rendered to data URL, re-rendered at 10fps, applied as fixed background
     - _Requirements: 8.2_
-  - [ ] 5.3 Create `src/scripts/effects/glow.js` — glow system that attaches `mousemove` listeners to `[data-glow]` elements and updates `--glow-x`/`--glow-y` CSS variables for radial gradient positioning
+  - [x] 5.3 Create `src/scripts/effects/glow.js` — glow system that attaches `mousemove` listeners to `[data-glow]` elements and updates `--glow-x`/`--glow-y` CSS variables for radial gradient positioning
     - _Requirements: 8.5, 5.3_
-  - [ ] 5.4 Add ambient layer, grain overlay, and glow containers to `index.html` with `aria-hidden="true"`
+  - [-] 5.4 Add ambient layer, grain overlay, and glow containers to `index.html` with `aria-hidden="true"`
     - _Requirements: 8.1, 8.2, 8.5_
-  - [ ] 5.5 Implement reduced-motion overrides — when `prefers-reduced-motion: reduce` is active, all ambient animations display static gradients, grain is still, and glow is disabled
-    - _Requirements: 8.6, 12.6_
 
 - [ ] 6. Checkpoint — Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.

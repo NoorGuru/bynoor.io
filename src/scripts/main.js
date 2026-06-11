@@ -1,5 +1,6 @@
 // Main application module
 import { initNavigation } from './navigation.js';
+import { initNav } from './core/nav.js';
 import { initScrollSpy } from './scroll-spy.js';
 import { initAnimationEngine, initParallax, initSectionAccentReveal } from './animation-engine.js';
 import { initParticleSystem } from './particle-system.js';
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Critical UI — initialize immediately
   initNavigation();
+  initNav();
   initScrollSpy();
 
   // Set current year in footer

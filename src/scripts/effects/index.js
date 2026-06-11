@@ -1,7 +1,7 @@
 /**
  * effects/ — Visual effects and atmospheric layers
  *
- * Planned modules:
+ * Modules:
  * - ambient.js      → Gradient orbs, color shifts
  * - grain.js        → Film grain overlay
  * - glow.js         → Cursor-following glows
@@ -9,3 +9,5 @@
  * - particles.js    → Canvas particle system
  * - kinetic-type.js → Text splitting + animation triggers
  */
+
+export { initGlow, destroy as destroyGlow } from './glow.js';
