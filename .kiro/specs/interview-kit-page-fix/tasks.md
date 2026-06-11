@@ -100,7 +100,7 @@ flowchart LR
     - Confirm layout, spacing, typography, scroll offsets, responsive behavior, and table overflow are all unchanged
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6_
 
-- [-] 4. Checkpoint - Ensure all tests pass
+- [x] 4. Checkpoint - Ensure all tests pass
   - Run full test suite: `npx vitest run`
   - Run E2E tests if applicable: `npx playwright test`
   - Verify no regressions in existing unit tests (breakpoints, dom-content, lerp, reduced-motion)
