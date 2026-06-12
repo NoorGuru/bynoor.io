@@ -1,12 +1,16 @@
-/* Footer — Simple gradient background, clean and elegant */
+/* Footer — Cinematic closing section with orbital logo animation
+   Color flow: transitions FROM the projects section (senary/burnt orange)
+   INTO deep violet-indigo, echoing the hero and closing the chromatic loop */
 
 .footer {
   position: relative;
+  overflow: hidden;
   background: linear-gradient(
     180deg,
     var(--color-bg) 0%,
-    hsl(255, 20%, 9%) 40%,
-    hsl(245, 25%, 11%) 100%
+    hsl(270, 25%, 8%) 30%,
+    hsl(260, 30%, 6%) 70%,
+    hsl(250, 35%, 4%) 100%
   );
   padding: var(--space-2xl) var(--space-md) var(--space-xl);
   text-align: center;
@@ -14,13 +18,187 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-lg);
+  min-height: 80vh;
+  justify-content: center;
 }
 
-/* Logo — same gradient wordmark as navbar */
+/* === Aurora ambient layer === */
+.footer__aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.4;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 80%, hsl(265, 80%, 25%) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, hsl(225, 70%, 20%) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 60% at 50% 50%, hsl(20, 60%, 12%) 0%, transparent 40%);
+  animation: footer-aurora-drift 20s ease-in-out infinite alternate;
+}
+
+@keyframes footer-aurora-drift {
+  0% { opacity: 0.3; transform: scale(1) translateY(0); }
+  50% { opacity: 0.5; transform: scale(1.05) translateY(-10px); }
+  100% { opacity: 0.35; transform: scale(1.02) translateY(5px); }
+}
+
+/* Subtle dot grid overlay */
+.footer__grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.03;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* === Orbital Beacon System (Signature Element) === */
+.footer__beacon {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Core glow — the "noor" (light) */
+.footer__beacon-core {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    hsl(265, 90%, 80%) 0%,
+    hsl(265, 85%, 65%) 40%,
+    hsl(225, 80%, 55%) 100%
+  );
+  box-shadow:
+    0 0 20px hsl(265, 85%, 65%),
+    0 0 60px hsla(265, 85%, 65%, 0.4),
+    0 0 120px hsla(265, 85%, 65%, 0.15);
+  animation: beacon-pulse 3s ease-in-out infinite;
+}
+
+@keyframes beacon-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 20px hsl(265, 85%, 65%),
+      0 0 60px hsla(265, 85%, 65%, 0.4),
+      0 0 120px hsla(265, 85%, 65%, 0.15);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow:
+      0 0 30px hsl(265, 85%, 70%),
+      0 0 80px hsla(265, 85%, 65%, 0.5),
+      0 0 150px hsla(265, 85%, 65%, 0.2);
+    transform: scale(1.1);
+  }
+}
+
+/* Orbit rings — concentric ellipses */
+.footer__orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid;
+}
+
+.footer__orbit--1 {
+  width: 80px;
+  height: 80px;
+  border-color: hsla(265, 70%, 60%, 0.25);
+  animation: orbit-rotate-1 12s linear infinite;
+}
+
+.footer__orbit--2 {
+  width: 130px;
+  height: 130px;
+  border-color: hsla(225, 60%, 55%, 0.15);
+  animation: orbit-rotate-2 18s linear infinite reverse;
+}
+
+.footer__orbit--3 {
+  width: 170px;
+  height: 170px;
+  border-color: hsla(195, 70%, 50%, 0.1);
+  animation: orbit-rotate-3 25s linear infinite;
+}
+
+/* Orbit rotation keyframes — each tilted differently for depth */
+@keyframes orbit-rotate-1 {
+  from { transform: rotateX(60deg) rotateZ(0deg); }
+  to { transform: rotateX(60deg) rotateZ(360deg); }
+}
+
+@keyframes orbit-rotate-2 {
+  from { transform: rotateX(70deg) rotateY(20deg) rotateZ(0deg); }
+  to { transform: rotateX(70deg) rotateY(20deg) rotateZ(360deg); }
+}
+
+@keyframes orbit-rotate-3 {
+  from { transform: rotateX(55deg) rotateY(-15deg) rotateZ(0deg); }
+  to { transform: rotateX(55deg) rotateY(-15deg) rotateZ(360deg); }
+}
+
+/* Orbiting dots — small glowing particles on each ring */
+.footer__orbit-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  /* Fallback position for browsers without offset-path */
+  top: 50%;
+  left: 50%;
+}
+
+.footer__orbit-dot--1 {
+  background: hsl(265, 90%, 72%);
+  box-shadow: 0 0 8px hsl(265, 85%, 65%), 0 0 20px hsla(265, 85%, 65%, 0.4);
+  animation: dot-orbit-1 12s linear infinite;
+  offset-path: circle(40px);
+  offset-rotate: 0deg;
+}
+
+.footer__orbit-dot--2 {
+  background: hsl(225, 80%, 68%);
+  box-shadow: 0 0 8px hsl(225, 80%, 60%), 0 0 20px hsla(225, 80%, 60%, 0.4);
+  animation: dot-orbit-2 18s linear infinite;
+  offset-path: circle(65px);
+  offset-rotate: 0deg;
+}
+
+.footer__orbit-dot--3 {
+  background: hsl(195, 85%, 62%);
+  box-shadow: 0 0 8px hsl(195, 85%, 55%), 0 0 20px hsla(195, 85%, 55%, 0.4);
+  animation: dot-orbit-3 25s linear infinite;
+  offset-path: circle(85px);
+  offset-rotate: 0deg;
+}
+
+@keyframes dot-orbit-1 {
+  from { offset-distance: 0%; }
+  to { offset-distance: 100%; }
+}
+
+@keyframes dot-orbit-2 {
+  from { offset-distance: 33%; }
+  to { offset-distance: 133%; }
+}
+
+@keyframes dot-orbit-3 {
+  from { offset-distance: 66%; }
+  to { offset-distance: 166%; }
+}
+
+/* === Logo === */
 .footer__logo {
+  position: relative;
+  z-index: 1;
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 700;
   letter-spacing: -0.04em;
   text-decoration: none;
@@ -33,27 +211,225 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  transition: filter 300ms ease;
+  transition: filter 400ms var(--ease-out), transform 400ms var(--ease-out);
 }
 
 .footer__logo:hover {
-  filter: drop-shadow(0 0 16px rgba(139, 92, 246, 0.35));
+  filter: drop-shadow(0 0 24px rgba(139, 92, 246, 0.5));
+  transform: scale(1.02);
 }
 
-/* Tagline */
-.footer__tagline {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+/* === Arc statement === */
+.footer__arc {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-primary);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: var(--fw-light);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+.footer__arc-years {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  background: linear-gradient(135deg, hsl(265, 85%, 72%), hsl(195, 85%, 62%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* === Philosophy quote === */
+.footer__philosophy {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  margin: var(--space-sm) 0;
+  padding: 0;
+  border: none;
+}
+
+.footer__philosophy p {
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-style: italic;
+  font-weight: var(--fw-light);
   color: var(--color-text-muted);
-  letter-spacing: 0.04em;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
   margin: 0;
 }
 
-/* Copyright */
+/* === CTA link === */
+.footer__cta {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+  text-decoration: none;
+  padding: 0.75rem 1.75rem;
+  border-radius: 100px;
+  border: 1px solid hsla(265, 70%, 60%, 0.3);
+  background: hsla(265, 50%, 20%, 0.2);
+  backdrop-filter: blur(8px);
+  transition: all 300ms var(--ease-out);
+}
+
+.footer__cta:hover {
+  border-color: hsla(265, 70%, 60%, 0.6);
+  background: hsla(265, 50%, 25%, 0.35);
+  box-shadow: 0 0 30px hsla(265, 70%, 60%, 0.15);
+  transform: translateY(-2px);
+}
+
+.footer__cta:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 4px;
+}
+
+.footer__cta svg {
+  transition: transform 300ms var(--ease-out);
+}
+
+.footer__cta:hover svg {
+  transform: translateX(4px);
+}
+
+/* === Social links === */
+.footer__socials {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--color-text-muted);
+  border: 1px solid transparent;
+  transition: all 300ms var(--ease-out);
+}
+
+.footer__social-link:hover {
+  color: var(--color-text);
+  border-color: hsla(265, 60%, 55%, 0.3);
+  background: hsla(265, 50%, 20%, 0.15);
+  box-shadow: 0 0 16px hsla(265, 70%, 60%, 0.12);
+  transform: translateY(-2px);
+}
+
+.footer__social-link:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* === Bottom line === */
+.footer__bottom {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid hsla(265, 40%, 40%, 0.12);
+  width: 100%;
+  max-width: 400px;
+}
+
 .footer__copy {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--color-text-muted);
   margin: 0;
-  margin-top: var(--space-sm);
+  letter-spacing: 0.05em;
+}
+
+.footer__made {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: hsla(265, 40%, 50%, 0.5);
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+/* === Reduced Motion === */
+@media (prefers-reduced-motion: reduce) {
+  .footer__aurora {
+    animation: none;
+  }
+
+  .footer__beacon-core {
+    animation: none;
+  }
+
+  .footer__orbit--1,
+  .footer__orbit--2,
+  .footer__orbit--3 {
+    animation: none;
+    /* Show as static rings */
+    transform: rotateX(60deg);
+  }
+
+  .footer__orbit-dot--1,
+  .footer__orbit-dot--2,
+  .footer__orbit-dot--3 {
+    animation: none;
+    /* Position statically on the ring */
+    offset-distance: 25%;
+  }
+}
+
+/* === Mobile adjustments === */
+@media (max-width: 767px) {
+  .footer {
+    min-height: 70vh;
+    padding: var(--space-xl) var(--space-md) var(--space-lg);
+    gap: var(--space-md);
+  }
+
+  .footer__beacon {
+    width: 140px;
+    height: 140px;
+  }
+
+  .footer__orbit--1 { width: 60px; height: 60px; }
+  .footer__orbit--2 { width: 100px; height: 100px; }
+  .footer__orbit--3 { width: 130px; height: 130px; }
+
+  .footer__orbit-dot--1 { offset-path: circle(30px); }
+  .footer__orbit-dot--2 { offset-path: circle(50px); }
+  .footer__orbit-dot--3 { offset-path: circle(65px); }
+
+  .footer__beacon-core {
+    width: 18px;
+    height: 18px;
+  }
+
+  .footer__arc {
+    line-height: 2;
+  }
+
+  .footer__socials {
+    gap: 0.5rem;
+  }
+
+  .footer__philosophy {
+    padding: 0 var(--space-sm);
+  }
 }
