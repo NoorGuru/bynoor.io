@@ -107,12 +107,12 @@ Transform bynoor.io into an immersive, cinematic portfolio experience using the 
   - [x] 9.3 Update project section in `index.html` with `data-scene="projects"` and `data-glow` attributes on cards, add project descriptions for hover reveal
     - _Requirements: 5.1, 5.4, 5.6_
 
-- [ ] 10. Testimonial Theater Scene
-  - [ ] 10.1 Create `src/styles/scenes/theater.css` — full-width testimonial layout with large typography, scroll-snap, word-by-word kinetic reveal, gradient sweep on `<mark>` elements, crossfade transitions between quotes
+- [-] 10. Testimonial Theater Scene
+  - [x] 10.1 Create `src/styles/scenes/theater.css` — full-width testimonial layout with large typography, scroll-snap, word-by-word kinetic reveal, gradient sweep on `<mark>` elements, crossfade transitions between quotes
     - _Requirements: 6.1, 6.2, 6.5_
-  - [ ] 10.2 Create `src/scripts/scenes/theater.js` — theater scene module implementing scroll-snapped testimonial navigation, word-by-word reveal via kinetic-type utility, ambient color shift dispatch on active testimonial change, swipe gesture support on touch
+  - [x] 10.2 Create `src/scripts/scenes/theater.js` — theater scene module implementing scroll-snapped testimonial navigation, word-by-word reveal via kinetic-type utility, ambient color shift dispatch on active testimonial change, swipe gesture support on touch
     - _Requirements: 6.2, 6.3, 6.5, 6.6_
-  - [ ] 10.3 Update testimonials section in `index.html` with `data-scene="theater"` and kinetic typography attributes on quote text
+  - [x] 10.3 Update testimonials section in `index.html` with `data-scene="theater"` and kinetic typography attributes on quote text
     - _Requirements: 6.1, 6.4_
 
 - [ ] 11. Skills Section Redesign

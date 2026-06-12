@@ -1,0 +1,215 @@
+/* ═══════════════════════════════════════════════════════
+   Scene: Testimonial Theater
+   Full-width cinematic testimonial layout with scroll-snap,
+   word-by-word kinetic reveal, gradient sweep on <mark>,
+   and crossfade transitions between quotes.
+   ═══════════════════════════════════════════════════════ */
+/* Validates: Requirements 6.1, 6.2, 6.5 */
+
+/* === Scene Container with Scroll-Snap === */
+.scene--theater {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* === Individual Testimonial — Full-Width Cinematic Quote === */
+.theater__testimonial {
+  scroll-snap-align: center;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl, 4rem) var(--space-lg, 2rem);
+  position: relative;
+  width: 100%;
+}
+
+/* === Crossfade Transitions Between Quotes === */
+.theater__testimonial {
+  opacity: 0.3;
+  transform: translateY(20px);
+  transition:
+    opacity 500ms var(--ease-cinematic, cubic-bezier(0.4, 0, 0, 1)),
+    transform 500ms var(--ease-cinematic, cubic-bezier(0.4, 0, 0, 1));
+}
+
+.theater__testimonial.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Large Typography for Cinematic Quotes === */
+.theater__quote {
+  max-width: 56ch;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.theater__quote p {
+  font-size: clamp(1.25rem, 2.5vw + 0.5rem, 2rem);
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary, #f0f0f0);
+}
+
+/* === Word-by-Word Kinetic Reveal === */
+.theater__quote [data-kinetic="words"] .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.4s var(--ease-cinematic, cubic-bezier(0.4, 0, 0, 1)),
+    transform 0.5s var(--ease-cinematic, cubic-bezier(0.4, 0, 0, 1));
+  transition-delay: calc(var(--char-index, 0) * 40ms);
+}
+
+.theater__quote [data-kinetic="words"].is-visible .word {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Space between words */
+.theater__quote [data-kinetic="words"] .char-space {
+  display: inline;
+}
+
+/* === Gradient Sweep Animation on <mark> Elements === */
+.theater__quote mark {
+  background: none;
+  color: inherit;
+  position: relative;
+  background-image: linear-gradient(
+    90deg,
+    var(--accent-primary, #8b5cf6) 0%,
+    var(--accent-secondary, #06b6d4) 50%,
+    var(--accent-tertiary, #ec4899) 100%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0s;
+}
+
+.theater__testimonial.is-active .theater__quote mark {
+  background-position: 0% 0;
+  transition: background-position 1.2s var(--ease-cinematic, cubic-bezier(0.4, 0, 0, 1));
+  transition-delay: 600ms;
+}
+
+/* Fallback for browsers that don't support background-clip text */
+@supports not (-webkit-background-clip: text) {
+  .theater__quote mark {
+    background-image: none;
+    -webkit-text-fill-color: initial;
+    color: var(--accent-primary, #8b5cf6);
+    background-color: color-mix(in srgb, var(--accent-primary, #8b5cf6) 15%, transparent);
+    border-radius: 2px;
+    padding-inline: 0.15em;
+  }
+}
+
+/* === Attribution Styles === */
+.theater__attribution {
+  margin-top: var(--space-xl, 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs, 0.5rem);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.4s var(--ease-cinematic, cubic-bezier(0.4, 0, 0, 1)) 800ms,
+    transform 0.4s var(--ease-cinematic, cubic-bezier(0.4, 0, 0, 1)) 800ms;
+}
+
+.theater__testimonial.is-active .theater__attribution {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.theater__name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary, #f0f0f0);
+}
+
+.theater__title {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary, #a0a0a0);
+}
+
+.theater__context {
+  font-size: 0.8rem;
+  color: var(--color-text-tertiary, #6b6b6b);
+  font-style: italic;
+}
+
+.theater__linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs, 0.5rem);
+  margin-top: var(--space-sm, 0.75rem);
+  color: var(--color-text-secondary, #a0a0a0);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.theater__linkedin:hover,
+.theater__linkedin:focus-visible {
+  color: var(--accent-primary, #8b5cf6);
+}
+
+.theater__linkedin svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* === Section Heading === */
+.theater__heading {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: var(--space-lg, 2rem);
+  padding-top: var(--space-2xl, 4rem);
+  color: var(--color-text-primary, #f0f0f0);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Reduced Motion Overrides
+   ═══════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .scene--theater {
+    scroll-snap-type: none;
+  }
+
+  .theater__testimonial {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .theater__quote [data-kinetic="words"] .word {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .theater__quote mark {
+    background-position: 0% 0;
+    transition: none;
+  }
+
+  .theater__attribution {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

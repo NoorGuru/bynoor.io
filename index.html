@@ -330,49 +330,42 @@
       </div>
     </section>
     <hr class="section-divider" aria-hidden="true">
-    <section id="recommendations" class="recommendations" aria-labelledby="recommendations-heading" data-section-accent="tertiary">
-      <div class="decorative-blob decorative-blob--tertiary" data-parallax="0.25" aria-hidden="true"></div>
-      <div class="recommendations__container" data-animate-stagger="100">
-        <h2 id="recommendations-heading" class="recommendations__heading">Recommendations</h2>
-        <div class="recommendations__grid">
-          <!-- Card 1: Aamer Abbas -->
-          <article class="recommendations__card" data-animate="fade-up">
-            <blockquote class="recommendations__quote">
-              <p>"Noor was part of my team for about a year. I was impressed with <mark class="recommendations__highlight recommendations__highlight--primary">his ability to learn quickly and deliver under tight deadlines</mark>. He always came across as <mark class="recommendations__highlight recommendations__highlight--secondary">an organized professional</mark> and I could always rely on him to give a clear picture of his progress on a weekly basis. I'd happily recommend him as a motivated software engineer."</p>
-            </blockquote>
-            <footer class="recommendations__attribution">
-              <div class="recommendations__recommender">
-                <span class="recommendations__name">Aamer Abbas</span>
-                <span class="recommendations__title">Software Engineering Management</span>
-                <span class="recommendations__context">My manager at Amazon · 2021</span>
-              </div>
-              <a href="https://www.linkedin.com/in/abbasaamer/" target="_blank" rel="noopener" aria-label="View Aamer Abbas's LinkedIn profile" class="recommendations__linkedin-badge">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </a>
-            </footer>
-          </article>
-          <!-- Card 2: Nagarajan Raju -->
-          <article class="recommendations__card" data-animate="fade-up">
-            <blockquote class="recommendations__quote">
-              <p>"<mark class="recommendations__highlight recommendations__highlight--tertiary">Noor is a rising star</mark>. He was less than a month old in the company when he took ownership of a time sensitive, business critical emerging market solution implementation for Amazon MENA customers. The solution was not only well defined but also involved making changes in multiple platform teams code base across Amazon. <mark class="recommendations__highlight recommendations__highlight--primary">With little supervision and guidance he was able to work with different code bases and single handedly code completed</mark>, drove code reviews with remote teams and successfully executed the deployment on time. His passion for continuous learning and sharing knowledge are commendable. <mark class="recommendations__highlight recommendations__highlight--secondary">He is an asset to any team and will have him in the team anytime, anywhere</mark>."</p>
-            </blockquote>
-            <footer class="recommendations__attribution">
-              <div class="recommendations__recommender">
-                <span class="recommendations__name">Nagarajan Raju</span>
-                <span class="recommendations__title">Engineering Leader at Amazon | Building AI Solutions | Bar Raiser</span>
-                <span class="recommendations__context">My manager at Amazon · 2020</span>
-              </div>
-              <a href="https://www.linkedin.com/in/nagarajanraju/" target="_blank" rel="noopener" aria-label="View Nagarajan Raju's LinkedIn profile" class="recommendations__linkedin-badge">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </a>
-            </footer>
-          </article>
-        </div>
-      </div>
+    <section data-scene="theater" id="recommendations" class="scene scene--theater" aria-labelledby="recommendations-heading" data-section-accent="tertiary">
+      <h2 id="recommendations-heading" class="theater__heading">Recommendations</h2>
+
+      <!-- Testimonial 1: Aamer Abbas -->
+      <article class="theater__testimonial">
+        <blockquote class="theater__quote">
+          <p data-kinetic="words">"Noor was part of my team for about a year. I was impressed with <mark>his ability to learn quickly and deliver under tight deadlines</mark>. He always came across as <mark>an organized professional</mark> and I could always rely on him to give a clear picture of his progress on a weekly basis. I'd happily recommend him as a motivated software engineer."</p>
+        </blockquote>
+        <footer class="theater__attribution">
+          <span class="theater__name">Aamer Abbas</span>
+          <span class="theater__title">Software Engineering Management</span>
+          <span class="theater__context">My manager at Amazon · 2021</span>
+          <a href="https://www.linkedin.com/in/abbasaamer/" target="_blank" rel="noopener" aria-label="View Aamer Abbas's LinkedIn profile" class="theater__linkedin">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+        </footer>
+      </article>
+
+      <!-- Testimonial 2: Nagarajan Raju -->
+      <article class="theater__testimonial">
+        <blockquote class="theater__quote">
+          <p data-kinetic="words">"<mark>Noor is a rising star</mark>. He was less than a month old in the company when he took ownership of a time sensitive, business critical emerging market solution implementation for Amazon MENA customers. The solution was not only well defined but also involved making changes in multiple platform teams code base across Amazon. <mark>With little supervision and guidance he was able to work with different code bases and single handedly code completed</mark>, drove code reviews with remote teams and successfully executed the deployment on time. His passion for continuous learning and sharing knowledge are commendable. <mark>He is an asset to any team and will have him in the team anytime, anywhere</mark>."</p>
+        </blockquote>
+        <footer class="theater__attribution">
+          <span class="theater__name">Nagarajan Raju</span>
+          <span class="theater__title">Engineering Leader at Amazon | Building AI Solutions | Bar Raiser</span>
+          <span class="theater__context">My manager at Amazon · 2020</span>
+          <a href="https://www.linkedin.com/in/nagarajanraju/" target="_blank" rel="noopener" aria-label="View Nagarajan Raju's LinkedIn profile" class="theater__linkedin">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+        </footer>
+      </article>
     </section>
     <hr class="section-divider" aria-hidden="true">
     <section id="links" class="links" aria-labelledby="connect-heading" data-section-accent="quaternary">
