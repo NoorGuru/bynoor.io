@@ -54,7 +54,63 @@
 .highlights__piece:hover {
   border-color: var(--glass-border-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 0 1px var(--glass-border-hover);
+}
+
+/* Per-card accent glow on hover */
+.highlights__piece--hero:hover {
+  border-color: hsla(45, 90%, 60%, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px hsla(45, 90%, 60%, 0.06);
+}
+
+.highlights__piece--status:hover {
+  border-color: hsla(142, 70%, 50%, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px hsla(142, 70%, 50%, 0.06);
+}
+
+.highlights__piece--arc:hover {
+  border-color: hsla(265, 90%, 65%, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px hsla(265, 90%, 65%, 0.06);
+}
+
+.highlights__piece--badge:hover {
+  border-color: hsla(265, 90%, 65%, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px hsla(265, 90%, 65%, 0.06);
+}
+
+.highlights__piece--streak:hover {
+  border-color: hsla(330, 80%, 60%, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px hsla(330, 80%, 60%, 0.06);
+}
+
+.highlights__piece--integrity:hover {
+  border-color: hsla(45, 90%, 60%, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px hsla(45, 90%, 60%, 0.06);
+}
+
+.highlights__piece--amazon:hover {
+  border-color: hsla(195, 85%, 55%, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px hsla(195, 85%, 55%, 0.06);
+}
+
+.highlights__piece--kayl:hover {
+  border-color: hsla(30, 75%, 55%, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px hsla(30, 75%, 55%, 0.06);
+}
+
+.highlights__piece--training:hover {
+  border-color: hsla(265, 90%, 65%, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px hsla(265, 90%, 65%, 0.06);
+}
+
+.highlights__piece--mit:hover {
+  border-color: hsla(350, 45%, 65%, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px hsla(350, 45%, 65%, 0.06);
+}
+
+.highlights__piece--hiring:hover {
+  border-color: hsla(195, 85%, 55%, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px hsla(195, 85%, 55%, 0.06);
 }
 
 .highlights__piece-title {
@@ -334,13 +390,8 @@
     padding: var(--space-xl);
   }
 
-  /* Integrity spans 2 cols, aligned left */
-  .highlights__piece--integrity {
-    grid-column: 1 / 3;
-  }
-
-  /* Amazon spans 2 cols, aligned right */
-  .highlights__piece--amazon {
+  /* Kayl spans 2 cols, aligned right (after badge) */
+  .highlights__piece--kayl {
     grid-column: 2 / 4;
   }
 
@@ -436,28 +487,41 @@
 }
 
 /* ==========================================
-   PIECE VARIANT: Onboard (50+ repos)
+   PIECE VARIANT: Kayl (outlived tenure)
    ========================================== */
-.highlights__onboard-mark {
+.highlights__kayl-mark {
   display: flex;
   align-items: baseline;
   gap: 0.4rem;
   margin-bottom: var(--space-sm);
 }
 
-.highlights__onboard-number {
+.highlights__kayl-number {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: var(--fw-bold);
+  color: hsl(30, 75%, 55%);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.highlights__kayl-unit {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================
+   PIECE VARIANT: Hiring (tens of engineers)
+   ========================================== */
+.highlights__hiring-mark {
   font-family: var(--font-mono);
   font-size: clamp(2rem, 5vw, 2.75rem);
   font-weight: var(--fw-bold);
   color: var(--accent-secondary);
   line-height: 1;
   letter-spacing: -0.03em;
-}
-
-.highlights__onboard-unit {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--color-text-secondary);
+  margin-bottom: var(--space-sm);
 }
 
 /* ==========================================
@@ -506,6 +570,24 @@
 .highlights__piece-context[data-company="amazon"] {
   color: hsl(30, 75%, 55%);
   border-top-color: hsla(30, 75%, 55%, 0.12);
+}
+
+.highlights__piece-context[data-company="both"] {
+  color: hsl(260, 50%, 65%);
+  border-top-color: hsla(260, 50%, 65%, 0.12);
+}
+
+/* Dual company colors inline */
+.highlights__piece-context--dual {
+  color: var(--color-text-muted);
+}
+
+.highlights__piece-context--dual [data-company="amazon"] {
+  color: hsl(30, 75%, 55%);
+}
+
+.highlights__piece-context--dual [data-company="expedia"] {
+  color: hsl(220, 60%, 60%);
 }
 
 /* Section Accent Reveal */

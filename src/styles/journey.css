@@ -250,7 +250,7 @@
 
 /* ==========================================
    CHAPTER: Amazon
-   Stats sidebar + rich body content
+   Stats sidebar + scannable highlight bullets
    ========================================== */
 .journey__chapter--amazon {
   --chapter-accent: hsl(30, 85%, 55%);
@@ -270,16 +270,19 @@
 .journey__amazon-stats {
   display: flex;
   gap: var(--space-lg);
+  justify-content: center;
+  text-align: center;
 }
 
 .journey__amazon-stat {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .journey__amazon-stat-number {
   font-family: var(--font-mono);
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(2.2rem, 5vw, 2.8rem);
   font-weight: var(--fw-bold);
   color: hsl(30, 85%, 55%);
   line-height: 1;
@@ -288,17 +291,17 @@
 
 .journey__amazon-stat-label {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   color: var(--color-text-muted);
   letter-spacing: 0.02em;
   margin-top: 0.3rem;
-  max-width: 14ch;
+  max-width: 16ch;
 }
 
 .journey__amazon-body {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-md);
 }
 
 .journey__title {
@@ -306,7 +309,7 @@
   font-size: 1.1rem;
   font-weight: var(--fw-semibold);
   color: var(--color-text);
-  margin-bottom: var(--space-xs);
+  margin-bottom: 0;
 }
 
 .journey__desc {
@@ -314,6 +317,45 @@
   color: var(--color-text-secondary);
   line-height: 1.7;
   max-width: 65ch;
+}
+
+/* Amazon highlight bullets */
+.journey__amazon-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.journey__amazon-highlight {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition:
+    background var(--duration-hover) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out);
+}
+
+.journey__amazon-highlight:hover {
+  background: rgba(245, 158, 11, 0.03);
+  border-color: rgba(245, 158, 11, 0.1);
+}
+
+.journey__amazon-highlight-icon {
+  color: hsl(30, 85%, 55%);
+  font-size: 0.5rem;
+  flex-shrink: 0;
+  margin-top: 0.4rem;
+}
+
+.journey__amazon-highlight p {
+  font-size: 0.86rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* ==========================================
@@ -426,7 +468,7 @@
 
   /* Amazon: stats beside body */
   .journey__amazon-layout {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: minmax(180px, auto) 1fr;
     gap: var(--space-xl);
   }
 
@@ -435,6 +477,16 @@
     gap: var(--space-lg);
     padding-right: var(--space-lg);
     border-right: 1px solid rgba(255, 255, 255, 0.04);
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .journey__amazon-stat {
+    align-items: flex-start;
+  }
+
+  .journey__amazon-stat-label {
+    max-width: 16ch;
   }
 
   /* Wiley: side by side */
