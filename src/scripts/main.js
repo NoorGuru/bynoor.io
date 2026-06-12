@@ -5,6 +5,7 @@ import { initAnimationEngine, initParallax, initSectionAccentReveal } from './an
 import { initScrollProgress } from './scroll-progress.js';
 import { initMagneticElements } from './magnetic-elements.js';
 import { initTiltCards } from './tilt-cards.js';
+import { initRecommendations } from './recommendations.js';
 
 // Initialize modules when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Critical UI — initialize immediately
   initNavigation();
   initScrollSpy();
+  initRecommendations();
 
   // Set current year in footer
   const yearEl = document.getElementById('year');

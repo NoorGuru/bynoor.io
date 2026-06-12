@@ -180,7 +180,7 @@ On standard viewports (height >= 600px), the hero occupies exactly 100vh. On ver
     <img src="profile-pic.png" alt="Mohammad Noor Abu Khlaif — Software Engineer, AI Advocate, and Tech Educator" class="hero__photo">
   </picture>
   <h1 class="hero__name">Mohammad Noor Abu Khlaif</h1>
-  <p class="hero__tagline">I build tools that help engineers move faster.</p>
+  <p class="hero__tagline">I build tools that help engineers move faster</p>
   <p class="hero__subtitle">Software Engineer · AI Advocate · Tech Educator</p>
   <div class="hero__cta">
     <a href="https://cal.com/mohammad-noor" class="btn btn--primary" target="_blank" rel="noopener">Let's Connect</a>

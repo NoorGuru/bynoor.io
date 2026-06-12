@@ -63,7 +63,7 @@ Rebuild bynoor.io from a Hugo-based blog into a modern static personal brand web
     - Add `<picture>` element with `<source srcset="profile-pic.webp" type="image/webp">` and `<img src="profile-pic.png" alt="Mohammad Noor Abu Khlaif — Software Engineer, AI Advocate, and Tech Educator" class="hero__photo">`
     - Style photo: circular with `border-radius: 50%`, min 150px on mobile, 200px on desktop
     - Add `<h1>Mohammad Noor Abu Khlaif</h1>`
-    - Add `<p class="hero__tagline">I build tools that help engineers move faster.</p>`
+    - Add `<p class="hero__tagline">I build tools that help engineers move faster</p>`
     - Add `<p class="hero__subtitle">Software Engineer · AI Advocate · Tech Educator</p>`
     - Add CTA group: "Let's Connect" primary button (https://cal.com/mohammad-noor) + inline SVG icon links for LinkedIn, GitHub, YouTube (aria-label="Code with Noor on YouTube"), Email
     - All external links: `target="_blank" rel="noopener"`

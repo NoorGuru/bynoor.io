@@ -28,7 +28,7 @@ A modern, creative personal brand website for Mohammad Noor Abu Khlaif (Noor) �
 
 1. WHEN the Website loads, THE Hero_Section SHALL display the profile picture (profile-pic.png) as a circular or rounded image with a minimum rendered size of 150px on mobile and 200px on desktop
 2. WHEN the Website loads, THE Hero_Section SHALL display the full name "Mohammad Noor Abu Khlaif" as the largest heading on the page using an h1 element
-3. WHEN the Website loads, THE Hero_Section SHALL display the primary tagline "I build tools that help engineers move faster." directly below the name in a prominent font size
+3. WHEN the Website loads, THE Hero_Section SHALL display the primary tagline "I build tools that help engineers move faster" directly below the name in a prominent font size
 4. WHEN the Website loads, THE Hero_Section SHALL display the subtitle "Software Engineer · AI Advocate · Tech Educator" below the primary tagline in a smaller, secondary font size
 5. WHEN the Website loads, THE Hero_Section SHALL display call-to-action links including a prominent "Let's Connect" button linking to https://cal.com/mohammad-noor, plus icon links to LinkedIn, GitHub, YouTube, and Email, each visually distinguishable as clickable elements
 6. THE Hero_Section SHALL use a bold, vibrant color palette with a background lightness value above 50% (non-dark) and occupy the full viewport height on initial load
