@@ -33,7 +33,7 @@ test('animations not applied when prefers-reduced-motion is set', async ({ brows
     '.hero__btn--primary',
     '.hero__social-link',
     '.highlights__card',
-    '.link-card',
+    '.links__channel',
     '.project-card',
   ];
 

@@ -107,36 +107,34 @@ describe('Skills Section', () => {
 });
 
 describe('Links Section', () => {
-  const expectedLinkCardHrefs = [
-    'https://go.bynoor.io/github',
+  const expectedChannelHrefs = [
     'https://go.bynoor.io/youtube',
+    'https://go.bynoor.io/linkedin',
+    'https://go.bynoor.io/github',
     'https://go.bynoor.io/twitter',
-    'https://go.bynoor.io/sof',
-    'https://go.bynoor.io/hr',
   ];
 
-  const expectedBannerLinkHrefs = [
-    'https://go.bynoor.io/linkedin',
+  const expectedAnchorLinkHrefs = [
     'https://go.bynoor.io/email',
   ];
 
-  it('has all social link cards and banner links with correct hrefs', () => {
+  it('has all channel cards and anchor links with correct hrefs', () => {
     const linksSection = document.querySelector('#links');
-    expectedLinkCardHrefs.forEach((href) => {
-      const link = linksSection.querySelector(`a.link-card[href="${href}"]`);
-      expect(link, `Expected link-card with href="${href}"`).not.toBeNull();
+    expectedChannelHrefs.forEach((href) => {
+      const link = linksSection.querySelector(`a.links__channel[href="${href}"]`);
+      expect(link, `Expected channel card with href="${href}"`).not.toBeNull();
     });
-    expectedBannerLinkHrefs.forEach((href) => {
+    expectedAnchorLinkHrefs.forEach((href) => {
       const link = linksSection.querySelector(`a[href="${href}"]`);
-      expect(link, `Expected banner link with href="${href}"`).not.toBeNull();
+      expect(link, `Expected anchor link with href="${href}"`).not.toBeNull();
     });
   });
 
-  it('has "Let\'s Connect" button with correct href', () => {
+  it('has "Book a call" button with correct href', () => {
     const linksSection = document.querySelector('#links');
     const cta = linksSection.querySelector('a[href="https://cal.com/mohammad-noor"]');
     expect(cta).not.toBeNull();
-    expect(cta.textContent).toContain("Let's Connect");
+    expect(cta.textContent).toContain('Book a call');
   });
 
   it('all links have target="_blank" and rel="noopener"', () => {
@@ -148,11 +146,11 @@ describe('Links Section', () => {
     });
   });
 
-  it('YouTube link has "Code with Noor" label', () => {
+  it('YouTube channel has "Code with Noor" label', () => {
     const linksSection = document.querySelector('#links');
     const youtubeLink = linksSection.querySelector('a[href="https://go.bynoor.io/youtube"]');
     expect(youtubeLink).not.toBeNull();
-    const label = youtubeLink.querySelector('.link-card__label');
+    const label = youtubeLink.querySelector('.links__channel-name');
     expect(label.textContent).toBe('Code with Noor');
   });
 });
@@ -275,8 +273,8 @@ describe('Accessibility', () => {
       expect(link.getAttribute('aria-label')).toBeTruthy();
     });
 
-    const linkCards = document.querySelectorAll('#links .link-card');
-    linkCards.forEach((link) => {
+    const channelCards = document.querySelectorAll('#links .links__channel');
+    channelCards.forEach((link) => {
       expect(link.getAttribute('aria-label')).toBeTruthy();
     });
   });
