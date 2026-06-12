@@ -168,16 +168,16 @@ Transform bynoor.io into an immersive, cinematic portfolio experience using the 
   - [x] 16.4 Update footer in `index.html` with `data-scene="footer"` attribute, back-to-top button with smooth scroll to hero
     - _Requirements: 17.4, 17.5, 17.6_
 
-- [ ] 17. SEO, Metadata, and Analytics
-  - [ ] 17.1 Preserve all Open Graph meta tags (og:title, og:description, og:image, og:url) in the redesigned `index.html`
+- [-] 17. SEO, Metadata, and Analytics
+  - [x] 17.1 Preserve all Open Graph meta tags (og:title, og:description, og:image, og:url) in the redesigned `index.html`
     - _Requirements: 16.1_
-  - [ ] 17.2 Preserve Twitter Card meta tags (summary_large_image) in the redesigned `index.html`
+  - [x] 17.2 Preserve Twitter Card meta tags (summary_large_image) in the redesigned `index.html`
     - _Requirements: 16.2_
-  - [ ] 17.3 Preserve JSON-LD Person schema markup with name, URL, jobTitle, and sameAs social links
+  - [x] 17.3 Preserve JSON-LD Person schema markup with name, URL, jobTitle, and sameAs social links
     - _Requirements: 16.3_
-  - [ ] 17.4 Preserve Google Analytics tracking script (gtag.js with measurement ID G-XHXB3G7XDR)
+  - [x] 17.4 Preserve Google Analytics tracking script (gtag.js with measurement ID G-XHXB3G7XDR)
     - _Requirements: 16.4_
-  - [ ] 17.5 Maintain asset preload links for LCP image and critical fonts
+  - [x] 17.5 Maintain asset preload links for LCP image and critical fonts
     - _Requirements: 16.5, 12.8_
 
 - [ ] 18. App Entry Point and Integration
