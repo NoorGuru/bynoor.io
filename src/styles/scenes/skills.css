@@ -1,0 +1,245 @@
+/* ═══════════════════════════════════════════════════════
+   Scene: Skills & Expertise
+   Category-grouped skill pills with animated entrance on
+   scroll, staggered reveals via --pill-index, subtle glow
+   on hover, and visual hierarchy through size/color.
+   ═══════════════════════════════════════════════════════ */
+
+/* === Scene Container === */
+[data-scene="skills"] {
+  position: relative;
+  padding: var(--space-4xl) var(--space-md);
+  overflow: hidden;
+  background: var(--color-bg-section);
+}
+
+[data-scene="skills"] .skills__container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* === Section Heading === */
+[data-scene="skills"] .skills__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: var(--fw-bold);
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* === Category Groups === */
+[data-scene="skills"] .skills__category {
+  margin-bottom: var(--space-2xl);
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--duration-entrance) var(--ease-cinematic),
+    transform var(--duration-entrance) var(--ease-cinematic);
+}
+
+[data-scene="skills"] .skills__category:last-child {
+  margin-bottom: 0;
+}
+
+/* Category visible state (triggered by JS) */
+[data-scene="skills"] .skills__category.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Category Labels === */
+[data-scene="skills"] .skills__category-name {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 8px;
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+/* Distinct accent per category */
+[data-scene="skills"] .skills__category:nth-child(1) .skills__category-name {
+  background: hsla(265, 90%, 65%, 0.12);
+  color: hsl(265, 90%, 78%);
+}
+
+[data-scene="skills"] .skills__category:nth-child(2) .skills__category-name {
+  background: hsla(185, 90%, 55%, 0.12);
+  color: hsl(185, 90%, 72%);
+}
+
+[data-scene="skills"] .skills__category:nth-child(3) .skills__category-name {
+  background: hsla(330, 85%, 60%, 0.12);
+  color: hsl(330, 85%, 74%);
+}
+
+[data-scene="skills"] .skills__category:nth-child(4) .skills__category-name {
+  background: hsla(45, 90%, 60%, 0.12);
+  color: hsl(45, 90%, 72%);
+}
+
+/* === Pills Container === */
+[data-scene="skills"] .skills__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* === Skill Pill Base (animated entrance) === */
+[data-scene="skills"] .skill-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity var(--duration-entrance) var(--ease-out),
+    transform var(--duration-entrance) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out),
+    scale var(--duration-hover) var(--ease-out);
+  transition-delay: calc(var(--pill-index, 0) * 60ms);
+}
+
+/* Pill visible state */
+[data-scene="skills"] .skill-pill.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Visual Hierarchy — Primary skills (first 2 in each category) larger === */
+[data-scene="skills"] .skills__pills .skill-pill:nth-child(-n+2) {
+  font-size: 0.95rem;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+}
+
+/* === Category Color Variants (gradient backgrounds) === */
+[data-scene="skills"] .skill-pill--languages {
+  background: linear-gradient(135deg, hsl(265, 80%, 55%), hsl(280, 75%, 65%));
+}
+
+[data-scene="skills"] .skill-pill--technologies {
+  background: linear-gradient(135deg, hsl(195, 80%, 45%), hsl(210, 75%, 55%));
+}
+
+[data-scene="skills"] .skill-pill--expertise {
+  background: linear-gradient(135deg, hsl(330, 75%, 50%), hsl(345, 70%, 62%));
+}
+
+[data-scene="skills"] .skill-pill--leadership {
+  background: linear-gradient(135deg, hsl(45, 85%, 48%), hsl(35, 80%, 55%));
+}
+
+/* === Hover: Scale + Category-Colored Glow === */
+[data-scene="skills"] .skill-pill--languages:hover {
+  scale: 1.08;
+  box-shadow:
+    0 0 12px 3px hsla(265, 90%, 65%, 0.4),
+    0 0 24px 6px hsla(265, 90%, 65%, 0.15);
+}
+
+[data-scene="skills"] .skill-pill--technologies:hover {
+  scale: 1.08;
+  box-shadow:
+    0 0 12px 3px hsla(185, 90%, 55%, 0.4),
+    0 0 24px 6px hsla(185, 90%, 55%, 0.15);
+}
+
+[data-scene="skills"] .skill-pill--expertise:hover {
+  scale: 1.08;
+  box-shadow:
+    0 0 12px 3px hsla(330, 85%, 60%, 0.4),
+    0 0 24px 6px hsla(330, 85%, 60%, 0.15);
+}
+
+[data-scene="skills"] .skill-pill--leadership:hover {
+  scale: 1.08;
+  box-shadow:
+    0 0 12px 3px hsla(45, 90%, 60%, 0.4),
+    0 0 24px 6px hsla(45, 90%, 60%, 0.15);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Responsive: Full effects at 1024px+
+   ═══════════════════════════════════════════════════════ */
+
+@media (min-width: 1024px) {
+  [data-scene="skills"] .skills__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  [data-scene="skills"] .skills__pills {
+    gap: var(--space-md);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Responsive: Simplified below 768px
+   ═══════════════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+  [data-scene="skills"] {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  [data-scene="skills"] .skills__category {
+    margin-bottom: var(--space-lg);
+  }
+
+  [data-scene="skills"] .skill-pill {
+    /* Simpler entrance — no stagger delay below 768px */
+    transition-delay: 0ms;
+    font-size: 0.8rem;
+    padding: 0.35rem 0.85rem;
+  }
+
+  [data-scene="skills"] .skills__pills .skill-pill:nth-child(-n+2) {
+    font-size: 0.875rem;
+    padding: 0.4rem 1rem;
+  }
+
+  /* Disable scale on hover for touch */
+  [data-scene="skills"] .skill-pill:hover {
+    scale: 1;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Reduced Motion Overrides
+   ═══════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-scene="skills"] .skills__category {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  [data-scene="skills"] .skill-pill {
+    opacity: 1;
+    transform: none;
+    transition: box-shadow var(--duration-hover) var(--ease-out);
+    transition-delay: 0ms;
+  }
+
+  [data-scene="skills"] .skill-pill:hover {
+    scale: 1;
+  }
+}

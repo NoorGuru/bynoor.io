@@ -115,10 +115,10 @@ Transform bynoor.io into an immersive, cinematic portfolio experience using the 
   - [x] 10.3 Update testimonials section in `index.html` with `data-scene="theater"` and kinetic typography attributes on quote text
     - _Requirements: 6.1, 6.4_
 
-- [ ] 11. Skills Section Redesign
-  - [ ] 11.1 Create `src/styles/scenes/skills.css` — redesigned skills section with category grouping, animated pill entrance on scroll, subtle glow on hover, visual hierarchy through size/color variation
+- [x] 11. Skills Section Redesign
+  - [x] 11.1 Create `src/styles/scenes/skills.css` — redesigned skills section with category grouping, animated pill entrance on scroll, subtle glow on hover, visual hierarchy through size/color variation
     - _Requirements: 13.1, 14.3_
-  - [ ] 11.2 Create `src/scripts/scenes/skills.js` — skills scene module with staggered entrance animation and scroll-triggered reveals
+  - [x] 11.2 Create `src/scripts/scenes/skills.js` — skills scene module with staggered entrance animation and scroll-triggered reveals
     - _Requirements: 2.3_
 
 - [ ] 12. Highlights Impact Scene
