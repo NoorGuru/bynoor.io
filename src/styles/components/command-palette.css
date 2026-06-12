@@ -1,0 +1,215 @@
+/* ═══════════════════════════════════════════════════════
+   Command Palette — Centered Overlay (Ctrl+K / Cmd+K)
+   Uses <dialog> element for native modal behavior
+   ═══════════════════════════════════════════════════════ */
+
+/* --- Dialog Container --- */
+[data-command-palette] {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 20vh;
+  margin: auto;
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  background: rgba(10, 10, 20, 0.85);
+  backdrop-filter: blur(var(--glass-blur-heavy));
+  -webkit-backdrop-filter: blur(var(--glass-blur-heavy));
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.6),
+    0 0 1px rgba(255, 255, 255, 0.1) inset;
+  color: var(--color-text);
+  overflow: hidden;
+  z-index: var(--depth-layer-overlay);
+
+  /* Enter/exit animation base */
+  opacity: 0;
+  transform: translateY(-12px) scale(0.98);
+  transition:
+    opacity var(--duration-entrance) var(--ease-out),
+    transform var(--duration-entrance) var(--ease-out);
+}
+
+/* --- Open state animation --- */
+[data-command-palette][open] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* --- Backdrop --- */
+[data-command-palette]::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Search Input
+   ═══════════════════════════════════════════════════════ */
+[data-command-input] {
+  display: block;
+  width: 100%;
+  padding: var(--space-lg) var(--space-xl);
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  font-weight: var(--fw-regular);
+  color: var(--color-text);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  outline: none;
+  caret-color: var(--accent-primary);
+}
+
+[data-command-input]::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+[data-command-input]:focus {
+  border-bottom-color: var(--accent-primary);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Command List
+   ═══════════════════════════════════════════════════════ */
+[data-command-list] {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-sm);
+  max-height: 300px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+[data-command-list]::-webkit-scrollbar {
+  width: 6px;
+}
+
+[data-command-list]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+[data-command-list]::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Command Item
+   ═══════════════════════════════════════════════════════ */
+.command-palette__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 8px;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  transition:
+    background var(--duration-hover) var(--ease-smooth),
+    border-color var(--duration-hover) var(--ease-smooth);
+}
+
+.command-palette__item:hover {
+  background: var(--glass-bg-hover);
+}
+
+/* --- Active / Keyboard Highlighted --- */
+.command-palette__item.is-active {
+  background: hsla(265, 80%, 60%, 0.12);
+  border-left-color: var(--accent-primary);
+}
+
+/* --- Label --- */
+.command-palette__label {
+  font-family: var(--font-primary);
+  font-size: 0.9375rem;
+  font-weight: var(--fw-regular);
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.command-palette__item.is-active .command-palette__label {
+  color: var(--color-text);
+  font-weight: var(--fw-semibold);
+}
+
+/* --- Keyboard Shortcut Display --- */
+.command-palette__shortcut {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+.command-palette__shortcut kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5em;
+  padding: var(--space-3xs) var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: var(--fw-regular);
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 4px;
+  line-height: 1;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Empty State
+   ═══════════════════════════════════════════════════════ */
+.command-palette__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl) var(--space-md);
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Focus Indicators (Accessibility)
+   ═══════════════════════════════════════════════════════ */
+[data-command-input]:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: -2px;
+}
+
+.command-palette__item:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: -2px;
+  background: hsla(265, 80%, 60%, 0.12);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Reduced Motion
+   ═══════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  [data-command-palette] {
+    transition: none;
+    transform: none;
+  }
+
+  [data-command-palette][open] {
+    transform: none;
+  }
+
+  .command-palette__item {
+    transition: none;
+  }
+}

@@ -129,19 +129,19 @@ Transform bynoor.io into an immersive, cinematic portfolio experience using the 
   - [x] 12.3 Update `index.html` highlights section markup with `data-scene="highlights"`, `data-glow` attributes on cards, and `data-animate-dir` attributes for alternating entrance direction
     - _Requirements: 15.1, 15.5_
 
-- [ ] 13. Checkpoint — Ensure all tests pass
+- [x] 13. Checkpoint — Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 14. Command Palette and Easter Eggs
-  - [ ] 14.1 Create `src/styles/components/command-palette.css` — centered overlay using `<dialog>`, backdrop blur, search input, command list with keyboard highlight, enter/exit animations
+- [x] 14. Command Palette and Easter Eggs
+  - [x] 14.1 Create `src/styles/components/command-palette.css` — centered overlay using `<dialog>`, backdrop blur, search input, command list with keyboard highlight, enter/exit animations
     - _Requirements: 10.1_
-  - [ ] 14.2 Create `src/scripts/ui/command-palette.js` — CommandPalette class with Cmd+K/Ctrl+K trigger, command registry, substring filtering, arrow key navigation, Enter to execute, Escape to close, focus trap management
+  - [x] 14.2 Create `src/scripts/ui/command-palette.js` — CommandPalette class with Cmd+K/Ctrl+K trigger, command registry, substring filtering, arrow key navigation, Enter to execute, Escape to close, focus trap management
     - _Requirements: 10.1, 10.2, 10.3, 10.6_
-  - [ ] 14.3 Create `src/scripts/ui/easter-eggs.js` — Konami code listener (confetti burst) and logo multi-click handler (Matrix rain effect for 3 seconds)
+  - [x] 14.3 Create `src/scripts/ui/easter-eggs.js` — Konami code listener (confetti burst) and logo multi-click handler (Matrix rain effect for 3 seconds)
     - _Requirements: 10.4, 10.5_
-  - [ ] 14.4 Add `<dialog>` element for Command Palette to `index.html`
+  - [x] 14.4 Add `<dialog>` element for Command Palette to `index.html`
     - _Requirements: 10.1_
-  - [ ] 14.5 Register "Resources" command in Command Palette that navigates to /technical-interview-preparation-kit/
+  - [x] 14.5 Register "Resources" command in Command Palette that navigates to /technical-interview-preparation-kit/
     - _Requirements: 18.2_
   - [ ]* 14.6 Write property test: Command Palette focus trap — while open, Tab/Shift+Tab cycles only within dialog
     - **Property 5: Command Palette Focus Trap**

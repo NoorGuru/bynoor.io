@@ -31,7 +31,7 @@
    ═══════════════════════════════════════════════════════ */
 @import './components/nav.css';
 @import './components/cursor.css';
-/* @import './components/command-palette.css'; */
+@import './components/command-palette.css';
 
 /* ═══════════════════════════════════════════════════════
    Design system layers: gradients, glass, cursor, progress, dividers, decorative
