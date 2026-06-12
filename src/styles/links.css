@@ -143,7 +143,7 @@
 
 @media (min-width: 900px) {
   .links__grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -195,40 +195,6 @@
 }
 
 /* ===========================
-   Featured Link Row
-   =========================== */
-.links__featured-row {
-  display: flex;
-  justify-content: center;
-  margin-top: var(--space-md);
-}
-
-/* Featured card gets same glassmorphism treatment */
-.links__featured-row .link-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid var(--glass-border);
-}
-
-.links__featured-row .link-card:hover {
-  background: var(--glass-bg-hover);
-  border-color: var(--glass-border-hover);
-}
-
-.link-card__featured-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.link-card__desc {
-  font-size: 0.8rem;
-  color: var(--color-text-secondary);
-  font-weight: 400;
-}
-
-/* ===========================
    Fallback: no backdrop-filter
    =========================== */
 @supports not (backdrop-filter: blur(1px)) {
@@ -243,10 +209,6 @@
   }
 
   .links__cta-banner {
-    background: var(--color-bg-elevated);
-  }
-
-  .links__featured-row .link-card {
     background: var(--color-bg-elevated);
   }
 }
