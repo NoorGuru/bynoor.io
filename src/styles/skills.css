@@ -1,4 +1,4 @@
-/* Skills Section — Creative Redesign */
+/* Skills Section — "The Stack" Layered Architecture */
 .skills {
   padding: var(--space-xl) var(--space-md);
   background-color: var(--color-bg-section);
@@ -9,148 +9,218 @@
   margin: 0 auto;
 }
 
-/* Heading — styled in section-titles.css */
+/* Heading — styled primarily in section-titles.css */
 .skills__heading {
   font-family: var(--font-heading);
   font-weight: var(--fw-bold);
   margin-bottom: var(--space-lg);
 }
 
-@supports not (-webkit-background-clip: text) {
-  .skills__heading {
-    color: var(--accent-primary);
-  }
-}
-
-/* Category blocks */
-.skills__category {
-  margin-bottom: var(--space-lg);
-}
-
-.skills__category:last-child {
-  margin-bottom: 0;
-}
-
-/* Category labels as accent-colored tags */
-.skills__category-name {
-  display: inline-block;
-  font-family: var(--font-heading);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  padding: 0.25rem 0.75rem;
-  border-radius: 6px;
-  margin-bottom: var(--space-sm);
-  color: var(--color-text);
-}
-
-/* Distinct background per category label */
-.skills__category:nth-child(1) .skills__category-name {
-  background: hsla(265, 90%, 65%, 0.15);
-  color: hsl(265, 90%, 75%);
-}
-
-.skills__category:nth-child(2) .skills__category-name {
-  background: hsla(195, 85%, 55%, 0.15);
-  color: hsl(195, 85%, 70%);
-}
-
-.skills__category:nth-child(3) .skills__category-name {
-  background: hsla(330, 80%, 60%, 0.15);
-  color: hsl(330, 80%, 72%);
-}
-
-.skills__category:nth-child(4) .skills__category-name {
-  background: hsla(45, 90%, 60%, 0.15);
-  color: hsl(45, 90%, 70%);
-}
-
-/* Pills container — flex-wrap, no horizontal scroll */
-.skills__pills {
+/* The Stack — vertical arrangement */
+.skills__stack {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Each layer card */
+.skills__layer {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-lg);
+  padding-left: calc(var(--space-lg) + var(--space-md));
+  border-radius: 12px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  transition: border-color var(--duration-hover) var(--ease-out),
+              background var(--duration-hover) var(--ease-out);
+}
+
+.skills__layer:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+}
+
+/* Accent bar on the left */
+.skills__layer-accent {
+  position: absolute;
+  left: 0;
+  top: var(--space-lg);
+  bottom: var(--space-lg);
+  width: 3px;
+  border-radius: 3px;
+}
+
+.skills__layer--build .skills__layer-accent {
+  background: var(--accent-primary);
+  box-shadow: 0 0 12px hsla(265, 90%, 65%, 0.4);
+}
+
+.skills__layer--architect .skills__layer-accent {
+  background: var(--accent-secondary);
+  box-shadow: 0 0 12px hsla(175, 85%, 48%, 0.4);
+}
+
+.skills__layer--lead .skills__layer-accent {
+  background: var(--accent-quaternary);
+  box-shadow: 0 0 12px hsla(45, 90%, 60%, 0.4);
+}
+
+/* Layer content */
+.skills__layer-content {
+  display: flex;
+  flex-direction: column;
   gap: var(--space-sm);
 }
 
-/* Skill Pill Base */
-.skill-pill {
+/* Layer label — monospace eyebrow */
+.skills__layer-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: var(--fw-regular);
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  opacity: 0.6;
+}
+
+/* Ghost echo — large text behind each card */
+.skills__layer::before {
+  position: absolute;
+  right: var(--space-lg);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.skills__layer--build::before {
+  content: 'BUILD';
+  color: var(--accent-primary);
+}
+
+.skills__layer--architect::before {
+  content: 'ARCHITECT';
+  color: var(--accent-secondary);
+}
+
+.skills__layer--lead::before {
+  content: 'LEAD';
+  color: var(--accent-quaternary);
+}
+
+.skills__layer--build .skills__layer-label {
+  color: var(--accent-primary);
+}
+
+.skills__layer--architect .skills__layer-label {
+  color: var(--accent-secondary);
+}
+
+.skills__layer--lead .skills__layer-label {
+  color: var(--accent-quaternary);
+}
+
+/* Layer title — bold statement */
+.skills__layer-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  line-height: 1.25;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* Layer proof — the evidence line */
+.skills__layer-proof {
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: var(--space-xs) 0 var(--space-sm);
+  max-width: 65ch;
+}
+
+/* Skill tokens — understated, inline */
+.skills__layer-tokens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: var(--space-xs);
+}
+
+.skills__token {
   display: inline-flex;
   align-items: center;
-  padding: 0.4rem 1rem;
-  border-radius: 9999px;
-  font-family: var(--font-primary);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.95);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: var(--fw-regular);
   white-space: nowrap;
-  transition:
-    transform var(--duration-hover) var(--ease-out),
-    box-shadow var(--duration-hover) var(--ease-out);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--color-text-secondary);
+  transition: border-color var(--duration-hover) var(--ease-out),
+              color var(--duration-hover) var(--ease-out);
 }
 
-/* Skill Pill Category Variants — Gradient Backgrounds (2+ color stops) */
-.skill-pill--languages {
-  background: linear-gradient(135deg, hsl(265, 80%, 55%), hsl(280, 75%, 65%));
+/* Token hover — subtle accent glow per layer */
+.skills__layer--build .skills__token:hover {
+  border-color: hsla(265, 90%, 65%, 0.4);
+  color: var(--accent-primary);
 }
 
-.skill-pill--technologies {
-  background: linear-gradient(135deg, hsl(195, 80%, 45%), hsl(210, 75%, 55%));
+.skills__layer--architect .skills__token:hover {
+  border-color: hsla(175, 85%, 48%, 0.4);
+  color: var(--accent-secondary);
 }
 
-.skill-pill--expertise {
-  background: linear-gradient(135deg, hsl(330, 75%, 50%), hsl(345, 70%, 62%));
+.skills__layer--lead .skills__token:hover {
+  border-color: hsla(45, 90%, 60%, 0.4);
+  color: var(--accent-quaternary);
 }
 
-.skill-pill--leadership {
-  background: linear-gradient(135deg, hsl(45, 85%, 48%), hsl(35, 80%, 55%));
-}
-
-/* Skill Pill Hover — scale + box-shadow glow */
-.skill-pill--languages:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 12px 4px hsla(265, 90%, 65%, 0.4);
-}
-
-.skill-pill--technologies:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 12px 4px hsla(195, 85%, 55%, 0.4);
-}
-
-.skill-pill--expertise:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 12px 4px hsla(330, 80%, 60%, 0.4);
-}
-
-.skill-pill--leadership:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 12px 4px hsla(45, 90%, 60%, 0.4);
-}
-
-/* Reduced Motion — no scale transforms on hover, keep gradients and glow */
+/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .skill-pill {
-    transition: box-shadow var(--duration-hover) var(--ease-out);
-  }
-
-  .skill-pill--languages:hover,
-  .skill-pill--technologies:hover,
-  .skill-pill--expertise:hover,
-  .skill-pill--leadership:hover {
-    transform: none;
+  .skills__token,
+  .skills__layer {
+    transition: none;
   }
 }
 
-/* Mobile — ensure no horizontal scroll, natural flex wrap */
+/* Mobile — tighten spacing */
 @media (max-width: 768px) {
-  .skills__pills {
-    overflow-x: hidden;
+  .skills__layer {
+    padding: var(--space-md);
+    padding-left: calc(var(--space-md) + 3px + var(--space-sm));
   }
 
-  .skill-pill {
-    white-space: normal;
-    word-break: break-word;
+  .skills__layer-accent {
+    top: var(--space-md);
+    bottom: var(--space-md);
+  }
+
+  .skills__layer-title {
+    font-size: 1.1rem;
+  }
+
+  .skills__layer-proof {
+    font-size: 0.85rem;
+  }
+
+  .skills__token {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
   }
 }
-
-/* Section Accent Reveal — moved to section-titles.css */

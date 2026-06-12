@@ -83,9 +83,10 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SKILLS — "Skills & Expertise"
-   Personality: Technical, precise. A monospace-accent eyebrow
-   above the heading like a terminal prompt prefix.
+   SKILLS — "How I Work"
+   Personality: Architectural, precise. Blueprint crop marks
+   frame the heading like an engineering drawing — this is
+   how the system is designed.
    ───────────────────────────────────────────────────────────── */
 .skills__heading {
   text-align: left;
@@ -93,12 +94,13 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
   font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
-  padding-top: 1.8rem;
+  letter-spacing: -0.03em;
+  padding: 1.8rem 0 1rem 1.4rem;
 }
 
+/* Monospace eyebrow — ~/skills */
 .skills__heading::before {
   content: '~/skills';
   position: absolute;
@@ -114,6 +116,24 @@
   background: none;
   -webkit-background-clip: unset;
   background-clip: unset;
+}
+
+/* Bottom-right crop mark ┘ */
+.skills__heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-bottom: 2px solid hsl(195, 85%, 55%);
+  border-right: 2px solid hsl(195, 85%, 55%);
+  opacity: 0.35;
+  border-radius: 0 0 2px 0;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: initial;
 }
 
 /* ─────────────────────────────────────────────────────────────
