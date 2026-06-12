@@ -1,0 +1,162 @@
+/* ═══════════════════════════════════════════════════════
+   Scene: Spotlight Projects
+   Scene-specific enhancements for project cards including
+   staggered grid layout, hover elevation, slide-up
+   description reveal, and entrance animations.
+   ═══════════════════════════════════════════════════════ */
+/* Validates: Requirements 5.1, 5.2, 5.6 */
+
+/* === Scene Container === */
+.scene--projects {
+  position: relative;
+  overflow: hidden;
+}
+
+/* === Staggered Grid Layout with Visual Hierarchy === */
+.scene--projects .projects__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .scene--projects .projects__grid {
+    grid-template-columns: 1.5fr 1fr;
+  }
+
+  /* First card spans taller for visual hierarchy */
+  .scene--projects .project-card:nth-child(1) {
+    min-height: 240px;
+  }
+
+  .scene--projects .project-card:nth-child(2) {
+    min-height: 200px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .scene--projects .projects__grid {
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-xl);
+  }
+
+  .scene--projects .project-card:nth-child(1) {
+    min-height: 280px;
+  }
+
+  .scene--projects .project-card:nth-child(2) {
+    min-height: 220px;
+  }
+}
+
+/* === Hover Elevation with Increased Shadow Depth === */
+.scene--projects .project-card {
+  transition:
+    transform var(--duration-hover, 200ms) var(--ease-out, cubic-bezier(0, 0, 0.2, 1)),
+    box-shadow var(--duration-hover, 200ms) var(--ease-out, cubic-bezier(0, 0, 0.2, 1)),
+    background var(--duration-hover, 200ms) var(--ease-out, cubic-bezier(0, 0, 0.2, 1)),
+    border-color var(--duration-hover, 200ms) var(--ease-out, cubic-bezier(0, 0, 0.2, 1));
+}
+
+.scene--projects .project-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    inset 4px 0 0 0 var(--project-accent, var(--accent-primary)),
+    0 0 16px color-mix(in srgb, var(--project-accent, var(--accent-primary)) 30%, transparent),
+    0 16px 48px rgba(0, 0, 0, 0.4),
+    0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* === Slide-Up Description Reveal on Hover === */
+.scene--projects .project-card__desc {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    max-height 0.35s var(--ease-out, cubic-bezier(0, 0, 0.2, 1)),
+    opacity 0.3s var(--ease-out, cubic-bezier(0, 0, 0.2, 1)),
+    transform 0.3s var(--ease-out, cubic-bezier(0, 0, 0.2, 1));
+}
+
+.scene--projects .project-card:hover .project-card__desc,
+.scene--projects .project-card:focus-within .project-card__desc {
+  max-height: 100px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure title + tagline are always visible (tagline if present) */
+.scene--projects .project-card__title {
+  position: relative;
+  z-index: 2;
+}
+
+.scene--projects .project-card__tagline {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-sm);
+  opacity: 0.8;
+}
+
+/* === Scroll Entrance Animations === */
+.scene--projects .project-card {
+  opacity: 0;
+  transition:
+    opacity var(--duration-entrance, 600ms) var(--ease-cinematic, cubic-bezier(0.4, 0, 0, 1)),
+    transform var(--duration-entrance, 600ms) var(--ease-cinematic, cubic-bezier(0.4, 0, 0, 1)),
+    box-shadow var(--duration-hover, 200ms) var(--ease-out, cubic-bezier(0, 0, 0.2, 1)),
+    background var(--duration-hover, 200ms) var(--ease-out, cubic-bezier(0, 0, 0.2, 1)),
+    border-color var(--duration-hover, 200ms) var(--ease-out, cubic-bezier(0, 0, 0.2, 1));
+}
+
+/* Odd cards enter from the left with subtle rotation */
+.scene--projects .project-card:nth-child(odd) {
+  transform: translateX(-30px) rotate(-2deg);
+}
+
+/* Even cards enter from the right with subtle rotation */
+.scene--projects .project-card:nth-child(even) {
+  transform: translateX(30px) rotate(2deg);
+}
+
+/* Visible state (set by JS IntersectionObserver) */
+.scene--projects .project-card.is-visible {
+  opacity: 1;
+  transform: translateX(0) rotate(0deg);
+}
+
+/* Hover must override the visible transform */
+.scene--projects .project-card.is-visible:hover {
+  transform: translateY(-8px) rotate(0deg);
+}
+
+/* === Cursor-Following Glow Integration === */
+/* The glow system is handled by [data-glow] in glow.css + glow.js.
+   This section just ensures scene-specific glow intensity. */
+.scene--projects [data-glow]:hover::before {
+  opacity: var(--glow-intensity-hover, 0.25);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Reduced Motion Overrides
+   ═══════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .scene--projects .project-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .scene--projects .project-card:hover {
+    transform: none;
+  }
+
+  .scene--projects .project-card__desc {
+    max-height: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

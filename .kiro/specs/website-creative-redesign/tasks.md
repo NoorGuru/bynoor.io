@@ -99,12 +99,12 @@ Transform bynoor.io into an immersive, cinematic portfolio experience using the 
     - **Property 8: Timeline Milestone Ordering**
     - **Validates: Requirements 4.1, 4.5**
 
-- [ ] 9. Spotlight Project Cards
-  - [ ] 9.1 Create `src/styles/scenes/projects.css` — staggered grid layout with varying card sizes, hover elevation with increased shadow, slide-up description reveal, cursor-following glow integration
+- [x] 9. Spotlight Project Cards
+  - [x] 9.1 Create `src/styles/scenes/projects.css` — staggered grid layout with varying card sizes, hover elevation with increased shadow, slide-up description reveal, cursor-following glow integration
     - _Requirements: 5.1, 5.2, 5.6_
-  - [ ] 9.2 Create `src/scripts/scenes/projects.js` — project scene module with scroll entrance animations (opacity + rotation from alternating directions), glow effect initialization per card
+  - [x] 9.2 Create `src/scripts/scenes/projects.js` — project scene module with scroll entrance animations (opacity + rotation from alternating directions), glow effect initialization per card
     - _Requirements: 5.3, 5.5_
-  - [ ] 9.3 Update project section in `index.html` with `data-scene="projects"` and `data-glow` attributes on cards, add project descriptions for hover reveal
+  - [x] 9.3 Update project section in `index.html` with `data-scene="projects"` and `data-glow` attributes on cards, add project descriptions for hover reveal
     - _Requirements: 5.1, 5.4, 5.6_
 
 - [ ] 10. Testimonial Theater Scene
