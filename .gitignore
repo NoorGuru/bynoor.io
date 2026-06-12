@@ -1,6 +1,7 @@
 node_modules/
 dist/
 *.local
+.DS_Store
 
 # Untracked project directories
 bynoor.io/

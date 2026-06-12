@@ -147,12 +147,12 @@ Transform bynoor.io into an immersive, cinematic portfolio experience using the 
     - **Property 5: Command Palette Focus Trap**
     - **Validates: Requirements 10.1, 10.6**
 
-- [ ] 15. Sound Design Toggle
-  - [ ] 15.1 Create `src/scripts/ui/sound.js` — SoundToggle class using Web Audio API, AudioContext + GainNode for volume control, 500ms fade in/out, localStorage persistence, autoplay-block detection
+- [x] 15. Sound Design Toggle
+  - [x] 15.1 Create `src/scripts/ui/sound.js` — SoundToggle class using Web Audio API, AudioContext + GainNode for volume control, 500ms fade in/out, localStorage persistence, autoplay-block detection
     - _Requirements: 11.3, 11.4, 11.5, 11.6_
-  - [ ] 15.2 Add sound toggle button to `index.html` with `aria-label` and `aria-pressed` attributes, fixed positioning
+  - [x] 15.2 Add sound toggle button to `index.html` with `aria-label` and `aria-pressed` attributes, fixed positioning
     - _Requirements: 11.1, 11.2_
-  - [ ] 15.3 Create or source a subtle ambient audio loop file (~30s) and place in `src/assets/audio/`
+  - [x] 15.3 Create or source a subtle ambient audio loop file (~30s) and place in `src/assets/audio/`
     - _Requirements: 11.3_
   - [ ]* 15.4 Write property test: Sound state round-trip — localStorage persistence matches toggled state after simulated reload
     - **Property 6: Sound State Round-Trip**

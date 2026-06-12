@@ -1,0 +1,96 @@
+/* ═══════════════════════════════════════════════════════
+   Sound Toggle — Fixed Position Ambient Sound Control
+   Unobtrusive circular button with glassmorphism style
+   ═══════════════════════════════════════════════════════ */
+
+/* --- Button Container --- */
+.sound-toggle {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  background: rgba(10, 10, 20, 0.6);
+  backdrop-filter: blur(var(--glass-blur-light, 8px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-light, 8px));
+  color: var(--color-text-muted);
+  cursor: pointer;
+  z-index: var(--depth-layer-fixed, 900);
+  transition:
+    color var(--duration-hover, 0.2s) var(--ease-smooth, ease),
+    background var(--duration-hover, 0.2s) var(--ease-smooth, ease),
+    box-shadow var(--duration-hover, 0.2s) var(--ease-smooth, ease),
+    border-color var(--duration-hover, 0.2s) var(--ease-smooth, ease);
+}
+
+/* --- Hover State --- */
+.sound-toggle:hover {
+  color: var(--color-text);
+  background: rgba(10, 10, 20, 0.75);
+  border-color: var(--accent-primary, hsl(265, 80%, 60%));
+  box-shadow:
+    0 0 12px rgba(139, 92, 246, 0.3),
+    0 0 4px rgba(139, 92, 246, 0.15) inset;
+}
+
+/* --- Active/Pressed State --- */
+.sound-toggle:active {
+  transform: scale(0.94);
+}
+
+/* --- Focus Indicator (Accessibility) --- */
+.sound-toggle:focus-visible {
+  outline: 2px solid var(--accent-primary, hsl(265, 80%, 60%));
+  outline-offset: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Icon States
+   ═══════════════════════════════════════════════════════ */
+
+/* Muted icon shown by default */
+.sound-toggle__icon--muted {
+  display: block;
+}
+
+/* Active icon hidden by default */
+.sound-toggle__icon--active {
+  display: none;
+}
+
+/* When toggle is active (unmuted): swap icon visibility */
+.sound-toggle.is-active .sound-toggle__icon--muted {
+  display: none;
+}
+
+.sound-toggle.is-active .sound-toggle__icon--active {
+  display: block;
+}
+
+/* Active state glow */
+.sound-toggle.is-active {
+  color: var(--accent-primary, hsl(265, 80%, 60%));
+  border-color: var(--accent-primary, hsl(265, 80%, 60%));
+  box-shadow:
+    0 0 8px rgba(139, 92, 246, 0.25),
+    0 0 2px rgba(139, 92, 246, 0.1) inset;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Reduced Motion
+   ═══════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .sound-toggle {
+    transition: none;
+  }
+
+  .sound-toggle:active {
+    transform: none;
+  }
+}
