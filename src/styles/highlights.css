@@ -1,4 +1,5 @@
-/* Highlights Section — Glassmorphism + Creative Layout */
+/* Highlights Section — "Proof of Impact" */
+
 .highlights {
   padding: var(--space-2xl) var(--space-md);
   background: var(--color-bg);
@@ -6,111 +7,444 @@
   overflow: hidden;
 }
 
+/* Subtle background glow */
+.highlights::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, color-mix(in srgb, var(--accent-primary) 6%, transparent) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 80%, color-mix(in srgb, var(--accent-secondary) 4%, transparent) 0%, transparent 60%);
+  pointer-events: none;
+}
+
 .highlights__container {
   max-width: var(--max-width);
   margin: 0 auto;
+  position: relative;
 }
 
-/* Heading with gradient text fill */
-.highlights__heading {
-  font-family: var(--font-heading);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: var(--fw-bold);
+/* --- Header --- */
+.highlights__header {
   text-align: center;
   margin-bottom: var(--space-xl);
+}
+
+.highlights__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  line-height: 1.1;
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.02em;
+}
+
+.highlights__heading-accent {
   background: var(--gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Grid layout — single column on mobile */
-.highlights__grid {
+.highlights__subtitle {
+  font-family: var(--font-primary);
+  font-size: clamp(0.95rem, 1.5vw, 1.125rem);
+  color: var(--color-text-secondary);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* =============================================
+   SHARED: Vertical signal line
+   Used by both roles and timeline sections
+   ============================================= */
+.highlights__signal-line {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--accent-primary) 10%,
+    var(--accent-secondary) 50%,
+    var(--accent-primary) 90%,
+    transparent 100%
+  );
+  opacity: 0.3;
+}
+
+/* =============================================
+   ROLE CARDS — Identity layer
+   ============================================= */
+.highlights__roles {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-lg);
+  gap: 12px;
+  padding: var(--space-lg) 0;
+  padding-left: 48px;
+  margin-bottom: var(--space-lg);
 }
 
-/* Glassmorphism card styling */
-.highlights__card {
+.highlights__role-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 14px 20px;
   background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--glass-border);
-  border-radius: 1rem;
+  border-radius: 10px;
+  position: relative;
+  transition:
+    border-color 250ms var(--ease-out),
+    box-shadow 250ms var(--ease-out),
+    transform 250ms var(--ease-out);
+}
+
+.highlights__role-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transform: translateX(4px);
+}
+
+/* Dot on the signal line for each role card */
+.highlights__role-card::before {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--card-accent, var(--accent-primary));
+  background: var(--color-bg);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--card-accent, var(--accent-primary)) 30%, transparent);
+  transition: box-shadow 250ms var(--ease-out), transform 250ms var(--ease-out);
+}
+
+.highlights__role-card:hover::before {
+  box-shadow: 0 0 14px color-mix(in srgb, var(--card-accent, var(--accent-primary)) 60%, transparent);
+  transform: translateY(-50%) scale(1.3);
+}
+
+/* Accent color per card via custom property */
+.highlights__role-card--violet { --card-accent: var(--accent-primary); }
+.highlights__role-card--cyan { --card-accent: var(--accent-secondary); }
+.highlights__role-card--pink { --card-accent: var(--accent-tertiary); }
+.highlights__role-card--amber { --card-accent: var(--accent-quaternary); }
+
+.highlights__role-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.highlights__role-text {
+  min-width: 0;
+}
+
+.highlights__role-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.highlights__role-desc {
+  font-size: 0.84rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+/* =============================================
+   TIMELINE — Proof layer (numbers)
+   ============================================= */
+.highlights__timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-lg) 0;
+}
+
+/* Timeline's own signal line */
+.highlights__line {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--accent-primary) 10%,
+    var(--accent-secondary) 50%,
+    var(--accent-primary) 90%,
+    transparent 100%
+  );
+  opacity: 0.3;
+}
+
+/* Animated pulse on the timeline line */
+.highlights__line::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: 0;
+  width: 8px;
+  height: 60px;
+  border-radius: 4px;
+  background: linear-gradient(to bottom, transparent, var(--accent-primary), transparent);
+  animation: highlights-pulse 4s ease-in-out infinite;
+}
+
+@keyframes highlights-pulse {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* --- Timeline Node --- */
+.highlights__node {
+  position: relative;
+  padding-left: 48px;
+}
+
+/* Node dot */
+.highlights__node-dot {
+  position: absolute;
+  left: 12px;
+  top: 24px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 2px solid var(--accent-primary);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent-primary) 40%, transparent);
+  transition: box-shadow 300ms var(--ease-out), transform 300ms var(--ease-out);
+  z-index: 1;
+}
+
+.highlights__node:hover .highlights__node-dot {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent-primary) 70%, transparent);
+  transform: scale(1.2);
+}
+
+/* Node content card */
+.highlights__node-content {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
   padding: var(--space-lg);
   transition:
-    transform var(--duration-hover) var(--ease-out),
-    box-shadow var(--duration-hover) var(--ease-out),
-    background var(--duration-hover) var(--ease-out),
-    border-color var(--duration-hover) var(--ease-out);
+    border-color 300ms var(--ease-out),
+    box-shadow 300ms var(--ease-out),
+    transform 300ms var(--ease-out);
 }
 
-/* Hover: vertical lift + elevated shadow + increased opacity */
-.highlights__card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 12px rgba(139, 92, 246, 0.1);
-  background: var(--glass-bg-hover);
-  border-color: var(--glass-border-hover);
+.highlights__node:hover .highlights__node-content {
+  border-color: color-mix(in srgb, var(--accent-primary) 30%, transparent);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px color-mix(in srgb, var(--accent-primary) 10%, transparent);
+  transform: translateX(4px);
 }
 
-/* Card icon with accent glow */
-.highlights__icon {
-  font-size: 2rem;
+/* Metric */
+.highlights__metric {
   display: block;
-  margin-bottom: var(--space-sm);
-  text-shadow: 0 0 12px var(--accent-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 4px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Card title */
-.highlights__title {
+/* Label */
+.highlights__label {
   font-family: var(--font-heading);
-  font-size: 1.125rem;
-  font-weight: var(--fw-bold);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: var(--fw-semibold);
   color: var(--color-text);
   margin-bottom: var(--space-xs);
+  line-height: 1.3;
 }
 
-/* Card description */
-.highlights__desc {
-  font-size: 0.95rem;
+/* Context */
+.highlights__context {
+  font-size: 0.9rem;
   color: var(--color-text-secondary);
   line-height: 1.5;
 }
 
-/* Tablet (≥768px): Asymmetric grid — first card spans 2 columns */
+/* =============================================
+   SECTION LABEL — bridges roles and timeline
+   ============================================= */
+.highlights__section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: var(--fw-regular);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding-left: 48px;
+  margin-bottom: var(--space-sm);
+  position: relative;
+}
+
+.highlights__section-label::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  transform: translateY(-50%);
+}
+
+/* =============================================
+   DESKTOP LAYOUT (≥768px)
+   ============================================= */
 @media (min-width: 768px) {
-  .highlights__grid {
+  /* Roles: center the signal line, 2-col grid */
+  .highlights__roles {
     grid-template-columns: repeat(2, 1fr);
+    gap: 12px 24px;
+    padding-left: 0;
   }
 
-  .highlights__card:first-child {
-    grid-column: span 2;
+  .highlights__roles .highlights__signal-line {
+    display: none;
+  }
+
+  .highlights__role-card::before {
+    display: none;
+  }
+
+  .highlights__role-card {
+    padding: 16px 20px;
+  }
+
+  /* Section label centered */
+  .highlights__section-label {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .highlights__section-label::before {
+    display: none;
+  }
+
+  /* Timeline: zigzag */
+  .highlights__timeline {
+    gap: var(--space-xl);
+  }
+
+  .highlights__line {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .highlights__node {
+    width: 50%;
+    padding-left: 0;
+  }
+
+  .highlights__node--left {
+    align-self: flex-start;
+    padding-right: 48px;
+    text-align: right;
+  }
+
+  .highlights__node--right {
+    align-self: flex-end;
+    padding-left: 48px;
+    text-align: left;
+  }
+
+  .highlights__node--left .highlights__node-dot {
+    left: auto;
+    right: -9px;
+    top: 28px;
+  }
+
+  .highlights__node--right .highlights__node-dot {
+    left: -9px;
+    top: 28px;
+  }
+
+  .highlights__node--left:hover .highlights__node-content {
+    transform: translateX(-4px);
+  }
+
+  .highlights__node--right:hover .highlights__node-content {
+    transform: translateX(4px);
+  }
+
+  .highlights__node-content {
+    padding: var(--space-lg) var(--space-xl);
   }
 }
 
-/* Desktop (≥1024px): 3-column grid, first card still spans 2 */
+/* Desktop: 3 columns for roles */
 @media (min-width: 1024px) {
-  .highlights__grid {
+  .highlights__roles {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .highlights__card:first-child {
-    grid-column: span 2;
+    gap: 12px 28px;
   }
 }
 
-/* Fallback for browsers without backdrop-filter support */
-@supports not (backdrop-filter: blur(1px)) {
-  .highlights__card {
-    background: var(--color-bg-elevated);
-    border: 1px solid var(--glass-border);
+/* Large desktop */
+@media (min-width: 1200px) {
+  .highlights__node {
+    width: 45%;
+  }
+
+  .highlights__metric {
+    font-size: 3rem;
   }
 }
 
-/* Section Accent Reveal — border-glow transition on scroll intersection */
+/* =============================================
+   REDUCED MOTION
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+  .highlights__line::after {
+    animation: none;
+    display: none;
+  }
+
+  .highlights__node:hover .highlights__node-content {
+    transform: none;
+  }
+
+  .highlights__node:hover .highlights__node-dot {
+    transform: none;
+  }
+
+  .highlights__role-card:hover {
+    transform: none;
+  }
+
+  .highlights__role-card:hover::before {
+    transform: translateY(-50%);
+  }
+}
+
+/* --- Revealed state --- */
 .highlights.section--revealed {
-  box-shadow: inset 3px 0 0 0 var(--accent-primary),
-              0 0 16px -4px color-mix(in srgb, var(--accent-primary) 25%, transparent);
-  transition: box-shadow 400ms ease-out;
+  /* The signal line IS the accent for this section */
 }
