@@ -1,17 +1,32 @@
 /* Footer Component — Dark Theme Redesign */
 .footer {
+  position: relative;
   background: var(--color-bg);
   border-top: 1px solid transparent;
   border-image: linear-gradient(90deg, transparent, var(--accent-primary), var(--accent-secondary), transparent) 1;
-  padding: var(--space-xl) var(--space-md) var(--space-lg);
+  padding: var(--space-3xl) var(--space-md) var(--space-xl);
   text-align: center;
   color: var(--color-text-secondary);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-md);
+
+  /* Fade-up entrance — initial hidden state */
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--duration-entrance) var(--ease-cinematic),
+    transform var(--duration-entrance) var(--ease-cinematic);
 }
 
+/* Visible state (triggered by IntersectionObserver) */
+.footer.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Logo — "by|noor|.io" Typography Treatment === */
 .footer__logo {
   font-family: var(--font-heading);
   font-size: 2rem;
@@ -40,6 +55,7 @@
   color: var(--accent-secondary);
 }
 
+/* === "Fresh Out of Localhost" Badge === */
 .footer__beta {
   display: flex;
   flex-direction: column;
@@ -66,4 +82,85 @@
   font-size: 0.75rem;
   color: var(--color-text-secondary);
   letter-spacing: 0.02em;
+}
+
+/* === Copyright === */
+.footer__copyright {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-sm);
+}
+
+/* === Back-to-Top Button === */
+.footer__back-to-top {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  margin-top: var(--space-md);
+  transition:
+    background var(--duration-hover) var(--ease-smooth),
+    border-color var(--duration-hover) var(--ease-smooth),
+    color var(--duration-hover) var(--ease-smooth),
+    transform var(--duration-hover) var(--ease-spring);
+  text-decoration: none;
+}
+
+.footer__back-to-top:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  color: var(--accent-primary);
+  transform: translateY(-3px);
+}
+
+.footer__back-to-top:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.footer__back-to-top:active {
+  transform: translateY(-1px) scale(0.95);
+}
+
+/* Arrow icon inside the button */
+.footer__back-to-top svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* === Scene-Level Integration === */
+.scene--footer {
+  position: relative;
+}
+
+/* === Reduced Motion === */
+@media (prefers-reduced-motion: reduce) {
+  .footer {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .footer__back-to-top:hover {
+    transform: none;
+  }
+
+  .footer__back-to-top:active {
+    transform: none;
+  }
 }

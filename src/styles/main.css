@@ -24,7 +24,7 @@
 @import './scenes/theater.css';
 @import './scenes/skills.css';
 @import './scenes/highlights.css';
-/* @import './scenes/connect.css'; */
+@import './scenes/connect.css';
 
 /* ═══════════════════════════════════════════════════════
    Components (placeholder — activated as components are built)

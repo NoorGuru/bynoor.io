@@ -368,7 +368,7 @@
       </article>
     </section>
     <hr class="section-divider" aria-hidden="true">
-    <section id="links" class="links" aria-labelledby="connect-heading" data-section-accent="quaternary">
+    <section id="links" class="links scene scene--connect" aria-labelledby="connect-heading" data-scene="connect" data-section-accent="quaternary">
       <div class="decorative-blob decorative-blob--secondary" data-parallax="0.2" aria-hidden="true"></div>
       <div class="links__container">
         <h2 id="connect-heading" class="links__heading">Connect</h2>
@@ -465,14 +465,16 @@
   </main>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer scene scene--footer" data-scene="footer">
     <a href="#hero" class="footer__logo" data-magnetic><span class="footer__logo-by">by</span><span class="footer__logo-noor">noor</span><span class="footer__logo-io">.io</span></a>
     <div class="footer__beta">
       <span class="footer__beta-badge">✨ fresh out of localhost</span>
       <p class="footer__beta-note">Brand new site. Still tweaking, still shipping.</p>
     </div>
-    <p>2012 – <span id="year"></span> · Built with 🤍</p>
+    <p class="footer__copyright">2012 – <span id="year"></span> · Built with 🤍</p>
+    <button class="footer__back-to-top" aria-label="Back to top" data-magnetic><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg></button>
   </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
   <!-- Command Palette -->
   <dialog data-command-palette aria-label="Command palette">

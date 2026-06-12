@@ -158,14 +158,14 @@ Transform bynoor.io into an immersive, cinematic portfolio experience using the 
     - **Property 6: Sound State Round-Trip**
     - **Validates: Requirements 11.5**
 
-- [ ] 16. Connect Section and Cinematic Footer
-  - [ ] 16.1 Create `src/styles/scenes/connect.css` — connect/links section with bold CTA banner, social link cards with glow effects, cinematic ambient background matching overall system
+- [-] 16. Connect Section and Cinematic Footer
+  - [x] 16.1 Create `src/styles/scenes/connect.css` — connect/links section with bold CTA banner, social link cards with glow effects, cinematic ambient background matching overall system
     - _Requirements: 14.3, 8.5_
-  - [ ] 16.2 Update connect section in `index.html` with `data-scene="connect"` and glow/magnetic attributes, preserving ALL existing social links (GitHub, Twitter/X, StackOverflow, HackerRank, YouTube, Email, Resume)
+  - [x] 16.2 Update connect section in `index.html` with `data-scene="connect"` and glow/magnetic attributes, preserving ALL existing social links (GitHub, Twitter/X, StackOverflow, HackerRank, YouTube, Email, Resume)
     - _Requirements: 16.3_
-  - [ ] 16.3 Create footer styles with fade-up entrance animation, back-to-top button, logo treatment, "fresh out of localhost" badge, and dynamic year display
+  - [x] 16.3 Create footer styles with fade-up entrance animation, back-to-top button, logo treatment, "fresh out of localhost" badge, and dynamic year display
     - _Requirements: 17.1, 17.2, 17.3, 17.4, 17.5_
-  - [ ] 16.4 Update footer in `index.html` with `data-scene="footer"` attribute, back-to-top button with smooth scroll to hero
+  - [x] 16.4 Update footer in `index.html` with `data-scene="footer"` attribute, back-to-top button with smooth scroll to hero
     - _Requirements: 17.4, 17.5, 17.6_
 
 - [ ] 17. SEO, Metadata, and Analytics

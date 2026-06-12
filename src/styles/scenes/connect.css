@@ -1,0 +1,356 @@
+/* ═══════════════════════════════════════════════════════
+   Scene: Connect / Links
+   Scene-level cinematic enhancements for the connect section
+   including bold CTA banner effects, social link cards with
+   glow-on-hover, gradient accent transitions, staggered
+   entrance animations, and cinematic ambient background.
+   ═══════════════════════════════════════════════════════ */
+/* Validates: Requirements 14.3, 8.5 */
+
+/* === Scene Container === */
+.scene--connect {
+  --scene-accent: var(--accent-quaternary);
+  position: relative;
+  min-height: var(--scene-min-height, 100vh);
+  overflow: hidden;
+}
+
+/* === Cinematic Ambient Background === */
+.scene--connect::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: var(--depth-layer-bg);
+  pointer-events: none;
+  opacity: var(--ambient-orb-opacity, 0.3);
+  background:
+    radial-gradient(
+      ellipse at 30% 60%,
+      hsl(45, 90%, 50%) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 70% 30%,
+      hsl(var(--ambient-hue-1), 80%, 50%) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 50% 90%,
+      hsl(var(--ambient-hue-2), 75%, 45%) 0%,
+      transparent 45%
+    );
+  filter: blur(var(--ambient-orb-blur, 80px));
+  animation: connect-ambient-drift var(--duration-ambient-cycle) ease-in-out infinite alternate;
+}
+
+/* === Content Layer (above ambient) === */
+.scene--connect .links__container {
+  position: relative;
+  z-index: var(--depth-layer-content);
+}
+
+/* === Bold CTA Banner — Cinematic Enhancements === */
+.scene--connect .links__cta-banner {
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px) scale(0.97);
+  transition:
+    opacity var(--duration-entrance) var(--ease-cinematic),
+    transform var(--duration-entrance) var(--ease-cinematic);
+}
+
+/* Ambient glow behind the CTA banner — gradient transitions between accent colors (Req 14.3) */
+.scene--connect .links__cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent-quaternary) 30%, transparent),
+    color-mix(in srgb, var(--accent-primary) 20%, transparent),
+    color-mix(in srgb, var(--accent-secondary) 25%, transparent)
+  );
+  background-size: 200% 200%;
+  z-index: -1;
+  opacity: 0;
+  transition:
+    opacity var(--duration-scene-transition) var(--ease-smooth),
+    background-position var(--duration-scene-transition) var(--ease-smooth);
+  background-position: 0% 50%;
+}
+
+.scene--connect .links__cta-banner:hover::before {
+  opacity: 1;
+  background-position: 100% 50%;
+}
+
+/* CTA banner visible state */
+.scene--connect .links__cta-banner.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* === CTA Button — Gradient Transition on Hover === */
+.scene--connect .links__cta {
+  position: relative;
+  background-size: 200% 200%;
+  background-image: linear-gradient(
+    135deg,
+    var(--accent-primary) 0%,
+    var(--accent-secondary) 50%,
+    var(--accent-quaternary) 100%
+  );
+  transition:
+    transform var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out),
+    background-position var(--duration-scene-transition) var(--ease-smooth);
+  background-position: 0% 50%;
+}
+
+.scene--connect .links__cta:hover {
+  background-position: 100% 50%;
+  transform: scale(1.04) translateY(-2px);
+  box-shadow:
+    0 8px 28px rgba(139, 92, 246, 0.35),
+    0 0 20px color-mix(in srgb, var(--accent-quaternary) 30%, transparent);
+}
+
+/* === Link Cards — Glow Effects === */
+.scene--connect .link-card {
+  position: relative;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--duration-entrance) var(--ease-cinematic),
+    transform var(--duration-entrance) var(--ease-cinematic),
+    background var(--duration-hover) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out);
+}
+
+/* Radial glow behind link cards using --glow-x/--glow-y mouse tracking (Glow_System — Req 8.5) */
+.scene--connect .link-card::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: inherit;
+  background: radial-gradient(
+    300px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    color-mix(in srgb, var(--accent-quaternary) 20%, transparent),
+    transparent var(--glow-spread, 70%)
+  );
+  opacity: 0;
+  z-index: -1;
+  transition: opacity var(--duration-hover) var(--ease-out);
+  pointer-events: none;
+}
+
+/* Glow visible on hover — stronger gradient glow */
+.scene--connect .link-card:hover::before {
+  opacity: 1;
+  background: radial-gradient(
+    300px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    color-mix(in srgb, var(--accent-quaternary) 30%, transparent),
+    color-mix(in srgb, var(--accent-primary) 10%, transparent) 50%,
+    transparent var(--glow-spread, 70%)
+  );
+}
+
+/* Card hover — gradient accent transition (Req 14.3) */
+.scene--connect .link-card:hover {
+  background: var(--glass-bg-hover);
+  border-color: color-mix(in srgb, var(--accent-quaternary) 35%, var(--glass-border-hover));
+  transform: translateY(-6px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    0 0 16px color-mix(in srgb, var(--accent-quaternary) 20%, transparent);
+}
+
+/* Visible state (triggered by IntersectionObserver) */
+.scene--connect .link-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover must override the visible transform */
+.scene--connect .link-card.is-visible:hover {
+  transform: translateY(-6px);
+}
+
+/* === Staggered Entrance Delays for Link Cards === */
+.scene--connect .link-card:nth-child(1) { transition-delay: 0ms; }
+.scene--connect .link-card:nth-child(2) { transition-delay: 80ms; }
+.scene--connect .link-card:nth-child(3) { transition-delay: 160ms; }
+.scene--connect .link-card:nth-child(4) { transition-delay: 240ms; }
+.scene--connect .link-card:nth-child(5) { transition-delay: 320ms; }
+.scene--connect .link-card:nth-child(6) { transition-delay: 400ms; }
+.scene--connect .link-card:nth-child(7) { transition-delay: 480ms; }
+.scene--connect .link-card:nth-child(8) { transition-delay: 560ms; }
+
+/* === Featured Row — Enhanced Glow with mouse tracking === */
+.scene--connect .links__featured-row .link-card::before {
+  background: radial-gradient(
+    300px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    color-mix(in srgb, var(--accent-primary) 22%, transparent),
+    transparent var(--glow-spread, 70%)
+  );
+}
+
+.scene--connect .links__featured-row .link-card:hover {
+  border-color: color-mix(in srgb, var(--accent-primary) 40%, var(--glass-border-hover));
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    0 0 20px color-mix(in srgb, var(--accent-primary) 25%, transparent);
+}
+
+/* === Section Heading — Soft Glow Behind (Req 8.5) === */
+.scene--connect .links__heading {
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--duration-entrance) var(--ease-cinematic),
+    transform var(--duration-entrance) var(--ease-cinematic);
+}
+
+.scene--connect .links__heading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--glow-radius, 300px);
+  height: 80px;
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--accent-quaternary) var(--glow-intensity-hover, 25%), transparent),
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+.scene--connect .links__heading.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Subtitle Entrance === */
+.scene--connect .links__subtitle {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--duration-entrance) var(--ease-cinematic) 100ms,
+    transform var(--duration-entrance) var(--ease-cinematic) 100ms;
+}
+
+.scene--connect .links__subtitle.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Grid Heading Entrance === */
+.scene--connect .links__grid-heading {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--duration-entrance) var(--ease-cinematic) 150ms,
+    transform var(--duration-entrance) var(--ease-cinematic) 150ms;
+}
+
+.scene--connect .links__grid-heading.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Parallax — Ambient layer shifts with scroll === */
+.scene--connect::before {
+  transform: translateY(calc(var(--scene-progress, 0) * var(--ambient-scroll-shift, 20px)))
+             scale(calc(1 + var(--scene-progress, 0) * 0.05));
+}
+
+/* ═══════════════════════════════════════════════════════
+   Ambient Drift Keyframes
+   ═══════════════════════════════════════════════════════ */
+
+@keyframes connect-ambient-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: var(--ambient-orb-opacity, 0.3);
+  }
+  100% {
+    transform: translate(
+      calc(var(--ambient-scroll-shift, 20px) * -1),
+      var(--ambient-scroll-shift, 20px)
+    ) scale(1.06);
+    opacity: calc(var(--ambient-orb-opacity, 0.3) * 1.15);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+  .scene--connect::before {
+    filter: blur(60px);
+    opacity: 0.2;
+  }
+
+  .scene--connect .links__cta-banner {
+    transform: translateY(20px) scale(0.98);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Reduced Motion Overrides
+   All animations disabled, content visible immediately.
+   ═══════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .scene--connect::before {
+    animation: none;
+    transform: none;
+  }
+
+  .scene--connect .links__cta-banner {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .scene--connect .links__cta {
+    transition: none;
+    background-position: 0% 50%;
+  }
+
+  .scene--connect .link-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .scene--connect .link-card:hover {
+    transform: none;
+  }
+
+  .scene--connect .links__heading {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .scene--connect .links__subtitle {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .scene--connect .links__grid-heading {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
