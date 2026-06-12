@@ -74,7 +74,7 @@
         <span class="nav__hamburger-icon"></span>
       </button>
       <ul class="nav__links" id="nav-links">
-        <li><a href="#highlights" class="nav__link">highlights</a></li>
+        <li><a href="#highlights" class="nav__link">impact</a></li>
         <li><a href="#skills" class="nav__link">skills</a></li>
         <li><a href="#recommendations" class="nav__link">recs</a></li>
         <li><a href="#links" class="nav__link">connect</a></li>
@@ -94,7 +94,7 @@
         <div class="mobile-menu__logo-line" aria-hidden="true"></div>
       </div>
       <ul class="mobile-menu__links">
-        <li class="mobile-menu__item"><a href="#highlights" class="mobile-menu__link">highlights</a></li>
+        <li class="mobile-menu__item"><a href="#highlights" class="mobile-menu__link">impact</a></li>
         <li class="mobile-menu__item"><a href="#skills" class="mobile-menu__link">skills</a></li>
         <li class="mobile-menu__item"><a href="#recommendations" class="mobile-menu__link">recs</a></li>
         <li class="mobile-menu__item"><a href="#links" class="mobile-menu__link">connect</a></li>
@@ -133,7 +133,7 @@
         <div class="hero__identity-card">
           <picture>
             <source srcset="/profile-pic.webp" type="image/webp">
-            <img src="/profile-pic.png" alt="Mohammad Noor Abu Khlaif — Software Engineer, AI Advocate, and Tech Educator" width="400" height="400" fetchpriority="high" decoding="async" class="hero__photo">
+            <img src="/profile-pic.png" alt="Mohammad Noor Abu Khlaif, Software Engineer, AI Advocate, and Tech Educator" width="400" height="400" fetchpriority="high" decoding="async" class="hero__photo">
           </picture>
           <div class="hero__identity-info">
             <span class="hero__full-name">Mohammad Noor Abu Khlaif</span>
@@ -189,33 +189,113 @@
     <section id="highlights" class="highlights" aria-labelledby="highlights-heading" data-section-accent="primary">
       <div class="decorative-blob decorative-blob--primary" data-parallax="0.3" aria-hidden="true"></div>
       <div class="highlights__container">
-        <h2 id="highlights-heading" class="highlights__heading">Highlights</h2>
-        <div class="highlights__grid">
-          <div class="highlights__card" data-animate="fade-up" data-animate-delay="0">
-            <span class="highlights__icon" aria-hidden="true">🤖</span>
-            <h3 class="highlights__title">AI Platform Builder</h3>
-            <p class="highlights__desc">Built an AI-powered migration platform that turned weeks of work into hours</p>
-          </div>
-          <div class="highlights__card" data-animate="fade-up" data-animate-delay="100">
-            <span class="highlights__icon" aria-hidden="true">🏆</span>
-            <h3 class="highlights__title">AI Pioneer &amp; Champion</h3>
-            <p class="highlights__desc">Recognized for pioneering AI adoption and training hundreds of engineers</p>
-          </div>
-          <div class="highlights__card" data-animate="fade-up" data-animate-delay="200">
-            <span class="highlights__icon" aria-hidden="true">🎬</span>
-            <h3 class="highlights__title">Teaching Since 2012</h3>
-            <p class="highlights__desc">YouTube educator with 18.6K subscribers and 750K+ views</p>
-          </div>
-          <div class="highlights__card" data-animate="fade-up" data-animate-delay="300">
-            <span class="highlights__icon" aria-hidden="true">⚙️</span>
-            <h3 class="highlights__title">9+ Years in Production</h3>
-            <p class="highlights__desc">Designed and maintained systems handling millions of daily requests</p>
-          </div>
-          <div class="highlights__card" data-animate="fade-up" data-animate-delay="400">
-            <span class="highlights__icon" aria-hidden="true">👥</span>
-            <h3 class="highlights__title">Engineering Leader</h3>
-            <p class="highlights__desc">Mentored and developed engineers across distributed global teams</p>
-          </div>
+        <h2 id="highlights-heading" class="highlights__heading">Impact</h2>
+
+        <div class="highlights__wall">
+          <!-- The Big Number: production save -->
+          <article class="highlights__piece highlights__piece--hero" data-animate="fade-up" data-animate-delay="0">
+            <div class="highlights__piece-number" aria-hidden="true">15 min</div>
+            <div class="highlights__piece-body">
+              <h3 class="highlights__piece-title">multi-million dollar production save</h3>
+              <p class="highlights__piece-desc">Diagnosed and hotfixed a critical production incident, preventing millions in gross booking losses across multi-item checkout.</p>
+              <span class="highlights__piece-context" data-company="expedia">at Expedia Group</span>
+            </div>
+          </article>
+
+          <!-- Zero incidents: status board -->
+          <article class="highlights__piece highlights__piece--status" data-animate="fade-up" data-animate-delay="100">
+            <div class="highlights__status-indicator" aria-hidden="true">
+              <span class="highlights__status-dot"></span>
+              <span class="highlights__status-label">all systems nominal</span>
+            </div>
+            <h3 class="highlights__piece-title">0 production incidents</h3>
+            <p class="highlights__piece-desc">Sole owner of critical SDK portfolio (millions of daily requests) when the team dissolved. Kept every service running clean through a full reorg.</p>
+            <span class="highlights__piece-context" data-company="expedia">at Expedia Group</span>
+          </article>
+
+          <!-- EG Wizard: the arc -->
+          <article class="highlights__piece highlights__piece--arc" data-animate="fade-up" data-animate-delay="200">
+            <div class="highlights__arc-timeline" aria-hidden="true">
+              <span class="highlights__arc-node highlights__arc-node--start">weeks</span>
+              <span class="highlights__arc-line"></span>
+              <span class="highlights__arc-node highlights__arc-node--end">hours</span>
+            </div>
+            <h3 class="highlights__piece-title">Invented an AI-powered migration platform</h3>
+            <p class="highlights__piece-desc">Turned weeks-long framework migrations into hours. Started as a 3-day proof-of-concept, became the team's official 3-year strategic roadmap in 6 months, endorsed by Senior Directors, recognized by SVP.</p>
+            <div class="highlights__piece-tags">
+              <span class="highlights__piece-tag">Autonomous Agents</span>
+              <span class="highlights__piece-tag">MCP Servers</span>
+              <span class="highlights__piece-tag">Chain-of-Tools</span>
+            </div>
+            <span class="highlights__piece-context" data-company="expedia">at Expedia Group</span>
+          </article>
+
+          <!-- First ever: badge -->
+          <article class="highlights__piece highlights__piece--badge" data-animate="fade-up" data-animate-delay="300">
+            <div class="highlights__badge-mark" aria-hidden="true">1<sup>st</sup></div>
+            <h3 class="highlights__piece-title">AI Champion at Expedia Group</h3>
+            <p class="highlights__piece-desc">First GitHub Copilot Champion (2024). First AI Champion (2026). Trained hundreds of engineers on AI-powered development across the org.</p>
+            <span class="highlights__piece-context" data-company="expedia">at Expedia Group</span>
+          </article>
+
+          <!-- Teaching streak -->
+          <article class="highlights__piece highlights__piece--streak" data-animate="fade-up" data-animate-delay="400">
+            <div class="highlights__streak-counter" aria-hidden="true">
+              <span class="highlights__streak-years">13</span>
+              <span class="highlights__streak-unit">years</span>
+              <span class="highlights__streak-running">and counting</span>
+            </div>
+            <h3 class="highlights__piece-title">Teaching programming</h3>
+            <p class="highlights__piece-desc">YouTube educator since 2013. 18.6K subscribers, 750K+ views. Teaching predates the career. It's the throughline, not the side project.</p>
+          </article>
+
+          <!-- Killed own project -->
+          <article class="highlights__piece highlights__piece--integrity" data-animate="fade-up" data-animate-delay="500">
+            <div class="highlights__integrity-mark" aria-hidden="true">
+              <span class="highlights__integrity-number">50+</span>
+              <span class="highlights__integrity-unit">SDE weeks saved</span>
+            </div>
+            <h3 class="highlights__piece-title">Recommended killing my own project</h3>
+            <p class="highlights__piece-desc">When the business case changed, I called it. Saved 50+ engineer-weeks by stopping work that no longer made sense instead of protecting my ownership.</p>
+            <span class="highlights__piece-context" data-company="expedia">at Expedia Group</span>
+          </article>
+
+          <!-- First month at Amazon -->
+          <article class="highlights__piece highlights__piece--amazon" data-animate="fade-up" data-animate-delay="600">
+            <div class="highlights__amazon-mark" aria-hidden="true">
+              <span class="highlights__amazon-number">&lt; 1</span>
+              <span class="highlights__amazon-unit">month in</span>
+            </div>
+            <h3 class="highlights__piece-title">Owned a critical cross-team project solo</h3>
+            <p class="highlights__piece-desc">Within my first month, took ownership of a time-sensitive, business-critical solution across multiple platform teams and codebases. Delivered on time with little supervision.</p>
+            <span class="highlights__piece-context" data-company="amazon">at Amazon</span>
+          </article>
+
+          <!-- Hundreds trained -->
+          <article class="highlights__piece highlights__piece--training" data-animate="fade-up" data-animate-delay="700">
+            <div class="highlights__training-mark" aria-hidden="true">100s</div>
+            <h3 class="highlights__piece-title">Engineers trained on AI development</h3>
+            <p class="highlights__piece-desc">Led organization-wide training sessions on AI-powered development, driving measurable productivity gains across teams.</p>
+            <span class="highlights__piece-context" data-company="expedia">at Expedia Group</span>
+          </article>
+
+          <!-- Onboarded engineers onto massive ecosystem -->
+          <article class="highlights__piece highlights__piece--onboard" data-animate="fade-up" data-animate-delay="800">
+            <div class="highlights__onboard-mark" aria-hidden="true">
+              <span class="highlights__onboard-number">50+</span>
+              <span class="highlights__onboard-unit">repositories</span>
+            </div>
+            <h3 class="highlights__piece-title">Onboarded 6 engineers onto a framework ecosystem</h3>
+            <p class="highlights__piece-desc">Made a complex, sprawling platform accessible to new team members through coaching and progressive ownership.</p>
+            <span class="highlights__piece-context" data-company="expedia">at Expedia Group</span>
+          </article>
+
+          <!-- MIT -->
+          <article class="highlights__piece highlights__piece--mit" data-animate="fade-up" data-animate-delay="900">
+            <div class="highlights__mit-mark" aria-hidden="true">MIT</div>
+            <h3 class="highlights__piece-title">Computer &amp; Data Science certificate</h3>
+            <p class="highlights__piece-desc">Completed MIT ReACT Hub's Computer and Data Science Program (2019-2020) alongside full-time engineering work.</p>
+          </article>
         </div>
       </div>
     </section>

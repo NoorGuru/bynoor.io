@@ -1,4 +1,9 @@
-/* Highlights Section — Glassmorphism + Creative Layout */
+/* ============================================
+   Highlights — "Evidence Wall"
+   Each proof point gets a treatment matched
+   to what the content actually says.
+   ============================================ */
+
 .highlights {
   padding: var(--space-2xl) var(--space-md);
   background: var(--color-bg);
@@ -11,7 +16,6 @@
   margin: 0 auto;
 }
 
-/* Heading with gradient text fill */
 .highlights__heading {
   font-family: var(--font-heading);
   font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -24,91 +28,487 @@
   background-clip: text;
 }
 
-/* Grid layout — single column on mobile */
-.highlights__grid {
+/* === The Wall: Bento-style asymmetric grid === */
+.highlights__wall {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-lg);
+  gap: var(--space-md);
 }
 
-/* Glassmorphism card styling */
-.highlights__card {
+/* === Base piece styling === */
+.highlights__piece {
+  border-radius: 1.25rem;
+  padding: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid var(--glass-border);
-  border-radius: 1rem;
-  padding: var(--space-lg);
   transition:
+    border-color var(--duration-hover) var(--ease-out),
     transform var(--duration-hover) var(--ease-out),
-    box-shadow var(--duration-hover) var(--ease-out),
-    background var(--duration-hover) var(--ease-out),
-    border-color var(--duration-hover) var(--ease-out);
+    box-shadow var(--duration-hover) var(--ease-out);
 }
 
-/* Hover: vertical lift + elevated shadow + increased opacity */
-.highlights__card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 12px rgba(139, 92, 246, 0.1);
-  background: var(--glass-bg-hover);
+.highlights__piece:hover {
   border-color: var(--glass-border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-/* Card icon with accent glow */
-.highlights__icon {
-  font-size: 2rem;
-  display: block;
-  margin-bottom: var(--space-sm);
-  text-shadow: 0 0 12px var(--accent-primary);
-}
-
-/* Card title */
-.highlights__title {
+.highlights__piece-title {
   font-family: var(--font-heading);
-  font-size: 1.125rem;
-  font-weight: var(--fw-bold);
+  font-size: 1.15rem;
+  font-weight: var(--fw-semibold);
   color: var(--color-text);
-  margin-bottom: var(--space-xs);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
 }
 
-/* Card description */
-.highlights__desc {
-  font-size: 0.95rem;
+.highlights__piece-desc {
+  font-size: 0.9rem;
   color: var(--color-text-secondary);
-  line-height: 1.5;
+  line-height: 1.6;
+  max-width: 52ch;
 }
 
-/* Tablet (≥768px): Asymmetric grid — first card spans 2 columns */
+/* ==========================================
+   PIECE VARIANT: Hero Number ($2.87M)
+   The number IS the design — massive, bold
+   ========================================== */
+.highlights__piece--hero {
+  background: linear-gradient(
+    145deg,
+    rgba(139, 92, 246, 0.06) 0%,
+    var(--glass-bg) 60%
+  );
+}
+
+.highlights__piece-number {
+  font-family: var(--font-mono);
+  font-size: clamp(3.5rem, 10vw, 6rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  margin-bottom: var(--space-md);
+  background: linear-gradient(
+    135deg,
+    hsl(45, 95%, 65%) 0%,
+    hsl(35, 90%, 55%) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(245, 185, 60, 0.15));
+}
+
+.highlights__piece--hero .highlights__piece-title {
+  font-size: 1.35rem;
+  color: hsl(45, 80%, 75%);
+}
+
+/* ==========================================
+   PIECE VARIANT: Arc (EG Wizard timeline)
+   Shows progression from start to end
+   ========================================== */
+.highlights__arc-timeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm) 0;
+}
+
+.highlights__arc-node {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: var(--fw-semibold);
+  padding: 0.35em 0.8em;
+  border-radius: 6px;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+.highlights__arc-node--start {
+  color: var(--color-text-secondary);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.highlights__arc-node--end {
+  color: hsl(265, 80%, 80%);
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+.highlights__arc-line {
+  flex: 1;
+  height: 2px;
+  min-width: 2rem;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.15),
+    var(--accent-primary)
+  );
+  position: relative;
+}
+
+.highlights__arc-line::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-primary);
+}
+
+/* Tags */
+.highlights__piece-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: var(--space-md);
+}
+
+.highlights__piece-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-secondary);
+  border: 1px solid color-mix(in srgb, var(--accent-secondary) 25%, transparent);
+  border-radius: 100px;
+  padding: 0.2em 0.65em;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================
+   PIECE VARIANT: Status Board (0 incidents)
+   Ambient "all-green" monitoring aesthetic
+   ========================================== */
+.highlights__piece--status {
+  background: linear-gradient(
+    160deg,
+    rgba(34, 197, 94, 0.04) 0%,
+    var(--glass-bg) 40%
+  );
+}
+
+.highlights__status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: var(--space-md);
+}
+
+.highlights__status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: hsl(142, 70%, 50%);
+  box-shadow:
+    0 0 0 3px rgba(34, 197, 94, 0.15),
+    0 0 12px rgba(34, 197, 94, 0.4);
+  animation: pulse-green 3s ease-in-out infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15), 0 0 12px rgba(34, 197, 94, 0.4); }
+  50% { box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.08), 0 0 20px rgba(34, 197, 94, 0.25); }
+}
+
+.highlights__status-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: hsl(142, 60%, 55%);
+}
+
+.highlights__piece--status .highlights__piece-title {
+  color: hsl(142, 60%, 75%);
+}
+
+/* ==========================================
+   PIECE VARIANT: Badge (1st)
+   Quiet, confident, small mark of distinction
+   ========================================== */
+.highlights__badge-mark {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: var(--fw-bold);
+  color: var(--accent-primary);
+  line-height: 1;
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.03em;
+}
+
+.highlights__badge-mark sup {
+  font-size: 0.45em;
+  font-weight: var(--fw-semibold);
+  color: var(--accent-secondary);
+  vertical-align: super;
+}
+
+/* ==========================================
+   PIECE VARIANT: Streak (13 years teaching)
+   Counter/odometer feel
+   ========================================== */
+.highlights__streak-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: var(--space-sm);
+}
+
+.highlights__streak-years {
+  font-family: var(--font-mono);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: var(--fw-bold);
+  color: var(--accent-tertiary);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.highlights__streak-unit {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+}
+
+.highlights__streak-running {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-tertiary);
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================
+   RESPONSIVE: Tablet — Bento 2-column
+   ========================================== */
 @media (min-width: 768px) {
-  .highlights__grid {
+  .highlights__wall {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .highlights__card:first-child {
-    grid-column: span 2;
+  /* Hero number spans full width */
+  .highlights__piece--hero {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-lg);
+  }
+
+  .highlights__piece--hero .highlights__piece-body {
+    padding-bottom: var(--space-xs);
+  }
+
+  /* Arc spans full width */
+  .highlights__piece--arc {
+    grid-column: 1 / -1;
   }
 }
 
-/* Desktop (≥1024px): 3-column grid, first card still spans 2 */
+/* ==========================================
+   RESPONSIVE: Desktop — 3-column Bento
+   ========================================== */
 @media (min-width: 1024px) {
-  .highlights__grid {
+  .highlights__wall {
     grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: dense;
   }
 
-  .highlights__card:first-child {
+  /* Row 1: Hero (2 cols) + Status (1 col) */
+  .highlights__piece--hero {
     grid-column: span 2;
   }
+
+  /* Row 2: Arc full width */
+  .highlights__piece--arc {
+    grid-column: 1 / -1;
+    padding: var(--space-xl);
+  }
+
+  /* Integrity spans 2 cols, aligned left */
+  .highlights__piece--integrity {
+    grid-column: 1 / 3;
+  }
+
+  /* Amazon spans 2 cols, aligned right */
+  .highlights__piece--amazon {
+    grid-column: 2 / 4;
+  }
+
+  /* Row 3+: everything else flows naturally in 3-col,
+     no spans, no gaps. All cards are equal width. */
 }
 
-/* Fallback for browsers without backdrop-filter support */
+/* ==========================================
+   FALLBACK: No backdrop-filter
+   ========================================== */
 @supports not (backdrop-filter: blur(1px)) {
-  .highlights__card {
+  .highlights__piece {
     background: var(--color-bg-elevated);
     border: 1px solid var(--glass-border);
   }
 }
 
-/* Section Accent Reveal — border-glow transition on scroll intersection */
+/* ==========================================
+   REDUCED MOTION
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  .highlights__status-dot {
+    animation: none;
+  }
+
+  .highlights__piece:hover {
+    transform: none;
+  }
+}
+
+/* ==========================================
+   PIECE VARIANT: Integrity (killed own project)
+   The anti-ego move. Clean, restrained.
+   ========================================== */
+.highlights__integrity-mark {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: var(--space-sm);
+}
+
+.highlights__integrity-number {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: var(--fw-bold);
+  color: var(--accent-quaternary);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.highlights__integrity-unit {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================
+   PIECE VARIANT: Amazon (first month)
+   ========================================== */
+.highlights__amazon-mark {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: var(--space-sm);
+}
+
+.highlights__amazon-number {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: var(--fw-bold);
+  color: var(--accent-secondary);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.highlights__amazon-unit {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================
+   PIECE VARIANT: Training (hundreds trained)
+   ========================================== */
+.highlights__training-mark {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: var(--fw-bold);
+  color: var(--accent-primary);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-sm);
+}
+
+/* ==========================================
+   PIECE VARIANT: Onboard (50+ repos)
+   ========================================== */
+.highlights__onboard-mark {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: var(--space-sm);
+}
+
+.highlights__onboard-number {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: var(--fw-bold);
+  color: var(--accent-secondary);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.highlights__onboard-unit {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================
+   PIECE VARIANT: MIT
+   Quiet academic mark — subtle warmth
+   ========================================== */
+.highlights__piece--mit {
+  background: linear-gradient(
+    155deg,
+    rgba(163, 31, 52, 0.03) 0%,
+    var(--glass-bg) 35%
+  );
+}
+
+.highlights__mit-mark {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: var(--fw-bold);
+  color: hsl(350, 45%, 65%);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-sm);
+}
+
+/* ==========================================
+   CONTEXT LINE: Company attribution
+   Quiet metadata, not branding
+   ========================================== */
+.highlights__piece-context {
+  display: block;
+  margin-top: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Light brand tints on context labels */
+.highlights__piece-context[data-company="expedia"] {
+  color: hsl(220, 60%, 60%);
+  border-top-color: hsla(220, 60%, 60%, 0.12);
+}
+
+.highlights__piece-context[data-company="amazon"] {
+  color: hsl(30, 75%, 55%);
+  border-top-color: hsla(30, 75%, 55%, 0.12);
+}
+
+/* Section Accent Reveal */
 .highlights.section--revealed {
   box-shadow: inset 3px 0 0 0 var(--accent-primary),
               0 0 16px -4px color-mix(in srgb, var(--accent-primary) 25%, transparent);

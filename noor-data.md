@@ -36,7 +36,7 @@ Always open to conversations about AI in developer tooling, platform engineering
 - SDK platform serving millions of daily requests, 500M+ SDK requests in 2023
 - Sole owner of critical systems with zero production incidents
 - Recommended killing own project when the business case changed - saving 50+ SDE weeks
-- Onboarded 6 engineers onto a 150+ repository framework ecosystem
+- Onboarded 6 engineers onto a 50+ repository framework ecosystem
 - Co-shaped the team's 3-year platform vision with senior leadership
 - Teaching programming on YouTube since 2013 (18.6K subscribers, 750K+ views)
 
@@ -54,7 +54,7 @@ Always open to conversations about AI in developer tooling, platform engineering
   - Strategic Driver: Co-shaped the team's 3-year platform vision with senior leadership. Stepped into the product engineering gap - driving technical direction and what the team tackles next. Leading initiatives across multiple service frameworks and participating in a company-wide infrastructure modernization program.
   - AI Knowledge Leader: Named Expedia Group's first GitHub Copilot Champion. Trained hundreds of engineers across the org. Go-to reference for AI strategy in team, org, and office.
   - Crisis Leader: Sole owner of a critical SDK portfolio (millions of daily requests) when the team dissolved. Zero production incidents. Built the transition strategy and recommended killing own project when the business case changed - saving 50+ SDE weeks.
-  - People Developer: Onboarded 6 engineers onto a 150+ repository framework ecosystem. Building the next generation of platform engineers through coaching and progressive ownership.
+  - People Developer: Onboarded 6 engineers onto a 50+ repository framework ecosystem. Building the next generation of platform engineers through coaching and progressive ownership.
 
 #### SDE III - Partner Developer Experience
 - **Period:** Jul 2022 – Jun 2025 (3 years)
