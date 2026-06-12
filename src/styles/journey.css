@@ -1,0 +1,487 @@
+/* ============================================
+   Journey — Stacked Chapters
+   Each company is its own editorial spread
+   with a distinct internal layout personality.
+   ============================================ */
+
+.journey {
+  padding: var(--space-2xl) var(--space-md);
+  background: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.journey__container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.journey__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: var(--fw-bold);
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === Chapters container === */
+.journey__chapters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* === Base chapter styling === */
+.journey__chapter {
+  border-radius: 1.5rem;
+  padding: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  transition:
+    border-color var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out);
+}
+
+.journey__chapter:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+}
+
+/* Company-colored top accent line */
+.journey__chapter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--space-lg);
+  right: var(--space-lg);
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  background: var(--chapter-accent, var(--accent-primary));
+  opacity: 0.6;
+  transition: opacity var(--duration-hover) var(--ease-out);
+}
+
+.journey__chapter:hover::before {
+  opacity: 1;
+}
+
+/* === Chapter header === */
+.journey__chapter-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.journey__company {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.journey__chapter-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.journey__period {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
+.journey__duration {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+/* Badges */
+.journey__badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: var(--fw-semibold);
+  padding: 0.2em 0.6em;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+}
+
+.journey__badge--current {
+  color: hsl(142, 60%, 55%);
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.journey__badge--throughline {
+  color: var(--accent-tertiary);
+  background: rgba(236, 72, 153, 0.1);
+  border: 1px solid rgba(236, 72, 153, 0.2);
+}
+
+/* === Tags (shared across all chapters) === */
+.journey__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.journey__tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--chapter-accent, var(--accent-secondary));
+  border: 1px solid color-mix(in srgb, var(--chapter-accent, var(--accent-secondary)) 25%, transparent);
+  border-radius: 100px;
+  padding: 0.2em 0.6em;
+  letter-spacing: 0.02em;
+  transition:
+    color var(--duration-hover) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out),
+    background var(--duration-hover) var(--ease-out);
+}
+
+.journey__tag:hover {
+  color: var(--color-text);
+  border-color: color-mix(in srgb, var(--chapter-accent, var(--accent-secondary)) 50%, transparent);
+  background: color-mix(in srgb, var(--chapter-accent, var(--accent-secondary)) 8%, transparent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--chapter-accent, var(--accent-secondary)) 20%, transparent);
+}
+
+/* ==========================================
+   CHAPTER: Expedia Group
+   3-column role grid, featured current role
+   ========================================== */
+.journey__chapter--expedia {
+  --chapter-accent: hsl(220, 75%, 60%);
+  background: linear-gradient(
+    160deg,
+    rgba(59, 130, 246, 0.04) 0%,
+    var(--glass-bg) 30%
+  );
+}
+
+.journey__chapter-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.journey__role-card {
+  padding: var(--space-md);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition:
+    background var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out);
+}
+
+.journey__role-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Featured current role with glow on hover */
+.journey__role-card--featured {
+  background: rgba(59, 130, 246, 0.04);
+  border: 1px solid rgba(59, 130, 246, 0.12);
+}
+
+.journey__role-card--featured:hover {
+  background: rgba(59, 130, 246, 0.07);
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow:
+    0 0 20px rgba(59, 130, 246, 0.08),
+    0 4px 16px rgba(59, 130, 246, 0.06);
+}
+
+.journey__role-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: var(--fw-semibold);
+  color: hsl(142, 60%, 55%);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+
+.journey__role-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+  margin-bottom: 0.3rem;
+}
+
+.journey__role-period {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.journey__role-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 55ch;
+}
+
+/* ==========================================
+   CHAPTER: Amazon
+   Stats sidebar + rich body content
+   ========================================== */
+.journey__chapter--amazon {
+  --chapter-accent: hsl(30, 85%, 55%);
+  background: linear-gradient(
+    155deg,
+    rgba(245, 158, 11, 0.03) 0%,
+    var(--glass-bg) 25%
+  );
+}
+
+.journey__amazon-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+.journey__amazon-stats {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.journey__amazon-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.journey__amazon-stat-number {
+  font-family: var(--font-mono);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: var(--fw-bold);
+  color: hsl(30, 85%, 55%);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.journey__amazon-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+  margin-top: 0.3rem;
+  max-width: 14ch;
+}
+
+.journey__amazon-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.journey__title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.journey__desc {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 65ch;
+}
+
+/* ==========================================
+   CHAPTER: Wiley
+   Compact side-by-side dual roles
+   ========================================== */
+.journey__chapter--wiley {
+  --chapter-accent: hsl(195, 85%, 55%);
+  background: linear-gradient(
+    150deg,
+    rgba(6, 182, 212, 0.03) 0%,
+    var(--glass-bg) 25%
+  );
+}
+
+.journey__compact-roles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.journey__compact-role {
+  padding-left: var(--space-md);
+  border-left: 2px solid rgba(6, 182, 212, 0.2);
+  transition: border-color var(--duration-hover) var(--ease-out);
+}
+
+.journey__compact-role:hover {
+  border-left-color: rgba(6, 182, 212, 0.5);
+}
+
+.journey__compact-role .journey__role-title {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.journey__compact-role .journey__role-desc {
+  font-size: 0.85rem;
+}
+
+/* ==========================================
+   CHAPTER: Code with Noor (Educator)
+   Typographic stats with gradient numbers
+   ========================================== */
+.journey__chapter--educator {
+  --chapter-accent: var(--accent-tertiary);
+  background: linear-gradient(
+    145deg,
+    rgba(236, 72, 153, 0.03) 0%,
+    var(--glass-bg) 25%
+  );
+}
+
+.journey__educator-spread {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: end;
+  gap: var(--space-lg);
+}
+
+.journey__educator-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.journey__stat-number {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(
+    135deg,
+    hsl(330, 80%, 65%) 0%,
+    hsl(280, 70%, 65%) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 16px rgba(236, 72, 153, 0.15));
+}
+
+.journey__stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+  margin-top: 0.3rem;
+}
+
+.journey__educator-note {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 40ch;
+}
+
+/* ==========================================
+   RESPONSIVE: Tablet+
+   ========================================== */
+@media (min-width: 768px) {
+  .journey__chapter {
+    padding: var(--space-xl);
+  }
+
+  /* Expedia: 3-col grid */
+  .journey__chapter-grid {
+    grid-template-columns: 1.2fr 1fr 1fr;
+  }
+
+  /* Amazon: stats beside body */
+  .journey__amazon-layout {
+    grid-template-columns: auto 1fr;
+    gap: var(--space-xl);
+  }
+
+  .journey__amazon-stats {
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding-right: var(--space-lg);
+    border-right: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  /* Wiley: side by side */
+  .journey__compact-roles {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .journey__chapter {
+    padding: var(--space-xl) var(--space-2xl);
+  }
+}
+
+/* ==========================================
+   RESPONSIVE: Mobile adjustments
+   ========================================== */
+@media (max-width: 767px) {
+  .journey__educator-spread {
+    grid-template-columns: auto auto;
+    gap: var(--space-md);
+  }
+
+  .journey__educator-note {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ==========================================
+   REDUCED MOTION
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  .journey__chapter:hover {
+    box-shadow: none;
+  }
+
+  .journey__role-card--featured:hover {
+    box-shadow: none;
+  }
+}
+
+/* ==========================================
+   FALLBACK: No backdrop-filter
+   ========================================== */
+@supports not (backdrop-filter: blur(1px)) {
+  .journey__chapter {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--glass-border);
+  }
+}

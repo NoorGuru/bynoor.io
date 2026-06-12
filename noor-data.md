@@ -79,6 +79,11 @@ Always open to conversations about AI in developer tooling, platform engineering
 - **Key Achievements:**
   - Designed and built scalable and highly available services from scratch using Java, React, and various AWS Services.
   - Improved and integrated services and features across multiple Amazon marketplaces for millions of users.
+  - Led projects enhancing the multi-language listing experience for Amazon sellers across US, UAE, KSA, Egypt, China, and more.
+  - Learned React in a short time to lead a frontend project in Seller Central, quickly becoming a reference for it despite a backend focus.
+  - Architected "Kayl" (measure tool in Arabic), a pluggable TypeScript library for recording and collecting user experience events on Seller Central. Designed to be reusable, first used to compare search functionality quality between Seller Central and the main Amazon buyers site. Started as a temporary solution but outlived tenure by 3+ years. Led the high-level and low-level design with L8-L6 engineers and leaders.
+  - Trained and mentored engineers while simultaneously leading multiple projects.
+  - Interviewed and hired tens of engineers through Amazon's rigorous bar-raising process.
   - Coached and led other software engineers and trainees in different projects and initiatives.
 
 ### Wiley (Atypon) (2 years 8 months)
