@@ -42,6 +42,11 @@
   pointer-events: none;
 }
 
+/* Hide the left accent bar on sub-pages (prep kit, etc.) */
+.resources ~ .footer::before {
+  display: none;
+}
+
 /* === Aurora ambient layer === */
 .footer__aurora {
   position: absolute;
