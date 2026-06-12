@@ -85,6 +85,26 @@
     </nav>
   </header>
 
+  <!-- Full-screen mobile menu overlay (outside header to avoid stacking context issues) -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__gradient" aria-hidden="true"></div>
+    <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+      <div class="mobile-menu__brand">
+        <a href="#hero" class="mobile-menu__logo">bynoor.io</a>
+        <div class="mobile-menu__logo-line" aria-hidden="true"></div>
+      </div>
+      <ul class="mobile-menu__links">
+        <li class="mobile-menu__item"><a href="#highlights" class="mobile-menu__link">highlights</a></li>
+        <li class="mobile-menu__item"><a href="#skills" class="mobile-menu__link">skills</a></li>
+        <li class="mobile-menu__item"><a href="#recommendations" class="mobile-menu__link">recs</a></li>
+        <li class="mobile-menu__item"><a href="#links" class="mobile-menu__link">connect</a></li>
+        <li class="mobile-menu__item"><a href="#projects" class="mobile-menu__link">projects</a></li>
+        <li class="mobile-menu__item"><a href="/technical-interview-preparation-kit/" class="mobile-menu__link">resources</a></li>
+      </ul>
+      <a href="https://cal.com/mohammad-noor" target="_blank" rel="noopener" class="mobile-menu__cta">Let's talk →</a>
+    </nav>
+  </div>
+
   <!-- Main Content -->
   <main id="main-content">
     <section id="hero" class="hero" aria-label="Introduction">
