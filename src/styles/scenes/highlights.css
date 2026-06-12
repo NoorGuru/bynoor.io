@@ -1,0 +1,162 @@
+/* ═══════════════════════════════════════════════════════
+   Scene: Highlights Impact
+   Scene-specific enhancements for career impact cards including
+   asymmetric grid layout, glassmorphism with glow-on-hover,
+   staggered entrance from alternating directions, and accent
+   color category system.
+   ═══════════════════════════════════════════════════════ */
+/* Validates: Requirements 15.1, 15.3, 15.4, 15.7 */
+
+/* === Scene Container === */
+.scene--highlights {
+  position: relative;
+  overflow: hidden;
+}
+
+/* === Asymmetric Grid Layout === */
+.scene--highlights .highlights__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+/* Tablet (≥768px): 2-column grid, first card spans 2 columns */
+@media (min-width: 768px) {
+  .scene--highlights .highlights__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .scene--highlights .highlights__card:first-child {
+    grid-column: span 2;
+  }
+}
+
+/* Desktop (≥1024px): 3-column grid, first card spans 2 columns */
+@media (min-width: 1024px) {
+  .scene--highlights .highlights__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .scene--highlights .highlights__card:first-child {
+    grid-column: span 2;
+  }
+}
+
+/* === Glassmorphism Cards with Glow-on-Hover === */
+.scene--highlights .highlights__card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  padding: var(--space-lg);
+  position: relative;
+  transition:
+    transform var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out),
+    background var(--duration-hover) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out);
+}
+
+.scene--highlights .highlights__card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    0 0 20px color-mix(in srgb, var(--accent-quaternary) 20%, transparent);
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+}
+
+/* Glow intensity on hover */
+.scene--highlights [data-glow]:hover::before {
+  opacity: var(--glow-intensity-hover, 0.25);
+}
+
+/* === Accent Color Category System === */
+/* Each card can have a subtle accent tint via category */
+.scene--highlights .highlights__card:nth-child(1) {
+  --card-accent: var(--accent-quaternary); /* AI Platform - amber/gold */
+}
+
+.scene--highlights .highlights__card:nth-child(2) {
+  --card-accent: var(--accent-primary); /* AI Pioneer - violet */
+}
+
+.scene--highlights .highlights__card:nth-child(3) {
+  --card-accent: var(--accent-secondary); /* Teaching - cyan */
+}
+
+.scene--highlights .highlights__card:nth-child(4) {
+  --card-accent: var(--accent-tertiary); /* Production - magenta */
+}
+
+.scene--highlights .highlights__card:nth-child(5) {
+  --card-accent: var(--accent-primary); /* Leadership - violet */
+}
+
+/* Category glow on hover uses card-specific accent */
+.scene--highlights .highlights__card:hover {
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    0 0 16px color-mix(in srgb, var(--card-accent, var(--accent-quaternary)) 25%, transparent);
+}
+
+/* === Staggered Entrance from Alternating Directions === */
+.scene--highlights .highlights__card {
+  opacity: 0;
+  transition:
+    opacity var(--duration-entrance) var(--ease-cinematic),
+    transform var(--duration-entrance) var(--ease-cinematic),
+    box-shadow var(--duration-hover) var(--ease-out),
+    background var(--duration-hover) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out);
+}
+
+/* Cards with data-animate-dir="left" enter from the left */
+.scene--highlights .highlights__card[data-animate-dir="left"] {
+  transform: translateX(-40px);
+}
+
+/* Cards with data-animate-dir="right" enter from the right */
+.scene--highlights .highlights__card[data-animate-dir="right"] {
+  transform: translateX(40px);
+}
+
+/* Visible state (set by JS IntersectionObserver) */
+.scene--highlights .highlights__card.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Hover must override the visible transform */
+.scene--highlights .highlights__card.is-visible:hover {
+  transform: translateY(-6px);
+}
+
+/* === Single-column collapse below 768px === */
+@media (max-width: 767px) {
+  .scene--highlights .highlights__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scene--highlights .highlights__card:first-child {
+    grid-column: auto;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Reduced Motion Overrides
+   ═══════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .scene--highlights .highlights__card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .scene--highlights .highlights__card:hover {
+    transform: none;
+  }
+}

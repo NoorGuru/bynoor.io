@@ -121,12 +121,12 @@ Transform bynoor.io into an immersive, cinematic portfolio experience using the 
   - [x] 11.2 Create `src/scripts/scenes/skills.js` — skills scene module with staggered entrance animation and scroll-triggered reveals
     - _Requirements: 2.3_
 
-- [ ] 12. Highlights Impact Scene
-  - [ ] 12.1 Create `src/styles/scenes/highlights.css` — asymmetric CSS grid layout (3-col desktop, 2-col tablet, 1-col mobile), glassmorphism cards with glow-on-hover, staggered entrance from alternating directions, accent color category system
+- [x] 12. Highlights Impact Scene
+  - [x] 12.1 Create `src/styles/scenes/highlights.css` — asymmetric CSS grid layout (3-col desktop, 2-col tablet, 1-col mobile), glassmorphism cards with glow-on-hover, staggered entrance from alternating directions, accent color category system
     - _Requirements: 15.1, 15.3, 15.4, 15.7_
-  - [ ] 12.2 Create `src/scripts/scenes/highlights.js` — highlights scene module implementing staggered card entrance animations (odd from left, even from right), glow system integration per card, scroll-triggered reveals
+  - [x] 12.2 Create `src/scripts/scenes/highlights.js` — highlights scene module implementing staggered card entrance animations (odd from left, even from right), glow system integration per card, scroll-triggered reveals
     - _Requirements: 15.2, 15.4, 15.6_
-  - [ ] 12.3 Update `index.html` highlights section markup with `data-scene="highlights"`, `data-glow` attributes on cards, and `data-animate-dir` attributes for alternating entrance direction
+  - [x] 12.3 Update `index.html` highlights section markup with `data-scene="highlights"`, `data-glow` attributes on cards, and `data-animate-dir` attributes for alternating entrance direction
     - _Requirements: 15.1, 15.5_
 
 - [ ] 13. Checkpoint — Ensure all tests pass
