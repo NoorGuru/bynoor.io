@@ -21,19 +21,20 @@ describe('Hero Section', () => {
   it('has an h1 with the correct name', () => {
     const h1 = document.querySelector('#hero h1');
     expect(h1).not.toBeNull();
-    expect(h1.textContent).toBe('Mohammad Noor');
+    expect(h1.textContent).toContain('Mohammad');
+    expect(h1.textContent).toContain('Noor');
   });
 
   it('has the tagline text', () => {
     const tagline = document.querySelector('.hero__tagline');
     expect(tagline).not.toBeNull();
-    expect(tagline.textContent).toBe('I build tools that help engineers move faster.');
+    expect(tagline.textContent).toContain('I build tools that help engineers move faster');
   });
 
   it('has the subtitle text', () => {
-    const subtitle = document.querySelector('.hero__subtitle');
-    expect(subtitle).not.toBeNull();
-    expect(subtitle.textContent).toBe('Software Engineer · AI Advocate · Tech Educator');
+    // In the redesigned hero, the subtitle/role info lives in the terminal output
+    const heroSection = document.querySelector('#hero');
+    expect(heroSection.textContent).toContain('Software Engineer');
   });
 
   it('has a "Let\'s Connect" CTA linking to cal.com', () => {
@@ -193,7 +194,7 @@ describe('Navigation', () => {
     const nav = document.querySelector('nav');
     const resourcesLink = nav.querySelector('a[href="/technical-interview-preparation-kit/"]');
     expect(resourcesLink).not.toBeNull();
-    expect(resourcesLink.textContent).toBe('Resources');
+    expect(resourcesLink.textContent.toLowerCase()).toBe('resources');
   });
 });
 

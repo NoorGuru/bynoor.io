@@ -52,7 +52,7 @@ Error: page.waitForLoadState: Test timeout of 30000ms exceeded.
     - region "Introduction" [ref=e21]:
       - img "Mohammad Noor Abu Khlaif — Software Engineer, AI Advocate, and Tech Educator" [ref=e23]
       - heading "Mohammad Noor" [level=1] [ref=e24]
-      - paragraph [ref=e25]: I build tools that help engineers move faster.
+      - paragraph [ref=e25]: I build tools that help engineers move faster
       - paragraph [ref=e26]: Software Engineer · AI Advocate · Tech Educator
       - generic [ref=e27]:
         - link "Let's Connect" [ref=e28] [cursor=pointer]:

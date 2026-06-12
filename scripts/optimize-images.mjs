@@ -85,7 +85,7 @@ async function createOGImage() {
       <text x="600" y="240" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="700" fill="white" text-anchor="middle">Mohammad Noor Abu Khlaif</text>
       
       <!-- Tagline -->
-      <text x="600" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="400" fill="rgba(255,255,255,0.9)" text-anchor="middle">I build tools that help engineers move faster.</text>
+      <text x="600" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="400" fill="rgba(255,255,255,0.9)" text-anchor="middle">I build tools that help engineers move faster</text>
       
       <!-- Subtitle -->
       <text x="600" y="400" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="400" fill="rgba(255,255,255,0.7)" text-anchor="middle">Software Engineer · AI Advocate · Tech Educator</text>

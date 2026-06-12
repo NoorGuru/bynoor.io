@@ -1,69 +1,59 @@
-/* Footer Component — Dark Theme Redesign */
+/* Footer — Simple gradient background, clean and elegant */
+
 .footer {
-  background: var(--color-bg);
-  border-top: 1px solid transparent;
-  border-image: linear-gradient(90deg, transparent, var(--accent-primary), var(--accent-secondary), transparent) 1;
-  padding: var(--space-xl) var(--space-md) var(--space-lg);
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    var(--color-bg) 0%,
+    hsl(255, 20%, 9%) 40%,
+    hsl(245, 25%, 11%) 100%
+  );
+  padding: var(--space-2xl) var(--space-md) var(--space-xl);
   text-align: center;
   color: var(--color-text-secondary);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-md);
 }
 
+/* Logo — same gradient wordmark as navbar */
 .footer__logo {
   font-family: var(--font-heading);
   font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
   text-decoration: none;
-  display: inline-block;
-  transition: opacity var(--duration-hover) ease;
+  background: linear-gradient(
+    135deg,
+    hsl(265, 85%, 72%) 0%,
+    hsl(225, 80%, 68%) 45%,
+    hsl(195, 85%, 62%) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: filter 300ms ease;
 }
 
 .footer__logo:hover {
-  opacity: 0.8;
+  filter: drop-shadow(0 0 16px rgba(139, 92, 246, 0.35));
 }
 
-.footer__logo-by {
-  font-weight: 400;
-  color: var(--color-text-secondary);
-}
-
-.footer__logo-noor {
-  font-weight: 700;
-  color: var(--color-text);
-  text-shadow: 0 0 8px var(--accent-primary);
-}
-
-.footer__logo-io {
-  font-weight: 400;
-  color: var(--accent-secondary);
-}
-
-.footer__beta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-  margin: 0.2rem 0 var(--space-sm);
-}
-
-.footer__beta-badge {
-  display: inline-block;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  padding: var(--space-xs) var(--space-md);
-  border-radius: 9999px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--accent-quaternary);
-}
-
-.footer__beta-note {
+/* Tagline */
+.footer__tagline {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--color-text-secondary);
-  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+/* Copyright */
+.footer__copy {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  margin-top: var(--space-sm);
 }

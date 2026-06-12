@@ -1,37 +1,41 @@
-/* Navigation Component — Dark Theme + Glassmorphism */
+/* Navigation — Floating Pill Navbar with Creative Wordmark */
 
-/* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
 }
 
-/* Scroll offset for sticky header */
 section[id] {
   scroll-margin-top: var(--header-height);
 }
 
-/* Header — transparent by default over hero */
+/* Header — Transparent initially, becomes floating pill on scroll */
 .header {
   position: sticky;
   top: 0;
   z-index: 100;
   height: var(--header-height);
   background-color: transparent;
-  border-bottom: 1px solid transparent;
-  transition: background-color var(--duration-hover) ease,
-              border-color var(--duration-hover) ease,
-              backdrop-filter var(--duration-hover) ease;
+  transition: background-color 400ms ease,
+              border-color 400ms ease,
+              box-shadow 400ms ease,
+              border-radius 400ms ease,
+              margin 400ms ease;
 }
 
-/* Scrolled state — glassmorphism (class added by JS when scrollTop > 100px) */
 .header.nav--scrolled {
-  background-color: rgba(14, 14, 20, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom-color: var(--glass-border);
+  background-color: rgba(10, 10, 18, 0.85);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  border-radius: 100px;
+  margin: 12px auto;
+  max-width: 900px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  height: 56px;
 }
 
-/* Nav container */
 .nav {
   display: flex;
   align-items: center;
@@ -42,95 +46,121 @@ section[id] {
   height: 100%;
 }
 
-/* Logo / Home link */
+.header.nav--scrolled .nav {
+  padding: 0 var(--space-lg);
+}
+
+/* === Logo: Unified gradient wordmark — elevated ===
+   "bynoor.io" as one gradient-filled wordmark. On hover the gradient
+   shifts position for a shimmer, plus a glow. */
 .nav__logo {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
   text-decoration: none;
   min-height: 44px;
   min-width: 44px;
   display: inline-flex;
   align-items: center;
-  transition: opacity var(--duration-hover) ease;
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    hsl(265, 85%, 72%) 0%,
+    hsl(225, 80%, 68%) 45%,
+    hsl(195, 85%, 62%) 100%
+  );
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 600ms ease, filter 300ms ease;
 }
 
 .nav__logo:hover {
-  opacity: 0.85;
+  background-position: 100% 50%;
+  filter: drop-shadow(0 0 14px rgba(139, 92, 246, 0.35));
 }
 
-.nav__logo-by {
-  font-weight: 400;
-  color: var(--color-text-secondary);
+/* Scrolled state */
+.header.nav--scrolled .nav__logo {
+  filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.12));
 }
 
-/* Logo "noor" with glow effect */
-.nav__logo-noor {
-  font-weight: 700;
-  color: var(--color-text);
-  transition: text-shadow var(--duration-hover) var(--ease-out);
-}
-
-.nav__logo-noor:hover {
-  text-shadow: 0 0 16px var(--accent-primary), 0 0 32px var(--accent-secondary);
-}
-
-/* Enhanced glow when nav is in scrolled/glassmorphism state */
-.header.nav--scrolled .nav__logo-noor {
-  text-shadow: 0 0 12px var(--accent-primary);
-}
-
-/* Logo ".io" segment */
-.nav__logo-io {
-  font-weight: 400;
-  color: var(--accent-secondary);
-}
-
-/* Nav links list */
+/* Nav links */
 .nav__links {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: 2px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* Individual nav link */
 .nav__link {
-  font-family: var(--font-primary);
-  font-size: 0.9375rem;
-  font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
   color: var(--color-text-secondary);
   text-decoration: none;
-  padding: var(--space-xs) var(--space-sm);
-  border-radius: 4px;
+  padding: 0.375rem 0.65rem;
+  border-radius: 20px;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
-  transition: color var(--duration-hover) ease, background-color var(--duration-hover) ease;
+  transition: color var(--duration-hover) ease,
+              background-color var(--duration-hover) ease;
+  letter-spacing: 0.01em;
 }
 
 .nav__link:hover,
 .nav__link:focus-visible {
-  color: var(--accent-primary);
+  color: hsl(265, 90%, 75%);
   background-color: rgba(139, 92, 246, 0.08);
 }
 
-/* Active nav link (scroll-spy) */
 .nav__link--active {
-  color: var(--accent-primary);
-  font-weight: 600;
+  color: hsl(265, 90%, 75%);
 }
 
-/* Focus indicator for accessibility */
-.nav__logo:focus-visible,
-.nav__link:focus-visible,
-.nav__hamburger:focus-visible {
-  outline: 2px solid var(--accent-primary);
+/* === Nav CTA button === */
+.nav__cta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  background: linear-gradient(135deg, hsl(265, 90%, 55%), hsl(230, 80%, 50%));
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  transition: transform var(--duration-hover) var(--ease-out),
+              box-shadow var(--duration-hover) ease;
+  box-shadow: 0 2px 12px rgba(139, 92, 246, 0.2);
+}
+
+.nav__cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
+}
+
+.nav__cta:focus-visible {
+  outline: 2px solid hsl(265, 90%, 65%);
   outline-offset: 2px;
 }
 
-/* Hamburger button — hidden on desktop */
+/* Focus */
+.nav__logo:focus-visible,
+.nav__link:focus-visible,
+.nav__hamburger:focus-visible {
+  outline: 2px solid hsl(265, 90%, 65%);
+  outline-offset: 2px;
+}
+
+/* Hamburger */
 .nav__hamburger {
   display: none;
   background: none;
@@ -145,7 +175,7 @@ section[id] {
 
 .nav__hamburger-icon {
   display: block;
-  width: 24px;
+  width: 22px;
   height: 2px;
   background-color: var(--color-text);
   position: relative;
@@ -157,21 +187,15 @@ section[id] {
   content: '';
   position: absolute;
   left: 0;
-  width: 24px;
+  width: 22px;
   height: 2px;
   background-color: var(--color-text);
   transition: transform var(--duration-hover) ease;
 }
 
-.nav__hamburger-icon::before {
-  top: -7px;
-}
+.nav__hamburger-icon::before { top: -6px; }
+.nav__hamburger-icon::after { top: 6px; }
 
-.nav__hamburger-icon::after {
-  top: 7px;
-}
-
-/* Hamburger open state icon animation */
 .nav__hamburger[aria-expanded="true"] .nav__hamburger-icon {
   background-color: transparent;
 }
@@ -186,13 +210,22 @@ section[id] {
   transform: rotate(-45deg);
 }
 
-/* Mobile styles */
+/* Mobile */
 @media (max-width: 767px) {
   .nav__hamburger {
     display: flex;
   }
 
-  /* Mobile menu overlay — glassmorphism */
+  .nav__cta {
+    display: none;
+  }
+
+  .header.nav--scrolled {
+    border-radius: 0;
+    margin: 0;
+    max-width: none;
+  }
+
   .nav__links {
     position: absolute;
     top: var(--header-height);
@@ -203,11 +236,11 @@ section[id] {
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    background-color: rgba(14, 14, 20, 0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--glass-border);
-    padding: var(--space-sm) 0;
+    background-color: rgba(10, 10, 18, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.08);
+    padding: var(--space-md) 0;
     transform: translateY(-10px);
     opacity: 0;
     visibility: hidden;
@@ -225,7 +258,6 @@ section[id] {
                 visibility 0s linear 0s;
   }
 
-  /* No-JS fallback: show nav links when JS hasn't loaded (hamburger won't work without JS) */
   html:not(.js-loaded) .nav__links {
     position: static;
     height: auto;
@@ -248,21 +280,21 @@ section[id] {
 
   .nav__link {
     display: block;
-    padding: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
     font-size: 1rem;
     min-height: 44px;
+    border-radius: 0;
   }
 }
 
-/* Fallback for browsers without backdrop-filter */
-@supports not (backdrop-filter: blur(1px)) {
-  .header.nav--scrolled {
-    background-color: rgba(14, 14, 20, 0.97);
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .nav__logo-dot::before {
+    animation: none;
+    opacity: 0.6;
   }
 
-  @media (max-width: 767px) {
-    .nav__links {
-      background-color: rgba(14, 14, 20, 0.98);
-    }
+  .header {
+    transition: none;
   }
 }
