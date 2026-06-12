@@ -19,10 +19,10 @@ export function initNavigation() {
     if (mobileMenu) {
       mobileMenu.setAttribute('aria-hidden', 'false');
       document.body.classList.add('menu-open');
-      // Trap focus: move focus to first link after animation
+      // Trap focus: move focus to first link after animation (without visible outline)
       setTimeout(() => {
         const firstLink = mobileMenu.querySelector('.mobile-menu__link');
-        if (firstLink) firstLink.focus();
+        if (firstLink) firstLink.focus({ preventScroll: true, focusVisible: false });
       }, 300);
     }
   }

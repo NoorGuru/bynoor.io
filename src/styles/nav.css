@@ -118,12 +118,12 @@ section[id] {
 
 .nav__link:hover,
 .nav__link:focus-visible {
-  color: hsl(265, 90%, 75%);
-  background-color: rgba(139, 92, 246, 0.08);
+  color: var(--nav-active-color, hsl(265, 90%, 75%));
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .nav__link--active {
-  color: hsl(265, 90%, 75%);
+  color: var(--nav-active-color, hsl(265, 90%, 75%));
 }
 
 /* === Nav CTA button === */
@@ -444,6 +444,12 @@ section[id] {
     outline: 2px solid var(--accent-primary);
     outline-offset: 4px;
     border-radius: 4px;
+  }
+
+  /* Suppress focus ring on programmatic focus (menu open),
+     only show it for keyboard navigation (:focus-visible) */
+  .mobile-menu__link:focus:not(:focus-visible) {
+    outline: none;
   }
 
   /* Subtle underline animation on hover */

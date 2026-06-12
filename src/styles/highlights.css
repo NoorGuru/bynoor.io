@@ -18,14 +18,8 @@
 
 .highlights__heading {
   font-family: var(--font-heading);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: var(--fw-bold);
-  text-align: center;
   margin-bottom: var(--space-xl);
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 /* === The Wall: Bento-style asymmetric grid === */
@@ -590,9 +584,4 @@
   color: hsl(220, 60%, 60%);
 }
 
-/* Section Accent Reveal */
-.highlights.section--revealed {
-  box-shadow: inset 3px 0 0 0 var(--accent-primary),
-              0 0 16px -4px color-mix(in srgb, var(--accent-primary) 25%, transparent);
-  transition: box-shadow 400ms ease-out;
-}
+/* Section Accent Reveal — moved to section-titles.css */

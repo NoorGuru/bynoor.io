@@ -9,18 +9,11 @@
   margin: 0 auto;
 }
 
-/* Heading with gradient text fill */
+/* Heading — styled in section-titles.css */
 .skills__heading {
   font-family: var(--font-heading);
-  font-size: 2rem;
   font-weight: var(--fw-bold);
   margin-bottom: var(--space-lg);
-  text-align: center;
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: var(--color-text);
 }
 
 @supports not (-webkit-background-clip: text) {
@@ -160,9 +153,4 @@
   }
 }
 
-/* Section Accent Reveal — border-glow transition on scroll intersection */
-.skills.section--revealed {
-  box-shadow: inset 3px 0 0 0 var(--accent-secondary),
-              0 0 16px -4px color-mix(in srgb, var(--accent-secondary) 25%, transparent);
-  transition: box-shadow 400ms ease-out;
-}
+/* Section Accent Reveal — moved to section-titles.css */

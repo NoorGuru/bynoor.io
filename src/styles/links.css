@@ -15,9 +15,8 @@
 
 .links__heading {
   font-family: var(--font-heading);
-  font-size: 2rem;
-  color: var(--color-text);
   margin-bottom: var(--space-lg);
+  position: relative;
 }
 
 .links__subtitle {
@@ -213,9 +212,4 @@
   }
 }
 
-/* Section Accent Reveal — border-glow transition on scroll intersection */
-.links.section--revealed {
-  box-shadow: inset 3px 0 0 0 var(--accent-quaternary),
-              0 0 16px -4px color-mix(in srgb, var(--accent-quaternary) 25%, transparent);
-  transition: box-shadow 500ms ease-out;
-}
+/* Section Accent Reveal — moved to section-titles.css */

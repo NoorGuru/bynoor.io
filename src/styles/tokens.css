@@ -7,9 +7,11 @@
 
   /* === Neon Accents (saturation 70%+) === */
   --accent-primary: hsl(265, 90%, 65%);       /* violet */
-  --accent-secondary: hsl(195, 85%, 55%);     /* cyan */
+  --accent-secondary: hsl(175, 85%, 48%);     /* teal-cyan (shifted for more punch) */
   --accent-tertiary: hsl(330, 80%, 60%);      /* magenta/pink */
   --accent-quaternary: hsl(45, 90%, 60%);     /* amber/gold */
+  --accent-quinary: hsl(145, 75%, 48%);       /* emerald — for journey */
+  --accent-senary: hsl(20, 90%, 58%);         /* burnt orange — for projects */
 
   /* === Text === */
   --color-text: hsl(0, 0%, 93%);
@@ -37,7 +39,7 @@
 
   /* === Gradients === */
   --gradient-text: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  --gradient-progress: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+  --gradient-progress: linear-gradient(90deg, var(--accent-primary), hsl(175, 85%, 48%), var(--accent-tertiary));
   --gradient-hero-mesh: radial-gradient(ellipse at 20% 50%, var(--accent-primary), transparent 50%);
 
   /* === Spacing === */

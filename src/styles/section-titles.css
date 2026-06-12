@@ -1,0 +1,295 @@
+/* ============================================================
+   Section Titles — Distinct Identity System
+   Each section heading has its own typographic personality,
+   accent color, and decorative treatment. No two look alike.
+   ============================================================ */
+
+/* === Shared heading base === */
+[class$="__heading"] {
+  position: relative;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HIGHLIGHTS — "Impact"
+   Personality: Oversized typographic echo behind the heading.
+   The ghost text creates depth and dominance — this section
+   demands attention as the first thing after the hero.
+   ───────────────────────────────────────────────────────────── */
+.highlights__heading {
+  text-align: left;
+  background: linear-gradient(135deg, hsl(265, 90%, 75%), hsl(300, 80%, 60%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: clamp(2.5rem, 6vw, 3.8rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.04em;
+  padding-top: 0.5em;
+  padding-bottom: 0.3em;
+}
+
+/* Ghost echo — massive semi-transparent text behind the heading */
+.highlights__heading::before {
+  content: attr(data-text, 'IMPACT');
+  content: 'IMPACT';
+  position: absolute;
+  left: -0.03em;
+  top: -0.25em;
+  font-family: var(--font-heading);
+  font-size: 3.2em;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: hsl(265, 90%, 65%);
+  opacity: 0.06;
+  -webkit-text-fill-color: hsl(265, 90%, 65%);
+  -webkit-text-stroke: 1px hsla(265, 90%, 65%, 0.08);
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   JOURNEY — "The Journey"
+   Personality: Kinetic, forward-moving. A trailing line
+   suggests a path taken, like a route on a map.
+   ───────────────────────────────────────────────────────────── */
+.journey__heading {
+  text-align: left;
+  background: linear-gradient(135deg, hsl(145, 75%, 55%), hsl(175, 85%, 48%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.03em;
+  padding-bottom: 1rem;
+}
+
+.journey__heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: clamp(80px, 20%, 200px);
+  height: 3px;
+  background: linear-gradient(90deg, hsl(145, 75%, 48%), transparent);
+  border-radius: 2px;
+  box-shadow: 0 0 10px hsla(145, 75%, 48%, 0.4);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SKILLS — "Skills & Expertise"
+   Personality: Technical, precise. A monospace-accent eyebrow
+   above the heading like a terminal prompt prefix.
+   ───────────────────────────────────────────────────────────── */
+.skills__heading {
+  text-align: left;
+  background: linear-gradient(135deg, hsl(195, 85%, 60%), hsl(210, 80%, 50%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  padding-top: 1.8rem;
+}
+
+.skills__heading::before {
+  content: '~/skills';
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: var(--fw-regular);
+  letter-spacing: 0.06em;
+  color: hsl(195, 85%, 55%);
+  opacity: 0.7;
+  -webkit-text-fill-color: hsl(195, 85%, 55%);
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   RECOMMENDATIONS — "What People Say"
+   Personality: Warm, human. Oversized open-quote mark
+   floats beside the heading like a whispered endorsement.
+   ───────────────────────────────────────────────────────────── */
+.recommendations__heading {
+  text-align: left;
+  background: linear-gradient(135deg, hsl(330, 80%, 68%), hsl(350, 75%, 55%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  padding-left: 2.8rem;
+}
+
+.recommendations__heading::before {
+  content: '"';
+  position: absolute;
+  left: 0;
+  top: -0.15em;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 4.5rem;
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  color: hsl(330, 80%, 60%);
+  opacity: 0.4;
+  -webkit-text-fill-color: hsl(330, 80%, 60%);
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CONNECT — "Connect"
+   Personality: Inviting, warm gold. A radiating dot
+   suggests "here I am, reach out."
+   ───────────────────────────────────────────────────────────── */
+.links__heading {
+  text-align: center;
+  background: linear-gradient(135deg, hsl(45, 90%, 65%), hsl(30, 85%, 55%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.03em;
+}
+
+.links__heading::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 0.75rem auto 0;
+  background: hsl(45, 90%, 60%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 4px hsla(45, 90%, 60%, 0.15),
+    0 0 0 8px hsla(45, 90%, 60%, 0.08),
+    0 0 20px hsla(45, 90%, 60%, 0.3);
+  animation: connect-pulse 3s ease-in-out infinite;
+}
+
+@keyframes connect-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 4px hsla(45, 90%, 60%, 0.15),
+      0 0 0 8px hsla(45, 90%, 60%, 0.08),
+      0 0 20px hsla(45, 90%, 60%, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 0 7px hsla(45, 90%, 60%, 0.1),
+      0 0 0 14px hsla(45, 90%, 60%, 0.04),
+      0 0 30px hsla(45, 90%, 60%, 0.2);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   PROJECTS — "Recently Built by Noor"
+   Personality: Crafted, architectural. A small diamond/mark
+   suggests a builder's signature stamp.
+   ───────────────────────────────────────────────────────────── */
+.projects__heading {
+  text-align: left;
+  background: linear-gradient(135deg, hsl(20, 90%, 62%), hsl(35, 85%, 52%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  padding-left: 2rem;
+}
+
+.projects__heading::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background: hsl(20, 90%, 58%);
+  border-radius: 2px;
+  box-shadow: 0 0 12px hsla(20, 90%, 58%, 0.5);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SECTION ACCENT REVEALS — Bolder, thicker, more expressive
+   Each section gets a unique accent bar + ambient glow
+   ───────────────────────────────────────────────────────────── */
+
+/* Highlights — Violet */
+.highlights.section--revealed {
+  box-shadow:
+    inset 4px 0 0 0 hsl(265, 90%, 65%),
+    inset 40px 0 60px -40px hsla(265, 90%, 65%, 0.06),
+    0 0 20px -4px hsla(265, 90%, 65%, 0.15);
+  transition: box-shadow 500ms var(--ease-out);
+}
+
+/* Journey — Emerald */
+.journey.section--revealed {
+  box-shadow:
+    inset 4px 0 0 0 hsl(145, 75%, 48%),
+    inset 40px 0 60px -40px hsla(145, 75%, 48%, 0.06),
+    0 0 20px -4px hsla(145, 75%, 48%, 0.12);
+  transition: box-shadow 500ms var(--ease-out);
+}
+
+/* Skills — Cyan */
+.skills.section--revealed {
+  box-shadow:
+    inset 4px 0 0 0 hsl(195, 85%, 55%),
+    inset 40px 0 60px -40px hsla(195, 85%, 55%, 0.06),
+    0 0 20px -4px hsla(195, 85%, 55%, 0.12);
+  transition: box-shadow 500ms var(--ease-out);
+}
+
+/* Recommendations — Magenta */
+.recommendations.section--revealed {
+  box-shadow:
+    inset 4px 0 0 0 hsl(330, 80%, 60%),
+    inset 40px 0 60px -40px hsla(330, 80%, 60%, 0.06),
+    0 0 20px -4px hsla(330, 80%, 60%, 0.12);
+  transition: box-shadow 500ms var(--ease-out);
+}
+
+/* Connect — Amber/Gold */
+.links.section--revealed {
+  box-shadow:
+    inset 4px 0 0 0 hsl(45, 90%, 60%),
+    inset 40px 0 60px -40px hsla(45, 90%, 60%, 0.06),
+    0 0 20px -4px hsla(45, 90%, 60%, 0.12);
+  transition: box-shadow 500ms var(--ease-out);
+}
+
+/* Projects — Burnt Orange */
+.projects.section--revealed {
+  box-shadow:
+    inset 4px 0 0 0 hsl(20, 90%, 58%),
+    inset 40px 0 60px -40px hsla(20, 90%, 58%, 0.06),
+    0 0 20px -4px hsla(20, 90%, 58%, 0.12);
+  transition: box-shadow 500ms var(--ease-out);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .links__heading::after {
+    animation: none;
+  }
+}

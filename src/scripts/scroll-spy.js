@@ -2,7 +2,18 @@
  * Scroll-spy module
  * Uses Intersection Observer to highlight the active navigation link
  * based on which section is currently visible in the viewport.
+ * Also applies section-specific accent colors to the active link.
  */
+
+// Map section IDs to their accent hue colors
+const SECTION_ACCENTS = {
+  highlights: 'hsl(265, 90%, 72%)',
+  journey: 'hsl(145, 75%, 55%)',
+  skills: 'hsl(195, 85%, 60%)',
+  recommendations: 'hsl(330, 80%, 65%)',
+  links: 'hsl(45, 90%, 65%)',
+  projects: 'hsl(20, 90%, 62%)',
+};
 
 export function initScrollSpy() {
   // Graceful degradation: if IntersectionObserver is unsupported, nav still works without active states
@@ -20,10 +31,14 @@ export function initScrollSpy() {
   /**
    * Sets the active nav link based on a section ID.
    * Removes active class from all links, then adds it to the matching one.
+   * Also applies section-specific accent color via CSS custom property.
    */
   function setActiveLink(sectionId) {
     // Remove active class from all nav links and logo
-    navLinks.forEach((link) => link.classList.remove('nav__link--active'));
+    navLinks.forEach((link) => {
+      link.classList.remove('nav__link--active');
+      link.style.removeProperty('--nav-active-color');
+    });
     if (logoLink) logoLink.classList.remove('nav__link--active');
 
     if (sectionId === 'hero') {
@@ -36,6 +51,11 @@ export function initScrollSpy() {
     const activeLink = document.querySelector(`.nav__link[href="#${sectionId}"]`);
     if (activeLink) {
       activeLink.classList.add('nav__link--active');
+      // Apply section-specific accent color
+      const accentColor = SECTION_ACCENTS[sectionId];
+      if (accentColor) {
+        activeLink.style.setProperty('--nav-active-color', accentColor);
+      }
     }
   }
 

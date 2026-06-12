@@ -25,5 +25,8 @@
 @import './resources.css';
 @import './footer.css';
 
+/* Section titles & accent system (overrides component defaults) */
+@import './section-titles.css';
+
 /* Animations (last, so they can override) */
 @import './animations.css';
