@@ -180,17 +180,17 @@ Transform bynoor.io into an immersive, cinematic portfolio experience using the 
   - [x] 17.5 Maintain asset preload links for LCP image and critical fonts
     - _Requirements: 16.5, 12.8_
 
-- [ ] 18. App Entry Point and Integration
-  - [ ] 18.1 Create `src/scripts/core/app.js` — new main entry point that initializes ScrollEngine, SceneManager, navigation, ambient effects, cursor, and lazy-loads below-fold scene modules via dynamic import
+- [x] 18. App Entry Point and Integration
+  - [x] 18.1 Create `src/scripts/core/app.js` — new main entry point that initializes ScrollEngine, SceneManager, navigation, ambient effects, cursor, and lazy-loads below-fold scene modules via dynamic import
     - _Requirements: 12.8, 2.1_
-  - [ ] 18.2 Update `index.html` script entry to point to new `src/scripts/core/app.js`
+  - [x] 18.2 Update `index.html` script entry to point to new `src/scripts/core/app.js`
     - _Requirements: 2.1_
-  - [ ] 18.3 Remove old script files that are fully replaced by new modules (animation-engine.js, animations.js, custom-cursor.js, etc.) after confirming feature parity
+  - [x] 18.3 Remove old script files that are fully replaced by new modules (animation-engine.js, animations.js, custom-cursor.js, etc.) after confirming feature parity
     - _Requirements: 2.1_
 
 - [ ] 19. Checkpoint — Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
-
+ 
 - [ ] 20. Responsive Adaptation
   - [ ] 20.1 Add responsive breakpoint rules to all scene CSS files — full effects at 1024px+, 50% parallax reduction at 768-1023px, no parallax + touch equivalents below 768px
     - _Requirements: 13.1, 13.2, 13.3_

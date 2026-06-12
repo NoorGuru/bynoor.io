@@ -187,6 +187,9 @@ function init(el) {
   // Bind touch gesture listeners for swipe navigation
   el.addEventListener('touchstart', onTouchStart, { passive: true });
   el.addEventListener('touchend', onTouchEnd, { passive: true });
+
+  // Activate first testimonial immediately on init
+  setActive(0);
 }
 
 /**

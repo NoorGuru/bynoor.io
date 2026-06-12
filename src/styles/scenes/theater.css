@@ -9,16 +9,12 @@
 /* === Scene Container with Scroll-Snap === */
 .scene--theater {
   position: relative;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
+  overflow: hidden;
 }
 
 /* === Individual Testimonial — Full-Width Cinematic Quote === */
 .theater__testimonial {
-  scroll-snap-align: center;
-  min-height: 80vh;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,8 +26,8 @@
 
 /* === Crossfade Transitions Between Quotes === */
 .theater__testimonial {
-  opacity: 0.3;
-  transform: translateY(20px);
+  opacity: 0.5;
+  transform: translateY(10px);
   transition:
     opacity 500ms var(--ease-cinematic, cubic-bezier(0.4, 0, 0, 1)),
     transform 500ms var(--ease-cinematic, cubic-bezier(0.4, 0, 0, 1));
@@ -186,10 +182,6 @@
    ═══════════════════════════════════════════════════════ */
 
 @media (prefers-reduced-motion: reduce) {
-  .scene--theater {
-    scroll-snap-type: none;
-  }
-
   .theater__testimonial {
     opacity: 1;
     transform: none;

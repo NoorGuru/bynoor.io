@@ -381,16 +381,6 @@
 /* === MORPH TRANSITION (clip-path + transform interpolation) ===
    Uses --nav-morph-progress (0 = dots, 1 = pill) driven by scroll JS */
 
-/* Intermediate morph state — dots collapse toward center as progress increases */
-@supports (clip-path: inset(0)) {
-  .nav__dots {
-    clip-path: inset(
-      calc(var(--nav-morph-progress, 0) * 30%) 0
-      calc(var(--nav-morph-progress, 0) * 30%) 0
-    );
-  }
-}
-
 /* === RESPONSIVE: Show trigger on mobile === */
 @media (max-width: 767px) {
   .nav__trigger {
