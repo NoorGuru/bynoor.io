@@ -1,15 +1,23 @@
 /* ============================================================
    Connect Section — Reimagined
-   Structure: Anchor (primary CTA) + Channel cards
    
-   Design intent: The section is about *reaching* Noor.
-   The anchor is the single bold ask. The channels below
-   show where he exists in the world — each with enough
-   context to make clicking feel worthwhile.
+   Structure: Invitation block (CTA) + World cards (2-col grid)
+   
+   Design intent: The section answers "why would I reach out?"
+   and "where does this person exist?" — not just "here are my
+   social links." The invitation block is the single bold ask.
+   The world cards below are doors into specific identities,
+   each framed by what the visitor will find there.
+   
+   Signature: The world cards use a top-edge gradient accent
+   that reveals on hover — a subtle "opening door" metaphor.
+   YouTube gets special treatment with proof stats (the 
+   educator identity is the throughline of the whole site).
    ============================================================ */
 
 .links {
   padding: var(--space-xl) var(--space-md);
+  padding-bottom: var(--space-2xl);
   background: var(--color-bg);
   color: var(--color-text);
   position: relative;
@@ -17,7 +25,7 @@
 }
 
 .links__container {
-  max-width: 720px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 
@@ -28,64 +36,77 @@
 }
 
 /* ===========================
-   Anchor — The primary ask
-   A centered, focused block.
-   Glass card with a subtle warm
-   glow behind it.
+   Invitation Block
+   Horizontal layout: content left, resume aside right.
+   Glass card with an amber glow at the bottom edge.
    =========================== */
-.links__anchor {
+.links__invitation {
   position: relative;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-lg);
   padding: var(--space-xl) var(--space-lg);
   margin-bottom: var(--space-xl);
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--glass-border);
-  border-radius: 1.5rem;
+  border-radius: 1.25rem;
 }
 
-/* Warm ambient glow behind the anchor */
-.links__anchor-glow {
+/* Bottom-edge warm glow */
+.links__invitation-glow {
   position: absolute;
-  inset: -1px;
+  inset: 0;
   border-radius: inherit;
   background: radial-gradient(
     ellipse at 50% 100%,
-    hsla(45, 90%, 60%, 0.06) 0%,
-    transparent 70%
+    hsla(45, 90%, 55%, 0.05) 0%,
+    transparent 60%
   );
   pointer-events: none;
 }
 
-.links__anchor-lead {
-  font-family: var(--font-heading);
-  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
-  font-weight: 500;
-  color: var(--color-text);
-  line-height: 1.5;
-  margin-bottom: var(--space-lg);
-  max-width: 480px;
-  margin-inline: auto;
+.links__invitation-content {
+  position: relative;
+  z-index: 1;
 }
 
-/* CTA Button — pill, gradient, confident */
+.links__invitation-lead {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
+  max-width: 500px;
+}
+
+.links__invitation-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+/* CTA Button */
 .links__cta {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.95rem 2.2rem;
+  padding: 0.9rem 2rem;
   background: linear-gradient(135deg, hsl(45, 90%, 55%), hsl(30, 85%, 50%));
   color: hsl(240, 15%, 8%);
   font-family: var(--font-primary);
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 700;
   text-decoration: none;
   border-radius: 9999px;
   min-height: 44px;
   min-width: 44px;
   box-shadow:
-    0 4px 16px hsla(45, 90%, 50%, 0.25),
+    0 4px 16px hsla(45, 90%, 50%, 0.2),
     inset 0 1px 0 hsla(0, 0%, 100%, 0.2);
   transition:
     transform var(--duration-hover) var(--ease-out),
@@ -93,9 +114,9 @@
 }
 
 .links__cta:hover {
-  transform: scale(1.04) translateY(-2px);
+  transform: scale(1.03) translateY(-1px);
   box-shadow:
-    0 8px 28px hsla(45, 90%, 50%, 0.35),
+    0 8px 28px hsla(45, 90%, 50%, 0.3),
     inset 0 1px 0 hsla(0, 0%, 100%, 0.25);
 }
 
@@ -112,65 +133,90 @@
   transform: translateX(3px);
 }
 
-/* Secondary links below CTA (email + resume) */
-.links__anchor-secondary {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-lg);
-  margin-top: var(--space-lg);
-  flex-wrap: wrap;
-}
-
-.links__anchor-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
+/* Email fallback link */
+.links__email-fallback {
   color: var(--color-text-secondary);
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 500;
   padding: 0.4rem 0;
   min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   border-bottom: 1px solid transparent;
   transition:
     color var(--duration-hover) var(--ease-out),
     border-color var(--duration-hover) var(--ease-out);
 }
 
-.links__anchor-link:hover {
+.links__email-fallback:hover {
   color: var(--color-text);
   border-bottom-color: var(--glass-border-hover);
 }
 
-.links__anchor-link:focus-visible {
+.links__email-fallback:focus-visible {
   outline: 3px solid var(--accent-primary);
   outline-offset: 3px;
 }
 
-.links__anchor-link svg {
+/* Resume aside */
+.links__invitation-aside {
+  position: relative;
+  z-index: 1;
+}
+
+.links__resume-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--glass-border);
+  border-radius: 0.625rem;
+  min-height: 44px;
+  transition:
+    color var(--duration-hover) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out),
+    background var(--duration-hover) var(--ease-out);
+}
+
+.links__resume-link:hover {
+  color: var(--color-text);
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
+}
+
+.links__resume-link:focus-visible {
+  outline: 3px solid var(--accent-primary);
+  outline-offset: 3px;
+}
+
+.links__resume-link svg {
   opacity: 0.6;
 }
 
 /* ===========================
-   Channel Cards
-   Horizontal cards with icon,
-   body (name + meta), and arrow.
-   Each has a subtle brand-colored
-   left accent on hover.
+   World Cards — 2 column grid
+   Each card is a door into a
+   specific identity. Top accent
+   bar reveals on hover. YouTube
+   gets extra room for stats.
    =========================== */
-.links__channels {
-  display: flex;
-  flex-direction: column;
+.links__worlds {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-md);
 }
 
-.links__channel {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: var(--space-md);
-  padding: var(--space-md) calc(var(--space-md) + 0.25rem);
+.links__world {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: var(--space-lg) var(--space-md);
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
@@ -179,7 +225,7 @@
   text-decoration: none;
   color: var(--color-text);
   min-height: 44px;
-  position: relative;
+  overflow: hidden;
   transition:
     background var(--duration-hover) var(--ease-out),
     border-color var(--duration-hover) var(--ease-out),
@@ -187,117 +233,149 @@
     box-shadow var(--duration-hover) var(--ease-out);
 }
 
-.links__channel::before {
-  content: '';
+/* Top accent bar — the "opening door" reveal */
+.links__world-accent {
   position: absolute;
+  top: 0;
   left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 0;
-  border-radius: 0 2px 2px 0;
-  transition: height 300ms var(--ease-out);
+  right: 0;
+  height: 3px;
+  opacity: 0;
+  transition: opacity 300ms var(--ease-out);
 }
 
-.links__channel:hover::before {
-  height: 60%;
+.links__world:hover .links__world-accent {
+  opacity: 1;
 }
 
-.links__channel:hover {
+/* Brand accent colors */
+.links__world--youtube .links__world-accent {
+  background: linear-gradient(90deg, hsl(0, 80%, 55%), hsl(0, 70%, 45%));
+}
+.links__world--linkedin .links__world-accent {
+  background: linear-gradient(90deg, hsl(210, 80%, 55%), hsl(210, 60%, 45%));
+}
+.links__world--github .links__world-accent {
+  background: linear-gradient(90deg, hsl(265, 70%, 60%), hsl(265, 50%, 45%));
+}
+.links__world--twitter .links__world-accent {
+  background: linear-gradient(90deg, hsl(200, 90%, 55%), hsl(200, 70%, 40%));
+}
+.links__world--stackoverflow .links__world-accent {
+  background: linear-gradient(90deg, hsl(27, 90%, 55%), hsl(27, 70%, 40%));
+}
+
+.links__world:hover {
   background: var(--glass-bg-hover);
   border-color: var(--glass-border-hover);
-  transform: translateX(4px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
-.links__channel:focus-visible {
+.links__world:focus-visible {
   outline: 3px solid var(--accent-primary);
   outline-offset: 3px;
 }
 
-/* Brand accent colors for left bar */
-.links__channel--youtube::before { background: hsl(0, 80%, 55%); }
-.links__channel--linkedin::before { background: hsl(210, 80%, 55%); }
-.links__channel--github::before { background: hsl(0, 0%, 75%); }
-.links__channel--twitter::before { background: hsl(0, 0%, 85%); }
-
-/* Icon container */
-.links__channel-icon {
+/* Header: icon + platform name */
+.links__world-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 0.625rem;
-  background: rgba(255, 255, 255, 0.04);
+  gap: 0.6rem;
+}
+
+.links__world-icon {
   color: var(--color-text-secondary);
+  flex-shrink: 0;
   transition: color var(--duration-hover) var(--ease-out);
 }
 
-.links__channel:hover .links__channel-icon {
-  color: var(--color-text);
-}
+.links__world--youtube:hover .links__world-icon { color: hsl(0, 80%, 60%); }
+.links__world--linkedin:hover .links__world-icon { color: hsl(210, 80%, 60%); }
+.links__world--github:hover .links__world-icon { color: hsl(265, 70%, 65%); }
+.links__world--twitter:hover .links__world-icon { color: hsl(200, 90%, 60%); }
+.links__world--stackoverflow:hover .links__world-icon { color: hsl(27, 90%, 55%); }
 
-/* Brand icon colors on hover */
-.links__channel--youtube:hover .links__channel-icon { color: hsl(0, 80%, 60%); }
-.links__channel--linkedin:hover .links__channel-icon { color: hsl(210, 80%, 60%); }
-.links__channel--github:hover .links__channel-icon { color: hsl(0, 0%, 95%); }
-.links__channel--twitter:hover .links__channel-icon { color: hsl(0, 0%, 95%); }
-
-/* Body: name + meta */
-.links__channel-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  min-width: 0;
-}
-
-.links__channel-name {
+.links__world-platform {
   font-family: var(--font-primary);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  line-height: 1.3;
-}
-
-.links__channel-meta {
-  font-size: 0.8rem;
-  color: var(--color-text-secondary);
-  line-height: 1.4;
-}
-
-/* Arrow indicator */
-.links__channel-arrow {
-  font-size: 1.1rem;
-  color: var(--color-text-muted);
-  transition:
-    color var(--duration-hover) var(--ease-out),
-    transform var(--duration-hover) var(--ease-out);
-}
-
-.links__channel:hover .links__channel-arrow {
   color: var(--color-text);
-  transform: translateX(3px);
+}
+
+/* Hook text — what you'll find there */
+.links__world-hook {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Proof stats — YouTube only */
+.links__world-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.links__world-stat {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  padding: 0.2rem 0.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+}
+
+/* YouTube card spans full width — it's the throughline */
+.links__world--youtube {
+  grid-column: 1 / -1;
 }
 
 /* ===========================
    Responsive
    =========================== */
-@media (max-width: 480px) {
-  .links__anchor {
+@media (max-width: 640px) {
+  .links__invitation {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
     padding: var(--space-lg) var(--space-md);
   }
 
-  .links__anchor-secondary {
-    flex-direction: column;
-    gap: var(--space-sm);
+  .links__invitation-aside {
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--glass-border);
   }
 
-  .links__channel {
+  .links__invitation-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .links__worlds {
+    grid-template-columns: 1fr;
+  }
+
+  .links__world--youtube {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .links__invitation {
     padding: var(--space-md);
   }
 
-  .links__channel-meta {
-    font-size: 0.75rem;
+  .links__world {
+    padding: var(--space-md);
+  }
+
+  .links__world-proof {
+    gap: 0.35rem;
   }
 }
 
@@ -305,13 +383,13 @@
    Fallback: no backdrop-filter
    =========================== */
 @supports not (backdrop-filter: blur(1px)) {
-  .links__anchor,
-  .links__channel {
+  .links__invitation,
+  .links__world {
     background: var(--color-bg-elevated);
     border: 1px solid var(--glass-border);
   }
 
-  .links__channel:hover {
+  .links__world:hover {
     background: var(--color-bg-elevated);
     border-color: var(--glass-border-hover);
   }
@@ -321,7 +399,7 @@
    Reduced motion
    =========================== */
 @media (prefers-reduced-motion: reduce) {
-  .links__channel:hover {
+  .links__world:hover {
     transform: none;
   }
 
