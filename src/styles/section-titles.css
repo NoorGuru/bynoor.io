@@ -305,6 +305,15 @@
   transition: box-shadow 500ms var(--ease-out);
 }
 
+/* Prep Kit — Lavender/Periwinkle (bridges burnt orange into footer's violet) */
+.prep-kit.section--revealed {
+  box-shadow:
+    inset 4px 0 0 0 hsl(280, 70%, 65%),
+    inset 40px 0 60px -40px hsla(280, 70%, 65%, 0.06),
+    0 0 20px -4px hsla(280, 70%, 65%, 0.12);
+  transition: box-shadow 500ms var(--ease-out);
+}
+
 /* ─────────────────────────────────────────────────────────────
    REDUCED MOTION
    ───────────────────────────────────────────────────────────── */

@@ -6,6 +6,7 @@ import { initScrollProgress } from './scroll-progress.js';
 import { initMagneticElements } from './magnetic-elements.js';
 import { initTiltCards } from './tilt-cards.js';
 import { initRecommendations } from './recommendations.js';
+import { initNoorEyes } from './noor-eyes.js';
 
 // Initialize modules when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -31,5 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollProgress();
     initMagneticElements();
     initTiltCards();
+    initNoorEyes();
   });
 });

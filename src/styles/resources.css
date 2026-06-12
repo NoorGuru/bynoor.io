@@ -584,7 +584,14 @@
    ============================================ */
 .prep-kit {
   padding: var(--space-2xl) var(--space-md);
-  background: var(--color-bg);
+  /* Transitional gradient: fades from neutral dark into the footer's violet territory,
+     bridging the senary (orange/projects) section into the footer's indigo */
+  background: linear-gradient(
+    180deg,
+    var(--color-bg) 0%,
+    hsl(260, 15%, 7%) 60%,
+    hsl(265, 20%, 7%) 100%
+  );
 }
 
 .prep-kit__container {
@@ -614,7 +621,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, hsl(45, 90%, 60%), transparent);
+  background: linear-gradient(90deg, transparent, hsl(280, 70%, 65%), transparent);
   opacity: 0.4;
 }
 
@@ -623,7 +630,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: hsl(45, 90%, 60%);
+  color: hsl(280, 70%, 65%);
 }
 
 .prep-kit__heading {
@@ -650,7 +657,7 @@
   font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: var(--fw-semibold);
-  color: hsl(45, 90%, 60%);
+  color: hsl(280, 70%, 65%);
   text-decoration: none;
   padding: var(--space-sm) 0;
   margin-top: var(--space-sm);
@@ -662,7 +669,7 @@
 }
 
 .prep-kit__link:focus-visible {
-  outline: 2px solid hsl(45, 90%, 60%);
+  outline: 2px solid hsl(280, 70%, 65%);
   outline-offset: 4px;
   border-radius: 4px;
 }

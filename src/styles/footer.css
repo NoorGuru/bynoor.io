@@ -5,11 +5,12 @@
 .footer {
   position: relative;
   overflow: hidden;
+  /* Starts from the same violet tint that prep-kit ends with, then deepens */
   background: linear-gradient(
     180deg,
-    var(--color-bg) 0%,
-    hsl(270, 25%, 8%) 30%,
-    hsl(260, 30%, 6%) 70%,
+    hsl(265, 20%, 7%) 0%,
+    hsl(270, 25%, 8%) 15%,
+    hsl(260, 30%, 6%) 60%,
     hsl(250, 35%, 4%) 100%
   );
   padding: var(--space-2xl) var(--space-md) var(--space-xl);
@@ -21,6 +22,24 @@
   gap: var(--space-lg);
   min-height: 80vh;
   justify-content: center;
+}
+
+/* Continuation of the section accent bar — fades out from the prep-kit's lavender */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 40%;
+  background: linear-gradient(
+    180deg,
+    hsl(280, 70%, 65%) 0%,
+    hsla(265, 70%, 55%, 0.3) 40%,
+    transparent 100%
+  );
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* === Aurora ambient layer === */
@@ -52,20 +71,16 @@
   background-size: 40px 40px;
 }
 
-/* === Orbital Beacon System (Signature Element) === */
+/* === Beacon — Glowing core (noor = light) === */
 .footer__beacon {
   position: relative;
-  width: 180px;
-  height: 180px;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Core glow — the "noor" (light) */
 .footer__beacon-core {
-  position: absolute;
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -97,100 +112,6 @@
       0 0 150px hsla(265, 85%, 65%, 0.2);
     transform: scale(1.1);
   }
-}
-
-/* Orbit rings — concentric ellipses */
-.footer__orbit {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid;
-}
-
-.footer__orbit--1 {
-  width: 80px;
-  height: 80px;
-  border-color: hsla(265, 70%, 60%, 0.25);
-  animation: orbit-rotate-1 12s linear infinite;
-}
-
-.footer__orbit--2 {
-  width: 130px;
-  height: 130px;
-  border-color: hsla(225, 60%, 55%, 0.15);
-  animation: orbit-rotate-2 18s linear infinite reverse;
-}
-
-.footer__orbit--3 {
-  width: 170px;
-  height: 170px;
-  border-color: hsla(195, 70%, 50%, 0.1);
-  animation: orbit-rotate-3 25s linear infinite;
-}
-
-/* Orbit rotation keyframes — each tilted differently for depth */
-@keyframes orbit-rotate-1 {
-  from { transform: rotateX(60deg) rotateZ(0deg); }
-  to { transform: rotateX(60deg) rotateZ(360deg); }
-}
-
-@keyframes orbit-rotate-2 {
-  from { transform: rotateX(70deg) rotateY(20deg) rotateZ(0deg); }
-  to { transform: rotateX(70deg) rotateY(20deg) rotateZ(360deg); }
-}
-
-@keyframes orbit-rotate-3 {
-  from { transform: rotateX(55deg) rotateY(-15deg) rotateZ(0deg); }
-  to { transform: rotateX(55deg) rotateY(-15deg) rotateZ(360deg); }
-}
-
-/* Orbiting dots — small glowing particles on each ring */
-.footer__orbit-dot {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  /* Fallback position for browsers without offset-path */
-  top: 50%;
-  left: 50%;
-}
-
-.footer__orbit-dot--1 {
-  background: hsl(265, 90%, 72%);
-  box-shadow: 0 0 8px hsl(265, 85%, 65%), 0 0 20px hsla(265, 85%, 65%, 0.4);
-  animation: dot-orbit-1 12s linear infinite;
-  offset-path: circle(40px);
-  offset-rotate: 0deg;
-}
-
-.footer__orbit-dot--2 {
-  background: hsl(225, 80%, 68%);
-  box-shadow: 0 0 8px hsl(225, 80%, 60%), 0 0 20px hsla(225, 80%, 60%, 0.4);
-  animation: dot-orbit-2 18s linear infinite;
-  offset-path: circle(65px);
-  offset-rotate: 0deg;
-}
-
-.footer__orbit-dot--3 {
-  background: hsl(195, 85%, 62%);
-  box-shadow: 0 0 8px hsl(195, 85%, 55%), 0 0 20px hsla(195, 85%, 55%, 0.4);
-  animation: dot-orbit-3 25s linear infinite;
-  offset-path: circle(85px);
-  offset-rotate: 0deg;
-}
-
-@keyframes dot-orbit-1 {
-  from { offset-distance: 0%; }
-  to { offset-distance: 100%; }
-}
-
-@keyframes dot-orbit-2 {
-  from { offset-distance: 33%; }
-  to { offset-distance: 133%; }
-}
-
-@keyframes dot-orbit-3 {
-  from { offset-distance: 66%; }
-  to { offset-distance: 166%; }
 }
 
 /* === Logo === */
@@ -377,22 +298,6 @@
   .footer__beacon-core {
     animation: none;
   }
-
-  .footer__orbit--1,
-  .footer__orbit--2,
-  .footer__orbit--3 {
-    animation: none;
-    /* Show as static rings */
-    transform: rotateX(60deg);
-  }
-
-  .footer__orbit-dot--1,
-  .footer__orbit-dot--2,
-  .footer__orbit-dot--3 {
-    animation: none;
-    /* Position statically on the ring */
-    offset-distance: 25%;
-  }
 }
 
 /* === Mobile adjustments === */
@@ -402,19 +307,6 @@
     padding: var(--space-xl) var(--space-md) var(--space-lg);
     gap: var(--space-md);
   }
-
-  .footer__beacon {
-    width: 140px;
-    height: 140px;
-  }
-
-  .footer__orbit--1 { width: 60px; height: 60px; }
-  .footer__orbit--2 { width: 100px; height: 100px; }
-  .footer__orbit--3 { width: 130px; height: 130px; }
-
-  .footer__orbit-dot--1 { offset-path: circle(30px); }
-  .footer__orbit-dot--2 { offset-path: circle(50px); }
-  .footer__orbit-dot--3 { offset-path: circle(65px); }
 
   .footer__beacon-core {
     width: 18px;

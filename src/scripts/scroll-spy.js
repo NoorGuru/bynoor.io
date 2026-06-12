@@ -13,6 +13,7 @@ const SECTION_ACCENTS = {
   recommendations: 'hsl(330, 80%, 65%)',
   links: 'hsl(45, 90%, 65%)',
   projects: 'hsl(20, 90%, 62%)',
+  'prep-kit': 'hsl(280, 70%, 70%)',
 };
 
 export function initScrollSpy() {
@@ -69,9 +70,9 @@ export function initScrollSpy() {
       return;
     }
 
-    // Edge case: scrolled to bottom — highlight "Projects"
+    // Edge case: scrolled to bottom — highlight "Prep Kit" (last section)
     if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 50) {
-      setActiveLink('projects');
+      setActiveLink('prep-kit');
       return;
     }
 

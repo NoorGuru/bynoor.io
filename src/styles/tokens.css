@@ -12,6 +12,7 @@
   --accent-quaternary: hsl(45, 90%, 60%);     /* amber/gold */
   --accent-quinary: hsl(145, 75%, 48%);       /* emerald — for journey */
   --accent-senary: hsl(20, 90%, 58%);         /* burnt orange — for projects */
+  --accent-septenary: hsl(280, 70%, 65%);     /* lavender/periwinkle — for prep kit */
 
   /* === Text === */
   --color-text: hsl(0, 0%, 93%);
