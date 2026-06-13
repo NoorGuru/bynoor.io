@@ -112,37 +112,48 @@
       bynoor.io
     </a>
 
-    <div class="resources__hero">
+    <div class="resources__hero" data-animate="fade-up">
       <div class="resources__hero-glow" aria-hidden="true"></div>
-      <h1>Technical Interview Preparation Kit</h1>
-      <div class="resources__hero-meta">
+      <div class="resources__hero-grid" aria-hidden="true"></div>
+      <div class="resources__hero-noise" aria-hidden="true"></div>
+      <div class="resources__hero-content">
         <span class="resources__hero-tag">Reference Guide</span>
-        <p class="resources__updated">Updated Sep 7, 2023</p>
+        <h1 class="resources__title">
+          <span class="resources__title-line resources__title-line--thin">Technical Interview</span>
+          <span class="resources__title-line resources__title-line--bold">Preparation Kit<span class="resources__cursor" aria-hidden="true"></span></span>
+        </h1>
+        <p class="resources__hero-sub">Data structures, algorithms, and system design. All in one place.</p>
       </div>
     </div>
 
     <!-- Table of Contents -->
-    <nav class="toc" aria-label="Table of Contents">
-      <details class="toc__details">
+    <nav class="toc" aria-label="Table of Contents" data-animate="fade-up">
+      <details class="toc__details" open>
         <summary class="toc__summary">
-          <span class="toc__title">Table of Contents</span>
-          <svg class="toc__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          <span class="toc__label">Navigate</span>
+          <span class="toc__count">5 sections</span>
+          <svg class="toc__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <ol class="toc__list">
-          <li><a href="#introduction">Introduction</a></li>
-          <li><a href="#long-term-preparation-kit">Long-Term Preparation Kit</a>
-            <ol>
+          <li class="toc__item">
+            <a href="#introduction" class="toc__link">Introduction</a>
+          </li>
+          <li class="toc__item">
+            <a href="#long-term-preparation-kit" class="toc__link">Long-Term Preparation Kit</a>
+            <ol class="toc__sublist">
               <li><a href="#before-you-continue">Before You Continue</a></li>
             </ol>
           </li>
-          <li><a href="#learn-by-practice">Learn by Practice</a>
-            <ol>
+          <li class="toc__item">
+            <a href="#learn-by-practice" class="toc__link">Learn by Practice</a>
+            <ol class="toc__sublist">
               <li><a href="#practice-per-topic">Practice per Topic</a></li>
               <li><a href="#practice-on-a-schedule">Practice on a Schedule</a></li>
             </ol>
           </li>
-          <li><a href="#short-term-preparation-kit">Short-Term Preparation Kit</a>
-            <ol>
+          <li class="toc__item">
+            <a href="#short-term-preparation-kit" class="toc__link">Short-Term Preparation Kit</a>
+            <ol class="toc__sublist">
               <li><a href="#keep-in-mind">Keep in Mind</a></li>
               <li><a href="#7-steps-to-solve-algorithm-problems">7 Steps to Solve Algorithm Problems</a></li>
               <li><a href="#3-algorithm-strategies">3 Algorithm Strategies</a></li>
@@ -156,7 +167,9 @@
               <li><a href="#solid-design-principles">SOLID Design Principles</a></li>
             </ol>
           </li>
-          <li><a href="#sources-and-references">Sources and References</a></li>
+          <li class="toc__item">
+            <a href="#sources-and-references" class="toc__link">Sources and References</a>
+          </li>
         </ol>
       </details>
     </nav>
@@ -215,8 +228,9 @@
     <h3 id="keep-in-mind">Keep in Mind</h3>
     <p>Keep these data structures, algorithms, and concepts in mind:</p>
 
-    <ul>
-      <li>Data Structures:
+    <div class="resources__card-grid">
+      <div class="resources__card" data-animate="fade-up">
+        <span class="resources__card-label">Data Structures</span>
         <ol>
           <li>Linked Lists</li>
           <li>Trees, Tries, and Graphs</li>
@@ -225,8 +239,9 @@
           <li>Vectors and Array Lists</li>
           <li><strong>&gt;&gt; Hash Tables &lt;&lt;</strong> (Dictionaries, Maps, ...)</li>
         </ol>
-      </li>
-      <li>Algorithms:
+      </div>
+      <div class="resources__card" data-animate="fade-up" data-animate-delay="100">
+        <span class="resources__card-label">Algorithms</span>
         <ol>
           <li>Breadth-First Search</li>
           <li>Depth-First Search</li>
@@ -234,8 +249,9 @@
           <li>Merge Sort</li>
           <li>Quick Sort</li>
         </ol>
-      </li>
-      <li>Concepts:
+      </div>
+      <div class="resources__card" data-animate="fade-up" data-animate-delay="200">
+        <span class="resources__card-label">Concepts</span>
         <ol>
           <li>Memory (Stacks VS Heaps)</li>
           <li>Recursion</li>
@@ -243,8 +259,8 @@
           <li>Big O Time &amp; Space</li>
           <li>Bit Manipulation</li>
         </ol>
-      </li>
-    </ul>
+      </div>
+    </div>
 
     <hr>
 
@@ -342,21 +358,21 @@
         <tbody>
           <tr>
             <td>1</td>
-            <td>get (retrieve)</td>
-            <td>Constant</td>
-            <td>Linear</td>
+            <td data-label="Operation">get (retrieve)</td>
+            <td data-label="Arrays">Constant</td>
+            <td data-label="Linked Lists">Linear</td>
           </tr>
           <tr>
             <td>2</td>
-            <td>insert and delete (@ start)</td>
-            <td>Linear</td>
-            <td>Constant</td>
+            <td data-label="Operation">insert and delete (@ start)</td>
+            <td data-label="Arrays">Linear</td>
+            <td data-label="Linked Lists">Constant</td>
           </tr>
           <tr>
             <td>3</td>
-            <td>insert and delete (@ end)</td>
-            <td>Constant</td>
-            <td>Linear</td>
+            <td data-label="Operation">insert and delete (@ end)</td>
+            <td data-label="Arrays">Constant</td>
+            <td data-label="Linked Lists">Linear</td>
           </tr>
         </tbody>
       </table>
@@ -410,54 +426,54 @@
           </tr>
           <tr>
             <td>Quick Sort</td>
-            <td>O(n lg n)</td>
-            <td>O(n^2)</td>
-            <td>O(lg n)</td>
-            <td>Pivot could make things missy</td>
-            <td><strong>Not</strong> stable</td>
+            <td data-label="Avg Time">O(n lg n)</td>
+            <td data-label="Worst Time">O(n^2)</td>
+            <td data-label="Space">O(lg n)</td>
+            <td data-label="Notes">Pivot could make things missy</td>
+            <td data-label="Stability"><strong>Not</strong> stable</td>
           </tr>
           <tr>
             <td>Merge Sort</td>
-            <td>O(n lg n)</td>
-            <td>O(n lg n)</td>
-            <td>O(n)</td>
-            <td>Divide and conquer</td>
-            <td>Stable</td>
+            <td data-label="Avg Time">O(n lg n)</td>
+            <td data-label="Worst Time">O(n lg n)</td>
+            <td data-label="Space">O(n)</td>
+            <td data-label="Notes">Divide and conquer</td>
+            <td data-label="Stability">Stable</td>
           </tr>
           <tr>
             <td>Heap Sort</td>
-            <td>O(n lg n)</td>
-            <td>O(n lg n)</td>
-            <td>O(1) <em>in-place</em></td>
-            <td>Heapsort is significantly slower than Quicksort and Merge Sort, so Heapsort is less commonly encountered in practice.</td>
-            <td><strong>Not</strong> stable</td>
+            <td data-label="Avg Time">O(n lg n)</td>
+            <td data-label="Worst Time">O(n lg n)</td>
+            <td data-label="Space">O(1) <em>in-place</em></td>
+            <td data-label="Notes">Heapsort is significantly slower than Quicksort and Merge Sort, so Heapsort is less commonly encountered in practice.</td>
+            <td data-label="Stability"><strong>Not</strong> stable</td>
           </tr>
           <tr class="table-group-header">
             <td colspan="6"><strong>Best Space:</strong></td>
           </tr>
           <tr>
             <td>Bubble Sort</td>
-            <td>O(n^2)</td>
-            <td>O(n^2)</td>
-            <td>O(1) <em>in-place</em></td>
-            <td>Compare every pair and swap if they are not in order</td>
-            <td>Stable</td>
+            <td data-label="Avg Time">O(n^2)</td>
+            <td data-label="Worst Time">O(n^2)</td>
+            <td data-label="Space">O(1) <em>in-place</em></td>
+            <td data-label="Notes">Compare every pair and swap if they are not in order</td>
+            <td data-label="Stability">Stable</td>
           </tr>
           <tr>
             <td>Insertion Sort</td>
-            <td>O(n^2)</td>
-            <td>O(n^2)</td>
-            <td>O(1) <em>in-place</em></td>
-            <td>Compare every item with all previous items, if a smaller (a larger) item is found, move all items in between to right and <em>insert</em> that item in the correct place.</td>
-            <td>Stable</td>
+            <td data-label="Avg Time">O(n^2)</td>
+            <td data-label="Worst Time">O(n^2)</td>
+            <td data-label="Space">O(1) <em>in-place</em></td>
+            <td data-label="Notes">Compare every item with all previous items, if a smaller (a larger) item is found, move all items in between to right and <em>insert</em> that item in the correct place.</td>
+            <td data-label="Stability">Stable</td>
           </tr>
           <tr>
             <td>Selection Sort</td>
-            <td>O(n^2)</td>
-            <td>O(n^2)</td>
-            <td>O(1) <em>in-place</em></td>
-            <td>Find the smallest (largest) item and add it to the end of the sorted part. Usually worse than insertion sort. <em>The first part is always sorted</em>.</td>
-            <td><strong>Not</strong> stable</td>
+            <td data-label="Avg Time">O(n^2)</td>
+            <td data-label="Worst Time">O(n^2)</td>
+            <td data-label="Space">O(1) <em>in-place</em></td>
+            <td data-label="Notes">Find the smallest (largest) item and add it to the end of the sorted part. Usually worse than insertion sort. <em>The first part is always sorted</em>.</td>
+            <td data-label="Stability"><strong>Not</strong> stable</td>
           </tr>
         </tbody>
       </table>
@@ -487,17 +503,17 @@
         <tbody>
           <tr>
             <td>Binary Search</td>
-            <td>O(lg n)</td>
-            <td>O(lg n)</td>
-            <td><em>Best time</em></td>
-            <td><strong>Works with sorted data only</strong>. Extra space is needed for the call stack in the recursive solution.</td>
+            <td data-label="Time">O(lg n)</td>
+            <td data-label="Space">O(lg n)</td>
+            <td data-label="Why?"><em>Best time</em></td>
+            <td data-label="Notes"><strong>Works with sorted data only</strong>. Extra space is needed for the call stack in the recursive solution.</td>
           </tr>
           <tr>
             <td>Linear Search</td>
-            <td>O(n)</td>
-            <td>O(1) <em>in-place</em></td>
-            <td><em>Best space</em></td>
-            <td>Works with any (sorted or unsorted) data.</td>
+            <td data-label="Time">O(n)</td>
+            <td data-label="Space">O(1) <em>in-place</em></td>
+            <td data-label="Why?"><em>Best space</em></td>
+            <td data-label="Notes">Works with any (sorted or unsorted) data.</td>
           </tr>
         </tbody>
       </table>
@@ -647,7 +663,17 @@
       <li><a href="https://www.crackingthecodinginterview.com" target="_blank" rel="noopener">Cracking the Coding Interview</a>. A book by Gayle McDowell, 6th edition.</li>
       <li><a href="https://www.happycoders.eu/blog/" target="_blank" rel="noopener">HappyCoders.eu</a>. A blog by Sven Woltmann to make you a better Java programmer (and more).</li>
     </ul>
+
+    <p class="resources__updated">Last updated Sep 7, 2023</p>
   </main>
+
+  <!-- Back to top button -->
+  <button class="back-to-top" aria-label="Back to top" id="back-to-top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <!-- Reading progress bar -->
+  <div class="resources__progress" aria-hidden="true"></div>
 
   <!-- Footer -->
   <footer class="footer" data-section-accent="primary">
@@ -707,5 +733,33 @@
 
   <!-- Scripts -->
   <script type="module" src="/src/scripts/main.js"></script>
+  <script>
+    // Back to top button
+    (function() {
+      const btn = document.getElementById('back-to-top');
+      const progress = document.querySelector('.resources__progress');
+      if (!btn) return;
+
+      function update() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const percent = docHeight > 0 ? scrollTop / docHeight : 0;
+
+        // Show/hide back-to-top
+        btn.classList.toggle('visible', scrollTop > 400);
+
+        // Update progress bar
+        if (progress) {
+          progress.style.transform = 'scaleX(' + percent + ')';
+        }
+      }
+
+      window.addEventListener('scroll', update, { passive: true });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      update();
+    })();
+  </script>
 </body>
 </html>

@@ -12,8 +12,14 @@
 
 .projects__heading {
   font-family: var(--font-heading);
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-sm);
   position: relative;
+}
+
+.projects__subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xl);
 }
 
 @supports not (-webkit-background-clip: text) {

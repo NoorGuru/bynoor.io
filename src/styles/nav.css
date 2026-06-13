@@ -8,32 +8,19 @@ section[id] {
   scroll-margin-top: var(--header-height);
 }
 
-/* Header — Transparent initially, becomes floating pill on scroll */
+/* Header — Transparent initially, the inner .nav becomes a floating pill on scroll */
 .header {
   position: sticky;
   top: 0;
   z-index: 300;
   height: var(--header-height);
   background-color: transparent;
-  transition: background-color 400ms ease,
-              border-color 400ms ease,
-              box-shadow 400ms ease,
-              border-radius 400ms ease,
-              margin 400ms ease;
+  transition: height 400ms ease;
 }
 
 .header.nav--scrolled {
-  background-color: rgba(10, 10, 18, 0.85);
-  backdrop-filter: blur(16px) saturate(1.4);
-  -webkit-backdrop-filter: blur(16px) saturate(1.4);
-  border: 1px solid rgba(139, 92, 246, 0.1);
-  border-radius: 100px;
-  margin: 12px auto;
-  max-width: 900px;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
   height: 56px;
+  padding: 12px var(--space-md) 0;
 }
 
 .nav {
@@ -44,9 +31,26 @@ section[id] {
   margin: 0 auto;
   padding: 0 var(--space-md);
   height: 100%;
+  border-radius: 0;
+  border: 1px solid transparent;
+  transition: background-color 400ms ease,
+              border-color 400ms ease,
+              box-shadow 400ms ease,
+              border-radius 400ms ease,
+              max-width 400ms ease,
+              padding 400ms ease;
 }
 
 .header.nav--scrolled .nav {
+  background-color: rgba(10, 10, 18, 0.85);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  border-radius: 100px;
+  max-width: 900px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
   padding: 0 var(--space-lg);
 }
 
@@ -285,8 +289,11 @@ section[id] {
   }
 
   .header.nav--scrolled {
+    padding: 0;
+  }
+
+  .header.nav--scrolled .nav {
     border-radius: 0;
-    margin: 0;
     max-width: none;
   }
 
@@ -608,7 +615,7 @@ section[id] {
   }
 
   /* Make header transparent when menu is open so overlay shows cleanly */
-  body.menu-open .header.nav--scrolled {
+  body.menu-open .header.nav--scrolled .nav {
     background-color: transparent;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -631,6 +638,10 @@ section[id] {
   }
 
   .header {
+    transition: none;
+  }
+
+  .nav {
     transition: none;
   }
 
