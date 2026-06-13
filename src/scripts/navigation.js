@@ -96,28 +96,57 @@ export function initNavigation() {
     });
   }
 
-  // Glassmorphism scroll toggle
+  // Glassmorphism scroll toggle with directional awareness
   if (header) {
-    const SCROLL_THRESHOLD = 100;
+    const SCROLL_DOWN_THRESHOLD = 80;
+    const SCROLL_UP_THRESHOLD = 40;
+    let lastScrollY = window.scrollY;
     let ticking = false;
+    let isScrolled = false;
+    let revealTimeout = null;
 
-    function updateScrollClass() {
-      if (window.scrollY > SCROLL_THRESHOLD) {
+    function updateScrollState() {
+      const currentScrollY = window.scrollY;
+      const scrollDelta = currentScrollY - lastScrollY;
+      const isScrollingDown = scrollDelta > 0;
+
+      // Add scrolled state when past threshold (scrolling down)
+      if (currentScrollY > SCROLL_DOWN_THRESHOLD && !isScrolled) {
+        isScrolled = true;
         header.classList.add('nav--scrolled');
-      } else {
-        header.classList.remove('nav--scrolled');
       }
+
+      // Remove scrolled state when back near top (with tighter threshold for snappier feel)
+      if (currentScrollY <= SCROLL_UP_THRESHOLD && isScrolled) {
+        isScrolled = false;
+        header.classList.remove('nav--scrolled');
+        header.classList.remove('nav--reveal');
+      }
+
+      // Reveal animation when scrolling up while in scrolled state
+      if (!isScrollingDown && isScrolled && Math.abs(scrollDelta) > 4) {
+        if (!header.classList.contains('nav--reveal')) {
+          header.classList.add('nav--reveal');
+          // Remove reveal class after animation completes to allow re-triggering
+          clearTimeout(revealTimeout);
+          revealTimeout = setTimeout(() => {
+            header.classList.remove('nav--reveal');
+          }, 400);
+        }
+      }
+
+      lastScrollY = currentScrollY;
       ticking = false;
     }
 
     window.addEventListener('scroll', () => {
       if (!ticking) {
-        requestAnimationFrame(updateScrollClass);
+        requestAnimationFrame(updateScrollState);
         ticking = true;
       }
     }, { passive: true });
 
     // Set initial state in case page is already scrolled
-    updateScrollClass();
+    updateScrollState();
   }
 }

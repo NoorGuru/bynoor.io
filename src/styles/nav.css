@@ -15,12 +15,28 @@ section[id] {
   z-index: 300;
   height: var(--header-height);
   background-color: transparent;
-  transition: height 400ms ease;
+  transition: height 500ms var(--ease-out);
 }
 
 .header.nav--scrolled {
   height: 56px;
   padding: 12px var(--space-md) 0;
+}
+
+/* Reveal state — subtle slide-down when nav reappears after being hidden */
+.header.nav--reveal .nav {
+  animation: navReveal 400ms var(--ease-out) both;
+}
+
+@keyframes navReveal {
+  from {
+    opacity: 0.6;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .nav {
@@ -33,12 +49,15 @@ section[id] {
   height: 100%;
   border-radius: 0;
   border: 1px solid transparent;
-  transition: background-color 400ms ease,
-              border-color 400ms ease,
-              box-shadow 400ms ease,
-              border-radius 400ms ease,
-              max-width 400ms ease,
-              padding 400ms ease;
+  /* Choreographed transitions — shape leads, then surface, then shadow */
+  transition: border-radius 550ms var(--ease-out),
+              max-width 550ms var(--ease-out),
+              padding 500ms var(--ease-out),
+              background-color 450ms var(--ease-out) 50ms,
+              border-color 400ms ease 80ms,
+              backdrop-filter 500ms ease 50ms,
+              -webkit-backdrop-filter 500ms ease 50ms,
+              box-shadow 600ms ease 100ms;
 }
 
 .header.nav--scrolled .nav {
@@ -639,6 +658,10 @@ section[id] {
 
   .header {
     transition: none;
+  }
+
+  .header.nav--reveal .nav {
+    animation: none;
   }
 
   .nav {
