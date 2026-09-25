@@ -3,9 +3,13 @@
   top: 0;
   left: 0;
   height: 3px;
-  width: calc(var(--scroll-progress) * 100%);
+  width: 100%;
   background: var(--gradient-progress);
   z-index: 10000;
   pointer-events: none;
-  transition: width 50ms linear;
+  /* Scale instead of width: width re-lays-out the page on every scroll
+     frame, transform is composited. Updated via rAF already, so no
+     transition needed. */
+  transform: scaleX(var(--scroll-progress, 0));
+  transform-origin: 0 50%;
 }

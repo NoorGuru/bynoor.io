@@ -15,12 +15,25 @@ export function initScrollProgress() {
   if (!progressBar) return;
 
   let ticking = false;
+  // scrollHeight forces layout — cache it and recompute at most once per
+  // second (plus on resize) instead of on every scroll frame.
+  let cachedMaxScroll = -1;
+  let lastMeasured = 0;
+  const MEASURE_TTL_MS = 1000;
+
+  function getMaxScroll() {
+    const now = Date.now();
+    if (cachedMaxScroll < 0 || now - lastMeasured > MEASURE_TTL_MS) {
+      cachedMaxScroll =
+        document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      lastMeasured = now;
+    }
+    return cachedMaxScroll;
+  }
 
   function updateProgress() {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight;
-    const clientHeight = document.documentElement.clientHeight;
-    const maxScroll = scrollHeight - clientHeight;
+    const maxScroll = getMaxScroll();
 
     const progress = maxScroll > 0 ? scrollTop / maxScroll : 0;
     const clampedProgress = Math.min(Math.max(progress, 0), 1);
@@ -36,7 +49,13 @@ export function initScrollProgress() {
     }
   }
 
+  function onResize() {
+    cachedMaxScroll = -1;
+    onScroll();
+  }
+
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onResize);
 
   // Set initial progress on load
   updateProgress();

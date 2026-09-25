@@ -727,3 +727,15 @@ section[id] {
     transition: none;
   }
 }
+
+/* === Touch devices: no backdrop blur on the scrolled nav ===
+   The fixed header's blur(16px) saturate(1.4) forces iOS to re-blur the
+   header region on every scroll frame. A near-opaque fill looks the same
+   on phones for a fraction of the GPU cost. Desktop keeps the glass pill. */
+@media (hover: none) {
+  .header.nav--scrolled .nav {
+    background-color: rgba(10, 10, 18, 0.96);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}

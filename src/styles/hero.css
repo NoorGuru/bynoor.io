@@ -447,6 +447,41 @@
     min-height: 100svh;
   }
 
+  /* Mobile GPU relief: the full-screen blur + endless drift + permanent
+     will-change layer keep the iPhone GPU busy while scrolling. A static,
+     softer aurora looks the same at phone sizes for a fraction of the cost. */
+  .hero__aurora-shift {
+    will-change: auto;
+  }
+
+  .hero__aurora {
+    animation: none;
+    filter: blur(24px);
+    opacity: 0.3;
+  }
+
+  /* drop-shadow on the giant gradient headline forces a repaint of the
+     whole text layer every scroll frame — drop it on small screens. */
+  .hero__name-line--big {
+    filter: none;
+  }
+
+  /* backdrop-filter is one of the most expensive effects on iOS; use flat
+     translucent fills on phones instead. */
+  .hero__role-pill,
+  .hero__identity-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .hero__role-pill {
+    background: rgba(139, 92, 246, 0.14);
+  }
+
+  .hero__identity-card {
+    background: rgba(20, 20, 32, 0.72);
+  }
+
   .hero__content {
     gap: var(--space-lg);
   }
@@ -532,6 +567,33 @@
 
   .hero__tagline {
     font-size: 2.2rem;
+  }
+}
+
+/* === Touch devices (any size, e.g. large tablets/phones in landscape) ===
+   Same GPU relief as phones: no endless aurora drift, cheaper blur, no
+   permanent will-change layer, no headline drop-shadow. */
+@media (hover: none) {
+  .hero__aurora-shift {
+    will-change: auto;
+  }
+
+  .hero__aurora {
+    animation: none;
+    filter: blur(24px);
+    opacity: 0.3;
+  }
+
+  .hero__name-line--big {
+    filter: none;
+    /* Entrance plays once, then the gradient stays static: the infinite
+       background-position shift repaints this giant text layer every frame
+       (background-position can't be composited), which janks iOS scroll. */
+    animation: hero-name-enter 600ms var(--ease-out) 100ms forwards;
+  }
+
+  .hero__scroll-indicator {
+    animation: none;
   }
 }
 

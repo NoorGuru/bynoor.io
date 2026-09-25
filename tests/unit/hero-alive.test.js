@@ -3,6 +3,7 @@ import { initHeroAlive } from '../../src/scripts/hero-alive.js';
 
 let rafQueue;
 let ioInstances;
+let pointerMode = 'fine'; // 'fine' | 'coarse'
 
 function stubRaf() {
   rafQueue = [];
@@ -33,11 +34,18 @@ function stepFrames(n) {
 function stubMatchMedia() {
   vi.stubGlobal(
     'matchMedia',
-    vi.fn((query) => ({
-      // No reduced motion; hover capable so pointer tracking attaches
-      matches: query.includes('hover: hover'),
-      addEventListener: vi.fn(),
-    }))
+    vi.fn((query) => {
+      let matches = false;
+      if (query.includes('prefers-reduced-motion')) matches = false;
+      else if (query.includes('hover: hover')) matches = pointerMode === 'fine';
+      else if (query.includes('hover: none') || query.includes('pointer: coarse'))
+        matches = pointerMode === 'coarse';
+      return {
+        matches,
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+      };
+    })
   );
 }
 
@@ -53,6 +61,7 @@ function stubIntersectionObserver() {
           this.observed.push(el);
         },
         unobserve() {},
+        disconnect() {},
       };
       ioInstances.push(instance);
       return instance;
@@ -66,10 +75,13 @@ function setScrollY(value) {
     configurable: true,
     writable: true,
   });
+  // Real scrolls always fire a scroll event — the on-demand loop wakes on it.
+  window.dispatchEvent(new window.Event('scroll'));
 }
 
 beforeEach(() => {
   vi.restoreAllMocks();
+  pointerMode = 'fine';
   stubRaf();
   stubMatchMedia();
   stubIntersectionObserver();
@@ -132,5 +144,37 @@ describe('living hero', () => {
     ioInstances[0].callback([{ isIntersecting: false }]);
     stepFrames(5);
     expect(rafQueue.filter(Boolean).length).toBe(0);
+  });
+
+  it('sleeps when settled instead of running a perpetual loop', () => {
+    initHeroAlive();
+    ioInstances[0].callback([{ isIntersecting: true }]);
+    stepFrames(10);
+    // No input: pointer settled, scroll unchanged — no frames pending.
+    expect(rafQueue.filter(Boolean).length).toBe(0);
+
+    // New scroll input wakes the loop exactly once.
+    setScrollY(1);
+    expect(rafQueue.filter(Boolean).length).toBe(1);
+    stepFrames(5);
+    expect(document.querySelector('.hero__content').style.transform).toContain('scale(0.9400)');
+    expect(rafQueue.filter(Boolean).length).toBe(0);
+  });
+
+  it('stays fully static on coarse pointers: no loop, no styles', () => {
+    pointerMode = 'coarse';
+    initHeroAlive();
+    expect(ioInstances.length).toBe(0);
+
+    setScrollY(1);
+    const hero = document.getElementById('hero');
+    hero.dispatchEvent(new window.Event('pointermove'));
+    stepFrames(5);
+
+    // Nothing attached, nothing scheduled, nothing written.
+    expect(rafQueue.filter(Boolean).length).toBe(0);
+    expect(document.querySelector('.hero__content').style.transform).toBe('');
+    expect(document.querySelector('.hero__content').style.opacity).toBe('');
+    expect(document.querySelector('.hero__aurora-shift').style.transform).toBe('');
   });
 });
