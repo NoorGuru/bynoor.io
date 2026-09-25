@@ -7,8 +7,8 @@
 import { prefersReducedMotion, onMotionPreferenceChange } from './utils/reduced-motion.js';
 import { onBreakpointChange } from './utils/breakpoints.js';
 
-const THRESHOLD = 80;
-const MAX_OFFSET = 8;
+const THRESHOLD = 64;
+const MAX_OFFSET = 6;
 const RESET_DURATION = 300;
 
 /** @type {HTMLElement[]} */
@@ -18,6 +18,19 @@ let rafId = null;
 let cursorX = 0;
 let cursorY = 0;
 let ticking = false;
+/**
+ * Cached bounding rects per element. getBoundingClientRect() forces layout,
+ * so reading it for every element on every mousemove frame thrashes layout
+ * while scrolling. Rects are refreshed on scroll/resize instead.
+ * @type {Map<HTMLElement, DOMRect>}
+ */
+const rectCache = new Map();
+
+function refreshRects() {
+  for (const el of elements) {
+    rectCache.set(el, el.getBoundingClientRect());
+  }
+}
 
 /**
  * Clamps a value between min and max.
@@ -65,7 +78,7 @@ function updateElements() {
   if (!active) return;
 
   for (const el of elements) {
-    const rect = el.getBoundingClientRect();
+    const rect = rectCache.get(el) || el.getBoundingClientRect();
     const { dx, dy } = computeTranslation(cursorX, cursorY, rect);
 
     el.style.transform = `translate(${dx}px, ${dy}px)`;
@@ -104,11 +117,22 @@ function onElementMouseLeave(e) {
 /**
  * Attaches event listeners and activates magnetic behavior.
  */
+/**
+ * Refresh cached rects on scroll/resize (passive — layout reads only,
+ * no writes, and only while magnetic tracking is active).
+ */
+function onLayoutChange() {
+  if (active) refreshRects();
+}
+
 function activate() {
   if (active) return;
   active = true;
 
+  refreshRects();
   document.addEventListener('mousemove', onMouseMove, { passive: true });
+  window.addEventListener('scroll', onLayoutChange, { passive: true });
+  window.addEventListener('resize', onLayoutChange);
 
   for (const el of elements) {
     el.addEventListener('mouseleave', onElementMouseLeave);
@@ -123,6 +147,9 @@ function deactivate() {
   active = false;
 
   document.removeEventListener('mousemove', onMouseMove);
+  window.removeEventListener('scroll', onLayoutChange);
+  window.removeEventListener('resize', onLayoutChange);
+  rectCache.clear();
 
   if (rafId !== null) {
     cancelAnimationFrame(rafId);

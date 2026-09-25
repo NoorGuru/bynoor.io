@@ -112,6 +112,20 @@ export function initScrollSpy() {
   // Observe all sections
   sections.forEach((section) => observer.observe(section));
 
-  // Also update on scroll for edge cases (top/bottom detection)
-  window.addEventListener('scroll', updateActiveSection, { passive: true });
+  // Also update on scroll for edge cases (top/bottom detection).
+  // Throttled via rAF: the handler reads layout (scrollHeight, rects),
+  // so running it on every raw scroll event thrashes layout while scrolling.
+  let scrollTicking = false;
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(() => {
+        scrollTicking = false;
+        updateActiveSection();
+      });
+    },
+    { passive: true }
+  );
 }

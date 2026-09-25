@@ -369,6 +369,17 @@
   transform: translate(0, 0);
 }
 
+/* Reduced motion: no lift on hover — keep color/border feedback only */
+@media (prefers-reduced-motion: reduce) {
+  .project-card:hover {
+    transform: none;
+  }
+
+  .project-card:hover .project-card__arrow {
+    transform: none;
+  }
+}
+
 .project-card__badge {
   font-family: var(--font-mono);
   font-size: 0.65rem;

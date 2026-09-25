@@ -8,35 +8,15 @@ section[id] {
   scroll-margin-top: var(--header-height);
 }
 
-/* Header — Transparent initially, the inner .nav becomes a floating pill on scroll */
+/* Header — Transparent initially, the inner .nav becomes a floating pill on scroll.
+   Header height is fixed: shrinking it on toggle reflows the whole page
+   mid-scroll, which reads as jank (especially in Safari). */
 .header {
   position: sticky;
   top: 0;
   z-index: 300;
   height: var(--header-height);
   background-color: transparent;
-  transition: height 500ms var(--ease-out);
-}
-
-.header.nav--scrolled {
-  height: 56px;
-  padding: 12px var(--space-md) 0;
-}
-
-/* Reveal state — subtle slide-down when nav reappears after being hidden */
-.header.nav--reveal .nav {
-  animation: navReveal 400ms var(--ease-out) both;
-}
-
-@keyframes navReveal {
-  from {
-    opacity: 0.6;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .nav {
@@ -49,15 +29,17 @@ section[id] {
   height: 100%;
   border-radius: 0;
   border: 1px solid transparent;
-  /* Choreographed transitions — shape leads, then surface, then shadow */
-  transition: border-radius 550ms var(--ease-out),
-              max-width 550ms var(--ease-out),
-              padding 500ms var(--ease-out),
-              background-color 450ms var(--ease-out) 50ms,
-              border-color 400ms ease 80ms,
-              backdrop-filter 500ms ease 50ms,
-              -webkit-backdrop-filter 500ms ease 50ms,
-              box-shadow 600ms ease 100ms;
+  /* max-width/padding ease the pill's grow, but nothing else animates:
+     header height stays fixed (no page reflow), backdrop-filter flips
+     instantly (it can't interpolate), and no animation retriggers on
+     scroll. The layout work is confined to this tiny subtree for 300ms
+     at toggle moments only — never during the scroll gesture itself. */
+  transition: max-width 300ms var(--ease-out),
+              padding 300ms var(--ease-out),
+              border-radius 300ms var(--ease-out),
+              background-color 300ms var(--ease-out),
+              border-color 300ms var(--ease-out),
+              box-shadow 300ms var(--ease-out);
 }
 
 .header.nav--scrolled .nav {

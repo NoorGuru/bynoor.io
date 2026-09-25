@@ -5,7 +5,7 @@
    Without JS, .js-loaded is never added to <html>, so elements stay visible. */
 html.js-loaded [data-animate] {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(12px);
   will-change: transform, opacity;
 }
 
@@ -17,12 +17,15 @@ html.js-loaded [data-animate="scale-in"] {
   transform: scale(0.95);
 }
 
-/* Once visible — animate in */
+/* Once visible — animate in.
+   will-change is released here: retaining it on every revealed element
+   pins dozens of compositor layers (Safari memory/jank after long scrolls). */
 html.js-loaded [data-animate].animate-visible {
   opacity: 1;
   transform: none;
   transition: opacity var(--duration-entrance) var(--ease-out),
               transform var(--duration-entrance) var(--ease-out);
+  will-change: auto;
 }
 
 /* Reduced motion: disable transforms and entrance animations */

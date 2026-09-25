@@ -16,6 +16,9 @@
 import { prefersReducedMotion } from './utils/reduced-motion.js';
 import { onBreakpointChange } from './utils/breakpoints.js';
 
+/** Maximum stagger/entrance delay in ms — caps runaway chains (e.g. 0..1000ms). */
+export const MAX_ENTRANCE_DELAY_MS = 300;
+
 /**
  * Initializes the animation engine.
  * Creates an IntersectionObserver that triggers entrance animations
@@ -46,21 +49,32 @@ export function initAnimationEngine() {
         if (entry.isIntersecting) {
           const el = entry.target;
 
-          // Apply explicit delay from data attribute (stagger)
-          const delay = el.getAttribute('data-animate-delay');
-          if (delay) {
-            el.style.transitionDelay = `${delay}ms`;
+          // Apply explicit delay from data attribute (stagger), capped
+          // so long chains (e.g. 1000ms) can't hold content hostage.
+          const rawDelay = parseInt(el.getAttribute('data-animate-delay'), 10);
+          if (!isNaN(rawDelay) && rawDelay > 0) {
+            el.style.transitionDelay = `${Math.min(rawDelay, MAX_ENTRANCE_DELAY_MS)}ms`;
           }
 
           // Trigger the entrance animation
           el.classList.add('animate-visible');
+
+          // Clear the one-shot delay once the entrance settles, so later
+          // transitions on the same element (e.g. hover) stay instant.
+          // transitionend may never fire (display:none, interrupted); the
+          // timeout fallback guarantees cleanup.
+          const clearDelay = () => {
+            el.style.transitionDelay = '';
+          };
+          el.addEventListener('transitionend', clearDelay, { once: true });
+          setTimeout(clearDelay, MAX_ENTRANCE_DELAY_MS + 500);
 
           // Fire-once: unobserve immediately after triggering
           observer.unobserve(el);
         }
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0.1, rootMargin: '0px 0px -10% 0px' }
   );
 
   // Observe all animated elements

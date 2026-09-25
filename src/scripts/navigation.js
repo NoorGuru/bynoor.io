@@ -96,19 +96,18 @@ export function initNavigation() {
     });
   }
 
-  // Glassmorphism scroll toggle with directional awareness
+  // Glassmorphism scroll toggle. Class flips are hysteresis-gated (80/40)
+  // so the pill never flaps near the threshold; no per-scroll animation —
+  // retriggering one on every upward scroll kept the header animating
+  // (and compositing) for the whole gesture.
   if (header) {
     const SCROLL_DOWN_THRESHOLD = 80;
     const SCROLL_UP_THRESHOLD = 40;
-    let lastScrollY = window.scrollY;
     let ticking = false;
     let isScrolled = false;
-    let revealTimeout = null;
 
     function updateScrollState() {
       const currentScrollY = window.scrollY;
-      const scrollDelta = currentScrollY - lastScrollY;
-      const isScrollingDown = scrollDelta > 0;
 
       // Add scrolled state when past threshold (scrolling down)
       if (currentScrollY > SCROLL_DOWN_THRESHOLD && !isScrolled) {
@@ -120,22 +119,8 @@ export function initNavigation() {
       if (currentScrollY <= SCROLL_UP_THRESHOLD && isScrolled) {
         isScrolled = false;
         header.classList.remove('nav--scrolled');
-        header.classList.remove('nav--reveal');
       }
 
-      // Reveal animation when scrolling up while in scrolled state
-      if (!isScrollingDown && isScrolled && Math.abs(scrollDelta) > 4) {
-        if (!header.classList.contains('nav--reveal')) {
-          header.classList.add('nav--reveal');
-          // Remove reveal class after animation completes to allow re-triggering
-          clearTimeout(revealTimeout);
-          revealTimeout = setTimeout(() => {
-            header.classList.remove('nav--reveal');
-          }, 400);
-        }
-      }
-
-      lastScrollY = currentScrollY;
       ticking = false;
     }
 

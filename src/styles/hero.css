@@ -33,7 +33,7 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.35;
   background:
     radial-gradient(ellipse 60% 50% at 15% 50%, hsl(265, 90%, 45%) 0%, transparent 60%),
     radial-gradient(ellipse 50% 60% at 85% 30%, hsl(195, 85%, 40%) 0%, transparent 55%),
@@ -110,7 +110,7 @@
   flex-wrap: wrap;
   justify-content: center;
   opacity: 0;
-  animation: hero-reveal 800ms var(--ease-out) 100ms forwards;
+  animation: hero-reveal 600ms var(--ease-out) 0ms forwards;
 }
 
 .hero__role-pill {
@@ -158,56 +158,11 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation:
-    hero-name-enter 1000ms var(--ease-out) 250ms forwards,
+    hero-name-enter 600ms var(--ease-out) 100ms forwards,
     gradient-shift 8s ease-in-out infinite;
   opacity: 0;
   transform: translateY(30px);
   filter: drop-shadow(0 0 80px rgba(139, 92, 246, 0.3));
-}
-
-/* O characters — inline, relative for JS-injected eye positioning */
-.hero__o-char {
-  position: relative;
-  display: inline-block;
-}
-
-/* The eye element (injected by JS inside each .hero__o-char) */
-.hero__googly {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 0.32em;
-  height: 0.32em;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-  pointer-events: none;
-  z-index: 3;
-  overflow: hidden;
-}
-
-/* Pupil inside the googly eye */
-.hero__googly-pupil {
-  position: absolute;
-  width: 50%;
-  height: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: #111;
-  transition: transform 80ms ease-out;
-}
-
-/* Blink */
-.hero__googly--blink {
-  animation: googly-blink 100ms ease-in-out;
-}
-
-@keyframes googly-blink {
-  0%, 100% { transform: translate(-50%, -50%) scaleY(1); }
-  50% { transform: translate(-50%, -50%) scaleY(0.05); }
 }
 
 @keyframes hero-name-enter {
@@ -222,18 +177,6 @@
   50% { background-position: 100% 50%; }
 }
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .hero__googly-pupil {
-    transition: none !important;
-    transform: translate(-50%, -50%) !important;
-  }
-
-  .hero__googly--blink {
-    animation: none !important;
-  }
-}
-
 /* === Tagline — The hero statement, made prominent === */
 .hero__tagline {
   font-family: var(--font-heading);
@@ -245,7 +188,7 @@
   margin: 0;
   letter-spacing: -0.02em;
   opacity: 0;
-  animation: hero-reveal 800ms var(--ease-out) 550ms forwards;
+  animation: hero-reveal 600ms var(--ease-out) 200ms forwards;
   position: relative;
 }
 
@@ -273,7 +216,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   opacity: 0;
-  animation: hero-reveal 800ms var(--ease-out) 850ms forwards;
+  animation: hero-reveal 600ms var(--ease-out) 300ms forwards;
   transition: border-color 300ms ease, background 300ms ease, transform 300ms ease;
 }
 
@@ -340,7 +283,7 @@
   flex-wrap: wrap;
   justify-content: center;
   opacity: 0;
-  animation: hero-reveal 800ms var(--ease-out) 1000ms forwards;
+  animation: hero-reveal 600ms var(--ease-out) 400ms forwards;
 }
 
 /* === Buttons === */
@@ -591,7 +534,7 @@
   .hero__name-line--big {
     opacity: 1;
     transform: none;
-    animation: gradient-shift 8s ease-in-out infinite;
+    animation: none;
   }
 
   .hero__roles,

@@ -61,7 +61,7 @@
   --fw-bold: 700;
 
   /* === Animation === */
-  --duration-entrance: 500ms;
+  --duration-entrance: 350ms;
   --duration-hover: 200ms;
   --duration-mesh: 12s;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
