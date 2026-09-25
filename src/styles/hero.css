@@ -28,6 +28,16 @@
 }
 
 /* === Aurora — Animated ambient gradient field === */
+/* Wrapper carries JS-driven pointer/scroll offset (compositor only);
+   the inner layer keeps its slow CSS drift so the two never fight. */
+.hero__aurora-shift {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
 .hero__aurora {
   position: absolute;
   inset: 0;

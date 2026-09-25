@@ -4,6 +4,7 @@ import { initScrollSpy } from './scroll-spy.js';
 import { initAnimationEngine, initParallax, initSectionAccentReveal } from './animation-engine.js';
 import { initScrollProgress } from './scroll-progress.js';
 import { initMagneticElements } from './magnetic-elements.js';
+import { initHeroAlive } from './hero-alive.js';
 import { initRecommendations } from './recommendations.js';
 
 // Initialize modules when DOM is ready
@@ -29,5 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initSectionAccentReveal();
     initScrollProgress();
     initMagneticElements();
+    initHeroAlive();
   });
 });
