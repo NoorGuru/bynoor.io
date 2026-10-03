@@ -5,15 +5,17 @@
  * Also applies section-specific accent colors to the active link.
  */
 
-// Map section IDs to their accent hue colors
+// Map section IDs to their editorial accent colors (paper-safe, no neon)
 const SECTION_ACCENTS = {
-  highlights: 'hsl(265, 90%, 72%)',
-  journey: 'hsl(145, 75%, 55%)',
-  skills: 'hsl(195, 85%, 60%)',
-  recommendations: 'hsl(330, 80%, 65%)',
-  links: 'hsl(45, 90%, 65%)',
-  projects: 'hsl(20, 90%, 62%)',
-  'prep-kit': 'hsl(280, 70%, 70%)',
+  'eg-case': '#265138',
+  highlights: '#8a6414',
+  projects: '#265138',
+  teach: '#8a6414',
+  journey: '#265138',
+  skills: '#1b1712',
+  recommendations: '#265138',
+  links: '#8a6414',
+  'prep-kit': '#1a3a28',
 };
 
 export function initScrollSpy() {

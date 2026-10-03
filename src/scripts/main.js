@@ -6,6 +6,7 @@ import { initScrollProgress } from './scroll-progress.js';
 import { initMagneticElements } from './magnetic-elements.js';
 import { initHeroAlive } from './hero-alive.js';
 import { initRecommendations } from './recommendations.js';
+import { initLens } from './lens.js';
 
 // Initialize modules when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initScrollSpy();
   initRecommendations();
+  initLens();
 
   // Set current year in footer
   const yearEl = document.getElementById('year');
