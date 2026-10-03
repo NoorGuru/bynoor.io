@@ -41,7 +41,7 @@ Single-page Astro site with a fixed section order (everything always visible). E
 - EG Wizard outcomes (weeks → hours, POC → roadmap, versions shipped) — narrative/proof only, no public product demo
 - Production / ownership metrics in the proof ledger (Expedia Group, Amazon)
 - Aura (live product) for Builder proof
-- Teach: Code with Noor, 18.6K subscribers, Arabic-first framing
+- Teach: Code with Noor, 18.7K subscribers, Arabic-first framing
 - LinkedIn recommendations on page
 - Assets: `public/profile-pic.webp`, resume PDF, OG image
 

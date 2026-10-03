@@ -118,7 +118,6 @@ img {
 .links__heading,
 .projects__heading,
 .prep-kit__heading,
-.eg-case__heading,
 .teach__heading {
   font-family: var(--display);
   font-weight: 600;
@@ -144,11 +143,17 @@ img {
 .nav {
   max-width: var(--measure);
   margin-inline: auto;
-  padding: 0 2rem;
+  padding: 0 1.25rem;
   height: var(--header-h);
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: clamp(0.6rem, 1.4vw, 1.5rem);
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    padding: 0 2rem;
+  }
 }
 
 .nav__logo {
@@ -162,6 +167,7 @@ img {
   align-items: center;
   min-height: 44px;
   margin-right: auto;
+  white-space: nowrap;
 }
 
 .nav__links {
@@ -169,7 +175,7 @@ img {
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 1.25rem;
+  gap: clamp(0.45rem, 1vw, 1.25rem);
   align-items: center;
 }
 
@@ -182,7 +188,8 @@ img {
 .nav__link {
   color: var(--ink-soft);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: clamp(0.82rem, 0.95vw, 0.95rem);
+  white-space: nowrap;
 }
 
 .nav__link:hover,
@@ -196,17 +203,25 @@ img {
   border: 1px solid var(--pine);
   color: var(--paper);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: clamp(0.82rem, 0.95vw, 0.9rem);
   text-decoration: none;
   border-radius: 999px;
-  padding: 0.6rem 1.3rem;
-  min-height: 44px;
+  padding: 0.5rem 0.9rem;
+  min-height: 40px;
   align-items: center;
+  white-space: nowrap;
 }
 
 @media (min-width: 768px) {
   .nav__cta {
     display: inline-flex;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav__cta {
+    padding: 0.6rem 1.3rem;
+    min-height: 44px;
   }
 }
 
@@ -862,56 +877,6 @@ body.menu-open {
   .hero__plaque-name {
     font-size: 1.05rem;
   }
-}
-
-/* === EG case: flagship narrative, one idea per screen === */
-.eg-case__lede {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1.25rem;
-  line-height: 1.6;
-  color: var(--ink);
-  max-width: 44ch;
-  margin: 1rem 0 0;
-}
-
-.eg-case .teaser-tag {
-  margin-top: 1.25rem;
-}
-
-.proof-strip {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  border-top: 1px solid var(--line-strong);
-  border-bottom: 1px solid var(--line);
-  margin: 2.5rem 0 0;
-}
-
-@media (min-width: 768px) {
-  .proof-strip {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.proof-strip__item {
-  padding: 1.25rem 1rem 1.25rem 0;
-}
-
-.proof-strip__value {
-  display: block;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 1.75rem;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
-}
-
-.proof-strip__label {
-  display: block;
-  font-size: 0.9rem;
-  color: var(--muted);
-  margin-top: 0.25rem;
 }
 
 /* === Ledger: the whole wall of proof as one quiet table === */
@@ -2265,7 +2230,6 @@ body.menu-open {
   .links__heading,
   .projects__heading,
   .prep-kit__heading,
-  .eg-case__heading,
   .teach__heading {
     overflow-wrap: break-word;
   }

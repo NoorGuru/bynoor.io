@@ -7,7 +7,6 @@
 
 // Map section IDs to their editorial accent colors (paper-safe, no neon)
 const SECTION_ACCENTS = {
-  'eg-case': '#265138',
   highlights: '#8a6414',
   projects: '#265138',
   teach: '#8a6414',

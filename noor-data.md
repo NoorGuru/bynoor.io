@@ -38,7 +38,7 @@ Always open to conversations about AI in developer tooling, platform engineering
 - Recommended killing own project when the business case changed - saving 50+ SDE weeks
 - Onboarded 6 engineers onto a 50+ repository framework ecosystem
 - Co-shaped the team's 3-year platform vision with senior leadership
-- Teaching programming on YouTube since 2013 (18.6K subscribers, 750K+ views)
+- Teaching programming on YouTube since 2013 (18.7K subscribers, 750K+ views)
 
 ## Career Timeline
 

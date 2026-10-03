@@ -17,12 +17,12 @@ const { prefix = "", active = null, logoHref = "#hero" } = Astro.props;
         </span>
       </button>
       <ul class="nav__links" id="nav-links">
-        <li><a href={prefix + "#eg-case"} class="nav__link">case</a></li>
         <li><a href={prefix + "#highlights"} class="nav__link">proof</a></li>
         <li><a href={prefix + "#projects"} class="nav__link">build</a></li>
         <li><a href={prefix + "#teach"} class="nav__link">teach</a></li>
         <li><a href={prefix + "#journey"} class="nav__link">journey</a></li>
         <li><a href={prefix + "#skills"} class="nav__link">skills</a></li>
+        <li><a href={prefix + "#recommendations"} class="nav__link">voices</a></li>
         <li><a href={prefix + "#links"} class="nav__link">connect</a></li>
         <li><a href="/technical-interview-preparation-kit/" class={active === "kit" ? "nav__link nav__link--active" : "nav__link"}>prep kit</a></li>
       </ul>
