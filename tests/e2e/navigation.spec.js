@@ -18,20 +18,22 @@ test('hamburger menu is hidden at 768px and above', async ({ page }) => {
   await expect(hamburger).toBeHidden();
 });
 
-test('nav links hidden by default on mobile, shown after hamburger click', async ({ page }) => {
+test('overlay menu opens and closes on mobile', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 667 });
   await page.goto('/');
   await page.waitForLoadState('networkidle');
 
-  const navLinks = page.locator('#nav-links');
+  const overlay = page.locator('#mobile-menu');
 
-  // Nav links should be visually hidden on mobile by default
-  await expect(navLinks).not.toBeVisible();
+  // Overlay hidden by default on mobile
+  await expect(overlay).not.toBeVisible();
 
-  // Click hamburger to open menu
-  const hamburger = page.locator('.nav__hamburger');
-  await hamburger.click();
+  // Click hamburger to open the single overlay menu
+  await page.locator('.nav__hamburger').click();
+  await expect(overlay).toBeVisible();
+  await expect(page.locator('body')).toHaveClass(/menu-open/);
 
-  // Nav links should now be visible
-  await expect(navLinks).toBeVisible();
+  // Click hamburger again to close
+  await page.locator('.nav__hamburger').click();
+  await expect(overlay).not.toBeVisible();
 });
