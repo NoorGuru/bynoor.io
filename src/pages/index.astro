@@ -1,0 +1,1238 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout prefix="" active={null} logoHref="#hero">
+  <Fragment slot="head">
+
+  <title>Mohammad Noor Abu Khlaif | Software Engineer &amp; AI Advocate</title>
+  <meta name="description" content="Software Engineer, AI Advocate, and Tech Educator. I build tools that help engineers move faster">
+
+  <!-- SEO Meta -->
+  <meta name="author" content="Mohammad Noor Abu Khlaif">
+  <meta name="keywords" content="AI Agent Engineer, AI-Native architectures, Model Context Protocol, MCP integration, agentic workflows, autonomous AI agents, LLM tool-use, LLMOps, AI platform architecture, chain-of-tools architecture, Mohammad Noor Abu Khlaif, Noor Abu Khlaif, software engineer, senior software engineer, staff software engineer, principal engineer, SDE, SDE III, SDE IV, SWE, AI advocate, AI champion, AI platform engineer, AI solutions architect, Kotlin developer, Java developer, Python developer, TypeScript developer, Spring Boot, GraphQL, gRPC, AWS, MCP, Model Context Protocol, agent frameworks, platform engineering, API gateway, SDK platform, engineering manager, technical lead, tech lead, fractional CTO, technical advisor, software engineering consultant, tech educator, YouTube programming, Code with Noor, EG Wizard, Expedia Group, Amazon, hire software engineer Amman, hire software engineer Jordan, senior software engineer Jordan, AI engineer Jordan, Kotlin developer Jordan, Java developer Jordan, hire software engineer Dubai, hire software engineer UAE, senior software engineer UAE, AI engineer UAE, software engineer Abu Dhabi, hire software engineer Saudi Arabia, software engineer Riyadh, software engineer Jeddah, AI engineer Saudi Arabia, hire software engineer Qatar, software engineer Doha, AI engineer Qatar, software engineer Bahrain, software engineer Kuwait, software engineer Oman, software engineer Gulf, software engineer GCC, software engineer Middle East, hire software engineer Europe, software engineer remote Europe, AI engineer Europe, hire software engineer Canada, software engineer Toronto, software engineer Vancouver, AI engineer Canada, hire software engineer Australia, software engineer Sydney, software engineer Melbourne, AI engineer Australia, remote software engineer, available for hire, open to work, software engineering consultant, AI platform consultant, technical consultant, freelance software engineer, full time software engineer">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+  <!-- Dublin Core Metadata -->
+  <meta name="DC.title" content="Mohammad Noor Abu Khlaif | Software Engineer & AI Advocate">
+  <meta name="DC.creator" content="Mohammad Noor Abu Khlaif">
+  <meta name="DC.subject" content="Software Engineering, AI Platform Engineering, AI Agent Engineering, Model Context Protocol, Agentic AI, Kotlin, Java, Python, TypeScript">
+  <meta name="DC.description" content="Software Engineer, AI Advocate, and Tech Educator. Building & leading AI-powered developer platforms. Open to senior engineering roles in Jordan, Gulf/GCC, Europe, Canada, and Australia.">
+  <meta name="DC.type" content="PersonalSite">
+  <meta name="DC.language" content="en">
+
+  <!-- Local SEO — Geo Tags -->
+  <meta name="geo.region" content="JO-AM">
+  <meta name="geo.placename" content="Amman, Jordan">
+  <meta name="geo.position" content="31.9454;35.9284">
+  <meta name="ICBM" content="31.9454, 35.9284">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mohammad Noor Abu Khlaif">
+  <meta property="og:title" content="Mohammad Noor Abu Khlaif | Software Engineer &amp; AI Advocate">
+  <meta property="og:description" content="Software Engineer, AI Advocate, and Tech Educator. I build tools that help engineers move faster">
+  <meta property="og:image" content="https://bynoor.io/og-image.png">
+  <meta property="og:image:secure_url" content="https://bynoor.io/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mohammad Noor Abu Khlaif — Software Engineer & AI Advocate at bynoor.io">
+  <meta property="og:url" content="https://bynoor.io/">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://bynoor.io/">
+  <meta name="twitter:title" content="Mohammad Noor Abu Khlaif | Software Engineer &amp; AI Advocate">
+  <meta name="twitter:description" content="Software Engineer, AI Advocate, and Tech Educator. I build tools that help engineers move faster">
+  <meta name="twitter:image" content="https://bynoor.io/og-image.png">
+  <meta name="twitter:image:alt" content="Mohammad Noor Abu Khlaif — Software Engineer & AI Advocate">
+
+  <!-- Canonical URL & AI Link -->
+  <link rel="canonical" href="https://bynoor.io/">
+  <link rel="alternate" type="text/markdown" href="https://bynoor.io/llms.txt">
+
+  <!-- JSON-LD Structured Data Graph -->
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://bynoor.io/#person",
+    "name": "Mohammad Noor Abu Khlaif",
+    "givenName": "Mohammad Noor",
+    "familyName": "Abu Khlaif",
+    "alternateName": ["Noor Abu Khlaif", "Code with Noor", "mohnoor94"],
+    "url": "https://bynoor.io",
+    "image": "https://bynoor.io/profile-pic.webp",
+    "email": "mailto:moh.noor94@gmail.com",
+    "telephone": "+962786201850",
+    "jobTitle": "Software Development Engineer III",
+    "description": "Building & Leading AI-Powered Developer Platforms. SDE III at Expedia Group (ex-Amazon). Inventor of EG Wizard AI migration platform. Named Expedia Group's first GitHub Copilot Champion (2024) and AI Champion (2026). Tech educator with 18.6K YouTube subscribers.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Amman",
+      "addressCountry": "JO"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/mohnoor94",
+      "https://github.com/mohnoor94",
+      "https://www.youtube.com/c/CodeWithNoor",
+      "https://go.bynoor.io/twitter",
+      "https://go.bynoor.io/sof",
+      "https://stackoverflow.com/users/mohnoor94"
+    ],
+    "knowsAbout": [
+      "Software Engineering", "AI-Powered Developer Tools", "Model Context Protocol (MCP)",
+      "Agent Frameworks", "GitHub Copilot Extensions", "Platform Engineering",
+      "API Gateway Architecture", "SDK Platform Design", "Kotlin", "Java", "Python",
+      "TypeScript", "JavaScript", "Spring Boot", "GraphQL", "gRPC", "AWS",
+      "React", "Node.js", "Distributed Microservices", "Engineering Leadership",
+      "AI Advocacy", "Technical Education", "YouTube Content Creation",
+      "Agentic AI", "Autonomous AI Agents", "LLM Tool-Use", "AI-Native Platform Design",
+      "LLMOps", "Chain-of-Tools Architecture"
+    ],
+    "knowsLanguage": ["en", "ar"],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Expedia Group",
+      "url": "https://www.expediagroup.com"
+    },
+    "alumniOf": [
+      { "@type": "Organization", "name": "Expedia Group" },
+      { "@type": "Organization", "name": "Amazon" },
+      { "@type": "Organization", "name": "Wiley (Atypon)" },
+      { "@type": "Organization", "name": "Samsung Electronics" },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Jordan",
+        "url": "https://www.ju.edu.jo"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "MIT (ReACT Hub)",
+        "url": "https://www.mit.edu"
+      }
+    ],
+    "hasOccupation": [
+      {
+        "@type": "Occupation",
+        "name": "SDE III — Edge & API Platform, Gateway Foundations",
+        "description": "Architecting AI-powered infrastructure and core platforms at Expedia Group. Invented EG Wizard AI migration platform.",
+        "occupationLocation": { "@type": "City", "name": "Amman, Jordan" }
+      },
+      {
+        "@type": "Occupation",
+        "name": "SDE III — Partner Developer Experience",
+        "description": "Owned SDK platform powering partner integrations — RAPID SDK serving 500M+ requests.",
+        "occupationLocation": { "@type": "City", "name": "Amman, Jordan" }
+      },
+      {
+        "@type": "Occupation",
+        "name": "Software Development Engineer",
+        "description": "Designed and built scalable, highly available services at Amazon across multiple marketplaces.",
+        "occupationLocation": { "@type": "City", "name": "Amman, Jordan" }
+      }
+    ],
+    "seeks": [
+      { "@type": "Demand", "name": "Senior Software Engineer" },
+      { "@type": "Demand", "name": "Staff Software Engineer" },
+      { "@type": "Demand", "name": "SDE III" },
+      { "@type": "Demand", "name": "Principal Engineer" },
+      { "@type": "Demand", "name": "Engineering Manager" },
+      { "@type": "Demand", "name": "Head of AI Platform Engineering" },
+      { "@type": "Demand", "name": "Software Engineer" },
+      { "@type": "Demand", "name": "Software Development Engineer (SDE)" },
+      { "@type": "Demand", "name": "SWE" },
+      { "@type": "Demand", "name": "Senior SWE" },
+      { "@type": "Demand", "name": "AI Platform Consultant" },
+      { "@type": "Demand", "name": "Technical Consultant" }
+    ],
+    "nationality": {
+      "@type": "Country",
+      "name": "Jordan"
+    },
+    "award": [
+      "Expedia Group's First GitHub Copilot Champion (2024)",
+      "Expedia Group's First AI Champion (2026)",
+      "Hero Highlight GitHub Copilot Champion — Expedia Group (2024)",
+      "2024 MVP in Engineering Productivity — Expedia Group"
+    ],
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Certificate in Computer and Data Science",
+        "credentialCategory": "Certificate",
+        "recognizedBy": {
+          "@type": "CollegeOrUniversity",
+          "name": "MIT (ReACT Hub)",
+          "url": "https://www.mit.edu"
+        }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "B.Sc. Computer Engineering",
+        "credentialCategory": "degree",
+        "recognizedBy": {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Jordan",
+          "url": "https://www.ju.edu.jo"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ProfilePage Schema -->
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": { "@id": "https://bynoor.io/#person" },
+    "name": "Mohammad Noor Abu Khlaif — Software Engineer & AI Advocate",
+    "description": "Software Engineer, AI Advocate, and Tech Educator. Building & leading AI-powered developer platforms at Expedia Group.",
+    "url": "https://bynoor.io",
+    "dateModified": "2026-07-24T00:00:00+00:00"
+  }
+  </script>
+
+  <!-- WebSite Schema -->
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://bynoor.io",
+    "name": "Mohammad Noor Abu Khlaif",
+    "description": "Mohammad Noor Abu Khlaif — Software Engineer & AI Advocate in Amman, Jordan",
+    "author": { "@id": "https://bynoor.io/#person" }
+  }
+  </script>
+
+  <!-- Review Schemas (LinkedIn Recommendations) -->
+  <script type="application/ld+json" is:inline>
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Aamer Abbas",
+        "jobTitle": "Software Engineering Management"
+      },
+      "itemReviewed": {
+        "@type": "LocalBusiness",
+        "name": "Mohammad Noor Abu Khlaif"
+      },
+      "reviewBody": "Noor was part of my team for about a year. I was impressed with his ability to learn quickly and deliver under tight deadlines. He always came across as an organized professional and I could always rely on him to give a clear picture of his progress on a weekly basis. I'd happily recommend him as a motivated software engineer.",
+      "datePublished": "2021-12"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Nagarajan Raju",
+        "jobTitle": "Engineering Leader at Amazon"
+      },
+      "itemReviewed": {
+        "@type": "LocalBusiness",
+        "name": "Mohammad Noor Abu Khlaif"
+      },
+      "reviewBody": "Noor is a rising star. He was less than a month old in the company when he took ownership of a time sensitive, business critical emerging market solution implementation for Amazon MENA customers. With little supervision and guidance he was able to work with different code bases and single handedly code completed, drove code reviews with remote teams and successfully executed the deployment on time. He is an asset to any team and will have him in the team anytime, anywhere.",
+      "datePublished": "2020-11"
+    }
+  ]
+  </script>
+
+  <!-- ProfessionalService Schema — hiring & consulting visibility -->
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://bynoor.io/#service",
+    "name": "Mohammad Noor Abu Khlaif — Software Engineering & AI Consulting",
+    "description": "Expert software engineering, AI-native platform design, and technical leadership. SDE III at Expedia Group (ex-Amazon) with 9+ years of experience. Available for senior engineering roles and consulting across multiple regions.",
+    "url": "https://bynoor.io",
+    "image": "https://bynoor.io/profile-pic.webp",
+    "telephone": "+962786201850",
+    "email": "moh.noor94@gmail.com",
+    "founder": { "@id": "https://bynoor.io/#person" },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Amman",
+      "addressRegion": "Amman Governorate",
+      "addressCountry": "JO"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "31.9454",
+      "longitude": "35.9284"
+    },
+    "areaServed": [
+      { "@type": "Country", "name": "Jordan" },
+      { "@type": "Country", "name": "United Arab Emirates" },
+      { "@type": "Country", "name": "Saudi Arabia" },
+      { "@type": "Country", "name": "Qatar" },
+      { "@type": "Country", "name": "Bahrain" },
+      { "@type": "Country", "name": "Kuwait" },
+      { "@type": "Country", "name": "Oman" },
+      { "@type": "Place", "name": "Europe" },
+      { "@type": "Country", "name": "Canada" },
+      { "@type": "Country", "name": "Australia" },
+      { "@type": "Country", "name": "United States" },
+      { "@type": "Place", "name": "Worldwide (Remote)" }
+    ],
+    "knowsLanguage": ["en", "ar"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Software Engineering & AI Services",
+      "itemListElement": [
+        {
+          "@type": "OfferCatalog",
+          "name": "Engineering Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Platform Engineering & Architecture", "description": "Design and build AI-native platforms, implement Model Context Protocol (MCP) servers, and orchestrate autonomous agentic workflows." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SDK Platform & API Gateway Design", "description": "Architect self-service SDK platforms and API gateways handling millions of daily requests" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Framework Migration Automation", "description": "AI-powered migration platforms that reduce weeks-long migrations to hours" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Full-Stack Software Development", "description": "End-to-end development with Kotlin, Java, Python, TypeScript, Spring Boot, React, and cloud infrastructure" } }
+          ]
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Leadership & Advisory",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Technical Leadership & Mentoring", "description": "Engineering team leadership, code review standards, hiring processes, and engineer development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Training & Workshops", "description": "Organization-wide AI adoption training, GitHub Copilot workshops, and AI-powered development practices" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Technical Interview Coaching", "description": "Interview preparation coaching from an experienced Amazon and Expedia Group bar-raising interviewer" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fractional CTO / Technical Advisory", "description": "Strategic technical direction, architecture review, and engineering culture advisory" } }
+          ]
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- FAQPage Schema — AI-extractable answers -->
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Mohammad Noor build agentic AI systems?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Noor specializes in building autonomous, multi-step agentic systems and AI-native platforms using Model Context Protocol (MCP) and chain-of-tools architectures to reduce hallucinations and orchestrate complex workflows."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What technologies does Mohammad Noor Abu Khlaif work with?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Noor works daily across Kotlin, Java, Python, TypeScript, and JavaScript. His tech stack includes Spring Boot, GraphQL, gRPC, AWS, React, Node.js, and OpenAPI. He specializes in AI-native architectures including Model Context Protocol (MCP), agent frameworks, GitHub Copilot Extensions, and LLM tooling."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where is Mohammad Noor Abu Khlaif available to work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Noor is based in Amman, Jordan and is open to senior software engineering and AI roles in Jordan, UAE (Dubai, Abu Dhabi), Saudi Arabia (Riyadh, Jeddah), Qatar (Doha), Bahrain, Kuwait, Oman, Europe, Canada, Australia, and remote worldwide positions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is EG Wizard?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EG Wizard is an AI-powered migration platform invented by Noor at Expedia Group. It turns weeks-long framework migrations into hours using autonomous agents, MCP servers, and chain-of-tools architecture. Started as a 3-day proof-of-concept, it became the team's official 3-year strategic roadmap endorsed by Senior Directors and recognized by SVP."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Mohammad Noor offer consulting or freelance work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Noor offers AI platform engineering consulting, technical leadership advisory, SDK and API architecture design, AI training workshops, technical interview coaching, and fractional CTO services. He serves clients in Jordan, the Gulf/GCC region, Europe, Canada, Australia, and remotely worldwide."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What roles is Mohammad Noor Abu Khlaif looking for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Noor is open to Senior Software Engineer, Staff Software Engineer, Principal Engineer, SDE III/IV, Engineering Manager, Head of Engineering, AI Platform Engineer, Technical Lead, and Fractional CTO positions. He has 14+ years of experience at companies like Expedia Group and Amazon."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Code with Noor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Code with Noor is a YouTube programming education channel founded by Mohammad Noor Abu Khlaif in 2013. With 18.6K subscribers and 750K+ views, it teaches Python, Java, C++, data structures, algorithms, and AI development. It is the longest-running thread of Noor's career — teaching predates all professional roles."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://bynoor.io/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- YouTube Channel Schema -->
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Code with Noor",
+    "url": "https://www.youtube.com/c/CodeWithNoor",
+    "description": "YouTube programming education channel teaching Python, Java, C++, data structures, algorithms, and AI development since 2013. 18.6K subscribers, 750K+ views.",
+    "founder": { "@id": "https://bynoor.io/#person" },
+    "sameAs": "https://www.youtube.com/c/CodeWithNoor"
+  }
+  </script>
+
+  
+
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="/profile-pic.webp" type="image/webp">
+
+
+  <!-- Styles: homepage-only native editorial bundle -->
+  </Fragment>
+  <Fragment slot="pre">
+
+  <noscript>
+    <div style="max-width:800px;margin:0 auto;padding:2rem;font-family:sans-serif">
+      <h1>Mohammad Noor Abu Khlaif — Software Engineer & AI Advocate</h1>
+      <p>Building & leading AI-powered developer platforms. SDE III at Expedia Group (ex-Amazon). Based in Amman, Jordan. 14+ years building software, 13+ years teaching it.</p>
+      
+      <h2>About</h2>
+      <p>I build AI-powered tools that help engineers move faster. I invented EG Wizard — a platform that turned weeks-long framework migrations into hours, evolving into a full AI-native platform with autonomous agents, MCP servers, and Skills integration. Named Expedia Group's first GitHub Copilot Champion (2024) and AI Champion (2026).</p>
+      <p>Open to select Senior Software Engineer, Staff Software Engineer, and Principal Engineer opportunities in Jordan, Gulf/GCC, Europe, and remote. Also available for technical consulting and AI platform advisory.</p>
+      
+      <h2>Skills & Technologies</h2>
+      <ul>
+        <li>Languages: Kotlin, Java, Python, TypeScript, JavaScript, Scala</li>
+        <li>Frameworks: Spring Boot, GraphQL, gRPC, AWS, React, Node.js, OpenAPI</li>
+        <li>AI & LLM: Model Context Protocol (MCP), Agent Frameworks, GitHub Copilot Extensions</li>
+        <li>Platform Engineering: API Gateways, SDK Platforms, Distributed Microservices</li>
+        <li>Leadership: Engineering leadership, mentoring, hiring, training, AI advocacy</li>
+      </ul>
+      
+      <h2>Career</h2>
+      <ul>
+        <li>2025–Present: SDE III — Edge & API Platform, Expedia Group, Amman, Jordan</li>
+        <li>2022–2025: SDE III — Partner Developer Experience, Expedia Group, Amman, Jordan</li>
+        <li>2021–2022: SDE III — InsurTech, Expedia Group, Amman, Jordan</li>
+        <li>2019–2021: Software Development Engineer, Amazon, Amman, Jordan</li>
+        <li>2017–2019: Software Engineer, Wiley (Atypon), Amman, Jordan</li>
+        <li>2013–Present: Tech & Programming Trainer, Code with Noor (YouTube — 18.6K subscribers)</li>
+      </ul>
+      
+      <h2>Education</h2>
+      <ul>
+        <li>MIT ReACT Hub — Certificate in Computer and Data Science (2019–2020)</li>
+        <li>University of Jordan — B.Sc. Computer Engineering, Top 10% (2012–2017)</li>
+      </ul>
+      
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:moh.noor94@gmail.com">moh.noor94@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/mohnoor94">linkedin.com/in/mohnoor94</a></p>
+      <p>GitHub: <a href="https://github.com/mohnoor94">github.com/mohnoor94</a></p>
+      <p>YouTube: <a href="https://www.youtube.com/c/CodeWithNoor">Code with Noor</a></p>
+      <p>Location: Amman, Jordan</p>
+    </div>
+  </noscript>
+  <!-- Skip Navigation -->
+  <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+    </Fragment>
+<main id="main-content">
+    <section id="hero" class="hero" aria-label="Introduction">
+      <div class="hero__content">
+        <p class="hero__kicker">Software Engineer · AI Advocate · Educator</p>
+        <h1 class="hero__statement hero__tagline" id="noor-name">
+          <span class="hero__statement-name">Mohammad Noor Abu Khlaif</span>
+          I build tools that help <span class="u-brass">engineers move faster</span>.
+        </h1>
+        <p class="hero__proof">EG Wizard turned <em>weeks-long migrations into hours</em>.</p>
+        <div class="lens-switch" role="group" aria-label="View this page as">
+          <button type="button" class="lens-switch__btn" data-lens="engineer" aria-pressed="true">Engineer</button>
+          <button type="button" class="lens-switch__btn" data-lens="builder" aria-pressed="false">Builder</button>
+          <button type="button" class="lens-switch__btn" data-lens="teacher" aria-pressed="false">Teacher</button>
+        </div>
+
+        <!-- Identity cluster: photo + info -->
+        <div class="hero__identity">
+          <picture>
+            <source srcset="/profile-pic.webp" type="image/webp">
+            <img src="/profile-pic.png" alt="Mohammad Noor Abu Khlaif, Software Engineer, AI Advocate, and Tech Educator" width="400" height="400" fetchpriority="high" decoding="async" class="hero__photo">
+          </picture>
+          <div class="hero__identity-info">
+            <span class="hero__full-name">Mohammad Noor Abu Khlaif</span>
+            <span class="hero__focus-tag">Platforms · SDKs · AI-native architectures</span>
+            <span class="hero__role-tag">18.6K subscribers · Teaching since 2013</span>
+          </div>
+        </div>
+
+        <!-- Action row -->
+        <div class="hero__actions">
+          <a href="https://cal.com/mohammad-noor" target="_blank" rel="noopener" class="hero__btn hero__btn--primary">
+            <span class="hero__btn-icon" aria-hidden="true">→</span> Let's Connect
+          </a>
+          <a href="/mohammad-noor-abu-khlaif-software-engineer-resume.pdf" target="_blank" rel="noopener" class="hero__btn hero__btn--secondary">Resume</a>
+
+          <div class="hero__social-links">
+            <a href="https://go.bynoor.io/linkedin" target="_blank" rel="noopener" aria-label="LinkedIn" class="hero__social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+            <a href="https://go.bynoor.io/github" target="_blank" rel="noopener" aria-label="GitHub" class="hero__social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+            </a>
+            <a href="https://go.bynoor.io/youtube" target="_blank" rel="noopener" aria-label="Code with Noor on YouTube" class="hero__social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </a>
+            <a href="https://go.bynoor.io/twitter" target="_blank" rel="noopener" aria-label="Twitter / X" class="hero__social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="https://go.bynoor.io/email" target="_blank" rel="noopener" aria-label="Email" class="hero__social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="hero__scroll-indicator" aria-label="Scroll to EG Wizard case section" onclick="document.getElementById('eg-case').scrollIntoView({behavior:'smooth'})">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+        </svg>
+      </button>
+    </section>
+    <hr class="section-divider" aria-hidden="true">
+    <section id="eg-case" class="eg-case" aria-labelledby="eg-case-heading" data-section-accent="primary">
+      <div class="eg-case__container">
+        <h2 id="eg-case-heading" class="eg-case__heading" data-animate="fade-up">The case for EG Wizard</h2>
+        <p class="eg-case__lede" data-animate="fade-up">I invented EG Wizard at Expedia Group: an AI migration platform that grew from a 3-day proof-of-concept into the team's 3-year strategic roadmap.</p>
+        <span class="teaser-tag" data-animate="fade-up">Full agent system — coming soon</span>
+        <div class="proof-strip" data-animate-stagger="60">
+          <div class="proof-strip__item" data-animate="fade-up">
+            <span class="proof-strip__value">weeks → hours</span>
+            <span class="proof-strip__label">framework migration time</span>
+          </div>
+          <div class="proof-strip__item" data-animate="fade-up">
+            <span class="proof-strip__value">4 versions</span>
+            <span class="proof-strip__label">shipped in 6 months</span>
+          </div>
+          <div class="proof-strip__item" data-animate="fade-up">
+            <span class="proof-strip__value">3-day POC</span>
+            <span class="proof-strip__label">became a 3-year roadmap</span>
+          </div>
+          <div class="proof-strip__item" data-animate="fade-up">
+            <span class="proof-strip__value">18.6K</span>
+            <span class="proof-strip__label">learning with me since 2013</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr class="section-divider" aria-hidden="true">
+    <section id="highlights" class="highlights" aria-labelledby="highlights-heading" data-section-accent="primary">
+      <div class="highlights__container">
+        <h2 id="highlights-heading" class="highlights__heading">Proof, not promises</h2>
+
+        <dl class="ledger">
+          <div class="ledger__row">
+            <dt class="ledger__term"><span class="ledger__figure">15 min</span>multi-million dollar production save</dt>
+            <dd class="ledger__desc">Diagnosed and hotfixed a critical production incident, preventing millions in gross booking losses across multi-item checkout. <span class="ledger__context">at Expedia Group</span></dd>
+          </div>
+          <div class="ledger__row">
+            <dt class="ledger__term"><span class="ledger__figure">0</span>production incidents as sole owner</dt>
+            <dd class="ledger__desc">Sole owner of critical SDK portfolio (millions of daily requests) when the team dissolved. Kept every service running clean through a full reorg. <span class="ledger__context">at Expedia Group</span></dd>
+          </div>
+          <div class="ledger__row">
+            <dt class="ledger__term"><span class="ledger__figure">weeks → hours</span>an AI-powered migration platform, invented</dt>
+            <dd class="ledger__desc">Turned weeks-long framework migrations into hours. Started as a 3-day proof-of-concept, became the team's official 3-year strategic roadmap in 6 months, endorsed by Senior Directors, recognized by SVP. Autonomous Agents · MCP Servers · Chain-of-Tools. <span class="ledger__context">at Expedia Group</span></dd>
+          </div>
+          <div class="ledger__row">
+            <dt class="ledger__term"><span class="ledger__figure">1st</span>AI Champion at Expedia Group</dt>
+            <dd class="ledger__desc">First GitHub Copilot Champion (2024). First AI Champion (2026). Trained hundreds of engineers on AI-powered development across the org. <span class="ledger__context">at Expedia Group</span></dd>
+          </div>
+          <div class="ledger__row">
+            <dt class="ledger__term"><span class="ledger__figure">3+ years</span>a tool that outlived my tenure</dt>
+            <dd class="ledger__desc">Designed "Kayl," a pluggable TypeScript library for recording and collecting UX events on Seller Central. Used to compare search quality between Seller Central and the main Amazon buyer site. Led the high-level and low-level design with L8-L6 engineers. Built as a temporary solution, still running 3+ years later. <span class="ledger__context">at Amazon</span></dd>
+          </div>
+          <div class="ledger__row">
+            <dt class="ledger__term"><span class="ledger__figure">tens</span>engineers interviewed and hired</dt>
+            <dd class="ledger__desc">Bar-raising interviewer across both companies. Helped build the teams I'd later work alongside. <span class="ledger__context">at Amazon &amp; Expedia Group</span></dd>
+          </div>
+          <div class="ledger__row">
+            <dt class="ledger__term"><span class="ledger__figure">13 years</span>teaching programming</dt>
+            <dd class="ledger__desc">YouTube educator since 2013. 18.6K subscribers, 750K+ views. Teaching predates the career. It's the throughline, not the side project.</dd>
+          </div>
+          <div class="ledger__row">
+            <dt class="ledger__term"><span class="ledger__figure">100s</span>engineers trained on AI development</dt>
+            <dd class="ledger__desc">Led organization-wide training sessions on AI-powered development, driving measurable productivity gains across teams. <span class="ledger__context">at Expedia Group</span></dd>
+          </div>
+          <div class="ledger__row">
+            <dt class="ledger__term"><span class="ledger__figure">MIT</span>Computer &amp; Data Science certificate</dt>
+            <dd class="ledger__desc">Completed MIT ReACT Hub's Computer and Data Science Program (2019-2020) alongside full-time engineering work.</dd>
+          </div>
+          <div class="ledger__row">
+            <dt class="ledger__term"><span class="ledger__figure">50+</span>SDE weeks saved by killing my own project</dt>
+            <dd class="ledger__desc">When the business case changed, I called it. Saved 50+ engineer-weeks by stopping work that no longer made sense instead of protecting my ownership. <span class="ledger__context">at Expedia Group</span></dd>
+          </div>
+          <div class="ledger__row">
+            <dt class="ledger__term"><span class="ledger__figure">&lt; 1 month</span>to own a critical project solo</dt>
+            <dd class="ledger__desc">Within my first month, took ownership of a time-sensitive, business-critical solution across multiple platform teams and codebases. Delivered on time with little supervision. <span class="ledger__context">at Amazon</span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+    <hr class="section-divider" aria-hidden="true">
+    <section id="projects" class="projects" aria-labelledby="projects-heading" data-section-accent="senary">
+      <div class="projects__container">
+        <h2 id="projects-heading" class="projects__heading">What I've Shipped</h2>
+        <p class="projects__subtitle">Builder proof: a live AI platform first, then client launches.</p>
+
+        <!-- Featured project: Aura -->
+        <article class="projects__featured projects__featured--aura" data-animate="fade-up">
+          <div class="projects__featured-content">
+            <div class="projects__featured-header">
+              <span class="projects__featured-eyebrow">Flagship · AI Product</span>
+              <div class="projects__featured-title-wrapper">
+                <h3 class="projects__featured-title">Aura</h3>
+              </div>
+            </div>
+            <p class="projects__featured-desc">An AI-powered stock recommendation tracker. It ingests YouTube videos via a Cloudflare Worker, analyzes transcripts with Claude to extract analyst sentiment and conviction, and serves real-time consensus scores on a public dashboard powered by Google Cloud Run and Supabase.</p>
+            <div class="projects__featured-arc" aria-label="Architecture flow">
+              <span class="projects__arc-stage">
+                <span class="projects__arc-label">Source</span>
+                <span class="projects__arc-detail">YouTube</span>
+              </span>
+              <span class="projects__arc-connector" aria-hidden="true"></span>
+              <span class="projects__arc-stage">
+                <span class="projects__arc-label">Extraction</span>
+                <span class="projects__arc-detail">Claude AI</span>
+              </span>
+              <span class="projects__arc-connector" aria-hidden="true"></span>
+              <span class="projects__arc-stage">
+                <span class="projects__arc-label">Data</span>
+                <span class="projects__arc-detail">Supabase</span>
+              </span>
+              <span class="projects__arc-connector" aria-hidden="true"></span>
+              <span class="projects__arc-stage projects__arc-stage--current">
+                <span class="projects__arc-label">App</span>
+                <span class="projects__arc-detail">Next.js 16</span>
+              </span>
+            </div>
+            <div class="projects__featured-tags">
+              <span class="projects__tag">Next.js</span>
+              <span class="projects__tag">Python</span>
+              <span class="projects__tag">FastAPI</span>
+              <span class="projects__tag">Claude</span>
+              <span class="projects__tag">Supabase</span>
+              <span class="projects__tag">Cloudflare Workers</span>
+              <span class="projects__tag">Google Cloud Run</span>
+            </div>
+          </div>
+          <div class="projects__featured-stats">
+            <div class="projects__stat">
+              <span class="projects__stat-value"><a href="https://aura.bynoor.io" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; border-bottom: 1px solid var(--brass); padding-bottom: 2px;">aura.bynoor.io</a></span>
+              <span class="projects__stat-label">Live Platform</span>
+            </div>
+            <div class="projects__stat">
+              <span class="projects__stat-value">Real-time</span>
+              <span class="projects__stat-label">consensus scoring</span>
+            </div>
+            <div class="projects__stat">
+              <span class="projects__stat-value">AI-Driven</span>
+              <span class="projects__stat-label">sentiment analysis</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Featured project: Enterprise Migration Platform -->
+        <article class="projects__featured" data-animate="fade-up">
+          <div class="projects__featured-content">
+            <div class="projects__featured-header">
+              <span class="projects__featured-eyebrow">Internal Platform @ Expedia Group</span>
+              <h3 class="projects__featured-title">Enterprise AI Migration Platform</h3>
+            </div>
+            <p class="projects__featured-desc">An AI-powered migration platform that turns weeks-long framework migrations into hours. Started as a 3-day proof-of-concept, became the team's official 3-year strategic roadmap, endorsed by Senior Directors and recognized by SVP.</p>
+            <div class="projects__featured-arc" aria-label="Evolution timeline">
+              <span class="projects__arc-stage">
+                <span class="projects__arc-label">v1</span>
+                <span class="projects__arc-detail">Copilot Extension</span>
+              </span>
+              <span class="projects__arc-connector" aria-hidden="true"></span>
+              <span class="projects__arc-stage">
+                <span class="projects__arc-label">v2</span>
+                <span class="projects__arc-detail">Autonomous Agent</span>
+              </span>
+              <span class="projects__arc-connector" aria-hidden="true"></span>
+              <span class="projects__arc-stage">
+                <span class="projects__arc-label">v3</span>
+                <span class="projects__arc-detail">Chain-of-Tools</span>
+              </span>
+              <span class="projects__arc-connector" aria-hidden="true"></span>
+              <span class="projects__arc-stage projects__arc-stage--current">
+                <span class="projects__arc-label">v4</span>
+                <span class="projects__arc-detail">MCP + Skills</span>
+              </span>
+            </div>
+            <div class="projects__featured-tags">
+              <span class="projects__tag">Kotlin</span>
+              <span class="projects__tag">AI Agents</span>
+              <span class="projects__tag">MCP Servers</span>
+              <span class="projects__tag">GitHub Copilot</span>
+              <span class="projects__tag">Spring Boot</span>
+            </div>
+          </div>
+          <div class="projects__featured-stats">
+            <div class="projects__stat">
+              <span class="projects__stat-value">4 versions</span>
+              <span class="projects__stat-label">in 6 months</span>
+            </div>
+            <div class="projects__stat">
+              <span class="projects__stat-value">weeks → hours</span>
+              <span class="projects__stat-label">migration time</span>
+            </div>
+            <div class="projects__stat">
+              <span class="projects__stat-value">3-year roadmap</span>
+              <span class="projects__stat-label">from a 3-day POC</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Client showcase projects -->
+        <div class="projects__grid" data-animate-stagger="120">
+          <a href="https://areej.io/" target="_blank" rel="noopener" class="project-card project-card--showcase project-card--areej" data-animate="fade-up">
+            <div class="project-card__header">
+              <span class="project-card__badge">Full build · Client</span>
+              <span class="project-card__arrow" aria-hidden="true">↗</span>
+            </div>
+            <h3 class="project-card__title">areej.io</h3>
+            <p class="project-card__desc">Personal brand &amp; consulting site for Areej Amer, a Platform &amp; Observability Lead with 10+ years of experience. Minimal, high-trust, conversion-focused. Designed to land consulting clients from the first scroll.</p>
+            <div class="project-card__scope">
+              <span class="project-card__scope-item">Brand identity</span>
+              <span class="project-card__scope-item">Visual design</span>
+              <span class="project-card__scope-item">Copy direction</span>
+              <span class="project-card__scope-item">Frontend development</span>
+              <span class="project-card__scope-item">Deployment</span>
+            </div>
+            <div class="project-card__tech">
+              <span>HTML/CSS</span>
+              <span>JavaScript</span>
+              <span>Responsive</span>
+              <span>AI-assisted</span>
+            </div>
+          </a>
+          <a href="https://mohnoor94.github.io/hire-found/" target="_blank" rel="noopener" class="project-card project-card--showcase project-card--hirefound" data-animate="fade-up">
+            <div class="project-card__header">
+              <span class="project-card__badge">Full build · Client</span>
+              <span class="project-card__arrow" aria-hidden="true">↗</span>
+            </div>
+            <h3 class="project-card__title">HireFound</h3>
+            <p class="project-card__desc">Recruitment brand for Yasmin Blasi, a boutique career matchmaker in MENA. Multi-section product with vacancy listings, service tiers, DISC assessments, and a WhatsApp-first contact flow.</p>
+            <div class="project-card__scope">
+              <span class="project-card__scope-item">Naming</span>
+              <span class="project-card__scope-item">Brand strategy</span>
+              <span class="project-card__scope-item">Copywriting</span>
+              <span class="project-card__scope-item">UX design</span>
+              <span class="project-card__scope-item">Frontend development</span>
+              <span class="project-card__scope-item">Deployment</span>
+            </div>
+            <div class="project-card__tech">
+              <span>HTML/CSS</span>
+              <span>JavaScript</span>
+              <span>GitHub Pages</span>
+              <span>AI-assisted</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+    <hr class="section-divider" aria-hidden="true">
+    <section id="teach" class="teach" aria-labelledby="teach-heading" data-section-accent="secondary">
+      <div class="teach__container">
+        <h2 id="teach-heading" class="teach__heading" data-animate="fade-up">Learn with me</h2>
+        <p class="teach__lede" data-animate="fade-up">Two Arabic-first tracks for beginners — the same patience I bring to onboarding engineers, recorded. Start with Python, then go deeper with C++.</p>
+        <div class="teach__grid" data-animate-stagger="100">
+          <article class="teach-card" data-animate="fade-up">
+            <div class="teach-card__embed">
+              <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLaOfjyVFnPmW1sycl5qH3PH_vymkguOq8" title="Complete Python Masterclass in Arabic — playlist" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <div class="teach-card__body">
+              <h3 class="teach-card__title">Complete Python Masterclass</h3>
+              <p class="teach-card__title" lang="ar">كورس بايثون الشامل باللغة العربية</p>
+              <p class="teach-card__desc">From zero to confident: syntax, data structures, and problem-solving, all in Arabic.</p>
+              <a class="teach-card__link" href="https://www.youtube.com/playlist?list=PLaOfjyVFnPmW1sycl5qH3PH_vymkguOq8" target="_blank" rel="noopener">Open the Python playlist →</a>
+            </div>
+          </article>
+          <article class="teach-card" data-animate="fade-up">
+            <div class="teach-card__embed">
+              <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLaOfjyVFnPmXYSeCeSuitSai8FuM-IacQ" title="C++ for Beginners in Arabic — playlist" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <div class="teach-card__body">
+              <h3 class="teach-card__title">C++ for Beginners</h3>
+              <p class="teach-card__title" lang="ar">شرح لغة سي بلس بلس للمبتدئين</p>
+              <p class="teach-card__desc">Memory, pointers, and object-orientation explained slowly — in Arabic, for beginners.</p>
+              <a class="teach-card__link" href="https://www.youtube.com/playlist?list=PLaOfjyVFnPmXYSeCeSuitSai8FuM-IacQ" target="_blank" rel="noopener">Open the C++ playlist →</a>
+            </div>
+          </article>
+        </div>
+        <p class="teach__channel" data-animate="fade-up">Both live on <a href="https://www.youtube.com/c/CodeWithNoor" target="_blank" rel="noopener">Code with Noor</a> — 18.6K subscribers, teaching since 2013.</p>
+      </div>
+    </section>
+    <hr class="section-divider" aria-hidden="true">
+    <section id="journey" class="journey" aria-labelledby="journey-heading" data-section-accent="quinary">
+      <div class="journey__container">
+        <h2 id="journey-heading" class="journey__heading">The Journey</h2>
+
+        <div class="journey__chapters">
+          <!-- Chapter: Expedia Group, the big multi-role spread -->
+          <article class="journey__chapter journey__chapter--expedia" data-company="expedia" data-animate="fade-up">
+            <div class="journey__chapter-header">
+              <h3 class="journey__company">Expedia Group</h3>
+              <div class="journey__chapter-meta">
+                <span class="journey__period">Dec 2021 – Present</span>
+                <span class="journey__badge journey__badge--current">now</span>
+              </div>
+            </div>
+            <div class="journey__chapter-grid">
+              <div class="journey__role-card journey__role-card--featured">
+                <span class="journey__role-eyebrow">Current Role</span>
+                <h4 class="journey__role-title">SDE III, Edge & API Platform</h4>
+                <span class="journey__role-period">Jul 2025 – Present</span>
+                <p class="journey__role-desc">Architecting AI-powered infrastructure and core platforms. Invented an internal AI migration platform that became the team's 3-year strategic roadmap. Co-shaping platform vision with senior leadership.</p>
+              </div>
+              <div class="journey__role-card">
+                <h4 class="journey__role-title">SDE III, Partner Developer Experience</h4>
+                <span class="journey__role-period">Jul 2022 – Jun 2025</span>
+                <p class="journey__role-desc">Owned the SDK platform powering partner integrations, serving millions of daily requests. Transformed the architecture from centralized bottleneck to self-service model across business lines.</p>
+              </div>
+              <div class="journey__role-card">
+                <h4 class="journey__role-title">SDE III, InsurTech</h4>
+                <span class="journey__role-period">Dec 2021 – Jul 2022</span>
+                <p class="journey__role-desc">Built next-gen insurance products across the full stack. Took on engineering leadership early: mentoring engineers, participating in hiring, and raising team standards.</p>
+              </div>
+            </div>
+            <div class="journey__tags">
+              <span class="journey__tag">Kotlin</span>
+              <span class="journey__tag">AI Agents</span>
+              <span class="journey__tag">MCP</span>
+              <span class="journey__tag">Spring Boot</span>
+              <span class="journey__tag">GraphQL</span>
+              <span class="journey__tag">AWS</span>
+            </div>
+          </article>
+
+          <!-- Chapter: Amazon, bold single statement -->
+          <article class="journey__chapter journey__chapter--amazon" data-company="amazon" data-animate="fade-up">
+            <div class="journey__chapter-header">
+              <h3 class="journey__company">Amazon</h3>
+              <div class="journey__chapter-meta">
+                <span class="journey__period">Sep 2019 – Dec 2021</span>
+                <span class="journey__duration">2 years 4 months</span>
+              </div>
+            </div>
+            <div class="journey__amazon-layout">
+              <div class="journey__amazon-stats">
+                <div class="journey__amazon-stat">
+                  <span class="journey__amazon-stat-number">&lt; 1</span>
+                  <span class="journey__amazon-stat-label">month to own a critical project</span>
+                </div>
+                <div class="journey__amazon-stat">
+                  <span class="journey__amazon-stat-number">5+</span>
+                  <span class="journey__amazon-stat-label">marketplaces enhanced</span>
+                </div>
+                <div class="journey__amazon-stat">
+                  <span class="journey__amazon-stat-number">3+</span>
+                  <span class="journey__amazon-stat-label">years a "temp" solution lived on</span>
+                </div>
+              </div>
+              <div class="journey__amazon-body">
+                <h4 class="journey__title">Software Development Engineer</h4>
+                <div class="journey__amazon-highlights">
+                  <div class="journey__amazon-highlight">
+                    <span class="journey__amazon-highlight-icon" aria-hidden="true">&#9670;</span>
+                    <p>Architected "Kayl," a pluggable TypeScript library for recording user experience events on Seller Central. Led the full design with L8 to L6 engineers. Started as a temp solution, outlived my tenure by 3+ years.</p>
+                  </div>
+                  <div class="journey__amazon-highlight">
+                    <span class="journey__amazon-highlight-icon" aria-hidden="true">&#9670;</span>
+                    <p>Picked up React in weeks to lead a frontend project in Seller Central. Quickly became a go-to reference despite a backend focus.</p>
+                  </div>
+                  <div class="journey__amazon-highlight">
+                    <span class="journey__amazon-highlight-icon" aria-hidden="true">&#9670;</span>
+                    <p>Led projects enhancing multi-language listing experience for Amazon sellers across US, UAE, KSA, Egypt, China, and more.</p>
+                  </div>
+                  <div class="journey__amazon-highlight">
+                    <span class="journey__amazon-highlight-icon" aria-hidden="true">&#9670;</span>
+                    <p>Trained and mentored engineers while leading multiple projects. Interviewed and hired tens of engineers through Amazon's bar-raising process.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="journey__tags">
+              <span class="journey__tag">Java</span>
+              <span class="journey__tag">React</span>
+              <span class="journey__tag">TypeScript</span>
+              <span class="journey__tag">AWS</span>
+              <span class="journey__tag">Distributed Systems</span>
+              <span class="journey__tag">System Design</span>
+            </div>
+          </article>
+
+          <!-- Chapter: Wiley, compact dual-role -->
+          <article class="journey__chapter journey__chapter--wiley" data-company="wiley" data-animate="fade-up">
+            <div class="journey__chapter-header">
+              <h3 class="journey__company">Wiley (Atypon)</h3>
+              <div class="journey__chapter-meta">
+                <span class="journey__period">Feb 2017 – Sep 2019</span>
+                <span class="journey__duration">2 years 8 months</span>
+              </div>
+            </div>
+            <div class="journey__compact-roles">
+              <div class="journey__compact-role">
+                <h4 class="journey__role-title">Software Engineer, Mid Level</h4>
+                <p class="journey__role-desc">Led the creation of a standalone automation framework for large-scale system migration using Java, Selenium Grid, and AWS.</p>
+              </div>
+              <div class="journey__compact-role">
+                <h4 class="journey__role-title">Software Engineer</h4>
+                <p class="journey__role-desc">Designed and developed mid-tier and front-end layers of Atypon Insights, a web analytics platform for academic publishers.</p>
+              </div>
+            </div>
+            <div class="journey__tags">
+              <span class="journey__tag">Java</span>
+              <span class="journey__tag">Jakarta EE</span>
+              <span class="journey__tag">Selenium</span>
+              <span class="journey__tag">Python</span>
+            </div>
+          </article>
+
+          <!-- Chapter: Code with Noor, the throughline, typographic emphasis -->
+          <article class="journey__chapter journey__chapter--educator" data-company="educator" data-animate="fade-up">
+            <div class="journey__chapter-header">
+              <h3 class="journey__company">Code with Noor</h3>
+              <div class="journey__chapter-meta">
+                <span class="journey__period">Feb 2013 – Present</span>
+                <span class="journey__badge journey__badge--throughline">13+ years</span>
+              </div>
+            </div>
+            <div class="journey__educator-spread">
+              <div class="journey__educator-stat">
+                <span class="journey__stat-number">18.6K</span>
+                <span class="journey__stat-label">subscribers</span>
+              </div>
+              <div class="journey__educator-stat">
+                <span class="journey__stat-number">750K+</span>
+                <span class="journey__stat-label">views</span>
+              </div>
+              <p class="journey__educator-note">Teaching programming on YouTube since 2013. The throughline that predates and outlasts every role.</p>
+            </div>
+            <div class="journey__tags">
+              <span class="journey__tag">YouTube</span>
+              <span class="journey__tag">Python</span>
+              <span class="journey__tag">Java</span>
+              <span class="journey__tag">C++</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <hr class="section-divider" aria-hidden="true">
+    <section id="skills" class="skills" aria-labelledby="skills-heading" data-section-accent="secondary">
+      <div class="skills__container">
+        <h2 id="skills-heading" class="skills__heading">How I Work</h2>
+
+        <div class="skills__stack">
+          <!-- Layer 1: Build -->
+          <article class="skills__layer skills__layer--build" data-animate="fade-up">
+            <div class="skills__layer-accent" aria-hidden="true"></div>
+            <div class="skills__layer-content">
+              <span class="skills__layer-label">build</span>
+              <h3 class="skills__layer-title">Full-stack polyglot. Any language, any layer.</h3>
+              <p class="skills__layer-proof">Learned React in weeks to lead an Amazon frontend project. Work daily across Kotlin, Java, Python, and TypeScript on backend, frontend, and infrastructure.</p>
+              <div class="skills__layer-tokens">
+                <span class="skills__token">Kotlin</span>
+                <span class="skills__token">Java</span>
+                <span class="skills__token">Python</span>
+                <span class="skills__token">TypeScript</span>
+                <span class="skills__token">JavaScript</span>
+                <span class="skills__token">Scala</span>
+                <span class="skills__token">Spring Boot</span>
+                <span class="skills__token">GraphQL</span>
+                <span class="skills__token">gRPC</span>
+                <span class="skills__token">React</span>
+                <span class="skills__token">Node.js</span>
+                <span class="skills__token">AWS</span>
+                <span class="skills__token">OpenAPI</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Layer 2: Architect -->
+          <article class="skills__layer skills__layer--architect" data-animate="fade-up">
+            <div class="skills__layer-accent" aria-hidden="true"></div>
+            <div class="skills__layer-content">
+              <span class="skills__layer-label">architect</span>
+              <h3 class="skills__layer-title">Scalable platforms and AI-native systems.</h3>
+              <p class="skills__layer-proof">SDK platform handling 500M+ requests/year. Chain-of-tools agent architecture that cuts hallucination. Systems I built at Amazon still running 3+ years after I left.</p>
+              <div class="skills__layer-tokens">
+                <span class="skills__token">Platform Engineering</span>
+                <span class="skills__token">AI-native Architectures</span>
+                <span class="skills__token">MCP Servers</span>
+                <span class="skills__token">Agent Frameworks</span>
+                <span class="skills__token">LLM Tooling</span>
+                <span class="skills__token">SDKs</span>
+                <span class="skills__token">Microservices</span>
+                <span class="skills__token">Distributed Systems</span>
+                <span class="skills__token">System Design</span>
+                <span class="skills__token">Backend</span>
+                <span class="skills__token">Full-Stack</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Layer 3: Lead -->
+          <article class="skills__layer skills__layer--lead" data-animate="fade-up">
+            <div class="skills__layer-accent" aria-hidden="true"></div>
+            <div class="skills__layer-content">
+              <span class="skills__layer-label">lead</span>
+              <h3 class="skills__layer-title">Engineering leader and force multiplier.</h3>
+              <p class="skills__layer-proof">Trained hundreds on AI-powered development. Onboarded 6 engineers onto 50+ repositories. Hired tens of engineers through bar-raising interviews at Amazon and Expedia. Teaching programming since 2013.</p>
+              <div class="skills__layer-tokens">
+                <span class="skills__token">Engineering Leadership</span>
+                <span class="skills__token">Mentoring &amp; Coaching</span>
+                <span class="skills__token">Hiring &amp; Bar Raising</span>
+                <span class="skills__token">AI Advocacy</span>
+                <span class="skills__token">Training at Scale</span>
+                <span class="skills__token">Product Thinking</span>
+                <span class="skills__token">Strategic Planning</span>
+                <span class="skills__token">Knowledge Sharing</span>
+                <span class="skills__token">Cross-Team Influence</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <hr class="section-divider" aria-hidden="true">
+    <section id="recommendations" class="recommendations" aria-labelledby="recommendations-heading" data-section-accent="tertiary">
+      <div class="recommendations__container">
+        <h2 id="recommendations-heading" class="recommendations__heading">What People Say</h2>
+        <div class="recommendations__grid">
+          <!-- Card 1: Aamer Abbas -->
+          <article class="recommendations__card" data-animate="fade-up">
+            <div class="recommendations__pullquote" aria-hidden="true">
+              "Impressed with his ability to learn quickly and deliver under tight deadlines, an organized professional"
+            </div>
+            <div class="recommendations__body">
+              <blockquote class="recommendations__quote">
+                <p>"Noor was part of my team for about a year. I was impressed with <mark class="recommendations__highlight recommendations__highlight--primary">his ability to learn quickly and deliver under tight deadlines</mark>. He always came across as <mark class="recommendations__highlight recommendations__highlight--secondary">an organized professional</mark> and I could always rely on him to give a clear picture of his progress on a weekly basis. I'd happily recommend him as a motivated software engineer."</p>
+              </blockquote>
+              <span class="recommendations__ellipsis" aria-hidden="true"></span>
+            </div>
+            <footer class="recommendations__attribution">
+              <div class="recommendations__recommender">
+                <span class="recommendations__name">Aamer Abbas</span>
+                <span class="recommendations__meta">
+                  <span class="recommendations__title">Software Engineering Management</span>
+                  <span class="recommendations__context">Manager at Amazon · 2021</span>
+                </span>
+              </div>
+              <div class="recommendations__actions">
+                <button type="button" class="recommendations__toggle" aria-expanded="false" aria-label="Read full recommendation from Aamer Abbas">
+                  <span class="recommendations__toggle-text">Read more</span>
+                  <svg class="recommendations__toggle-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M4 6l4 4 4-4"/>
+                  </svg>
+                </button>
+                <a href="https://www.linkedin.com/in/mohnoor94/details/recommendations" target="_blank" rel="noopener" aria-label="View recommendations on LinkedIn" class="recommendations__linkedin-badge">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
+              </div>
+            </footer>
+          </article>
+          <!-- Card 2: Nagarajan Raju -->
+          <article class="recommendations__card" data-animate="fade-up">
+            <div class="recommendations__pullquote" aria-hidden="true">
+              "Noor is a rising star, an asset to any team anytime, anywhere"
+            </div>
+            <div class="recommendations__body">
+              <blockquote class="recommendations__quote">
+                <p>"<mark class="recommendations__highlight recommendations__highlight--tertiary">Noor is a rising star</mark>. He was less than a month old in the company when he took ownership of a time sensitive, business critical emerging market solution implementation for Amazon MENA customers. The solution was not only well defined but also involved making changes in multiple platform teams code base across Amazon. <mark class="recommendations__highlight recommendations__highlight--primary">With little supervision and guidance he was able to work with different code bases and single handedly code completed</mark>, drove code reviews with remote teams and successfully executed the deployment on time. His passion for continuous learning and sharing knowledge are commendable. <mark class="recommendations__highlight recommendations__highlight--secondary">He is an asset to any team and will have him in the team anytime, anywhere</mark>."</p>
+              </blockquote>
+              <span class="recommendations__ellipsis" aria-hidden="true"></span>
+            </div>
+            <footer class="recommendations__attribution">
+              <div class="recommendations__recommender">
+                <span class="recommendations__name">Nagarajan Raju</span>
+                <span class="recommendations__meta">
+                  <span class="recommendations__title">Engineering Leader at Amazon</span>
+                  <span class="recommendations__context">Manager at Amazon · 2020</span>
+                </span>
+              </div>
+              <div class="recommendations__actions">
+                <button type="button" class="recommendations__toggle" aria-expanded="false" aria-label="Read full recommendation from Nagarajan Raju">
+                  <span class="recommendations__toggle-text">Read more</span>
+                  <svg class="recommendations__toggle-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M4 6l4 4 4-4"/>
+                  </svg>
+                </button>
+                <a href="https://www.linkedin.com/in/mohnoor94/details/recommendations" target="_blank" rel="noopener" aria-label="View recommendations on LinkedIn" class="recommendations__linkedin-badge">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
+              </div>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+    <hr class="section-divider" aria-hidden="true">
+    <section id="links" class="links" aria-labelledby="connect-heading" data-section-accent="quaternary">
+      <div class="links__container">
+        <h2 id="connect-heading" class="links__heading">Connect</h2>
+
+        <!-- The Invitation — framed around what I can help with -->
+        <div class="links__invitation" data-animate="fade-up">
+          <div class="links__invitation-content">
+            <p class="links__invitation-lead">Let's talk AI strategy, platform architecture, or your next big engineering challenge.</p>
+            <div class="links__invitation-actions">
+              <a href="https://cal.com/mohammad-noor" target="_blank" rel="noopener" class="links__cta">
+                Book a conversation
+                <svg class="links__cta-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+              <a href="https://go.bynoor.io/email" target="_blank" rel="noopener" class="links__email-fallback">
+                or email me directly
+              </a>
+            </div>
+          </div>
+          <div class="links__invitation-aside">
+            <a href="/mohammad-noor-abu-khlaif-software-engineer-resume.pdf" target="_blank" rel="noopener" class="links__resume-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <span>Resume</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Worlds — where I exist, framed by what you'll find there -->
+        <div class="links__worlds" data-animate-stagger="80">
+
+          <!-- Educator world -->
+          <a href="https://go.bynoor.io/youtube" target="_blank" rel="noopener" class="links__world links__world--youtube" data-animate="fade-up" aria-label="Code with Noor on YouTube: 18.6K subscribers, teaching since 2013">
+            <div class="links__world-accent" aria-hidden="true"></div>
+            <div class="links__world-header">
+              <svg class="links__world-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              <span class="links__world-platform">Code with Noor</span>
+            </div>
+            <p class="links__world-hook">Python, Java, C++ tutorials. Teaching predates the career</p>
+            <div class="links__world-proof">
+              <span class="links__world-stat">18.6K subscribers</span>
+              <span class="links__world-stat">750K+ views</span>
+              <span class="links__world-stat">Since 2013</span>
+            </div>
+          </a>
+
+          <!-- Professional story -->
+          <a href="https://go.bynoor.io/linkedin" target="_blank" rel="noopener" class="links__world links__world--linkedin" data-animate="fade-up" aria-label="LinkedIn: AI strategy posts and career deep-dives">
+            <div class="links__world-accent" aria-hidden="true"></div>
+            <div class="links__world-header">
+              <svg class="links__world-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              <span class="links__world-platform">LinkedIn</span>
+            </div>
+            <p class="links__world-hook">AI adoption stories, platform engineering deep-dives, and lessons from leading at scale</p>
+          </a>
+
+          <!-- Builder identity -->
+          <a href="https://go.bynoor.io/github" target="_blank" rel="noopener" class="links__world links__world--github" data-animate="fade-up" aria-label="GitHub: Open source work and experiments">
+            <div class="links__world-accent" aria-hidden="true"></div>
+            <div class="links__world-header">
+              <svg class="links__world-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+              <span class="links__world-platform">GitHub</span>
+            </div>
+            <p class="links__world-hook">Side projects, open source experiments, and tools I build in the open</p>
+          </a>
+
+          <!-- Public voice -->
+          <a href="https://go.bynoor.io/twitter" target="_blank" rel="noopener" class="links__world links__world--twitter" data-animate="fade-up" aria-label="Twitter / X: Engineering and AI thoughts">
+            <div class="links__world-accent" aria-hidden="true"></div>
+            <div class="links__world-header">
+              <svg class="links__world-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              <span class="links__world-platform">X</span>
+            </div>
+            <p class="links__world-hook">Engineering takes, AI tooling news, and the occasional hot take on developer culture</p>
+          </a>
+
+          <!-- StackOverflow — expertise signal -->
+          <a href="https://go.bynoor.io/sof" target="_blank" rel="noopener" class="links__world links__world--stackoverflow" data-animate="fade-up" aria-label="StackOverflow profile">
+            <div class="links__world-accent" aria-hidden="true"></div>
+            <div class="links__world-header">
+              <svg class="links__world-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M15.725 0l-1.72 1.277 6.39 8.588 1.716-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.369-1.644-8.225-6.85zm-3.15 4.465l-.905 1.94 9.702 4.517.904-1.94-9.701-4.517zm-1.85 4.86l-.44 2.093 10.473 2.2.44-2.092-10.473-2.2zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396H1.89zm4.265 2.133v2.13h10.66v-2.13H6.154z"/>
+              </svg>
+              <span class="links__world-platform">StackOverflow</span>
+            </div>
+            <p class="links__world-hook">Where I answer questions on Java, system design, and backend architecture</p>
+          </a>
+        </div>
+      </div>
+    </section>
+    <hr class="section-divider" aria-hidden="true">
+    <section id="prep-kit" class="prep-kit" aria-labelledby="prep-kit-heading" data-section-accent="septenary">
+      <div class="prep-kit__container">
+        <div class="prep-kit__content" data-animate="fade-up">
+          <span class="prep-kit__eyebrow">From the interviewer's side of the table</span>
+          <h2 id="prep-kit-heading" class="prep-kit__heading">Technical Interview Preparation Kit</h2>
+          <p class="prep-kit__desc">Data structures, algorithms, system design, all condensed into one reference guide. Built from years of interviewing and hiring engineers at Amazon and Expedia Group.</p>
+          <a href="/technical-interview-preparation-kit/" class="prep-kit__link">
+            Open the kit
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
