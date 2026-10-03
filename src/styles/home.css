@@ -922,6 +922,48 @@ html.js-loaded .lens-switch {
   border: 0;
 }
 
+/* Click-to-load facade: thumbnail + play button until the visitor opts in.
+   Same 16/9 box as the player, so swapping never shifts layout. */
+.teach-card__facade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--ink);
+  cursor: pointer;
+}
+
+.teach-card__facade img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.92;
+}
+
+.teach-card__play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--pine);
+  color: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.teach-card__facade:hover .teach-card__play,
+.teach-card__facade:focus-visible .teach-card__play {
+  background: var(--pine-deep);
+  transform: scale(1.06);
+}
+
 .teach-card__body {
   padding: 1.25rem 1.25rem 1.4rem;
   display: flex;

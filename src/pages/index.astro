@@ -788,7 +788,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="teach__grid" data-animate-stagger="100">
           <article class="teach-card" data-animate="fade-up">
             <div class="teach-card__embed">
-              <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLaOfjyVFnPmW1sycl5qH3PH_vymkguOq8" title="Complete Python Masterclass in Arabic — playlist" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <button type="button" class="teach-card__facade" data-facade="https://www.youtube-nocookie.com/embed/videoseries?list=PLaOfjyVFnPmW1sycl5qH3PH_vymkguOq8" data-title="Complete Python Masterclass in Arabic — playlist" aria-label="Play Complete Python Masterclass in Arabic playlist">
+                <img src="/teach-python.jpg" alt="" width="640" height="360" loading="lazy" />
+                <span class="teach-card__play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg></span>
+              </button>
             </div>
             <div class="teach-card__body">
               <h3 class="teach-card__title">Complete Python Masterclass</h3>
@@ -799,7 +802,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </article>
           <article class="teach-card" data-animate="fade-up">
             <div class="teach-card__embed">
-              <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLaOfjyVFnPmXYSeCeSuitSai8FuM-IacQ" title="C++ for Beginners in Arabic — playlist" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <button type="button" class="teach-card__facade" data-facade="https://www.youtube-nocookie.com/embed/videoseries?list=PLaOfjyVFnPmXYSeCeSuitSai8FuM-IacQ" data-title="C++ for Beginners in Arabic — playlist" aria-label="Play C++ for Beginners in Arabic playlist">
+                <img src="/teach-cpp.jpg" alt="" width="640" height="360" loading="lazy" />
+                <span class="teach-card__play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg></span>
+              </button>
             </div>
             <div class="teach-card__body">
               <h3 class="teach-card__title">C++ for Beginners</h3>
