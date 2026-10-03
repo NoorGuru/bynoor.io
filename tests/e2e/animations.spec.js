@@ -32,8 +32,8 @@ test('animations not applied when prefers-reduced-motion is set', async ({ brows
   const hoverSelectors = [
     '.hero__btn--primary',
     '.hero__social-link',
-    '.highlights__card',
-    '.links__channel',
+    '.ledger__row',
+    '.links__world',
     '.project-card',
   ];
 
