@@ -684,7 +684,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 </div>
               </div>
             </div>
-            <p class="projects__featured-desc">An AI-powered financial intelligence platform that aggregates stock convictions across top YouTube finance channels. An end-to-end pipeline ingests videos via a Cloudflare Worker proxy, extracts analyst sentiment and price targets with Claude 3.5 Sonnet on FastAPI / Cloud Run, and computes real-time institutional consensus via a proprietary 5-factor quantitative scoring engine (Aura &amp; Omni Scores).</p>
+            <p class="projects__featured-desc">An AI-powered financial intelligence platform that tracks and aggregates market convictions across financial YouTube. Ingests video transcripts via a 3-tier fallback pipeline (Cloudflare Worker proxy, yt-dlp, residential proxies), extracts structured theses using Claude Sonnet 5.5, and calibrates predictions with TypeSafe Jev (continuous 0–100 conviction, ±2.0 sentiment, adversarial target price verification, and transcript triage). Deployed with a FastAPI / Python 3.13 backend on Google Cloud Run (us-central1 via gcloud CLI), Supabase Postgres, and a Bloomberg-style Next.js 16 terminal.</p>
             <div class="projects__featured-arc" aria-label="Architecture flow">
               <span class="projects__arc-stage">
                 <span class="projects__arc-label">Ingestion</span>
@@ -693,42 +693,48 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               <span class="projects__arc-connector" aria-hidden="true"></span>
               <span class="projects__arc-stage">
                 <span class="projects__arc-label">Extraction</span>
-                <span class="projects__arc-detail">Claude 3.5 Sonnet</span>
+                <span class="projects__arc-detail">Claude Sonnet 5.5</span>
               </span>
               <span class="projects__arc-connector" aria-hidden="true"></span>
               <span class="projects__arc-stage">
-                <span class="projects__arc-label">Engine</span>
+                <span class="projects__arc-label">Calibration</span>
+                <span class="projects__arc-detail">TypeSafe Jev</span>
+              </span>
+              <span class="projects__arc-connector" aria-hidden="true"></span>
+              <span class="projects__arc-stage">
+                <span class="projects__arc-label">Backend</span>
                 <span class="projects__arc-detail">FastAPI · Cloud Run</span>
               </span>
               <span class="projects__arc-connector" aria-hidden="true"></span>
               <span class="projects__arc-stage projects__arc-stage--current">
-                <span class="projects__arc-label">App</span>
+                <span class="projects__arc-label">Terminal</span>
                 <span class="projects__arc-detail">Next.js 16 + Supabase</span>
               </span>
             </div>
             <div class="projects__featured-tags">
+              <span class="projects__tag">Claude Sonnet 5.5</span>
+              <span class="projects__tag">TypeSafe Jev</span>
               <span class="projects__tag">Next.js 16</span>
               <span class="projects__tag">React 19</span>
-              <span class="projects__tag">Python 3.12</span>
+              <span class="projects__tag">Python 3.13</span>
               <span class="projects__tag">FastAPI</span>
-              <span class="projects__tag">Claude 3.5 Sonnet</span>
-              <span class="projects__tag">Cloudflare Workers</span>
               <span class="projects__tag">Google Cloud Run</span>
+              <span class="projects__tag">Cloudflare Workers</span>
               <span class="projects__tag">Supabase (PostgreSQL)</span>
             </div>
           </div>
           <div class="projects__featured-stats">
             <div class="projects__stat">
               <span class="projects__stat-value"><a href="https://aura.bynoor.io" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; border-bottom: 1px solid var(--brass); padding-bottom: 2px;">aura.bynoor.io</a></span>
-              <span class="projects__stat-label">Live Platform</span>
+              <span class="projects__stat-label">Live Terminal</span>
+            </div>
+            <div class="projects__stat">
+              <span class="projects__stat-value">Claude 5.5 + Jev</span>
+              <span class="projects__stat-label">extraction &amp; calibrated verification</span>
             </div>
             <div class="projects__stat">
               <span class="projects__stat-value">1,400+ Signals</span>
               <span class="projects__stat-label">across 50+ channels</span>
-            </div>
-            <div class="projects__stat">
-              <span class="projects__stat-value">Aura &amp; Omni Scores</span>
-              <span class="projects__stat-label">5-factor quantitative engine</span>
             </div>
           </div>
         </article>
