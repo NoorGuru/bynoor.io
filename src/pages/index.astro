@@ -684,11 +684,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 </div>
               </div>
             </div>
-            <p class="projects__featured-desc">An AI-powered financial intelligence platform that tracks and aggregates market convictions across financial YouTube. An end-to-end pipeline ingests video transcripts via a 3-tier fallback proxy, extracts structured theses using Claude Sonnet 5.5, and calibrates predictions with TypeSafe Jev (continuous 0 to 100 conviction, -2.0 to +2.0 sentiment, adversarial target price verification, and transcript triage). Deployed with a FastAPI and Python 3.13 backend on Google Cloud Run in us-central1 via the gcloud CLI, Supabase Postgres, and a Bloomberg-style Next.js 16 terminal.</p>
+            <p class="projects__featured-desc">An AI-powered financial intelligence platform that tracks and aggregates market convictions across financial YouTube. An end-to-end pipeline ingests video transcripts via a Cloudflare Worker edge proxy with 3-tier fallback, extracts structured theses using Claude Sonnet 5.5, and calibrates predictions with TypeSafe Jev (continuous 0 to 100 conviction, -2.0 to +2.0 sentiment, adversarial target price verification, and transcript triage). Deployed with a FastAPI and Python 3.13 backend on Google Cloud Run in us-central1 via the gcloud CLI, Supabase Postgres, and a Bloomberg-style Next.js 16 terminal.</p>
             <div class="projects__featured-arc" aria-label="Architecture flow">
               <span class="projects__arc-stage">
-                <span class="projects__arc-label">Ingestion</span>
-                <span class="projects__arc-detail">Cloudflare Worker</span>
+                <span class="projects__arc-label">Edge Ingestion</span>
+                <span class="projects__arc-detail">Cloudflare Workers</span>
               </span>
               <span class="projects__arc-connector" aria-hidden="true"></span>
               <span class="projects__arc-stage">
@@ -712,6 +712,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               </span>
             </div>
             <div class="projects__featured-tags">
+              <span class="projects__tag">Cloudflare Workers</span>
               <span class="projects__tag">Claude Sonnet 5.5</span>
               <span class="projects__tag">TypeSafe Jev</span>
               <span class="projects__tag">Python 3.13</span>
