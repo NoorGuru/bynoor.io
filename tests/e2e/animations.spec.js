@@ -6,7 +6,8 @@ test('animations not applied when prefers-reduced-motion is set', async ({ brows
   });
   const page = await context.newPage();
   await page.goto('/');
-  await page.waitForLoadState('networkidle');
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500); // settle entrance animations (YouTube embeds keep network alive, so networkidle never settles)
 
   // Scroll to trigger animation observer
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));

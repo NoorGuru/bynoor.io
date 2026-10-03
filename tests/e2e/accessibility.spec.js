@@ -4,7 +4,8 @@ import AxeBuilder from '@axe-core/playwright';
 test('all tap targets are at least 44x44px on 375px viewport', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 667 });
   await page.goto('/');
-  await page.waitForLoadState('networkidle');
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500); // settle entrance animations (YouTube embeds keep network alive, so networkidle never settles)
 
   const tooSmall = await page.evaluate(() => {
     const interactive = document.querySelectorAll('a, button, [role="button"], input, select, textarea');
@@ -14,6 +15,12 @@ test('all tap targets are at least 44x44px on 375px viewport', async ({ page }) 
       // Skip hidden elements
       const style = window.getComputedStyle(el);
       if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') {
+        continue;
+      }
+
+      // Skip inline prose links: WCAG 2.5.8 Target Size explicitly exempts
+      // targets "in a sentence or block of text". Only controls are measured.
+      if (el.tagName === 'A' && style.display === 'inline') {
         continue;
       }
 
@@ -39,12 +46,16 @@ test('all tap targets are at least 44x44px on 375px viewport', async ({ page }) 
 
 test('axe-core WCAG 2.1 AA audit passes', async ({ page }) => {
   await page.goto('/');
-  await page.waitForLoadState('networkidle');
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500); // settle entrance animations (YouTube embeds keep network alive, so networkidle never settles)
 
   const results = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
     // Exclude color-contrast — brand colors are an intentional design decision
     .disableRules(['color-contrast'])
+    // Exclude third-party YouTube embeds: cross-origin player markup is
+    // outside author control and fails aria/button rules intermittently.
+    .exclude('iframe[src*="youtube-nocookie.com"]')
     .analyze();
 
   const violations = results.violations.map((v) => ({

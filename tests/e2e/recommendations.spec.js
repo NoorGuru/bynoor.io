@@ -2,12 +2,13 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 // --- DOM Structure Tests ---
-// Validates: Requirements 1.1, 1.3, 1.4, 1.5, 2.1, 2.2, 2.3, 3.1, 3.2, 3.3, 3.4, 5.2, 5.3, 6.4, 7.1, 7.2, 7.3, 7.5
+// Current design: pull-quote cards with expandable quotes and attribution.
 
 test.describe('Recommendations - DOM Structure', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500); // settle entrance animations (YouTube embeds keep network alive, so networkidle never settles)
   });
 
   test('section exists with correct id, aria-labelledby, and data-section-accent', async ({ page }) => {
@@ -16,10 +17,10 @@ test.describe('Recommendations - DOM Structure', () => {
     await expect(section).toHaveAttribute('data-section-accent', 'tertiary');
   });
 
-  test('heading h2 with text "Recommendations" exists inside section', async ({ page }) => {
+  test('heading h2 with text "What People Say" exists inside section', async ({ page }) => {
     const heading = page.locator('#recommendations h2#recommendations-heading');
     await expect(heading).toBeVisible();
-    await expect(heading).toHaveText('Recommendations');
+    await expect(heading).toHaveText('What People Say');
   });
 
   test('exactly two recommendation cards (article elements) exist within the grid', async ({ page }) => {
@@ -37,7 +38,7 @@ test.describe('Recommendations - DOM Structure', () => {
     }
   });
 
-  test('each card contains a footer with recommender name, title, relationship, and date', async ({ page }) => {
+  test('each card contains attribution with name, title, and context', async ({ page }) => {
     const footers = page.locator('#recommendations .recommendations__card footer.recommendations__attribution');
     await expect(footers).toHaveCount(2);
 
@@ -45,18 +46,28 @@ test.describe('Recommendations - DOM Structure', () => {
       const footer = footers.nth(i);
       const name = footer.locator('.recommendations__name');
       const title = footer.locator('.recommendations__title');
-      const relationship = footer.locator('.recommendations__relationship');
-      const date = footer.locator('.recommendations__date');
+      const context = footer.locator('.recommendations__context');
 
       await expect(name).toBeVisible();
       await expect(title).toBeVisible();
-      await expect(relationship).toBeVisible();
-      await expect(date).toBeVisible();
+      await expect(context).toBeVisible();
 
       expect((await name.textContent()).trim().length).toBeGreaterThan(0);
       expect((await title.textContent()).trim().length).toBeGreaterThan(0);
-      expect((await relationship.textContent()).trim().length).toBeGreaterThan(0);
-      expect((await date.textContent()).trim().length).toBeGreaterThan(0);
+      expect((await context.textContent()).trim().length).toBeGreaterThan(0);
+    }
+  });
+
+  test('each card has an expand toggle with aria-expanded and label', async ({ page }) => {
+    const toggles = page.locator('#recommendations .recommendations__toggle');
+    await expect(toggles).toHaveCount(2);
+
+    for (let i = 0; i < 2; i++) {
+      const toggle = toggles.nth(i);
+      await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+      const label = await toggle.getAttribute('aria-label');
+      expect(label).toBeTruthy();
+      expect(label.length).toBeGreaterThan(0);
     }
   });
 
@@ -64,30 +75,15 @@ test.describe('Recommendations - DOM Structure', () => {
     const badges = page.locator('#recommendations .recommendations__linkedin-badge');
     await expect(badges).toHaveCount(2);
 
-    // Card 1: Aamer Abbas
-    const badge1 = badges.nth(0);
-    await expect(badge1).toHaveAttribute('href', 'https://www.linkedin.com/in/abbasaamer/');
-    await expect(badge1).toHaveAttribute('target', '_blank');
-    await expect(badge1).toHaveAttribute('rel', 'noopener');
-    const ariaLabel1 = await badge1.getAttribute('aria-label');
-    expect(ariaLabel1).toBeTruthy();
-    expect(ariaLabel1.length).toBeGreaterThan(0);
-
-    // Card 2: Nagarajan Raju
-    const badge2 = badges.nth(1);
-    await expect(badge2).toHaveAttribute('href', 'https://www.linkedin.com/in/nagarajanraju/');
-    await expect(badge2).toHaveAttribute('target', '_blank');
-    await expect(badge2).toHaveAttribute('rel', 'noopener');
-    const ariaLabel2 = await badge2.getAttribute('aria-label');
-    expect(ariaLabel2).toBeTruthy();
-    expect(ariaLabel2.length).toBeGreaterThan(0);
-  });
-
-  test('decorative blob has aria-hidden="true" and data-parallax attribute', async ({ page }) => {
-    const blob = page.locator('#recommendations .decorative-blob');
-    await expect(blob).toHaveAttribute('aria-hidden', 'true');
-    const parallax = await blob.getAttribute('data-parallax');
-    expect(parallax).not.toBeNull();
+    for (let i = 0; i < 2; i++) {
+      const badge = badges.nth(i);
+      await expect(badge).toHaveAttribute('href', 'https://www.linkedin.com/in/mohnoor94/details/recommendations');
+      await expect(badge).toHaveAttribute('target', '_blank');
+      await expect(badge).toHaveAttribute('rel', 'noopener');
+      const ariaLabel = await badge.getAttribute('aria-label');
+      expect(ariaLabel).toBeTruthy();
+      expect(ariaLabel.length).toBeGreaterThan(0);
+    }
   });
 
   test('section appears after skills section and before connect section in DOM order', async ({ page }) => {
@@ -106,26 +102,24 @@ test.describe('Recommendations - DOM Structure', () => {
     expect(recommendationsIndex).toBeLessThan(connectIndex);
   });
 
-  test('animation attributes: data-animate on cards, data-animate-stagger on container', async ({ page }) => {
+  test('animation attributes: data-animate on cards', async ({ page }) => {
     const cards = page.locator('#recommendations .recommendations__card');
     const count = await cards.count();
+    expect(count).toBeGreaterThan(0);
 
     for (let i = 0; i < count; i++) {
       await expect(cards.nth(i)).toHaveAttribute('data-animate', 'fade-up');
     }
-
-    const container = page.locator('#recommendations .recommendations__container');
-    await expect(container).toHaveAttribute('data-animate-stagger', '100');
   });
 });
 
 // --- Accessibility Tests ---
-// Validates: Requirements 7.1, 7.3, 7.4, 7.5, 7.6
 
 test.describe('Recommendations - Accessibility', () => {
   test('axe-core WCAG 2.1 AA audit passes on recommendations section', async ({ page }) => {
     await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500); // settle entrance animations (YouTube embeds keep network alive, so networkidle never settles)
 
     const results = await new AxeBuilder({ page })
       .include('#recommendations')
@@ -145,7 +139,8 @@ test.describe('Recommendations - Accessibility', () => {
 
   test('LinkedIn badges are keyboard-focusable', async ({ page }) => {
     await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500); // settle entrance animations (YouTube embeds keep network alive, so networkidle never settles)
 
     const badges = page.locator('#recommendations .recommendations__linkedin-badge');
     const count = await badges.count();
@@ -155,6 +150,22 @@ test.describe('Recommendations - Accessibility', () => {
       const badge = badges.nth(i);
       await badge.focus();
       await expect(badge).toBeFocused();
+    }
+  });
+
+  test('expand toggles are keyboard-focusable and labelled', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500); // settle entrance animations (YouTube embeds keep network alive, so networkidle never settles)
+
+    const toggles = page.locator('#recommendations .recommendations__toggle');
+    const count = await toggles.count();
+    expect(count).toBeGreaterThan(0);
+
+    for (let i = 0; i < count; i++) {
+      const toggle = toggles.nth(i);
+      await toggle.focus();
+      await expect(toggle).toBeFocused();
     }
   });
 });

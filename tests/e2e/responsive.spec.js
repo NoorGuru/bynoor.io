@@ -13,7 +13,8 @@ for (const vp of viewports) {
   test(`no horizontal overflow at ${vp.width}px viewport`, async ({ page }) => {
     await page.setViewportSize(vp);
     await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500); // settle entrance animations (YouTube embeds keep network alive, so networkidle never settles)
 
     const hasOverflow = await page.evaluate(() => {
       return document.documentElement.scrollWidth > document.documentElement.clientWidth;

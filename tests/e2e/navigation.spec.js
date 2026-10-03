@@ -3,7 +3,8 @@ import { test, expect } from '@playwright/test';
 test('hamburger menu is visible below 768px', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 667 });
   await page.goto('/');
-  await page.waitForLoadState('networkidle');
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500); // settle entrance animations (YouTube embeds keep network alive, so networkidle never settles)
 
   const hamburger = page.locator('.nav__hamburger');
   await expect(hamburger).toBeVisible();
@@ -12,7 +13,8 @@ test('hamburger menu is visible below 768px', async ({ page }) => {
 test('hamburger menu is hidden at 768px and above', async ({ page }) => {
   await page.setViewportSize({ width: 768, height: 1024 });
   await page.goto('/');
-  await page.waitForLoadState('networkidle');
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500); // settle entrance animations (YouTube embeds keep network alive, so networkidle never settles)
 
   const hamburger = page.locator('.nav__hamburger');
   await expect(hamburger).toBeHidden();
@@ -21,7 +23,8 @@ test('hamburger menu is hidden at 768px and above', async ({ page }) => {
 test('overlay menu opens and closes on mobile', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 667 });
   await page.goto('/');
-  await page.waitForLoadState('networkidle');
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500); // settle entrance animations (YouTube embeds keep network alive, so networkidle never settles)
 
   const overlay = page.locator('#mobile-menu');
 

@@ -6,7 +6,7 @@ const DIST_DIR = join(process.cwd(), 'dist');
 
 /**
  * Build output validation tests.
- * These tests validate the contents of dist/ after a Vite build.
+ * These tests validate the contents of dist/ after an Astro build.
  * Run `npm run build` before executing these tests.
  *
  * Validates: Requirements 10.4, 10.6, 11.2, 11.4

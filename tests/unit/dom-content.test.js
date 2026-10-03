@@ -6,7 +6,9 @@ import { JSDOM } from 'jsdom';
 let document;
 
 beforeAll(() => {
-  const html = readFileSync(resolve(__dirname, '../../index.html'), 'utf-8');
+  // Pages are rendered by Astro: assert against the built output.
+  // Run `npm run build` before executing these tests.
+  const html = readFileSync(resolve(__dirname, '../../dist/index.html'), 'utf-8');
   const dom = new JSDOM(html);
   document = dom.window.document;
 });
