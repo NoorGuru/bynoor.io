@@ -256,10 +256,6 @@ img {
   bottom: 0;
 }
 
-.nav__hamburger-ring {
-  display: none;
-}
-
 /* Mobile menu overlay */
 .mobile-menu {
   position: fixed;
@@ -1361,7 +1357,6 @@ html.js-loaded .lens-switch {
   margin-top: 3rem;
 }
 
-.footer__inner,
 .footer > :not(.footer__bottom) {
   max-width: var(--measure);
 }

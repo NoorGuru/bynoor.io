@@ -63,10 +63,6 @@
   font-weight: 400;
 }
 
-.resources__cursor {
-  display: none;
-}
-
 .resources__hero-sub {
   font-size: 1.1rem;
   color: var(--ink-soft);
