@@ -668,43 +668,53 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         <!-- Featured project: Aura -->
         <article class="projects__featured projects__featured--aura" data-animate="fade-up">
+          <div class="projects__featured-preview">
+            <a href="https://aura.bynoor.io" target="_blank" rel="noopener" class="projects__preview-link" aria-label="Visit Aura live at aura.bynoor.io">
+              <img src="/aura-preview.webp" alt="Aura homepage preview showing 'Every stock analyst. One clear signal' hero and quantitative signal indicators" width="1200" height="675" loading="lazy" class="projects__preview-img" />
+            </a>
+          </div>
           <div class="projects__featured-content">
             <div class="projects__featured-header">
-              <span class="projects__featured-eyebrow">Flagship · AI Product</span>
+              <span class="projects__featured-eyebrow">Flagship · AI Financial Intelligence</span>
               <div class="projects__featured-title-wrapper">
                 <h3 class="projects__featured-title">Aura</h3>
+                <div class="projects__featured-actions">
+                  <a href="https://aura.bynoor.io" target="_blank" rel="noopener" class="projects__action-link" aria-label="Visit Aura live platform">Live platform ↗</a>
+                  <a href="https://github.com/NoorGuru/irec" target="_blank" rel="noopener" class="projects__action-link" aria-label="View Aura on GitHub">GitHub ↗</a>
+                </div>
               </div>
             </div>
-            <p class="projects__featured-desc">An AI-powered stock recommendation tracker. It ingests YouTube videos via a Cloudflare Worker, analyzes transcripts with Claude to extract analyst sentiment and conviction, and serves real-time consensus scores on a public dashboard powered by Google Cloud Run and Supabase.</p>
+            <p class="projects__featured-desc">An AI-powered financial intelligence platform that aggregates stock convictions across top YouTube finance channels. An end-to-end pipeline ingests videos via a Cloudflare Worker proxy, extracts analyst sentiment and price targets with Claude 3.5 Sonnet on FastAPI / Cloud Run, and computes real-time institutional consensus via a proprietary 5-factor quantitative scoring engine (Aura &amp; Omni Scores).</p>
             <div class="projects__featured-arc" aria-label="Architecture flow">
               <span class="projects__arc-stage">
-                <span class="projects__arc-label">Source</span>
-                <span class="projects__arc-detail">YouTube</span>
+                <span class="projects__arc-label">Ingestion</span>
+                <span class="projects__arc-detail">Cloudflare Worker</span>
               </span>
               <span class="projects__arc-connector" aria-hidden="true"></span>
               <span class="projects__arc-stage">
                 <span class="projects__arc-label">Extraction</span>
-                <span class="projects__arc-detail">Claude AI</span>
+                <span class="projects__arc-detail">Claude 3.5 Sonnet</span>
               </span>
               <span class="projects__arc-connector" aria-hidden="true"></span>
               <span class="projects__arc-stage">
-                <span class="projects__arc-label">Data</span>
-                <span class="projects__arc-detail">Supabase</span>
+                <span class="projects__arc-label">Engine</span>
+                <span class="projects__arc-detail">FastAPI · Cloud Run</span>
               </span>
               <span class="projects__arc-connector" aria-hidden="true"></span>
               <span class="projects__arc-stage projects__arc-stage--current">
                 <span class="projects__arc-label">App</span>
-                <span class="projects__arc-detail">Next.js 16</span>
+                <span class="projects__arc-detail">Next.js 16 + Supabase</span>
               </span>
             </div>
             <div class="projects__featured-tags">
-              <span class="projects__tag">Next.js</span>
-              <span class="projects__tag">Python</span>
+              <span class="projects__tag">Next.js 16</span>
+              <span class="projects__tag">React 19</span>
+              <span class="projects__tag">Python 3.12</span>
               <span class="projects__tag">FastAPI</span>
-              <span class="projects__tag">Claude</span>
-              <span class="projects__tag">Supabase</span>
+              <span class="projects__tag">Claude 3.5 Sonnet</span>
               <span class="projects__tag">Cloudflare Workers</span>
               <span class="projects__tag">Google Cloud Run</span>
+              <span class="projects__tag">Supabase (PostgreSQL)</span>
             </div>
           </div>
           <div class="projects__featured-stats">
@@ -713,12 +723,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               <span class="projects__stat-label">Live Platform</span>
             </div>
             <div class="projects__stat">
-              <span class="projects__stat-value">Real-time</span>
-              <span class="projects__stat-label">consensus scoring</span>
+              <span class="projects__stat-value">1,400+ Signals</span>
+              <span class="projects__stat-label">across 50+ channels</span>
             </div>
             <div class="projects__stat">
-              <span class="projects__stat-value">AI-Driven</span>
-              <span class="projects__stat-label">sentiment analysis</span>
+              <span class="projects__stat-value">Aura &amp; Omni Scores</span>
+              <span class="projects__stat-label">5-factor quantitative engine</span>
             </div>
           </div>
         </article>

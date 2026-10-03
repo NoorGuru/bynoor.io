@@ -185,6 +185,18 @@ describe('Projects Section', () => {
     expect(nebulaRepo.getAttribute('target')).toBe('_blank');
     expect(nebulaRepo.getAttribute('rel')).toContain('noopener');
   });
+
+  it('has Aura featured project with correct live URL and repo', () => {
+    const auraLive = document.querySelector('#projects a[href="https://aura.bynoor.io"]');
+    expect(auraLive).not.toBeNull();
+    expect(auraLive.getAttribute('target')).toBe('_blank');
+    expect(auraLive.getAttribute('rel')).toContain('noopener');
+
+    const auraRepo = document.querySelector('#projects a[href="https://github.com/NoorGuru/irec"]');
+    expect(auraRepo).not.toBeNull();
+    expect(auraRepo.getAttribute('target')).toBe('_blank');
+    expect(auraRepo.getAttribute('rel')).toContain('noopener');
+  });
 });
 
 describe('Navigation', () => {

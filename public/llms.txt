@@ -84,5 +84,5 @@ Noor is actively open to senior software engineering and AI roles. Target positi
 - [Email Contact](mailto:moh.noor94@gmail.com)
 - [Book a Call](https://cal.com/mohammad-noor)
 - [Technical Interview Prep Kit](https://bynoor.io/technical-interview-preparation-kit/)
-- [Aura — AI Stock Tracker](https://aura.bynoor.io)
-- [Nebula — Bilingual Startup Playbooks Library](https://nebula.bynoor.io)
+- [Aura — AI Financial Intelligence Platform](https://aura.bynoor.io) (Repo: https://github.com/NoorGuru/irec) — Every stock analyst. One clear signal. Real-time quantitative conviction engine parsing 1,400+ signals with Claude 3.5 Sonnet, FastAPI on Cloud Run, and Next.js 16.
+- [Nebula — Bilingual Startup Playbooks Library](https://nebula.bynoor.io) (Repo: https://github.com/NoorGuru/nebula) — Bilingual English & Arabic library of 320+ evidence-backed startup teardowns and failure lessons built on Astro 7 and Cloudflare Workers.
