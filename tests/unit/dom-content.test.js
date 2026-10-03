@@ -58,46 +58,43 @@ describe('Hero Section', () => {
 });
 
 describe('Highlights Section', () => {
-  it('contains all 5 highlight cards with correct titles', () => {
-    const titles = document.querySelectorAll('#highlights .highlights__title');
-    expect(titles.length).toBe(5);
+  it('renders the proof ledger with a figure and description per row', () => {
+    const rows = document.querySelectorAll('#highlights .ledger__row');
+    expect(rows.length).toBe(11);
 
-    const expectedTitles = [
-      'AI Platform Builder',
-      'AI Pioneer & Champion',
-      'Teaching Since 2012',
-      '9+ Years in Production',
-      'Engineering Leader',
-    ];
+    rows.forEach((row) => {
+      expect(row.querySelector('.ledger__figure')).not.toBeNull();
+      expect(row.querySelector('.ledger__desc')).not.toBeNull();
+    });
 
-    const actualTitles = Array.from(titles).map((t) => t.textContent);
-    expectedTitles.forEach((title) => {
-      expect(actualTitles).toContain(title);
+    const figures = Array.from(rows).map((r) => r.querySelector('.ledger__figure').textContent);
+    ['weeks → hours', '1st', '13 years', '100s', 'MIT'].forEach((figure) => {
+      expect(figures).toContain(figure);
     });
   });
 });
 
 describe('Skills Section', () => {
-  it('has all 4 skill categories', () => {
-    const categories = document.querySelectorAll('#skills .skills__category-name');
-    expect(categories.length).toBe(4);
+  it('has all 3 skill layers', () => {
+    const labels = document.querySelectorAll('#skills .skills__layer-label');
+    expect(labels.length).toBe(3);
 
-    const expectedCategories = ['Languages', 'Technologies', 'Areas of Expertise', 'Leadership'];
-    const actualCategories = Array.from(categories).map((c) => c.textContent);
-    expectedCategories.forEach((cat) => {
-      expect(actualCategories).toContain(cat);
+    const expectedLabels = ['build', 'architect', 'lead'];
+    const actualLabels = Array.from(labels).map((l) => l.textContent);
+    expectedLabels.forEach((label) => {
+      expect(actualLabels).toContain(label);
     });
   });
 
-  it('has all skills present', () => {
-    const pills = document.querySelectorAll('#skills .skill-pill');
-    const allSkills = Array.from(pills).map((p) => p.textContent);
+  it('has all skill tokens present', () => {
+    const tokens = document.querySelectorAll('#skills .skills__token');
+    const allSkills = Array.from(tokens).map((t) => t.textContent);
 
     const expectedSkills = [
       'Kotlin', 'Java', 'Python', 'TypeScript', 'JavaScript', 'Scala',
-      'Spring Boot', 'GraphQL', 'gRPC', 'AWS', 'React', 'NodeJS', 'OpenAPI',
-      'SDKs', 'Platform Engineering', 'AI-native Architectures', 'MCP', 'Agent Frameworks', 'Microservices', 'Backend', 'Full-Stack',
-      'Engineering Leadership', 'Mentoring', 'Hiring', 'Coaching', 'Training', 'AI Advocacy',
+      'Spring Boot', 'GraphQL', 'gRPC', 'AWS', 'React', 'Node.js', 'OpenAPI',
+      'SDKs', 'Platform Engineering', 'AI-native Architectures', 'MCP Servers', 'Agent Frameworks', 'Microservices', 'Backend', 'Full-Stack',
+      'Engineering Leadership', 'Mentoring & Coaching', 'Hiring & Bar Raising', 'AI Advocacy',
     ];
 
     expectedSkills.forEach((skill) => {
@@ -118,11 +115,11 @@ describe('Links Section', () => {
     'https://go.bynoor.io/email',
   ];
 
-  it('has all channel cards and anchor links with correct hrefs', () => {
+  it('has all world cards and anchor links with correct hrefs', () => {
     const linksSection = document.querySelector('#links');
     expectedChannelHrefs.forEach((href) => {
-      const link = linksSection.querySelector(`a.links__channel[href="${href}"]`);
-      expect(link, `Expected channel card with href="${href}"`).not.toBeNull();
+      const link = linksSection.querySelector(`a.links__world[href="${href}"]`);
+      expect(link, `Expected world card with href="${href}"`).not.toBeNull();
     });
     expectedAnchorLinkHrefs.forEach((href) => {
       const link = linksSection.querySelector(`a[href="${href}"]`);
@@ -130,11 +127,11 @@ describe('Links Section', () => {
     });
   });
 
-  it('has "Book a call" button with correct href', () => {
+  it('has "Book a conversation" button with correct href', () => {
     const linksSection = document.querySelector('#links');
-    const cta = linksSection.querySelector('a[href="https://cal.com/mohammad-noor"]');
+    const cta = linksSection.querySelector('a.links__cta[href="https://cal.com/mohammad-noor"]');
     expect(cta).not.toBeNull();
-    expect(cta.textContent).toContain('Book a call');
+    expect(cta.textContent).toContain('Book a conversation');
   });
 
   it('all links have target="_blank" and rel="noopener"', () => {
@@ -146,11 +143,11 @@ describe('Links Section', () => {
     });
   });
 
-  it('YouTube channel has "Code with Noor" label', () => {
+  it('YouTube world has "Code with Noor" label', () => {
     const linksSection = document.querySelector('#links');
     const youtubeLink = linksSection.querySelector('a[href="https://go.bynoor.io/youtube"]');
     expect(youtubeLink).not.toBeNull();
-    const label = youtubeLink.querySelector('.links__channel-name');
+    const label = youtubeLink.querySelector('.links__world-platform');
     expect(label.textContent).toBe('Code with Noor');
   });
 });
@@ -188,11 +185,11 @@ describe('Navigation', () => {
     expect(hrefs).toContain('#projects');
   });
 
-  it('has Resources link present', () => {
+  it('has prep kit link present', () => {
     const nav = document.querySelector('nav');
-    const resourcesLink = nav.querySelector('a[href="/technical-interview-preparation-kit/"]');
-    expect(resourcesLink).not.toBeNull();
-    expect(resourcesLink.textContent.toLowerCase()).toBe('resources');
+    const kitLink = nav.querySelector('a[href="/technical-interview-preparation-kit/"]');
+    expect(kitLink).not.toBeNull();
+    expect(kitLink.textContent.toLowerCase()).toBe('prep kit');
   });
 });
 
@@ -251,9 +248,11 @@ describe('SEO', () => {
 
 describe('Accessibility', () => {
   it('skip-nav link is the first focusable element', () => {
-    const allFocusable = document.querySelectorAll(
-      'a[href], button, input, textarea, select, [tabindex]:not([tabindex="-1"])'
-    );
+    // jsdom parses <noscript> content as focusable, but real browsers with JS
+    // enabled never render it — exclude it to test what keyboard users get.
+    const allFocusable = Array.from(
+      document.querySelectorAll('a[href], button, input, textarea, select, [tabindex]:not([tabindex="-1"])')
+    ).filter((el) => !el.closest('noscript'));
     const first = allFocusable[0];
     expect(first).not.toBeNull();
     expect(first.classList.contains('skip-nav')).toBe(true);
@@ -273,8 +272,9 @@ describe('Accessibility', () => {
       expect(link.getAttribute('aria-label')).toBeTruthy();
     });
 
-    const channelCards = document.querySelectorAll('#links .links__channel');
-    channelCards.forEach((link) => {
+    const worldCards = document.querySelectorAll('#links .links__world');
+    expect(worldCards.length).toBeGreaterThan(0);
+    worldCards.forEach((link) => {
       expect(link.getAttribute('aria-label')).toBeTruthy();
     });
   });
