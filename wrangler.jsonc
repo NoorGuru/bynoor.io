@@ -1,0 +1,8 @@
+// Cloudflare Workers — assets-only static hosting for bynoor.io.
+// Built by `npm run build` (Astro static output in dist/), deployed by
+// Workers Builds on every push. No adapter, no SSR, no _worker.js.
+{
+  "name": "bynoor-io",
+  "compatibility_date": "2026-10-03",
+  "assets": { "directory": "./dist" }
+}

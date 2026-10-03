@@ -20,7 +20,8 @@
     "fast-check": "^4.1.1",
     "jsdom": "^29.1.1",
     "sharp": "^0.35.3",
-    "vitest": "^3.1.4"
+    "vitest": "^3.1.4",
+    "wrangler": "^4.147.0"
   },
   "dependencies": {
     "astro": "^7.3.5"
