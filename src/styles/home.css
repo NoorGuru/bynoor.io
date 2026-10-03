@@ -158,6 +158,9 @@ img {
   letter-spacing: -0.02em;
   color: var(--ink);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   margin-right: auto;
 }
 
@@ -1197,6 +1200,11 @@ html.js-loaded .lens-switch {
 
 .recommendations__linkedin-badge {
   color: var(--ink-soft);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 /* === Connect: invitation first, worlds as ledger rows === */
@@ -1372,6 +1380,9 @@ html.js-loaded .lens-switch {
   letter-spacing: -0.02em;
   text-decoration: none;
   color: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 .footer__arc {
