@@ -50,7 +50,7 @@ Noor is actively open to senior software engineering and AI roles. Target positi
 - **Expedia Group** (2021–Present): SDE III — Invented EG Wizard AI platform, sole owner of SDK platform (500M+ requests), first AI Champion
 - **Amazon** (2019–2021): SDE — Built scalable services, designed Kayl UX analytics library, multi-marketplace features
 - **Wiley/Atypon** (2017–2019): Software Engineer — Full-stack development, automation frameworks
-- **Code with Noor** (2013–Present): YouTube educator - 18.7K subscribers, 750K+ views, teaching programming & AI
+- **Code with Noor** (2013–Present): YouTube educator - 18.7K subscribers, 760K+ views, teaching programming & AI
 
 ## Key Achievements
 
