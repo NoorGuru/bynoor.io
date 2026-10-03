@@ -6,10 +6,6 @@ const { prefix = "", logoHref = "#hero" } = Astro.props;
   <!-- Full-screen mobile menu overlay -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <nav class="mobile-menu__nav" aria-label="Mobile navigation">
-      <div class="mobile-menu__brand">
-        <a href={logoHref} class="mobile-menu__logo">bynoor.io</a>
-        <div class="mobile-menu__logo-line" aria-hidden="true"></div>
-      </div>
       <ul class="mobile-menu__links">
         <li class="mobile-menu__item"><a href={prefix + "#eg-case"} class="mobile-menu__link"><span class="mobile-menu__link-index">01</span>case</a></li>
         <li class="mobile-menu__item"><a href={prefix + "#highlights"} class="mobile-menu__link"><span class="mobile-menu__link-index">02</span>proof</a></li>

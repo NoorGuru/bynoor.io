@@ -265,9 +265,11 @@ img {
   inset: 0;
   z-index: 70;
   background: var(--paper);
-  padding: calc(var(--header-h) + 1rem) 2rem 2rem;
+  padding: calc(var(--header-h) + 1.25rem) 2rem 2rem;
   transform: translateY(-100%);
   visibility: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 body.menu-open .mobile-menu,
@@ -282,30 +284,11 @@ body.menu-open {
   overflow: hidden;
 }
 
-.mobile-menu__brand {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--line-strong);
-}
-
-.mobile-menu__logo {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 1.4rem;
-  color: var(--ink);
-  text-decoration: none;
-}
-
-.mobile-menu__logo-line {
-  flex: 1;
-}
-
 .mobile-menu__links {
   list-style: none;
   margin: 0;
   padding: 0;
+  border-top: 1px solid var(--line);
 }
 
 .mobile-menu__link {
