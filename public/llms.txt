@@ -77,7 +77,8 @@ Noor is actively open to senior software engineering and AI roles. Target positi
 
 - [Official Website](https://bynoor.io/)
 - [LinkedIn Profile](https://www.linkedin.com/in/mohnoor94)
-- [GitHub](https://github.com/mohnoor94)
+- [GitHub Profile](https://github.com/mohnoor94)
+- [GitHub Organizations]: [NoorGuru](https://github.com/NoorGuru) (Product Lab) and [GoBanana-io](https://github.com/GoBanana-io) (AI Agent Tooling)
 - [YouTube — Code with Noor](https://www.youtube.com/c/CodeWithNoor)
 - [Twitter / X](https://go.bynoor.io/twitter)
 - [StackOverflow](https://go.bynoor.io/sof)
