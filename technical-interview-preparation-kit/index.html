@@ -95,12 +95,16 @@
     gtag('config', 'G-XHXB3G7XDR');
   </script>
 
-  <!-- Preload critical fonts -->
-  <link rel="preload" as="font" href="/src/assets/fonts/inter-variable.woff2" type="font/woff2" crossorigin>
-  <link rel="preload" as="font" href="/src/assets/fonts/space-grotesk-variable.woff2" type="font/woff2" crossorigin>
+  <meta name="theme-color" content="#f7f3ea">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/src/styles/main.css">
+  <!-- Preload critical fonts -->
+  <link rel="preload" as="font" href="/src/assets/fonts/fraunces-normal.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="/src/assets/fonts/dm-sans-variable.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="/src/assets/fonts/jetbrains-mono-regular.woff2" type="font/woff2" crossorigin>
+
+  <!-- Styles: shared editorial system + kit companion -->
+  <link rel="stylesheet" href="/src/styles/home.css">
+  <link rel="stylesheet" href="/src/styles/resources.css">
 </head>
 <body>
   <!-- Skip Navigation -->
@@ -123,12 +127,13 @@
         <span class="nav__hamburger-ring"></span>
       </button>
       <ul class="nav__links" id="nav-links">
-        <li><a href="/#highlights" class="nav__link">impact</a></li>
+        <li><a href="/#eg-case" class="nav__link">case</a></li>
+        <li><a href="/#highlights" class="nav__link">proof</a></li>
+        <li><a href="/#projects" class="nav__link">build</a></li>
+        <li><a href="/#teach" class="nav__link">teach</a></li>
         <li><a href="/#journey" class="nav__link">journey</a></li>
         <li><a href="/#skills" class="nav__link">skills</a></li>
-        <li><a href="/#recommendations" class="nav__link">recs</a></li>
         <li><a href="/#links" class="nav__link">connect</a></li>
-        <li><a href="/#projects" class="nav__link">projects</a></li>
         <li><a href="/technical-interview-preparation-kit/" class="nav__link nav__link--active">prep kit</a></li>
       </ul>
       <a href="https://cal.com/mohammad-noor" target="_blank" rel="noopener" class="nav__cta">Let's talk</a>
@@ -137,20 +142,20 @@
 
   <!-- Full-screen mobile menu overlay -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-    <div class="mobile-menu__gradient" aria-hidden="true"></div>
     <nav class="mobile-menu__nav" aria-label="Mobile navigation">
       <div class="mobile-menu__brand">
         <a href="/" class="mobile-menu__logo">bynoor.io</a>
         <div class="mobile-menu__logo-line" aria-hidden="true"></div>
       </div>
       <ul class="mobile-menu__links">
-        <li class="mobile-menu__item"><a href="/#highlights" class="mobile-menu__link"><span class="mobile-menu__link-index">01</span>impact</a></li>
-        <li class="mobile-menu__item"><a href="/#journey" class="mobile-menu__link"><span class="mobile-menu__link-index">02</span>journey</a></li>
-        <li class="mobile-menu__item"><a href="/#skills" class="mobile-menu__link"><span class="mobile-menu__link-index">03</span>skills</a></li>
-        <li class="mobile-menu__item"><a href="/#recommendations" class="mobile-menu__link"><span class="mobile-menu__link-index">04</span>recs</a></li>
-        <li class="mobile-menu__item"><a href="/#links" class="mobile-menu__link"><span class="mobile-menu__link-index">05</span>connect</a></li>
-        <li class="mobile-menu__item"><a href="/#projects" class="mobile-menu__link"><span class="mobile-menu__link-index">06</span>projects</a></li>
-        <li class="mobile-menu__item"><a href="/technical-interview-preparation-kit/" class="mobile-menu__link"><span class="mobile-menu__link-index">07</span>prep kit</a></li>
+        <li class="mobile-menu__item"><a href="/#eg-case" class="mobile-menu__link"><span class="mobile-menu__link-index">01</span>case</a></li>
+        <li class="mobile-menu__item"><a href="/#highlights" class="mobile-menu__link"><span class="mobile-menu__link-index">02</span>proof</a></li>
+        <li class="mobile-menu__item"><a href="/#projects" class="mobile-menu__link"><span class="mobile-menu__link-index">03</span>build</a></li>
+        <li class="mobile-menu__item"><a href="/#teach" class="mobile-menu__link"><span class="mobile-menu__link-index">04</span>teach</a></li>
+        <li class="mobile-menu__item"><a href="/#journey" class="mobile-menu__link"><span class="mobile-menu__link-index">05</span>journey</a></li>
+        <li class="mobile-menu__item"><a href="/#skills" class="mobile-menu__link"><span class="mobile-menu__link-index">06</span>skills</a></li>
+        <li class="mobile-menu__item"><a href="/#links" class="mobile-menu__link"><span class="mobile-menu__link-index">07</span>connect</a></li>
+        <li class="mobile-menu__item"><a href="/technical-interview-preparation-kit/" class="mobile-menu__link"><span class="mobile-menu__link-index">08</span>prep kit</a></li>
       </ul>
       <a href="https://cal.com/mohammad-noor" target="_blank" rel="noopener" class="mobile-menu__cta">Let's talk →</a>
     </nav>
@@ -164,9 +169,6 @@
     </a>
 
     <div class="resources__hero" data-animate="fade-up">
-      <div class="resources__hero-glow" aria-hidden="true"></div>
-      <div class="resources__hero-grid" aria-hidden="true"></div>
-      <div class="resources__hero-noise" aria-hidden="true"></div>
       <div class="resources__hero-content">
         <span class="resources__hero-tag">Reference Guide</span>
         <h1 class="resources__title">
@@ -728,15 +730,6 @@
 
   <!-- Footer -->
   <footer class="footer" data-section-accent="primary">
-    <!-- Ambient gradient layer that transitions from senary (orange) to deep violet -->
-    <div class="footer__aurora" aria-hidden="true"></div>
-    <div class="footer__grid-bg" aria-hidden="true"></div>
-
-    <!-- Signature: Glowing core (noor = light) -->
-    <div class="footer__beacon" data-animate="scale-in" aria-hidden="true">
-      <div class="footer__beacon-core"></div>
-    </div>
-
     <a href="/" class="footer__logo" data-animate="fade-up">bynoor.io</a>
 
     <!-- The arc: a single powerful statement -->

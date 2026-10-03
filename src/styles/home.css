@@ -1,6 +1,7 @@
-/* home.css — the homepage bundle. Native light editorial system.
-   Loaded ONLY by index.html; the interview-kit page keeps main.css.
-   Paper room, Fraunces display voice, pine + brass, hairlines over shadows. */
+/* home.css — the shared editorial bundle. Native light system.
+   Loaded by index.html and technical-interview-preparation-kit/index.html
+   (the kit adds resources.css on top). Paper room, Fraunces display voice,
+   pine + brass, hairlines over shadows. */
 
 @import './reset.css';
 @import './fonts.css';
