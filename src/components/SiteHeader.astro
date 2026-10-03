@@ -1,0 +1,31 @@
+---
+const { prefix = "", active = null, logoHref = "#hero" } = Astro.props;
+---
+<!-- Header / Navigation -->
+  <header class="header">
+    <nav class="nav" aria-label="Main navigation">
+      <a href={logoHref} class="nav__logo">bynoor.io</a>
+      <button
+        class="nav__hamburger"
+        aria-expanded="false"
+        aria-controls="nav-links"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="nav__hamburger-icon">
+          <span class="nav__hamburger-line nav__hamburger-line--top"></span>
+          <span class="nav__hamburger-line nav__hamburger-line--bottom"></span>
+        </span>
+      </button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href={prefix + "#eg-case"} class="nav__link">case</a></li>
+        <li><a href={prefix + "#highlights"} class="nav__link">proof</a></li>
+        <li><a href={prefix + "#projects"} class="nav__link">build</a></li>
+        <li><a href={prefix + "#teach"} class="nav__link">teach</a></li>
+        <li><a href={prefix + "#journey"} class="nav__link">journey</a></li>
+        <li><a href={prefix + "#skills"} class="nav__link">skills</a></li>
+        <li><a href={prefix + "#links"} class="nav__link">connect</a></li>
+        <li><a href="/technical-interview-preparation-kit/" class={active === "kit" ? "nav__link nav__link--active" : "nav__link"}>prep kit</a></li>
+      </ul>
+      <a href="https://cal.com/mohammad-noor" target="_blank" rel="noopener" class="nav__cta">Let's talk</a>
+    </nav>
+  </header>

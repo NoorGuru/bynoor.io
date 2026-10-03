@@ -1,0 +1,28 @@
+---
+const { prefix = "", logoHref = "#hero" } = Astro.props;
+---
+
+
+  <!-- Full-screen mobile menu overlay -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+      <div class="mobile-menu__brand">
+        <a href={logoHref} class="mobile-menu__logo">bynoor.io</a>
+        <div class="mobile-menu__logo-line" aria-hidden="true"></div>
+      </div>
+      <ul class="mobile-menu__links">
+        <li class="mobile-menu__item"><a href={prefix + "#eg-case"} class="mobile-menu__link"><span class="mobile-menu__link-index">01</span>case</a></li>
+        <li class="mobile-menu__item"><a href={prefix + "#highlights"} class="mobile-menu__link"><span class="mobile-menu__link-index">02</span>proof</a></li>
+        <li class="mobile-menu__item"><a href={prefix + "#projects"} class="mobile-menu__link"><span class="mobile-menu__link-index">03</span>build</a></li>
+        <li class="mobile-menu__item"><a href={prefix + "#teach"} class="mobile-menu__link"><span class="mobile-menu__link-index">04</span>teach</a></li>
+        <li class="mobile-menu__item"><a href={prefix + "#journey"} class="mobile-menu__link"><span class="mobile-menu__link-index">05</span>journey</a></li>
+        <li class="mobile-menu__item"><a href={prefix + "#skills"} class="mobile-menu__link"><span class="mobile-menu__link-index">06</span>skills</a></li>
+        <li class="mobile-menu__item"><a href={prefix + "#links"} class="mobile-menu__link"><span class="mobile-menu__link-index">07</span>connect</a></li>
+        <li class="mobile-menu__item"><a href="/technical-interview-preparation-kit/" class="mobile-menu__link"><span class="mobile-menu__link-index">08</span>prep kit</a></li>
+      </ul>
+      <a href="https://cal.com/mohammad-noor" target="_blank" rel="noopener" class="mobile-menu__cta">Let's talk →</a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  

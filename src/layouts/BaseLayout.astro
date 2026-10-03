@@ -1,0 +1,41 @@
+---
+import SiteHeader from "../components/SiteHeader.astro";
+import MobileMenu from "../components/MobileMenu.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import "../styles/home.css";
+
+const { prefix = "", active = null, logoHref = "#hero" } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f3ea" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHXB3G7XDR" is:inline></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XHXB3G7XDR');
+  </script>
+  <link rel="preload" as="font" href="/fonts/fraunces-normal.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="/fonts/dm-sans-variable.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="/fonts/jetbrains-mono-regular.woff2" type="font/woff2" crossorigin>
+    <slot name="head" />
+  </head>
+  <body>
+    <slot name="pre" />
+    <SiteHeader prefix={prefix} active={active} logoHref={logoHref} />
+    <MobileMenu prefix={prefix} logoHref={logoHref} />
+    <slot />
+    <slot name="post" />
+    <SiteFooter logoHref={logoHref} />
+    <script>
+      import "../scripts/main.js";
+    </script>
+  </body>
+</html>
