@@ -85,3 +85,4 @@ Noor is actively open to senior software engineering and AI roles. Target positi
 - [Book a Call](https://cal.com/mohammad-noor)
 - [Technical Interview Prep Kit](https://bynoor.io/technical-interview-preparation-kit/)
 - [Aura — AI Stock Tracker](https://aura.bynoor.io)
+- [Nebula — Bilingual Startup Playbooks Library](https://nebula.bynoor.io)

@@ -173,6 +173,18 @@ describe('Projects Section', () => {
       expect(card.getAttribute('rel')).toContain('noopener');
     });
   });
+
+  it('has Nebula featured project with correct live URL and repo', () => {
+    const nebulaLive = document.querySelector('#projects a[href="https://nebula.bynoor.io"]');
+    expect(nebulaLive).not.toBeNull();
+    expect(nebulaLive.getAttribute('target')).toBe('_blank');
+    expect(nebulaLive.getAttribute('rel')).toContain('noopener');
+
+    const nebulaRepo = document.querySelector('#projects a[href="https://github.com/NoorGuru/nebula"]');
+    expect(nebulaRepo).not.toBeNull();
+    expect(nebulaRepo.getAttribute('target')).toBe('_blank');
+    expect(nebulaRepo.getAttribute('rel')).toContain('noopener');
+  });
 });
 
 describe('Navigation', () => {

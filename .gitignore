@@ -1,6 +1,7 @@
 node_modules/
 dist/
 *.local
+.impeccable/
 
 # Untracked project directories
 bynoor.io/
