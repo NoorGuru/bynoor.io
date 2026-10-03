@@ -43,7 +43,7 @@ const { logoHref = "#hero" } = Astro.props;
 
     <!-- Bottom line -->
     <div class="footer__bottom">
-      <p class="footer__copy">2012 – <span id="year"></span></p>
+      <p class="footer__copy">2012 – <span id="year">{new Date().getFullYear()}</span></p>
       <p class="footer__made">Designed & engineered by Noor</p>
     </div>
   </footer>
