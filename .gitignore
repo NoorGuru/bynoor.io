@@ -6,3 +6,4 @@ dist/
 bynoor.io/
 themes/
 test-results/
+.astro/
