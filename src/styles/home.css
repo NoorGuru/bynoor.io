@@ -1375,6 +1375,7 @@ html.js-loaded .lens-switch {
   font-size: 1.6rem;
   letter-spacing: -0.02em;
   text-decoration: none;
+  color: var(--paper);
 }
 
 .footer__arc {
