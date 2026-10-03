@@ -7,7 +7,7 @@
 - **Location:** Amman, Jordan
 - **Phone:** 00962786201850
 - **Email:** moh.noor94@gmail.com
-- **Website:** https://www.bynoor.io
+- **Website:** https://bynoor.io
 - **Tagline:** Building & Leading AI-Powered Developer Platforms | AI Agent Engineer | SDE III at Expedia Group (ex-Amazon) | Tech & AI Advocate
 
 ## Summary
@@ -163,16 +163,15 @@ Always open to conversations about AI in developer tooling, platform engineering
 - **Leadership:** Engineering leadership, mentoring, hiring, coaching, training, AI advocacy
 
 ## Social Links
-- LinkedIn: https://go.bynoor.io/linkedin (https://www.linkedin.com/in/mohnoor94)
-- GitHub: https://go.bynoor.io/github (https://github.com/mohnoor94)
-- YouTube: https://go.bynoor.io/youtube (https://www.youtube.com/c/CodeWithNoor)
-- Twitter/X: https://go.bynoor.io/twitter
-- StackOverflow: https://go.bynoor.io/sof
-- HackerRank: https://go.bynoor.io/hr
-- Email: https://go.bynoor.io/email (moh.noor94@gmail.com)
-- Website/Blog: https://www.noor.sh
-- Personal Projects: https://areej.io/, https://mohnoor94.github.io/hire-found/
-- Apps: https://go.bynoor.io/apps
+- LinkedIn: https://www.linkedin.com/in/mohnoor94
+- GitHub: https://github.com/mohnoor94
+- GitHub Organizations: https://github.com/NoorGuru (Product Lab), https://github.com/GoBanana-io (AI Agent Tooling)
+- YouTube: https://www.youtube.com/c/CodeWithNoor
+- Twitter/X: https://x.com/mohnoor94
+- StackOverflow: https://stackoverflow.com/users/2847543/mohammad-noor
+- Email: mailto:moh.noor94@gmail.com
+- Website: https://bynoor.io
+- Personal Projects: https://areej.io/, https://mohnoor94.github.io/hire-found/, https://aura.bynoor.io, https://nebula.bynoor.io
 
 ## Languages
 - Arabic (Native or Bilingual)

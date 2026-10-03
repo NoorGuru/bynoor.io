@@ -54,12 +54,12 @@ Noor is actively open to senior software engineering and AI roles. Target positi
 
 ## Key Achievements
 
-- Invented EG Wizard — AI migration platform (proof of concept → 3-year strategic roadmap)
+- Invented EG Wizard — AI migration platform with autonomous agents, MCP servers, and chain-of-tools architecture; 4 production versions in 6 months (proof of concept → 3-year strategic roadmap)
 - Prevented $2.87M in gross booking losses with 15-minute production hotfix
 - SDK platform serving 500M+ requests with zero downtime
 - Named Expedia Group's first GitHub Copilot Champion (2024) and AI Champion (2026)
 - Trained hundreds of engineers on AI-powered development
-- 18.7K YouTube subscribers teaching programming since 2013
+- 18.7K YouTube subscribers, 760K+ views, teaching programming since 2013
 - Architected "Kayl" at Amazon — still running 3+ years after departure
 
 ## Education
@@ -85,6 +85,7 @@ Noor is actively open to senior software engineering and AI roles. Target positi
 - [Email Contact](mailto:moh.noor94@gmail.com)
 - [Book a Call](https://cal.com/mohammad-noor)
 - [Technical Interview Prep Kit](https://bynoor.io/technical-interview-preparation-kit/)
-- [Aura: AI Financial Intelligence Platform](https://aura.bynoor.io) (Repo: https://github.com/NoorGuru/irec). Tagline: Every stock analyst. One clear signal. Ingestion pipeline with Claude Sonnet 5.5 candidate extraction, TypeSafe Jev calibrated verification (conviction 0 to 100, sentiment -2.0 to +2.0, target price validation, transcript triage), FastAPI and Python 3.13 deployed to Google Cloud Run (us-central1 via gcloud CLI in GitHub Actions), Supabase Postgres, and Next.js 16 terminal.
+- [Aura: AI Financial Intelligence Platform](https://aura.bynoor.io) (Repo: https://github.com/NoorGuru/irec). Tagline: Every stock analyst. One clear signal. Ingestion via Cloudflare Worker edge proxy with 3-tier fallback, Claude Sonnet 5.5 candidate extraction, TypeSafe Jev calibrated verification (conviction 0 to 100, sentiment -2.0 to +2.0, target price validation, transcript triage), FastAPI and Python 3.13 deployed to Google Cloud Run (us-central1 via gcloud CLI in GitHub Actions), Supabase Postgres, and Next.js 16 terminal.
 - [Nebula: Bilingual Startup Playbooks Library](https://nebula.bynoor.io) (Repo: https://github.com/NoorGuru/nebula). Tagline: Ideas worth stealing. Bilingual English and Modern Standard Arabic library of 320+ evidence-backed startup teardowns and failure lessons built on Astro 7 SSG and Cloudflare Workers static edge.
 - [areej.io: Personal Brand & Consulting Platform](https://areej.io/) (Repo: https://github.com/mohnoor94/areej). Editorial brand platform for Areej Amer, Platform and Observability Leader in Amman, Jordan. Built with React 19, Vite 8, React Router, GSAP, Lenis smooth scroll, Cal.com embed, and Cloudflare Workers.
+- [HireFound: Recruitment Brand](https://mohnoor94.github.io/hire-found/). Recruitment brand for Yasmin Blasi, a boutique career matchmaker in MENA. Multi-section product with vacancy listings, service tiers, DISC assessments, and a WhatsApp-first contact flow.
