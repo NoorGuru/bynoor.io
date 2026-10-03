@@ -7,7 +7,6 @@
 
 export function initNavigation() {
   const hamburger = document.querySelector('.nav__hamburger');
-  const navLinks = document.getElementById('nav-links');
   const mobileMenu = document.getElementById('mobile-menu');
   const header = document.querySelector('.header');
 
@@ -15,7 +14,6 @@ export function initNavigation() {
 
   function openMenu() {
     hamburger.setAttribute('aria-expanded', 'true');
-    if (navLinks) navLinks.setAttribute('data-visible', 'true');
     if (mobileMenu) {
       mobileMenu.setAttribute('aria-hidden', 'false');
       document.body.classList.add('menu-open');
@@ -29,7 +27,6 @@ export function initNavigation() {
 
   function closeMenu() {
     hamburger.setAttribute('aria-expanded', 'false');
-    if (navLinks) navLinks.removeAttribute('data-visible');
     if (mobileMenu) {
       mobileMenu.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('menu-open');
@@ -55,15 +52,6 @@ export function initNavigation() {
       hamburger.focus();
     }
   });
-
-  // Close when a nav link is clicked (desktop)
-  if (navLinks) {
-    navLinks.addEventListener('click', (e) => {
-      if (e.target.closest('.nav__link')) {
-        closeMenu();
-      }
-    });
-  }
 
   // Close when a mobile menu link is clicked
   if (mobileMenu) {
