@@ -47,10 +47,10 @@ describe('Hero Section', () => {
 
   it('has social icon links with correct hrefs in hero', () => {
     const heroSection = document.querySelector('#hero');
-    const linkedin = heroSection.querySelector('a[href="https://go.bynoor.io/linkedin"]');
-    const github = heroSection.querySelector('a[href="https://go.bynoor.io/github"]');
-    const youtube = heroSection.querySelector('a[href="https://go.bynoor.io/youtube"]');
-    const email = heroSection.querySelector('a[href="https://go.bynoor.io/email"]');
+    const linkedin = heroSection.querySelector('a[href="https://www.linkedin.com/in/mohnoor94"]');
+    const github = heroSection.querySelector('a[href="https://github.com/mohnoor94"]');
+    const youtube = heroSection.querySelector('a[href="https://www.youtube.com/c/CodeWithNoor"]');
+    const email = heroSection.querySelector('a[href="mailto:moh.noor94@gmail.com"]');
 
     expect(linkedin).not.toBeNull();
     expect(github).not.toBeNull();
@@ -107,14 +107,14 @@ describe('Skills Section', () => {
 
 describe('Links Section', () => {
   const expectedChannelHrefs = [
-    'https://go.bynoor.io/youtube',
-    'https://go.bynoor.io/linkedin',
-    'https://go.bynoor.io/github',
-    'https://go.bynoor.io/twitter',
+    'https://www.youtube.com/c/CodeWithNoor',
+    'https://www.linkedin.com/in/mohnoor94',
+    'https://github.com/mohnoor94',
+    'https://x.com/mohnoor94',
   ];
 
   const expectedAnchorLinkHrefs = [
-    'https://go.bynoor.io/email',
+    'mailto:moh.noor94@gmail.com',
   ];
 
   it('has all world cards and anchor links with correct hrefs', () => {
@@ -147,7 +147,7 @@ describe('Links Section', () => {
 
   it('YouTube world has "Code with Noor" label', () => {
     const linksSection = document.querySelector('#links');
-    const youtubeLink = linksSection.querySelector('a[href="https://go.bynoor.io/youtube"]');
+    const youtubeLink = linksSection.querySelector('a[href="https://www.youtube.com/c/CodeWithNoor"]');
     expect(youtubeLink).not.toBeNull();
     const label = youtubeLink.querySelector('.links__world-platform');
     expect(label.textContent).toBe('Code with Noor');

@@ -1994,11 +1994,30 @@ body.menu-open {
   color: var(--paper);
 }
 
+.links__secondary-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.links__action-sep {
+  color: var(--line-strong);
+  user-select: none;
+}
+
 .links__email-fallback {
   color: var(--ink-soft);
+  text-decoration: none;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
+  transition: color 0.15s ease;
+}
+
+.links__email-fallback:hover {
+  color: var(--pine-deep);
+  text-decoration: underline;
 }
 
 .links__resume-link {
@@ -2007,7 +2026,13 @@ body.menu-open {
   gap: 0.5rem;
   color: var(--ink);
   font-weight: 600;
+  text-decoration: none;
   min-height: 44px;
+  transition: color 0.15s ease;
+}
+
+.links__resume-link:hover {
+  color: var(--pine);
 }
 
 .links__worlds {
