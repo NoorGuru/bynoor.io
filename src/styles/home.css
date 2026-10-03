@@ -1369,10 +1369,6 @@ html.js-loaded .lens-switch {
   padding: 4rem 2rem 2rem;
 }
 
-.footer a {
-  color: inherit;
-}
-
 .footer__logo {
   font-family: var(--display);
   font-weight: 800;
