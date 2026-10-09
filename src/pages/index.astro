@@ -484,7 +484,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="hero__lead">
           <div class="hero__status-pill" data-animate="fade-up">
             <span class="hero__status-indicator" aria-hidden="true"></span>
-            <span class="hero__status-text">Builder · Teacher · Engineer</span>
+            <span class="hero__status-text">Open to Select Staff / Advisory Roles · Amman &amp; Remote</span>
           </div>
 
           <h1 class="hero__title hero__tagline" id="noor-name" data-animate="fade-up">
@@ -501,7 +501,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               <span>Let's Connect</span>
               <span class="hero__btn-orbit" aria-hidden="true">→</span>
             </a>
-            <a href="/mohammad-noor-abu-khlaif-software-engineer-resume.pdf" target="_blank" rel="noopener" class="hero__resume-link">Resume <span aria-hidden="true">↗</span></a>
+            <a href="/mohammad-noor-abu-khlaif-software-engineer-resume.pdf" target="_blank" rel="noopener" class="hero__btn hero__btn--secondary hero__resume-link" aria-label="View Mohammad Noor Resume (PDF)">
+              <span>View Resume</span>
+              <span class="hero__btn-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
 
           <!-- Micro Proof Signals: AI-native & Builder Focus -->
@@ -655,6 +658,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <!-- Featured project: Aura -->
         <article class="projects__featured projects__featured--aura" data-animate="fade-up">
           <div class="projects__featured-preview">
+            <div class="projects__browser-chrome" aria-hidden="true">
+              <div class="projects__browser-dots">
+                <span class="projects__browser-dot projects__browser-dot--close"></span>
+                <span class="projects__browser-dot projects__browser-dot--min"></span>
+                <span class="projects__browser-dot projects__browser-dot--expand"></span>
+              </div>
+              <div class="projects__browser-bar">
+                <svg class="projects__browser-lock" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span class="projects__browser-url">aura.bynoor.io</span>
+              </div>
+              <div class="projects__browser-tag">Financial Terminal</div>
+            </div>
             <a href="https://aura.bynoor.io" target="_blank" rel="noopener" class="projects__preview-link" aria-label="Visit Aura live at aura.bynoor.io">
               <img src="/aura-preview.webp" alt="Aura homepage preview showing 'Every stock analyst. One clear signal' hero and quantitative signal indicators" width="1200" height="675" loading="lazy" class="projects__preview-img" />
             </a>
@@ -727,6 +745,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <!-- Featured project: Nebula -->
         <article class="projects__featured projects__featured--nebula" data-animate="fade-up">
           <div class="projects__featured-preview">
+            <div class="projects__browser-chrome" aria-hidden="true">
+              <div class="projects__browser-dots">
+                <span class="projects__browser-dot projects__browser-dot--close"></span>
+                <span class="projects__browser-dot projects__browser-dot--min"></span>
+                <span class="projects__browser-dot projects__browser-dot--expand"></span>
+              </div>
+              <div class="projects__browser-bar">
+                <svg class="projects__browser-lock" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span class="projects__browser-url">nebula.bynoor.io</span>
+              </div>
+              <div class="projects__browser-tag">Bilingual AR / EN</div>
+            </div>
             <a href="https://nebula.bynoor.io" target="_blank" rel="noopener" class="projects__preview-link" aria-label="Visit Nebula live at nebula.bynoor.io">
               <img src="/nebula-preview.webp" alt="Nebula homepage preview showing 'Steal the playbook' hero, category filter pills, and startup teardown cards" width="1200" height="675" loading="lazy" class="projects__preview-img" />
             </a>
@@ -902,10 +935,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <div class="teach-card__embed">
               <button type="button" class="teach-card__facade" data-facade="https://www.youtube-nocookie.com/embed/videoseries?list=PLaOfjyVFnPmW1sycl5qH3PH_vymkguOq8" data-title="Complete Python Masterclass in Arabic playlist" aria-label="Play Complete Python Masterclass in Arabic playlist">
                 <img src="/teach-python.jpg" alt="" width="640" height="360" loading="lazy" />
+                <span class="teach-card__scrim" aria-hidden="true"></span>
                 <span class="teach-card__play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg></span>
               </button>
             </div>
             <div class="teach-card__body">
+              <div class="teach-card__meta">
+                <span class="teach-card__track">Foundations Track · 18.7K Students</span>
+                <span class="teach-card__lang-badge" lang="ar">بالعربية</span>
+              </div>
               <h3 class="teach-card__title">Complete Python Masterclass</h3>
               <p class="teach-card__title" lang="ar">كورس بايثون الشامل باللغة العربية</p>
               <p class="teach-card__desc">From zero to confident: syntax, data structures, and problem-solving, all in Arabic.</p>
@@ -916,10 +954,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <div class="teach-card__embed">
               <button type="button" class="teach-card__facade" data-facade="https://www.youtube-nocookie.com/embed/videoseries?list=PLaOfjyVFnPmXYSeCeSuitSai8FuM-IacQ" data-title="C++ for Beginners in Arabic playlist" aria-label="Play C++ for Beginners in Arabic playlist">
                 <img src="/teach-cpp.jpg" alt="" width="640" height="360" loading="lazy" />
+                <span class="teach-card__scrim" aria-hidden="true"></span>
                 <span class="teach-card__play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg></span>
               </button>
             </div>
             <div class="teach-card__body">
+              <div class="teach-card__meta">
+                <span class="teach-card__track">Systems &amp; Memory Track · Since 2013</span>
+                <span class="teach-card__lang-badge" lang="ar">بالعربية</span>
+              </div>
               <h3 class="teach-card__title">C++ for Beginners</h3>
               <p class="teach-card__title" lang="ar">شرح لغة سي بلس بلس للمبتدئين</p>
               <p class="teach-card__desc">Memory, pointers, and object-orientation explained slowly, in Arabic, for beginners.</p>
