@@ -599,54 +599,103 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <hr class="section-divider" aria-hidden="true">
     <section id="highlights" class="highlights" aria-labelledby="highlights-heading" data-section-accent="primary">
       <div class="highlights__container">
-        <h2 id="highlights-heading" class="highlights__heading">Proof, not promises</h2>
+        <div class="highlights__header" data-animate="fade-up">
+          <span class="highlights__eyebrow">Measurable Engineering Authority</span>
+          <h2 id="highlights-heading" class="highlights__heading">Proof, not promises</h2>
+          <p class="highlights__sub">Production incident hotfixes, high-throughput SDK portfolio sole ownership, and enterprise AI platforms outliving tenure.</p>
+        </div>
 
-        <dl class="ledger">
-          <div class="ledger__row">
-            <dt class="ledger__term"><span class="ledger__figure">15 min</span>multi-million dollar production save</dt>
-            <dd class="ledger__desc">Diagnosed and hotfixed a critical production incident, preventing millions in gross booking losses across multi-item checkout. <span class="ledger__context">at Expedia Group</span></dd>
-          </div>
-          <div class="ledger__row">
-            <dt class="ledger__term"><span class="ledger__figure">0</span>production incidents as sole owner</dt>
-            <dd class="ledger__desc">Sole owner of critical SDK portfolio (millions of daily requests) when the team dissolved. Kept every service running clean through a full reorg. <span class="ledger__context">at Expedia Group</span></dd>
-          </div>
-          <div class="ledger__row">
-            <dt class="ledger__term"><span class="ledger__figure">weeks → hours</span>an AI-powered migration platform, invented</dt>
-            <dd class="ledger__desc">Turned weeks-long framework migrations into hours. Started as a 3-day proof-of-concept, became the team's official 3-year strategic roadmap in 6 months, endorsed by Senior Directors, recognized by SVP. Autonomous Agents · MCP Servers · Chain-of-Tools. <span class="ledger__context">at Expedia Group</span></dd>
-          </div>
-          <div class="ledger__row">
-            <dt class="ledger__term"><span class="ledger__figure">1st</span>AI Champion at Expedia Group</dt>
-            <dd class="ledger__desc">First GitHub Copilot Champion (2024). First AI Champion (2026). Trained hundreds of engineers on AI-powered development across the org. <span class="ledger__context">at Expedia Group</span></dd>
-          </div>
-          <div class="ledger__row">
-            <dt class="ledger__term"><span class="ledger__figure">3+ years</span>a tool that outlived my tenure</dt>
-            <dd class="ledger__desc">Designed "Kayl," a pluggable TypeScript library for recording and collecting UX events on Seller Central. Used to compare search quality between Seller Central and the main Amazon buyer site. Led the high-level and low-level design with L8-L6 engineers. Built as a temporary solution, still running 3+ years later. <span class="ledger__context">at Amazon</span></dd>
-          </div>
-          <div class="ledger__row">
-            <dt class="ledger__term"><span class="ledger__figure">tens</span>engineers interviewed and hired</dt>
-            <dd class="ledger__desc">Bar-raising interviewer across both companies. Helped build the teams I'd later work alongside. <span class="ledger__context">at Amazon &amp; Expedia Group</span></dd>
-          </div>
-          <div class="ledger__row">
-            <dt class="ledger__term"><span class="ledger__figure">13 years</span>teaching programming</dt>
-            <dd class="ledger__desc">YouTube educator since 2013. 18.7K subscribers, 760K+ views. Teaching predates the career. It's the throughline, not the side project.</dd>
-          </div>
-          <div class="ledger__row">
-            <dt class="ledger__term"><span class="ledger__figure">100s</span>engineers trained on AI development</dt>
-            <dd class="ledger__desc">Led organization-wide training sessions on AI-powered development, driving measurable productivity gains across teams. <span class="ledger__context">at Expedia Group</span></dd>
-          </div>
-          <div class="ledger__row">
-            <dt class="ledger__term"><span class="ledger__figure">MIT</span>Computer &amp; Data Science certificate</dt>
-            <dd class="ledger__desc">Completed MIT ReACT Hub's Computer and Data Science Program (2019-2020) alongside full-time engineering work.</dd>
-          </div>
-          <div class="ledger__row">
-            <dt class="ledger__term"><span class="ledger__figure">50+</span>SDE weeks saved by killing my own project</dt>
-            <dd class="ledger__desc">When the business case changed, I called it. Saved 50+ engineer-weeks by stopping work that no longer made sense instead of protecting my ownership. <span class="ledger__context">at Expedia Group</span></dd>
-          </div>
-          <div class="ledger__row">
-            <dt class="ledger__term"><span class="ledger__figure">&lt; 1 month</span>to own a critical project solo</dt>
-            <dd class="ledger__desc">Within my first month, took ownership of a time-sensitive, business-critical solution across multiple platform teams and codebases. Delivered on time with little supervision. <span class="ledger__context">at Amazon</span></dd>
-          </div>
-        </dl>
+        <div class="ledger">
+          <!-- Executive Impact Grid: Top 4 Jaw-Dropping Metrics -->
+          <dl class="ledger__grid" data-animate="fade-up">
+            <div class="ledger__row ledger__row--featured">
+              <dt class="ledger__term">
+                <span class="ledger__figure">15 min</span>
+                <span class="ledger__metric-label">multi-million dollar save</span>
+              </dt>
+              <dd class="ledger__desc">
+                Diagnosed and hotfixed a critical production incident, preventing millions in gross booking losses across multi-item checkout.
+                <span class="ledger__context-tag">Expedia Group</span>
+              </dd>
+            </div>
+            <div class="ledger__row ledger__row--featured">
+              <dt class="ledger__term">
+                <span class="ledger__figure">0</span>
+                <span class="ledger__metric-label">incidents as sole owner</span>
+              </dt>
+              <dd class="ledger__desc">
+                Sole owner of critical SDK portfolio (millions of daily requests) when the team dissolved. Kept every service running clean through a full reorg.
+                <span class="ledger__context-tag">Expedia Group</span>
+              </dd>
+            </div>
+            <div class="ledger__row ledger__row--featured">
+              <dt class="ledger__term">
+                <span class="ledger__figure">weeks → hours</span>
+                <span class="ledger__metric-label">AI migration platform</span>
+              </dt>
+              <dd class="ledger__desc">
+                Turned weeks-long framework migrations into hours. Started as a 3-day proof-of-concept, became the team's official 3-year strategic roadmap in 6 months, endorsed by Senior Directors, recognized by SVP. Autonomous Agents · MCP Servers · Chain-of-Tools.
+                <span class="ledger__context-tag">Expedia Group</span>
+              </dd>
+            </div>
+            <div class="ledger__row ledger__row--featured">
+              <dt class="ledger__term">
+                <span class="ledger__figure">1st</span>
+                <span class="ledger__metric-label">AI Champion at Expedia</span>
+              </dt>
+              <dd class="ledger__desc">
+                First GitHub Copilot Champion (2024). First AI Champion (2026). Trained hundreds of engineers on AI-powered development across the org.
+                <span class="ledger__context-tag">Expedia Group</span>
+              </dd>
+            </div>
+          </dl>
+
+          <!-- Secondary Career Ledger Disclosure (Remaining 7 Proofs) -->
+          <details class="ledger__disclosure" data-animate="fade-up">
+            <summary class="ledger__disclosure-btn">
+              <span class="ledger__disclosure-meta">
+                <span class="ledger__disclosure-title">Complete Career Ledger</span>
+                <span class="ledger__disclosure-hint">7 additional verified outcomes at Amazon, Expedia Group &amp; MIT</span>
+              </span>
+              <span class="ledger__disclosure-pill">
+                <span class="ledger__disclosure-action">View all 11 proofs</span>
+                <svg class="ledger__disclosure-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </summary>
+            <dl class="ledger__secondary-list">
+              <div class="ledger__row">
+                <dt class="ledger__term"><span class="ledger__figure">3+ years</span>a tool that outlived my tenure</dt>
+                <dd class="ledger__desc">Designed "Kayl," a pluggable TypeScript library for recording and collecting UX events on Seller Central. Used to compare search quality between Seller Central and the main Amazon buyer site. Led the high-level and low-level design with L8-L6 engineers. Built as a temporary solution, still running 3+ years later. <span class="ledger__context">at Amazon</span></dd>
+              </div>
+              <div class="ledger__row">
+                <dt class="ledger__term"><span class="ledger__figure">tens</span>engineers interviewed and hired</dt>
+                <dd class="ledger__desc">Bar-raising interviewer across both companies. Helped build the teams I'd later work alongside. <span class="ledger__context">at Amazon &amp; Expedia Group</span></dd>
+              </div>
+              <div class="ledger__row">
+                <dt class="ledger__term"><span class="ledger__figure">13 years</span>teaching programming</dt>
+                <dd class="ledger__desc">YouTube educator since 2013. 18.7K subscribers, 760K+ views. Teaching predates the career. It's the throughline, not the side project.</dd>
+              </div>
+              <div class="ledger__row">
+                <dt class="ledger__term"><span class="ledger__figure">100s</span>engineers trained on AI development</dt>
+                <dd class="ledger__desc">Led organization-wide training sessions on AI-powered development, driving measurable productivity gains across teams. <span class="ledger__context">at Expedia Group</span></dd>
+              </div>
+              <div class="ledger__row">
+                <dt class="ledger__term"><span class="ledger__figure">MIT</span>Computer &amp; Data Science certificate</dt>
+                <dd class="ledger__desc">Completed MIT ReACT Hub's Computer and Data Science Program (2019-2020) alongside full-time engineering work.</dd>
+              </div>
+              <div class="ledger__row">
+                <dt class="ledger__term"><span class="ledger__figure">50+</span>SDE weeks saved by killing my own project</dt>
+                <dd class="ledger__desc">When the business case changed, I called it. Saved 50+ engineer-weeks by stopping work that no longer made sense instead of protecting my ownership. <span class="ledger__context">at Expedia Group</span></dd>
+              </div>
+              <div class="ledger__row">
+                <dt class="ledger__term"><span class="ledger__figure">&lt; 1 month</span>to own a critical project solo</dt>
+                <dd class="ledger__desc">Within my first month, took ownership of a time-sensitive, business-critical solution across multiple platform teams and codebases. Delivered on time with little supervision. <span class="ledger__context">at Amazon</span></dd>
+              </div>
+            </dl>
+          </details>
+        </div>
       </div>
     </section>
     <hr class="section-divider" aria-hidden="true">
@@ -1391,14 +1440,47 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <hr class="section-divider" aria-hidden="true">
     <section id="prep-kit" class="prep-kit" aria-labelledby="prep-kit-heading" data-section-accent="septenary">
       <div class="prep-kit__container">
-        <div class="prep-kit__content" data-animate="fade-up">
-          <span class="prep-kit__eyebrow">From the interviewer's side of the table</span>
-          <h2 id="prep-kit-heading" class="prep-kit__heading">Technical Interview Preparation Kit</h2>
-          <p class="prep-kit__desc">Data structures, algorithms, system design, all condensed into one reference guide. Built from years of interviewing and hiring engineers at Amazon and Expedia Group.</p>
-          <a href="/technical-interview-preparation-kit/" class="prep-kit__link">
-            Open the kit
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+        <div class="prep-kit__card" data-animate="fade-up">
+          <div class="prep-kit__main">
+            <div class="prep-kit__badge-row">
+              <span class="prep-kit__badge">Quick Reference</span>
+              <span class="prep-kit__badge-dot" aria-hidden="true">·</span>
+              <span class="prep-kit__badge-sub">Cheat Sheets &amp; Refresher</span>
+            </div>
+            <h2 id="prep-kit-heading" class="prep-kit__heading">Technical Interview Preparation Kit</h2>
+            <p class="prep-kit__desc">My personal collection of cheat sheets and notes for coding interviews. A practical refresher covering core data structures, sorting and searching algorithms, Big O complexities, and SOLID design principles.</p>
+            <div class="prep-kit__actions">
+              <a href="/technical-interview-preparation-kit/" class="prep-kit__link">
+                <span>Open Technical Interview Prep Kit</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <span class="prep-kit__free-tag">Free &amp; Open Access</span>
+            </div>
+          </div>
+          <div class="prep-kit__preview-panel" aria-hidden="true">
+            <div class="prep-kit__panel-header">
+              <span class="prep-kit__panel-dot"></span>
+              <span class="prep-kit__panel-title">Topics Covered</span>
+            </div>
+            <ul class="prep-kit__topic-list">
+              <li class="prep-kit__topic-item">
+                <span class="prep-kit__topic-num">01</span>
+                <span class="prep-kit__topic-name">Data Structures (Lists, Trees, Graphs)</span>
+              </li>
+              <li class="prep-kit__topic-item">
+                <span class="prep-kit__topic-num">02</span>
+                <span class="prep-kit__topic-name">Sort &amp; Search Algorithms</span>
+              </li>
+              <li class="prep-kit__topic-item">
+                <span class="prep-kit__topic-num">03</span>
+                <span class="prep-kit__topic-name">Big O, Bit Manipulation &amp; B.U.D.</span>
+              </li>
+              <li class="prep-kit__topic-item">
+                <span class="prep-kit__topic-num">04</span>
+                <span class="prep-kit__topic-name">SOLID Design Principles in OOP</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
