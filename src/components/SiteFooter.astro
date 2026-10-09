@@ -16,11 +16,17 @@ const { logoHref = "#hero" } = Astro.props;
       <p>"The best platform engineering is invisible. Teams should build products, not fight frameworks."</p>
     </blockquote>
 
-    <!-- CTA -->
-    <a href="https://cal.com/mohammad-noor" target="_blank" rel="noopener" class="footer__cta" data-animate="fade-up" data-animate-delay="300">
-      Book a conversation
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
+    <!-- Unified Conversion Capsule -->
+    <div class="footer__capsule" data-animate="fade-up" data-animate-delay="300">
+      <div class="footer__status">
+        <span class="footer__status-dot" aria-hidden="true"></span>
+        <span class="footer__status-text">Available for select Staff / Principal roles &amp; advisory</span>
+      </div>
+      <a href="https://cal.com/mohammad-noor" target="_blank" rel="noopener" class="footer__cta" aria-label="Book a conversation with Mohammad Noor on Cal.com">
+        <span>Book a conversation</span>
+        <span class="footer__cta-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
 
     <!-- Social links row -->
     <div class="footer__socials" data-animate="fade-up" data-animate-delay="400">
