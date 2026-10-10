@@ -927,17 +927,24 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <!-- Client showcase projects -->
         <div class="projects__grid" data-animate-stagger="120">
           <a href="https://areej.io/" target="_blank" rel="noopener" class="project-card project-card--showcase project-card--areej" data-animate="fade-up">
+            <div class="project-card__chrome" aria-hidden="true">
+              <span class="project-card__dots"><i></i><i></i><i></i></span>
+              <span class="project-card__url">areej.io</span>
+              <span class="project-card__tag">Editorial</span>
+            </div>
+            <div class="project-card__shot">
+              <img src="/areej-preview.webp" alt="areej.io homepage: dark editorial hero reading 'I help engineering teams turn noisy systems into signals they trust' with consultation booking" width="1200" height="750" loading="lazy" />
+            </div>
             <div class="project-card__header">
               <span class="project-card__badge">Full build · Client</span>
               <span class="project-card__arrow" aria-hidden="true">↗</span>
             </div>
             <h3 class="project-card__title">areej.io</h3>
-            <p class="project-card__desc">Editorial personal brand and consulting platform for Areej Amer, Platform and Observability Leader in Amman, Jordan. Built to turn noisy infrastructure into trusted signal with measurable impact: 40% accuracy uplift, 30% alert noise reduction, and custom Cal.com booking.</p>
+            <p class="project-card__desc">My end-to-end design and build for Areej Amer, Platform and Observability Leader: editorial brand and consulting platform with Cal.com booking. Scope covered brand strategy, visual design, copywriting, motion, and deploy — presenting her track record of 40% accuracy uplift and 30% less alert noise.</p>
             <div class="project-card__scope">
               <span class="project-card__scope-item">Brand strategy</span>
               <span class="project-card__scope-item">Visual design</span>
               <span class="project-card__scope-item">Copywriting</span>
-              <span class="project-card__scope-item">GSAP &amp; Lenis motion</span>
               <span class="project-card__scope-item">Cloudflare Worker deploy</span>
             </div>
             <div class="project-card__tech">
@@ -948,18 +955,38 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               <span>Lenis</span>
               <span>Cloudflare Workers</span>
             </div>
+            <div class="project-card__proof">
+              <div class="project-card__stat">
+                <span class="project-card__stat-value">End-to-end</span>
+                <span class="project-card__stat-label">Brand → deploy</span>
+              </div>
+              <div class="project-card__stat">
+                <span class="project-card__stat-value">Editorial</span>
+                <span class="project-card__stat-label">Brand + copy</span>
+              </div>
+              <div class="project-card__stat">
+                <span class="project-card__stat-value">Cal.com</span>
+                <span class="project-card__stat-label">Booking wired</span>
+              </div>
+            </div>
           </a>
           <a href="https://mohnoor94.github.io/hire-found/" target="_blank" rel="noopener" class="project-card project-card--showcase project-card--hirefound" data-animate="fade-up">
+            <div class="project-card__chrome" aria-hidden="true">
+              <span class="project-card__dots"><i></i><i></i><i></i></span>
+              <span class="project-card__url">hirefound.com</span>
+              <span class="project-card__tag">In progress</span>
+            </div>
+            <div class="project-card__shot">
+              <img src="/hirefound-preview.webp" alt="HireFound homepage preview: 'You want a hire? We got you found' hero with employer and candidate paths and WhatsApp-first contact" width="1200" height="750" loading="lazy" />
+            </div>
             <div class="project-card__header">
-              <span class="project-card__badge">Full build · Client</span>
+              <span class="project-card__badge">Client</span>
               <span class="project-card__arrow" aria-hidden="true">↗</span>
             </div>
             <h3 class="project-card__title">HireFound</h3>
-            <p class="project-card__desc">Recruitment brand for Yasmin Blasi, a boutique career matchmaker in MENA. Multi-section product with vacancy listings, service tiers, DISC assessments, and a WhatsApp-first contact flow.</p>
+            <p class="project-card__desc">My ongoing build for Yasmin Blasi, career matchmaker in MENA, working under her HireFound name. Work so far covers brand strategy, UX design, and frontend development: dual employer/candidate paths, vacancy listings, service tiers, and a WhatsApp-first contact flow. Live preview now, moving to hirefound.com.</p>
             <div class="project-card__scope">
-              <span class="project-card__scope-item">Naming</span>
               <span class="project-card__scope-item">Brand strategy</span>
-              <span class="project-card__scope-item">Copywriting</span>
               <span class="project-card__scope-item">UX design</span>
               <span class="project-card__scope-item">Frontend development</span>
               <span class="project-card__scope-item">Deployment</span>
@@ -969,6 +996,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               <span>JavaScript</span>
               <span>GitHub Pages</span>
               <span>AI-assisted</span>
+            </div>
+            <div class="project-card__proof">
+              <div class="project-card__stat">
+                <span class="project-card__stat-value">Build</span>
+                <span class="project-card__stat-label">Brand → code</span>
+              </div>
+              <div class="project-card__stat">
+                <span class="project-card__stat-value">Matching</span>
+                <span class="project-card__stat-label">Roles · tiers</span>
+              </div>
+              <div class="project-card__stat">
+                <span class="project-card__stat-value">Contact</span>
+                <span class="project-card__stat-label">WhatsApp-first</span>
+              </div>
             </div>
           </a>
 
