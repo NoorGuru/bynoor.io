@@ -902,60 +902,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         <!-- Featured project: EG Wizard -->
         <article class="projects__featured projects__featured--egwizard" data-animate="fade-up">
-          <div class="projects__featured-preview">
-            <div class="projects__terminal-artifact" aria-label="EG Wizard code migration terminal artifact">
-              <div class="projects__browser-chrome" aria-hidden="true">
-                <div class="projects__browser-dots">
-                  <span class="projects__browser-dot projects__browser-dot--close"></span>
-                  <span class="projects__browser-dot projects__browser-dot--min"></span>
-                  <span class="projects__browser-dot projects__browser-dot--expand"></span>
-                </div>
-                <div class="projects__browser-bar">
-                  <svg class="projects__browser-lock" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <polyline points="4 17 10 11 4 5"></polyline>
-                    <line x1="12" y1="19" x2="20" y2="19"></line>
-                  </svg>
-                  <span class="projects__browser-url">eg-wizard.internal</span>
-                </div>
-                <div class="projects__browser-status">
-                  <span class="projects__browser-status-dot" aria-hidden="true"></span>
-                  <span class="projects__browser-status-text">LIVE · PRODUCTION</span>
-                </div>
-              </div>
-              <div class="projects__terminal-body">
-                <div class="projects__terminal-cli" aria-hidden="true">
-                  <span class="projects__terminal-prompt">›</span>
-                  <span class="projects__terminal-cmd">eg-wizard migrate <span class="projects__terminal-flag">--from</span> v1-legacy <span class="projects__terminal-flag">--to</span> v2-ai-native</span>
-                </div>
-                <div class="projects__terminal-banner">
-                  <span class="projects__terminal-badge">AST Engine</span>
-                  <span class="projects__terminal-note">Kotlin PSI &amp; TypeScript AST Transformation</span>
-                  <span class="projects__terminal-speed">weeks → hours</span>
-                </div>
-                <div class="projects__terminal-diff">
-                  <div class="projects__diff-header" aria-hidden="true">
-                    <span class="projects__diff-tab">RouteMigrationDispatcher.kt</span>
-                    <span class="projects__diff-version">v1 (Legacy) → v2 (AI-Native)</span>
-                  </div>
-                  <pre class="projects__diff-code"><code><span class="diff-line diff-del"><span class="diff-sign">−</span> <span class="diff-kw">@Deprecated</span>(<span class="diff-str">"Manual route boilerplate"</span>)</span><span class="diff-line diff-del"><span class="diff-sign">−</span> <span class="diff-kw">fun</span> <span class="diff-fn">dispatch</span>(req: <span class="diff-type">LegacyReq</span>): <span class="diff-type">Response</span> &#123;</span><span class="diff-line diff-del"><span class="diff-sign">−</span>   <span class="diff-kw">val</span> sess = <span class="diff-type">SessionPool</span>.<span class="diff-fn">acquire</span>() <span class="diff-comment">// 2+ wks manual work</span></span><span class="diff-line diff-del"><span class="diff-sign">−</span>   <span class="diff-kw">return</span> sess.<span class="diff-fn">executeSynchronous</span>(req.data)</span><span class="diff-line diff-del"><span class="diff-sign">−</span> &#125;</span><span class="diff-line diff-add"><span class="diff-sign">+</span> <span class="diff-kw">@AgentEngine</span>(mcp = [<span class="diff-type">GatewayAST</span>::<span class="diff-kw">class</span>])</span><span class="diff-line diff-add"><span class="diff-sign">+</span> <span class="diff-kw">suspend fun</span> <span class="diff-fn">dispatch</span>(ctx: <span class="diff-type">Ctx</span>): <span class="diff-type">Flow</span>&lt;<span class="diff-type">Event</span>&gt; =</span><span class="diff-line diff-add"><span class="diff-sign">+</span>   orchestrator.<span class="diff-fn">chainOfTools</span>(ctx)</span><span class="diff-line diff-add"><span class="diff-sign">+</span>     .<span class="diff-fn">applyASTTransform</span>(<span class="diff-type">Rules</span>.V2_UPGRADE) <span class="diff-comment">// 18.6K lines automated</span></span><span class="diff-line diff-add"><span class="diff-sign">+</span>     .<span class="diff-fn">verifyZeroHallucination</span>()</span></code></pre>
-                </div>
-                <div class="projects__terminal-footer">
-                  <div class="projects__terminal-stat">
-                    <span class="projects__terminal-stat-value">18.6K</span>
-                    <span class="projects__terminal-stat-label">lines automated</span>
-                  </div>
-                  <div class="projects__terminal-stat">
-                    <span class="projects__terminal-stat-value">Kotlin / TS</span>
-                    <span class="projects__terminal-stat-label">AST transformation</span>
-                  </div>
-                  <div class="projects__terminal-stat">
-                    <span class="projects__terminal-stat-value">Zero</span>
-                    <span class="projects__terminal-stat-label">hallucinations</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="projects__featured-content">
             <div class="projects__featured-header">
               <span class="projects__featured-eyebrow">Flagship · Internal Enterprise AI @ Expedia Group</span>

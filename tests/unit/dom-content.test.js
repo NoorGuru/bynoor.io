@@ -205,14 +205,14 @@ describe('Projects Section', () => {
     expect(nebulaUrl.textContent).toContain('https://nebula.bynoor.io');
 
     const statusBadges = document.querySelectorAll('#projects .projects__browser-status');
-    expect(statusBadges.length).toBeGreaterThanOrEqual(3);
+    expect(statusBadges.length).toBeGreaterThanOrEqual(2);
     statusBadges.forEach((badge) => {
       expect(badge.querySelector('.projects__browser-status-dot')).not.toBeNull();
       expect(badge.querySelector('.projects__browser-status-text').textContent).toContain('LIVE · PRODUCTION');
     });
 
     const windowControls = document.querySelectorAll('#projects .projects__browser-dots');
-    expect(windowControls.length).toBeGreaterThanOrEqual(3);
+    expect(windowControls.length).toBeGreaterThanOrEqual(2);
     windowControls.forEach((dots) => {
       expect(dots.querySelector('.projects__browser-dot--close')).not.toBeNull();
       expect(dots.querySelector('.projects__browser-dot--min')).not.toBeNull();
@@ -220,29 +220,28 @@ describe('Projects Section', () => {
     });
   });
 
-  it('has EG Wizard stylized code migration terminal artifact with v1 (Legacy) -> v2 (AI-Native) diff and AST metrics', () => {
+  it('has EG Wizard flagship card with authentic evolution arc and verified metrics', () => {
     const egWizard = document.querySelector('.projects__featured--egwizard');
     expect(egWizard).not.toBeNull();
 
-    const artifact = egWizard.querySelector('.projects__terminal-artifact');
-    expect(artifact).not.toBeNull();
+    const title = egWizard.querySelector('.projects__featured-title');
+    expect(title.textContent).toBe('EG Wizard');
 
-    const diffVersion = artifact.querySelector('.projects__diff-version');
-    expect(diffVersion.textContent).toContain('v1 (Legacy) → v2 (AI-Native)');
+    const arc = egWizard.querySelector('.projects__featured-arc');
+    expect(arc.textContent).toContain('v1');
+    expect(arc.textContent).toContain('Copilot Extension');
+    expect(arc.textContent).toContain('v4');
+    expect(arc.textContent).toContain('MCP + Skills');
 
-    const diffCode = artifact.querySelector('.projects__diff-code');
-    expect(diffCode.textContent).toContain('@Deprecated');
-    expect(diffCode.textContent).toContain('@AgentEngine');
-    expect(diffCode.textContent).toContain('18.6K lines automated');
-
-    const banner = artifact.querySelector('.projects__terminal-banner');
-    expect(banner.textContent).toContain('Kotlin PSI & TypeScript AST Transformation');
-
-    const footer = artifact.querySelector('.projects__terminal-footer');
-    expect(footer.textContent).toContain('18.6K');
-    expect(footer.textContent).toContain('lines automated');
-    expect(footer.textContent).toContain('Kotlin / TS');
-    expect(footer.textContent).toContain('AST transformation');
+    const stats = egWizard.querySelectorAll('.projects__stat');
+    expect(stats.length).toBe(3);
+    const statsText = egWizard.querySelector('.projects__featured-stats').textContent;
+    expect(statsText).toContain('Weeks → Hours');
+    expect(statsText).toContain('Migration Velocity');
+    expect(statsText).toContain('4 Versions');
+    expect(statsText).toContain('in 6 Months');
+    expect(statsText).toContain('3-Year');
+    expect(statsText).toContain('Official Roadmap');
   });
 
   it('has alternating featured case study cards (Aura, Nebula, EG Wizard)', () => {
