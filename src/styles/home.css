@@ -1426,6 +1426,19 @@ body.menu-open {
   flex-direction: column;
 }
 
+/* Soft bottom fade so the tall full-page capture reads as "page continues"
+   instead of ending on a hard cut */
+.projects__featured--aura .projects__featured-preview::after,
+.projects__featured--nebula .projects__featured-preview::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 72px;
+  background: linear-gradient(to bottom, rgba(10, 23, 16, 0) 0%, rgba(10, 23, 16, 0.92) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
 /* Refined dark-mode matching browser chrome */
 .projects__browser-chrome {
   display: flex;
@@ -1567,8 +1580,7 @@ body.menu-open {
 .projects__preview-img {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  object-fit: contain;
   object-position: top center;
   display: block;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1857,56 +1869,70 @@ body.menu-open {
   }
 }
 
-/* === Flagship showcase rhythm on desktop (min-width: 900px) ===
-   Every flagship gets a full-width, uncropped preview so the interfaces read
-   large and complete. Aura and Nebula alternate their content alignment for
-   rhythm; EG Wizard stays a centred editorial block. */
+/* === Alternating Case Study Rhythm on Desktop (min-width: 900px) ===
+   Aura card has preview on the left and content on the right.
+   Nebula card has content on the left and preview on the right (flex-direction: row-reverse).
+   EG Wizard remains a prestigious full-width flagship card. */
 @media (min-width: 900px) {
   .projects__featured--aura,
-  .projects__featured--nebula,
-  .projects__featured--egwizard {
+  .projects__featured--nebula {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: row;
     align-items: stretch;
   }
 
+  .projects__featured--nebula {
+    flex-direction: row-reverse;
+  }
+
   .projects__featured-preview {
-    flex: 0 0 auto;
-    width: 100%;
-    max-width: 100%;
-    border-bottom: 1px solid rgba(221, 211, 191, 0.15);
-    border-right: none;
+    flex: 1 1 50%;
+    max-width: 50%;
+    border-bottom: none;
+    border-right: 1px solid rgba(221, 211, 191, 0.15);
     display: flex;
     flex-direction: column;
+    min-height: 100%;
   }
 
   .projects__featured--nebula .projects__featured-preview {
     border-right: none;
-    border-left: none;
+    border-left: 1px solid rgba(221, 211, 191, 0.15);
   }
 
-  .projects__featured-content {
-    flex: 0 0 auto;
-    width: 100%;
-    max-width: 100%;
+  .projects__featured--aura .projects__featured-content,
+  .projects__featured--nebula .projects__featured-content {
+    flex: 1 1 50%;
+    max-width: 50%;
     box-sizing: border-box;
     padding: 2.25rem 2.25rem 1.75rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .projects__featured--egwizard .projects__featured-content {
+    padding: 2.25rem 2.25rem 1.75rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .projects__featured-stats {
+    flex: 1 1 100%;
+    width: 100%;
+    order: 3;
+    margin-top: 0;
   }
 
   .projects__preview-link {
     display: block;
-    width: 100%;
   }
 
   .projects__preview-img {
-    width: 100%;
     height: auto;
-    max-height: 620px;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    object-position: top center;
+    aspect-ratio: auto;
+    object-fit: contain;
   }
 }
 
