@@ -71,9 +71,9 @@ export function initScrollSpy() {
       return;
     }
 
-    // Edge case: scrolled to bottom — highlight "Prep Kit" (last section)
+    // Edge case: scrolled to bottom — highlight Connect (last on-page section)
     if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 50) {
-      setActiveLink('prep-kit');
+      setActiveLink('links');
       return;
     }
 

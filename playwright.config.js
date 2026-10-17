@@ -1,4 +1,8 @@
 import { defineConfig } from '@playwright/test';
+import fs from 'node:fs';
+
+const localChromium = '/home/noor/.local/bin/chromium';
+const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || (fs.existsSync(localChromium) ? localChromium : undefined);
 
 export default defineConfig({
   testDir: './tests/e2e',
@@ -7,6 +11,7 @@ export default defineConfig({
   use: {
     baseURL: 'http://localhost:4173',
     headless: true,
+    launchOptions: executablePath ? { executablePath, args: ['--no-sandbox', '--disable-setuid-sandbox'] } : undefined,
   },
   projects: [
     {
@@ -20,3 +25,4 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
   },
 });
+
