@@ -1756,15 +1756,18 @@ body.menu-open {
   display: none;
 }
 
+/* On wide screens the arc becomes a horizontal stage rail — but only when the
+   card has the full width to spread into (EG Wizard). The split Aura/Nebula
+   cards keep the vertical mobile timeline so the stages stay readable. */
 @media (min-width: 860px) {
-  .projects__featured-arc {
+  .projects__featured--egwizard .projects__featured-arc {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
     gap: 0.65rem 0.65rem;
     padding: 0.85rem 1.15rem;
   }
 
-  .projects__arc-stage {
+  .projects__featured--egwizard .projects__arc-stage {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
@@ -1772,26 +1775,26 @@ body.menu-open {
     gap: 0.15rem;
   }
 
-  .projects__arc-stage::before,
-  .projects__arc-stage::after {
+  .projects__featured--egwizard .projects__arc-stage::before,
+  .projects__featured--egwizard .projects__arc-stage::after {
     display: none;
   }
 
-  .projects__arc-label {
+  .projects__featured--egwizard .projects__arc-label {
     text-transform: uppercase;
     letter-spacing: 0.04em;
     font-size: 0.68rem;
     line-height: normal;
   }
 
-  .projects__arc-detail {
+  .projects__featured--egwizard .projects__arc-detail {
     font-size: 0.84rem;
     line-height: 1.25;
     text-align: left;
     white-space: normal;
   }
 
-  .projects__arc-connector {
+  .projects__featured--egwizard .projects__arc-connector {
     display: none;
   }
 }
