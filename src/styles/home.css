@@ -1526,259 +1526,6 @@ body.menu-open {
   }
 }
 
-/* === EG Wizard Flagship Terminal Artifact === */
-.projects__terminal-artifact {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background: #0b1911;
-  font-family: var(--mono);
-  overflow: hidden;
-  min-width: 0;
-  max-width: 100%;
-}
-
-.projects__terminal-body {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 1.15rem 1.25rem;
-  gap: 0.85rem;
-  background: radial-gradient(circle at 100% 0%, rgba(38, 81, 56, 0.28) 0%, transparent 70%), #0c1c13;
-  color: var(--paper);
-  overflow: hidden;
-  min-width: 0;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-@media (max-width: 480px) {
-  .projects__terminal-body {
-    padding: 0.85rem 0.75rem;
-  }
-}
-
-.projects__terminal-cli {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.76rem;
-  color: rgba(247, 243, 234, 0.7);
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(221, 211, 191, 0.1);
-  border-radius: 6px;
-  padding: 0.45rem 0.75rem;
-  overflow-x: auto;
-  white-space: nowrap;
-  min-width: 0;
-  max-width: 100%;
-  box-sizing: border-box;
-  -webkit-overflow-scrolling: touch;
-}
-
-.projects__terminal-prompt {
-  color: var(--brass);
-  font-weight: 700;
-}
-
-.projects__terminal-cmd {
-  color: var(--paper);
-}
-
-.projects__terminal-flag {
-  color: #34d399;
-}
-
-.projects__terminal-banner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 0.4rem 0.75rem;
-  background: rgba(52, 211, 153, 0.08);
-  border: 1px solid rgba(52, 211, 153, 0.22);
-  border-radius: 6px;
-  font-size: 0.72rem;
-  min-width: 0;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.projects__terminal-badge {
-  color: #34d399;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.projects__terminal-note {
-  color: rgba(247, 243, 234, 0.85);
-}
-
-.projects__terminal-speed {
-  color: var(--brass);
-  font-weight: 600;
-}
-
-/* Stylized Code Diff Box */
-.projects__terminal-diff {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(221, 211, 191, 0.12);
-  border-radius: 8px;
-  overflow: hidden;
-  font-size: 0.73rem;
-  line-height: 1.5;
-  min-width: 0;
-  max-width: 100%;
-}
-
-.projects__diff-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.45rem 0.85rem;
-  background: rgba(0, 0, 0, 0.4);
-  border-bottom: 1px solid rgba(221, 211, 191, 0.1);
-  font-size: 0.68rem;
-  min-width: 0;
-  box-sizing: border-box;
-}
-
-@media (max-width: 480px) {
-  .projects__diff-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-    padding: 0.4rem 0.65rem;
-  }
-}
-
-.projects__diff-tab {
-  color: rgba(247, 243, 234, 0.75);
-  font-weight: 600;
-}
-
-.projects__diff-version {
-  color: var(--brass);
-  font-weight: 600;
-}
-
-.projects__diff-code {
-  margin: 0;
-  padding: 0.65rem 0;
-  overflow-x: auto;
-  font-family: var(--mono);
-  min-width: 0;
-  max-width: 100%;
-  -webkit-overflow-scrolling: touch;
-}
-
-.diff-line {
-  display: block;
-  padding: 0.14rem 0.85rem;
-  white-space: pre;
-}
-
-.diff-del {
-  background: rgba(239, 68, 68, 0.12);
-  color: #fca5a5;
-}
-
-.diff-add {
-  background: rgba(52, 211, 153, 0.12);
-  color: #86efac;
-}
-
-.diff-sign {
-  display: inline-block;
-  width: 1.1ch;
-  font-weight: 700;
-}
-
-.diff-del .diff-sign {
-  color: #ef4444;
-}
-
-.diff-add .diff-sign {
-  color: #34d399;
-}
-
-.diff-kw {
-  color: #fb923c;
-}
-
-.diff-fn {
-  color: #60a5fa;
-}
-
-.diff-type {
-  color: #c084fc;
-}
-
-.diff-str {
-  color: #fde047;
-}
-
-.diff-comment {
-  color: #94a3b8;
-  font-style: italic;
-}
-
-/* Terminal Metrics Bar */
-.projects__terminal-footer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-  padding: 0.75rem 0.5rem;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(221, 211, 191, 0.1);
-  border-radius: 8px;
-  text-align: center;
-  min-width: 0;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-@media (max-width: 480px) {
-  .projects__terminal-footer {
-    grid-template-columns: 1fr;
-    gap: 0.6rem;
-    padding: 0.65rem 0.75rem;
-  }
-
-  .projects__terminal-stat + .projects__terminal-stat {
-    border-left: none;
-    border-top: 1px solid rgba(221, 211, 191, 0.1);
-    padding-top: 0.5rem;
-  }
-}
-
-.projects__terminal-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.projects__terminal-stat + .projects__terminal-stat {
-  border-left: 1px solid rgba(221, 211, 191, 0.1);
-}
-
-.projects__terminal-stat-value {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 0.95rem;
-  color: var(--paper);
-}
-
-.projects__terminal-stat-label {
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  color: rgba(247, 243, 234, 0.6);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
 /* Featured project content & brass accents */
 .projects__featured-content {
   padding: 1.75rem 1.75rem 0;
@@ -2055,9 +1802,10 @@ body.menu-open {
 /* === Alternating Case Study Rhythm on Desktop (min-width: 900px) ===
    Aura card has preview on the left and content on the right.
    Nebula card has content on the left and preview on the right (flex-direction: row-reverse).
-   EG Wizard card has preview on the left and content on the right. */
+   EG Wizard remains a prestigious full-width flagship card. */
 @media (min-width: 900px) {
-  .projects__featured {
+  .projects__featured--aura,
+  .projects__featured--nebula {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -2083,7 +1831,8 @@ body.menu-open {
     border-left: 1px solid rgba(221, 211, 191, 0.15);
   }
 
-  .projects__featured-content {
+  .projects__featured--aura .projects__featured-content,
+  .projects__featured--nebula .projects__featured-content {
     flex: 1 1 50%;
     max-width: 50%;
     box-sizing: border-box;
@@ -2091,6 +1840,12 @@ body.menu-open {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+
+  .projects__featured--egwizard .projects__featured-content {
+    padding: 2.25rem 2.25rem 1.75rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .projects__featured-stats {
