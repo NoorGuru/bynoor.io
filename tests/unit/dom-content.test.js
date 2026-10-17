@@ -66,21 +66,12 @@ describe('Hero Section', () => {
     expect(img.getAttribute('src')).toBe('/profile-pic.png');
   });
 
-  it('renders the MCP Agent & Tool Orchestration signature artifact', () => {
-    const artifact = document.querySelector('#hero .hero__mcp-artifact');
-    expect(artifact).not.toBeNull();
-    expect(artifact.textContent).toContain('MCP PROTOCOL');
-    expect(artifact.textContent).toContain('ACTIVE ORCHESTRATION');
-
-    // Pipeline stages
-    expect(artifact.textContent).toContain('Task Ingestion');
-    expect(artifact.textContent).toContain('Tool Delegation (MCP)');
-    expect(artifact.textContent).toContain('Autonomous Verification');
-
-    // Latency reduction metric badge
-    expect(artifact.textContent).toContain('weeks');
-    expect(artifact.textContent).toContain('hours');
-    expect(artifact.textContent).toContain('96% latency reduction');
+  it('renders the core capabilities plaque ledger', () => {
+    const ledger = document.querySelector('#hero .hero__plaque-ledger');
+    expect(ledger).not.toBeNull();
+    expect(ledger.textContent).toContain('Builder');
+    expect(ledger.textContent).toContain('Teacher');
+    expect(ledger.textContent).toContain('Engineer');
   });
 
   it('has typography brass accent on engineers move faster', () => {

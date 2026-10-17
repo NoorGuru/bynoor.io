@@ -6,7 +6,6 @@ import { initScrollProgress } from './scroll-progress.js';
 import { initRecommendations } from './recommendations.js';
 import { initTeachFacade } from './teach-facade.js';
 import { initClipboard } from './clipboard.js';
-import { initPipeline } from './pipeline.js';
 
 // Initialize modules when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initRecommendations();
   initTeachFacade();
   initClipboard();
-  initPipeline();
 
   // Set current year in footer
   const yearEl = document.getElementById('year');
