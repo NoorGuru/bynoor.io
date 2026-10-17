@@ -197,6 +197,69 @@ describe('Projects Section', () => {
     expect(auraRepo.getAttribute('target')).toBe('_blank');
     expect(auraRepo.getAttribute('rel')).toContain('noopener');
   });
+
+  it('featured project browser chrome has https URL pill, green status dot with LIVE · PRODUCTION, and window controls', () => {
+    const auraUrl = document.querySelector('.projects__featured--aura .projects__browser-url');
+    const nebulaUrl = document.querySelector('.projects__featured--nebula .projects__browser-url');
+    expect(auraUrl.textContent).toContain('https://aura.bynoor.io');
+    expect(nebulaUrl.textContent).toContain('https://nebula.bynoor.io');
+
+    const statusBadges = document.querySelectorAll('#projects .projects__browser-status');
+    expect(statusBadges.length).toBeGreaterThanOrEqual(3);
+    statusBadges.forEach((badge) => {
+      expect(badge.querySelector('.projects__browser-status-dot')).not.toBeNull();
+      expect(badge.querySelector('.projects__browser-status-text').textContent).toContain('LIVE · PRODUCTION');
+    });
+
+    const windowControls = document.querySelectorAll('#projects .projects__browser-dots');
+    expect(windowControls.length).toBeGreaterThanOrEqual(3);
+    windowControls.forEach((dots) => {
+      expect(dots.querySelector('.projects__browser-dot--close')).not.toBeNull();
+      expect(dots.querySelector('.projects__browser-dot--min')).not.toBeNull();
+      expect(dots.querySelector('.projects__browser-dot--expand')).not.toBeNull();
+    });
+  });
+
+  it('has EG Wizard stylized code migration terminal artifact with v1 (Legacy) -> v2 (AI-Native) diff and AST metrics', () => {
+    const egWizard = document.querySelector('.projects__featured--egwizard');
+    expect(egWizard).not.toBeNull();
+
+    const artifact = egWizard.querySelector('.projects__terminal-artifact');
+    expect(artifact).not.toBeNull();
+
+    const diffVersion = artifact.querySelector('.projects__diff-version');
+    expect(diffVersion.textContent).toContain('v1 (Legacy) → v2 (AI-Native)');
+
+    const diffCode = artifact.querySelector('.projects__diff-code');
+    expect(diffCode.textContent).toContain('@Deprecated');
+    expect(diffCode.textContent).toContain('@AgentEngine');
+    expect(diffCode.textContent).toContain('18.6K lines automated');
+
+    const banner = artifact.querySelector('.projects__terminal-banner');
+    expect(banner.textContent).toContain('Kotlin PSI & TypeScript AST Transformation');
+
+    const footer = artifact.querySelector('.projects__terminal-footer');
+    expect(footer.textContent).toContain('18.6K');
+    expect(footer.textContent).toContain('lines automated');
+    expect(footer.textContent).toContain('Kotlin / TS');
+    expect(footer.textContent).toContain('AST transformation');
+  });
+
+  it('has alternating featured case study cards (Aura, Nebula, EG Wizard)', () => {
+    const aura = document.querySelector('.projects__featured--aura');
+    const nebula = document.querySelector('.projects__featured--nebula');
+    const egWizard = document.querySelector('.projects__featured--egwizard');
+
+    expect(aura).not.toBeNull();
+    expect(nebula).not.toBeNull();
+    expect(egWizard).not.toBeNull();
+
+    // Check DOM order: Aura -> Nebula -> EG Wizard
+    const featuredArticles = document.querySelectorAll('#projects .projects__featured');
+    expect(featuredArticles[0]).toBe(aura);
+    expect(featuredArticles[1]).toBe(nebula);
+    expect(featuredArticles[2]).toBe(egWizard);
+  });
 });
 
 describe('Navigation', () => {
