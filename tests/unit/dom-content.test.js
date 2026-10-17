@@ -39,10 +39,10 @@ describe('Hero Section', () => {
     expect(heroSection.textContent).toContain('Software Engineer');
   });
 
-  it('has a "Let\'s Connect" CTA linking to cal.com', () => {
+  it('has a "Book a conversation" CTA linking to cal.com', () => {
     const cta = document.querySelector('#hero a[href="https://cal.com/mohammad-noor"]');
     expect(cta).not.toBeNull();
-    expect(cta.textContent).toContain("Let's Connect");
+    expect(cta.textContent).toContain("Book a conversation");
   });
 
   it('has social icon links with correct hrefs in hero', () => {
