@@ -57,6 +57,37 @@ describe('Hero Section', () => {
     expect(youtube).not.toBeNull();
     expect(email).not.toBeNull();
   });
+
+  it('has the editorial portrait frame with photo', () => {
+    const frame = document.querySelector('#hero .hero__portrait-frame');
+    expect(frame).not.toBeNull();
+    const img = frame.querySelector('img');
+    expect(img).not.toBeNull();
+    expect(img.getAttribute('src')).toBe('/profile-pic.png');
+  });
+
+  it('renders the MCP Agent & Tool Orchestration signature artifact', () => {
+    const artifact = document.querySelector('#hero .hero__mcp-artifact');
+    expect(artifact).not.toBeNull();
+    expect(artifact.textContent).toContain('MCP PROTOCOL');
+    expect(artifact.textContent).toContain('ACTIVE ORCHESTRATION');
+
+    // Pipeline stages
+    expect(artifact.textContent).toContain('Task Ingestion');
+    expect(artifact.textContent).toContain('Tool Delegation (MCP)');
+    expect(artifact.textContent).toContain('Autonomous Verification');
+
+    // Latency reduction metric badge
+    expect(artifact.textContent).toContain('weeks');
+    expect(artifact.textContent).toContain('hours');
+    expect(artifact.textContent).toContain('96% latency reduction');
+  });
+
+  it('has typography brass accent on engineers move faster', () => {
+    const brass = document.querySelector('#hero .hero__title .u-brass');
+    expect(brass).not.toBeNull();
+    expect(brass.textContent).toBe('engineers move faster');
+  });
 });
 
 describe('Highlights Section', () => {
