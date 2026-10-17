@@ -1,6 +1,7 @@
 /**
  * Scroll Progress Bar
- * Shows a fixed gradient bar at the top of the page indicating scroll percentage.
+ * Shows a fixed smooth 3px line with a subtle brass tint endpoint at the
+ * top of the page indicating scroll percentage.
  * Sets --scroll-progress CSS custom property on the progress element.
  * Uses requestAnimationFrame to batch DOM writes for performance.
  */
