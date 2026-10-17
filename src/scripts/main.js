@@ -1,7 +1,7 @@
 // Main application module
 import { initNavigation } from './navigation.js';
 import { initScrollSpy } from './scroll-spy.js';
-import { initAnimationEngine, initParallax, initSectionAccentReveal } from './animation-engine.js';
+import { initAnimationEngine, initParallax, initSectionAccentReveal, initJourneyRail } from './animation-engine.js';
 import { initScrollProgress } from './scroll-progress.js';
 import { initRecommendations } from './recommendations.js';
 import { initTeachFacade } from './teach-facade.js';
@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Defer animation/creative modules until after first paint (one frame)
   requestAnimationFrame(() => {
     initAnimationEngine();
+    initJourneyRail();
     initParallax();
     initSectionAccentReveal();
     initScrollProgress();

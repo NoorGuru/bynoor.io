@@ -225,3 +225,55 @@ export function initSectionAccentReveal() {
     observer.observe(section);
   });
 }
+
+/**
+ * Scroll-lit rail logic for the Journey section.
+ *
+ * Each act has a vertical rail that fills as the reader scrolls down.
+ * Nodes light when crossing upper-middle viewport (rootMargin: '0px 0px -40% 0px').
+ * When prefers-reduced-motion is active, all entries are lit and progress is set to 1
+ * without constructing an IntersectionObserver.
+ */
+export function initJourneyRail() {
+  const entries = document.querySelectorAll('.journey__entry');
+  if (!entries.length) return;
+
+  if (prefersReducedMotion()) {
+    entries.forEach((entry) => {
+      entry.classList.add('journey__entry--lit');
+    });
+    const rails = document.querySelectorAll('.journey__entries');
+    rails.forEach((rail) => {
+      rail.style.setProperty('--journey-progress', '1');
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (changes) => {
+      changes.forEach((change) => {
+        if (change.isIntersecting) {
+          change.target.classList.add('journey__entry--lit');
+          observer.unobserve(change.target);
+
+          const entriesContainer =
+            change.target.closest('.journey__entries') ||
+            change.target.closest('.journey__act')?.querySelector('.journey__entries');
+
+          if (entriesContainer) {
+            const allInAct = entriesContainer.querySelectorAll('.journey__entry');
+            const litInAct = entriesContainer.querySelectorAll('.journey__entry.journey__entry--lit');
+            const progress = allInAct.length > 0 ? litInAct.length / allInAct.length : 0;
+            entriesContainer.style.setProperty('--journey-progress', String(progress));
+          }
+        }
+      });
+    },
+    { threshold: 0, rootMargin: '0px 0px -40% 0px' }
+  );
+
+  entries.forEach((entry) => {
+    observer.observe(entry);
+  });
+}
+

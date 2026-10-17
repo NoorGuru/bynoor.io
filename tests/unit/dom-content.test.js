@@ -284,7 +284,7 @@ describe('Projects Section', () => {
 });
 
 describe('Navigation', () => {
-  it('has all section links present', () => {
+  it('has all section links present including journey', () => {
     const nav = document.querySelector('nav');
     const links = nav.querySelectorAll('a');
     const hrefs = Array.from(links).map((l) => l.getAttribute('href'));
@@ -293,6 +293,48 @@ describe('Navigation', () => {
     expect(hrefs).toContain('#skills');
     expect(hrefs).toContain('#links');
     expect(hrefs).toContain('#projects');
+    expect(hrefs).toContain('#journey');
+  });
+
+  it('renders desktop navigation links in correct order with journey after build', () => {
+    const navLinks = Array.from(document.querySelectorAll('.nav__links .nav__link'));
+    const items = navLinks.map((l) => ({
+      href: l.getAttribute('href'),
+      text: l.textContent.trim().toLowerCase(),
+    }));
+
+    expect(items).toEqual([
+      { href: '#highlights', text: 'proof' },
+      { href: '#projects', text: 'build' },
+      { href: '#journey', text: 'journey' },
+      { href: '#teach', text: 'teach' },
+      { href: '#skills', text: 'skills' },
+      { href: '#links', text: 'connect' },
+      { href: '/technical-interview-preparation-kit/', text: 'prep kit' },
+    ]);
+  });
+
+  it('renders mobile menu links with 01..07 indices in order including journey', () => {
+    const mobileLinks = Array.from(document.querySelectorAll('.mobile-menu__link'));
+    const items = mobileLinks.map((l) => {
+      const index = l.querySelector('.mobile-menu__link-index')?.textContent.trim();
+      const text = l.textContent.replace(index || '', '').trim().toLowerCase();
+      return {
+        index,
+        text,
+        href: l.getAttribute('href'),
+      };
+    });
+
+    expect(items).toEqual([
+      { index: '01', text: 'proof', href: '#highlights' },
+      { index: '02', text: 'build', href: '#projects' },
+      { index: '03', text: 'journey', href: '#journey' },
+      { index: '04', text: 'teach', href: '#teach' },
+      { index: '05', text: 'skills', href: '#skills' },
+      { index: '06', text: 'connect', href: '#links' },
+      { index: '07', text: 'prep kit', href: '/technical-interview-preparation-kit/' },
+    ]);
   });
 
   it('has prep kit link present', () => {
@@ -389,3 +431,213 @@ describe('Accessibility', () => {
     });
   });
 });
+
+describe('Journey Section', () => {
+  it('renders 3 acts and 1 throughline in order', () => {
+    const acts = document.querySelectorAll('#journey .journey__act');
+    expect(acts.length).toBe(3);
+
+    const companies = Array.from(
+      document.querySelectorAll('#journey .journey__company')
+    ).map((el) => el.textContent.trim());
+
+    expect(companies).toEqual([
+      'Expedia Group',
+      'Amazon',
+      'Wiley (Atypon)',
+      'Code with Noor',
+    ]);
+  });
+
+  it('has exactly one featured entry and it is the Edge & API Platform role', () => {
+    const featured = document.querySelectorAll(
+      '#journey .journey__entry--featured'
+    );
+    expect(featured.length).toBe(1);
+
+    const title = featured[0].querySelector('.journey__role-title');
+    expect(title).not.toBeNull();
+    expect(title.textContent.trim()).toBe('SDE III, Edge & API Platform');
+
+    const eyebrow = featured[0].querySelector('.journey__role-eyebrow');
+    expect(eyebrow).not.toBeNull();
+    expect(eyebrow.textContent.trim()).toBe('Current Role');
+  });
+
+  it('preserves all role titles and periods verbatim', () => {
+    const roleTitles = Array.from(
+      document.querySelectorAll(
+        '#journey .journey__role-title, #journey .journey__index-title'
+      )
+    ).map((el) => el.textContent.trim());
+
+    expect(roleTitles).toEqual([
+      'SDE III, Edge & API Platform',
+      'SDE III, Partner Developer Experience',
+      'SDE III, InsurTech',
+      'Software Development Engineer',
+      'Software Engineer, Mid Level',
+      'Software Engineer',
+    ]);
+
+    const rolePeriods = Array.from(
+      document.querySelectorAll('#journey .journey__role-period')
+    ).map((el) => el.textContent.trim());
+
+    expect(rolePeriods).toEqual([
+      'Jul 2025 – Present',
+      'Jul 2022 – Jun 2025',
+      'Dec 2021 – Jul 2022',
+    ]);
+
+    const employerPeriods = Array.from(
+      document.querySelectorAll('#journey .journey__chapter-meta .journey__period')
+    ).map((el) => el.textContent.trim());
+
+    expect(employerPeriods).toEqual([
+      'Dec 2021 – Present',
+      'Sep 2019 – Dec 2021',
+      'Feb 2017 – Sep 2019',
+      'Feb 2013 – Present',
+    ]);
+
+    const durations = Array.from(
+      document.querySelectorAll('#journey .journey__duration')
+    ).map((el) => el.textContent.trim());
+
+    expect(durations).toEqual(['2 years 4 months', '2 years 8 months']);
+  });
+
+  it('preserves all descriptions and highlights verbatim', () => {
+    const expediaDescs = Array.from(
+      document.querySelectorAll(
+        '#journey [data-company="expedia"] .journey__role-desc'
+      )
+    ).map((el) => el.textContent.trim());
+
+    expect(expediaDescs).toEqual([
+      "Architecting AI-powered infrastructure and core platforms. Invented an internal AI migration platform that became the team's 3-year strategic roadmap. Co-shaping platform vision with senior leadership.",
+      'Owned the SDK platform powering partner integrations, serving millions of daily requests. Transformed the architecture from centralized bottleneck to self-service model across business lines.',
+      'Built next-gen insurance products across the full stack. Took on engineering leadership early: mentoring engineers, participating in hiring, and raising team standards.',
+    ]);
+
+    const amazonHighlights = Array.from(
+      document.querySelectorAll('#journey .journey__highlight p')
+    ).map((el) => el.textContent.trim());
+
+    expect(amazonHighlights).toEqual([
+      'Architected "Kayl," a pluggable TypeScript library for recording user experience events on Seller Central. Led the full design with L8 to L6 engineers. Started as a temp solution, outlived my tenure by 3+ years.',
+      'Picked up React in weeks to lead a frontend project in Seller Central. Quickly became a go-to reference despite a backend focus.',
+      'Led projects enhancing multi-language listing experience for Amazon sellers across US, UAE, KSA, Egypt, China, and more.',
+      "Trained and mentored engineers while leading multiple projects. Interviewed and hired tens of engineers through Amazon's bar-raising process.",
+    ]);
+
+    const wileyDescs = Array.from(
+      document.querySelectorAll('#journey .journey__index-desc')
+    ).map((el) => el.textContent.trim());
+
+    expect(wileyDescs).toEqual([
+      'Led the creation of a standalone automation framework for large-scale system migration using Java, Selenium Grid, and AWS.',
+      'Designed and developed mid-tier and front-end layers of Atypon Insights, a web analytics platform for academic publishers.',
+    ]);
+
+    const throughlineNote = document
+      .querySelector('#journey .journey__throughline-note')
+      ?.textContent.trim();
+    expect(throughlineNote).toBe(
+      'Teaching programming on YouTube since 2013. The throughline that predates and outlasts every role.'
+    );
+  });
+
+  it('brass figures match existing facts only', () => {
+    const figures = Array.from(
+      document.querySelectorAll('#journey .journey__figure-value')
+    ).map((el) => el.textContent.trim());
+
+    expect(figures).toEqual(['3-year', 'Millions', '< 1', '5+', '3+']);
+
+    const throughlineFigures = Array.from(
+      document.querySelectorAll('#journey .journey__throughline-stat-value')
+    ).map((el) => el.textContent.trim());
+
+    expect(throughlineFigures).toEqual(['18.7K', '760K+']);
+
+    const wileyFigure = document.querySelector(
+      '#journey [data-company="wiley"] .journey__figure'
+    );
+    expect(wileyFigure).toBeNull();
+  });
+
+  it('heading outline is h2 then h3 companies then h4 roles', () => {
+    const headings = Array.from(
+      document.querySelectorAll(
+        '#journey h1, #journey h2, #journey h3, #journey h4, #journey h5, #journey h6'
+      )
+    );
+    const headingTags = headings.map((h) => h.tagName);
+
+    expect(headingTags).toEqual([
+      'H2',
+      'H3',
+      'H4',
+      'H4',
+      'H4',
+      'H3',
+      'H4',
+      'H3',
+      'H4',
+      'H4',
+      'H3',
+    ]);
+
+    const h2s = document.querySelectorAll('#journey h2');
+    expect(h2s.length).toBe(1);
+    expect(h2s[0].id).toBe('journey-heading');
+  });
+
+  it('no interactive or focusable elements inside journey', () => {
+    const interactive = document.querySelectorAll(
+      '#journey a, #journey button, #journey [tabindex]'
+    );
+    expect(interactive.length).toBe(0);
+  });
+
+  it('decorative nodes and numerals are aria-hidden', () => {
+    const nodes = document.querySelectorAll('#journey .journey__node');
+    expect(nodes.length).toBeGreaterThan(0);
+    nodes.forEach((node) => {
+      expect(node.getAttribute('aria-hidden')).toBe('true');
+    });
+
+    const numerals = document.querySelectorAll('#journey .journey__act-numeral');
+    expect(numerals.length).toBe(3);
+    numerals.forEach((numeral) => {
+      expect(numeral.getAttribute('aria-hidden')).toBe('true');
+    });
+
+    const highlightIcons = document.querySelectorAll(
+      '#journey .journey__highlight-icon'
+    );
+    expect(highlightIcons.length).toBe(4);
+    highlightIcons.forEach((icon) => {
+      expect(icon.getAttribute('aria-hidden')).toBe('true');
+    });
+  });
+
+  it('tags are list items with an accessible label', () => {
+    const tagLists = document.querySelectorAll('#journey .journey__tags');
+    expect(tagLists.length).toBe(4);
+
+    tagLists.forEach((list) => {
+      expect(list.tagName).toBe('UL');
+      expect(list.getAttribute('aria-label')).toBeTruthy();
+    });
+
+    const tags = document.querySelectorAll('#journey .journey__tag');
+    expect(tags.length).toBe(20);
+    tags.forEach((tag) => {
+      expect(tag.tagName).toBe('LI');
+    });
+  });
+});
+
