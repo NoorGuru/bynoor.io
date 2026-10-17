@@ -1168,155 +1168,200 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div class="journey__container">
         <h2 id="journey-heading" class="journey__heading">The Journey</h2>
 
-        <div class="journey__chapters">
-          <!-- Chapter: Expedia Group, the big multi-role spread -->
-          <article class="journey__chapter journey__chapter--expedia" data-company="expedia" data-animate="fade-up">
-            <div class="journey__chapter-header">
-              <h3 class="journey__company">Expedia Group</h3>
-              <div class="journey__chapter-meta">
-                <span class="journey__period">Dec 2021 – Present</span>
-                <span class="journey__badge journey__badge--current">now</span>
-              </div>
-            </div>
-            <div class="journey__chapter-grid">
-              <div class="journey__role-card journey__role-card--featured">
-                <span class="journey__role-eyebrow">Current Role</span>
-                <h4 class="journey__role-title">SDE III, Edge & API Platform</h4>
-                <span class="journey__role-period">Jul 2025 – Present</span>
-                <p class="journey__role-desc">Architecting AI-powered infrastructure and core platforms. Invented an internal AI migration platform that became the team's 3-year strategic roadmap. Co-shaping platform vision with senior leadership.</p>
-              </div>
-              <div class="journey__role-card">
-                <h4 class="journey__role-title">SDE III, Partner Developer Experience</h4>
-                <span class="journey__role-period">Jul 2022 – Jun 2025</span>
-                <p class="journey__role-desc">Owned the SDK platform powering partner integrations, serving millions of daily requests. Transformed the architecture from centralized bottleneck to self-service model across business lines.</p>
-              </div>
-              <div class="journey__role-card">
-                <h4 class="journey__role-title">SDE III, InsurTech</h4>
-                <span class="journey__role-period">Dec 2021 – Jul 2022</span>
-                <p class="journey__role-desc">Built next-gen insurance products across the full stack. Took on engineering leadership early: mentoring engineers, participating in hiring, and raising team standards.</p>
-              </div>
-            </div>
-            <div class="journey__tags">
-              <span class="journey__tag">Kotlin</span>
-              <span class="journey__tag">AI Agents</span>
-              <span class="journey__tag">MCP</span>
-              <span class="journey__tag">Spring Boot</span>
-              <span class="journey__tag">GraphQL</span>
-              <span class="journey__tag">AWS</span>
-            </div>
-          </article>
+        <!-- Act 01: Expedia Group -->
+        <section class="journey__act" aria-labelledby="journey-company-expedia">
+          <p class="journey__act-head">
+            <span class="journey__act-numeral" aria-hidden="true">01</span>
+            <span class="journey__act-title">AI-Native</span>
+            <span class="journey__act-range">Dec 2021 – Present</span>
+          </p>
 
-          <!-- Chapter: Amazon, bold single statement -->
-          <article class="journey__chapter journey__chapter--amazon" data-company="amazon" data-animate="fade-up">
-            <div class="journey__chapter-header">
-              <h3 class="journey__company">Amazon</h3>
-              <div class="journey__chapter-meta">
-                <span class="journey__period">Sep 2019 – Dec 2021</span>
-                <span class="journey__duration">2 years 4 months</span>
-              </div>
-            </div>
-            <div class="journey__amazon-layout">
-              <div class="journey__amazon-stats">
-                <div class="journey__amazon-stat">
-                  <span class="journey__amazon-stat-number">&lt; 1</span>
-                  <span class="journey__amazon-stat-label">month to own a critical project</span>
-                </div>
-                <div class="journey__amazon-stat">
-                  <span class="journey__amazon-stat-number">5+</span>
-                  <span class="journey__amazon-stat-label">marketplaces enhanced</span>
-                </div>
-                <div class="journey__amazon-stat">
-                  <span class="journey__amazon-stat-number">3+</span>
-                  <span class="journey__amazon-stat-label">years a "temp" solution lived on</span>
-                </div>
-              </div>
-              <div class="journey__amazon-body">
-                <h4 class="journey__title">Software Development Engineer</h4>
-                <div class="journey__amazon-highlights">
-                  <div class="journey__amazon-highlight">
-                    <span class="journey__amazon-highlight-icon" aria-hidden="true">&#9670;</span>
-                    <p>Architected "Kayl," a pluggable TypeScript library for recording user experience events on Seller Central. Led the full design with L8 to L6 engineers. Started as a temp solution, outlived my tenure by 3+ years.</p>
-                  </div>
-                  <div class="journey__amazon-highlight">
-                    <span class="journey__amazon-highlight-icon" aria-hidden="true">&#9670;</span>
-                    <p>Picked up React in weeks to lead a frontend project in Seller Central. Quickly became a go-to reference despite a backend focus.</p>
-                  </div>
-                  <div class="journey__amazon-highlight">
-                    <span class="journey__amazon-highlight-icon" aria-hidden="true">&#9670;</span>
-                    <p>Led projects enhancing multi-language listing experience for Amazon sellers across US, UAE, KSA, Egypt, China, and more.</p>
-                  </div>
-                  <div class="journey__amazon-highlight">
-                    <span class="journey__amazon-highlight-icon" aria-hidden="true">&#9670;</span>
-                    <p>Trained and mentored engineers while leading multiple projects. Interviewed and hired tens of engineers through Amazon's bar-raising process.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="journey__tags">
-              <span class="journey__tag">Java</span>
-              <span class="journey__tag">React</span>
-              <span class="journey__tag">TypeScript</span>
-              <span class="journey__tag">AWS</span>
-              <span class="journey__tag">Distributed Systems</span>
-              <span class="journey__tag">System Design</span>
-            </div>
-          </article>
+          <div class="journey__meta">
+            <h3 class="journey__company" id="journey-company-expedia">Expedia Group</h3>
+            <p class="journey__chapter-meta">
+              <span class="journey__period">Dec 2021 – Present</span>
+              <span class="journey__badge journey__badge--current">now</span>
+            </p>
+          </div>
 
-          <!-- Chapter: Wiley, compact dual-role -->
-          <article class="journey__chapter journey__chapter--wiley" data-company="wiley" data-animate="fade-up">
-            <div class="journey__chapter-header">
-              <h3 class="journey__company">Wiley (Atypon)</h3>
-              <div class="journey__chapter-meta">
-                <span class="journey__period">Feb 2017 – Sep 2019</span>
-                <span class="journey__duration">2 years 8 months</span>
+          <ol class="journey__entries">
+            <li class="journey__entry journey__entry--featured" data-company="expedia" data-animate="fade-up">
+              <span class="journey__node" aria-hidden="true"></span>
+              <span class="journey__role-eyebrow">Current Role</span>
+              <h4 class="journey__role-title">SDE III, Edge &amp; API Platform</h4>
+              <span class="journey__role-period">Jul 2025 – Present</span>
+              <p class="journey__role-desc">Architecting AI-powered infrastructure and core platforms. Invented an internal AI migration platform that became the team's 3-year strategic roadmap. Co-shaping platform vision with senior leadership.</p>
+              <div class="journey__figures">
+                <div class="journey__figure">
+                  <span class="journey__figure-value">3-year</span>
+                  <span class="journey__figure-label">strategic roadmap</span>
+                </div>
               </div>
-            </div>
-            <div class="journey__compact-roles">
-              <div class="journey__compact-role">
-                <h4 class="journey__role-title">Software Engineer, Mid Level</h4>
-                <p class="journey__role-desc">Led the creation of a standalone automation framework for large-scale system migration using Java, Selenium Grid, and AWS.</p>
-              </div>
-              <div class="journey__compact-role">
-                <h4 class="journey__role-title">Software Engineer</h4>
-                <p class="journey__role-desc">Designed and developed mid-tier and front-end layers of Atypon Insights, a web analytics platform for academic publishers.</p>
-              </div>
-            </div>
-            <div class="journey__tags">
-              <span class="journey__tag">Java</span>
-              <span class="journey__tag">Jakarta EE</span>
-              <span class="journey__tag">Selenium</span>
-              <span class="journey__tag">Python</span>
-            </div>
-          </article>
+            </li>
 
-          <!-- Chapter: Code with Noor, the throughline, typographic emphasis -->
-          <article class="journey__chapter journey__chapter--educator" data-company="educator" data-animate="fade-up">
-            <div class="journey__chapter-header">
-              <h3 class="journey__company">Code with Noor</h3>
-              <div class="journey__chapter-meta">
-                <span class="journey__period">Feb 2013 – Present</span>
-                <span class="journey__badge journey__badge--throughline">13+ years</span>
+            <li class="journey__entry" data-company="expedia" data-animate="fade-up">
+              <span class="journey__node" aria-hidden="true"></span>
+              <h4 class="journey__role-title">SDE III, Partner Developer Experience</h4>
+              <span class="journey__role-period">Jul 2022 – Jun 2025</span>
+              <p class="journey__role-desc">Owned the SDK platform powering partner integrations, serving millions of daily requests. Transformed the architecture from centralized bottleneck to self-service model across business lines.</p>
+              <div class="journey__figures">
+                <div class="journey__figure">
+                  <span class="journey__figure-value">Millions</span>
+                  <span class="journey__figure-label">of daily requests</span>
+                </div>
               </div>
-            </div>
-            <div class="journey__educator-spread">
-              <div class="journey__educator-stat">
-                <span class="journey__stat-number">18.7K</span>
-                <span class="journey__stat-label">subscribers</span>
+            </li>
+
+            <li class="journey__entry" data-company="expedia" data-animate="fade-up">
+              <span class="journey__node" aria-hidden="true"></span>
+              <h4 class="journey__role-title">SDE III, InsurTech</h4>
+              <span class="journey__role-period">Dec 2021 – Jul 2022</span>
+              <p class="journey__role-desc">Built next-gen insurance products across the full stack. Took on engineering leadership early: mentoring engineers, participating in hiring, and raising team standards.</p>
+            </li>
+          </ol>
+
+          <ul class="journey__tags" aria-label="Expedia Group technologies">
+            <li class="journey__tag">Kotlin</li>
+            <li class="journey__tag">AI Agents</li>
+            <li class="journey__tag">MCP</li>
+            <li class="journey__tag">Spring Boot</li>
+            <li class="journey__tag">GraphQL</li>
+            <li class="journey__tag">AWS</li>
+          </ul>
+        </section>
+
+        <!-- Act 02: Amazon -->
+        <section class="journey__act" aria-labelledby="journey-company-amazon">
+          <p class="journey__act-head">
+            <span class="journey__act-numeral" aria-hidden="true">02</span>
+            <span class="journey__act-title">Scale</span>
+            <span class="journey__act-range">Sep 2019 – Dec 2021</span>
+          </p>
+
+          <div class="journey__meta">
+            <h3 class="journey__company" id="journey-company-amazon">Amazon</h3>
+            <p class="journey__chapter-meta">
+              <span class="journey__period">Sep 2019 – Dec 2021</span>
+              <span class="journey__duration">2 years 4 months</span>
+            </p>
+          </div>
+
+          <ol class="journey__entries">
+            <li class="journey__entry" data-company="amazon" data-animate="fade-up">
+              <span class="journey__node" aria-hidden="true"></span>
+              <h4 class="journey__role-title">Software Development Engineer</h4>
+              <div class="journey__figures">
+                <div class="journey__figure">
+                  <span class="journey__figure-value">&lt; 1</span>
+                  <span class="journey__figure-label">month to own a critical project</span>
+                </div>
+                <div class="journey__figure">
+                  <span class="journey__figure-value">5+</span>
+                  <span class="journey__figure-label">marketplaces enhanced</span>
+                </div>
+                <div class="journey__figure">
+                  <span class="journey__figure-value">3+</span>
+                  <span class="journey__figure-label">years a "temp" solution lived on</span>
+                </div>
               </div>
-              <div class="journey__educator-stat">
-                <span class="journey__stat-number">760K+</span>
-                <span class="journey__stat-label">views</span>
+              <ul class="journey__highlights">
+                <li class="journey__highlight">
+                  <span class="journey__highlight-icon" aria-hidden="true">&#9670;</span>
+                  <p>Architected "Kayl," a pluggable TypeScript library for recording user experience events on Seller Central. Led the full design with L8 to L6 engineers. Started as a temp solution, outlived my tenure by 3+ years.</p>
+                </li>
+                <li class="journey__highlight">
+                  <span class="journey__highlight-icon" aria-hidden="true">&#9670;</span>
+                  <p>Picked up React in weeks to lead a frontend project in Seller Central. Quickly became a go-to reference despite a backend focus.</p>
+                </li>
+                <li class="journey__highlight">
+                  <span class="journey__highlight-icon" aria-hidden="true">&#9670;</span>
+                  <p>Led projects enhancing multi-language listing experience for Amazon sellers across US, UAE, KSA, Egypt, China, and more.</p>
+                </li>
+                <li class="journey__highlight">
+                  <span class="journey__highlight-icon" aria-hidden="true">&#9670;</span>
+                  <p>Trained and mentored engineers while leading multiple projects. Interviewed and hired tens of engineers through Amazon's bar-raising process.</p>
+                </li>
+              </ul>
+            </li>
+          </ol>
+
+          <ul class="journey__tags" aria-label="Amazon technologies">
+            <li class="journey__tag">Java</li>
+            <li class="journey__tag">React</li>
+            <li class="journey__tag">TypeScript</li>
+            <li class="journey__tag">AWS</li>
+            <li class="journey__tag">Distributed Systems</li>
+            <li class="journey__tag">System Design</li>
+          </ul>
+        </section>
+
+        <!-- Act 03: Wiley (Atypon) -->
+        <section class="journey__act" aria-labelledby="journey-company-wiley">
+          <p class="journey__act-head">
+            <span class="journey__act-numeral" aria-hidden="true">03</span>
+            <span class="journey__act-title">Foundations</span>
+            <span class="journey__act-range">Feb 2017 – Sep 2019</span>
+          </p>
+
+          <div class="journey__meta">
+            <h3 class="journey__company" id="journey-company-wiley">Wiley (Atypon)</h3>
+            <p class="journey__chapter-meta">
+              <span class="journey__period">Feb 2017 – Sep 2019</span>
+              <span class="journey__duration">2 years 8 months</span>
+            </p>
+          </div>
+
+          <ol class="journey__entries">
+            <li class="journey__entry" data-company="wiley" data-animate="fade-up">
+              <span class="journey__node" aria-hidden="true"></span>
+              <div class="journey__index">
+                <div class="journey__index-row">
+                  <h4 class="journey__index-title">Software Engineer, Mid Level</h4>
+                  <p class="journey__index-desc">Led the creation of a standalone automation framework for large-scale system migration using Java, Selenium Grid, and AWS.</p>
+                </div>
+                <div class="journey__index-row">
+                  <h4 class="journey__index-title">Software Engineer</h4>
+                  <p class="journey__index-desc">Designed and developed mid-tier and front-end layers of Atypon Insights, a web analytics platform for academic publishers.</p>
+                </div>
               </div>
-              <p class="journey__educator-note">Teaching programming on YouTube since 2013. The throughline that predates and outlasts every role.</p>
+            </li>
+          </ol>
+
+          <ul class="journey__tags" aria-label="Wiley technologies">
+            <li class="journey__tag">Java</li>
+            <li class="journey__tag">Jakarta EE</li>
+            <li class="journey__tag">Selenium</li>
+            <li class="journey__tag">Python</li>
+          </ul>
+        </section>
+
+        <!-- Throughline: Code with Noor -->
+        <article class="journey__throughline" data-company="educator" data-animate="fade-up" aria-labelledby="journey-company-educator">
+          <div class="journey__throughline-head">
+            <h3 class="journey__company" id="journey-company-educator">Code with Noor</h3>
+            <p class="journey__chapter-meta">
+              <span class="journey__period">Feb 2013 – Present</span>
+              <span class="journey__badge journey__badge--throughline">13+ years</span>
+            </p>
+          </div>
+          <div class="journey__throughline-stats">
+            <div class="journey__throughline-stat">
+              <span class="journey__throughline-stat-value">18.7K</span>
+              <span class="journey__throughline-stat-label">subscribers</span>
             </div>
-            <div class="journey__tags">
-              <span class="journey__tag">YouTube</span>
-              <span class="journey__tag">Python</span>
-              <span class="journey__tag">Java</span>
-              <span class="journey__tag">C++</span>
+            <div class="journey__throughline-stat">
+              <span class="journey__throughline-stat-value">760K+</span>
+              <span class="journey__throughline-stat-label">views</span>
             </div>
-          </article>
-        </div>
+          </div>
+          <p class="journey__throughline-note">Teaching programming on YouTube since 2013. The throughline that predates and outlasts every role.</p>
+          <ul class="journey__tags" aria-label="Code with Noor topics">
+            <li class="journey__tag">YouTube</li>
+            <li class="journey__tag">Python</li>
+            <li class="journey__tag">Java</li>
+            <li class="journey__tag">C++</li>
+          </ul>
+        </article>
       </div>
     </section>
     <hr class="section-divider" aria-hidden="true">
