@@ -2815,6 +2815,7 @@ body.menu-open {
 .skills__chapter-name {
   font-family: var(--display);
   font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+  white-space: nowrap;
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.03em;
@@ -2887,8 +2888,8 @@ body.menu-open {
 
 @media (min-width: 900px) {
   .skills__chapter-head {
-    grid-template-columns: 13rem minmax(0, 1fr);
-    column-gap: 3rem;
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: 3.5rem;
     align-items: start;
   }
 

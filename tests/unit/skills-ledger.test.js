@@ -51,9 +51,10 @@ describe('Skills Ledger Source Text Verification', () => {
     });
   });
 
-  it('asserts chapter-head grid with 13rem margin column at >=900px', () => {
-    expect(skillsBlock).toMatch(/@media\s*\(min-width:\s*900px\)\s*\{[\s\S]*\.skills__chapter-head\s*\{[^}]*grid-template-columns:\s*13rem minmax\(0,\s*1fr\);/);
-    expect(skillsBlock).toMatch(/@media\s*\(min-width:\s*900px\)\s*\{[\s\S]*\.skills__chapter-head\s*\{[^}]*column-gap:\s*3rem;/);
+  it('asserts chapter-head grid with a max-content margin column at >=900px', () => {
+    expect(skillsBlock).toMatch(/@media\s*\(min-width:\s*900px\)\s*\{[\s\S]*\.skills__chapter-head\s*\{[^}]*grid-template-columns:\s*max-content minmax\(0,\s*1fr\);/);
+    expect(skillsBlock).toMatch(/@media\s*\(min-width:\s*900px\)\s*\{[\s\S]*\.skills__chapter-head\s*\{[^}]*column-gap:\s*3\.5rem;/);
+    expect(skillsBlock).toMatch(/\.skills__chapter-name\s*\{[^}]*white-space:\s*nowrap;/);
   });
 
   it('asserts chapter name font-size clamp', () => {
