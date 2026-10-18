@@ -102,23 +102,23 @@ describe('Skills Section', () => {
   const expectedSkills = [
     'Kotlin',
     'Java',
+    'Scala',
     'Python',
     'TypeScript',
     'JavaScript',
-    'Scala',
     'Spring Boot',
     'GraphQL',
     'gRPC',
+    'OpenAPI',
     'React',
     'Node.js',
     'AWS',
     'gcloud / GCP',
-    'OpenAPI',
-    'Platform Engineering',
     'AI-native Architectures',
     'MCP Servers',
     'Agent Frameworks',
     'LLM Tooling',
+    'Platform Engineering',
     'SDKs',
     'Microservices',
     'Distributed Systems',
@@ -126,13 +126,13 @@ describe('Skills Section', () => {
     'Backend',
     'Full-Stack',
     'Engineering Leadership',
-    'Mentoring & Coaching',
     'Hiring & Bar Raising',
-    'AI Advocacy',
+    'Mentoring & Coaching',
     'Training at Scale',
+    'Knowledge Sharing',
     'Product Thinking',
     'Strategic Planning',
-    'Knowledge Sharing',
+    'AI Advocacy',
     'Cross-Team Influence',
   ];
 
@@ -142,6 +142,23 @@ describe('Skills Section', () => {
     'Trained hundreds on AI-powered development. Onboarded 6 engineers onto 50+ repositories. Hired tens of engineers through bar-raising interviews at Amazon and Expedia. Teaching programming since 2013.',
   ];
 
+  const expectedRows = [
+    ['Kotlin', 'Java', 'Scala'],
+    ['Python'],
+    ['TypeScript', 'JavaScript'],
+    ['Spring Boot', 'GraphQL', 'gRPC', 'OpenAPI'],
+    ['React', 'Node.js'],
+    ['AWS', 'gcloud / GCP'],
+    ['AI-native Architectures', 'MCP Servers', 'Agent Frameworks', 'LLM Tooling'],
+    ['Platform Engineering', 'SDKs', 'Microservices'],
+    ['Distributed Systems', 'System Design'],
+    ['Backend', 'Full-Stack'],
+    ['Engineering Leadership', 'Hiring & Bar Raising'],
+    ['Mentoring & Coaching', 'Training at Scale', 'Knowledge Sharing'],
+    ['Product Thinking', 'Strategic Planning'],
+    ['AI Advocacy', 'Cross-Team Influence'],
+  ];
+
   it('has 3 chapter names build, architect, lead in order', () => {
     const chapterNames = Array.from(
       document.querySelectorAll('#skills .skills__chapter-name')
@@ -149,25 +166,48 @@ describe('Skills Section', () => {
     expect(chapterNames).toEqual(['build', 'architect', 'lead']);
   });
 
-  it('has exactly 34 skills entries in order, correct per-chapter counts, and no element children', () => {
-    const entries = Array.from(
-      document.querySelectorAll('#skills .skills__entry')
+  it('has 34 skills items total, per-chapter counts [14, 11, 9], and each item has no element children', () => {
+    const items = Array.from(
+      document.querySelectorAll('#skills .skills__item')
     );
-    expect(entries.length).toBe(34);
-    expect(entries.map((el) => el.textContent.trim())).toEqual(expectedSkills);
+    expect(items.length).toBe(34);
+    expect(items.map((el) => el.textContent.trim())).toEqual(expectedSkills);
 
     const chapters = Array.from(
       document.querySelectorAll('#skills .skills__chapter')
     );
     expect(chapters.length).toBe(3);
     const perChapterCounts = chapters.map(
-      (ch) => ch.querySelectorAll('.skills__entry').length
+      (ch) => ch.querySelectorAll('.skills__item').length
     );
     expect(perChapterCounts).toEqual([14, 11, 9]);
 
-    entries.forEach((entry) => {
-      expect(entry.children.length).toBe(0);
+    items.forEach((item) => {
+      expect(item.children.length).toBe(0);
     });
+  });
+
+  it('has 14 skills rows total, per-chapter counts [6, 4, 4], and per-row membership exactly as listed in order', () => {
+    const rows = Array.from(
+      document.querySelectorAll('#skills .skills__row')
+    );
+    expect(rows.length).toBe(14);
+
+    const chapters = Array.from(
+      document.querySelectorAll('#skills .skills__chapter')
+    );
+    expect(chapters.length).toBe(3);
+    const perChapterCounts = chapters.map(
+      (ch) => ch.querySelectorAll('.skills__row').length
+    );
+    expect(perChapterCounts).toEqual([6, 4, 4]);
+
+    const actualRows = rows.map((row) =>
+      Array.from(row.querySelectorAll('.skills__item')).map((item) =>
+        item.textContent.trim()
+      )
+    );
+    expect(actualRows).toEqual(expectedRows);
   });
 
   it('contains exactly the 41 allowlisted strings in DOM order with zero invented copy', () => {
@@ -186,7 +226,7 @@ describe('Skills Section', () => {
     expect(expected41Strings.length).toBe(41);
 
     const actualStrings = Array.from(
-      document.querySelectorAll('#skills h2, #skills h3, #skills p, #skills li')
+      document.querySelectorAll('#skills h2, #skills h3, #skills p, #skills .skills__item')
     ).map((el) => el.textContent.trim());
 
     expect(actualStrings).toEqual(expected41Strings);
@@ -194,6 +234,7 @@ describe('Skills Section', () => {
 
   it('has negative checks: no rejected classes or text fragments anywhere in #skills', () => {
     const rejectedSelectors = [
+      '#skills .skills__entry',
       '#skills .skills__cap',
       '#skills .skills__tag',
       '#skills .skills__core',
