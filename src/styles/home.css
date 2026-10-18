@@ -508,8 +508,137 @@ body.menu-open {
   color: var(--brass-deep);
   text-decoration: underline;
   text-decoration-color: rgba(185, 138, 31, 0.65);
-  text-decoration-thickness: 0.08em;
-  text-underline-offset: 0.16em;
+  text-decoration-thickness: 0.045em;
+  text-underline-offset: 0.18em;
+}
+
+/* --- Hero headline trace: the sentence inks itself in, the brass signs off --- */
+.hero__title .hero__w {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__title .hero__w {
+    animation: heroInk 0.7s var(--ease) both;
+    animation-delay: calc(var(--i, 0) * 56ms + 110ms);
+  }
+
+  .hero__title .hero__w--period {
+    animation-delay: 1.34s;
+  }
+
+  .hero__title .u-brass {
+    animation:
+      heroPhraseIn 0.62s var(--ease) 0.72s both,
+      heroBrassInk 0.7s ease 1.08s both;
+  }
+
+  .hero__trace {
+    opacity: 0;
+    animation: heroTraceIn 0.5s ease 0.5s both;
+  }
+
+  .hero__trace-rule::after {
+    animation: heroTraceFill 1.2s var(--ease) 0.3s both;
+  }
+}
+
+@keyframes heroInk {
+  from {
+    opacity: 0;
+    transform: translateY(0.16em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes heroPhraseIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heroBrassInk {
+  from {
+    text-decoration-color: transparent;
+  }
+  to {
+    text-decoration-color: rgba(185, 138, 31, 0.62);
+  }
+}
+
+@keyframes heroTraceIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heroTraceFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.hero__trace {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  height: 1.1rem;
+  margin: -0.55rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.4s ease;
+}
+
+.hero__trace-rule {
+  position: relative;
+  width: 64px;
+  height: 1px;
+  background: var(--line);
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.hero__trace-rule::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--pine);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: background-color 0.4s ease;
+}
+
+.hero__trace-label {
+  white-space: nowrap;
+}
+
+.hero__trace.is-done {
+  color: var(--brass-deep);
+}
+
+.hero__trace.is-done .hero__trace-rule::after {
+  background: var(--brass);
+}
+
+@media (max-width: 480px) {
+  .hero__trace-rule {
+    width: 44px;
+  }
 }
 
 .sr-only {

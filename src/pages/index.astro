@@ -487,10 +487,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <span class="hero__status-text">Open to Select Staff / Advisory Roles · Amman &amp; Remote</span>
           </div>
 
-          <h1 class="hero__title hero__tagline" id="noor-name" data-animate="fade-up">
-            <span class="sr-only">Mohammad Noor Abu Khlaif. </span>
-            I build tools that help <span class="u-brass">engineers move faster</span>.
+          <h1 class="hero__title hero__tagline" id="noor-name" data-hero-trace>
+            <span class="sr-only">Mohammad Noor Abu Khlaif. </span><span class="hero__w" style="--i:0">I</span> <span class="hero__w" style="--i:1">build</span> <span class="hero__w" style="--i:2">tools</span> <span class="hero__w" style="--i:3">that</span> <span class="hero__w" style="--i:4">help</span> <span class="u-brass hero__phrase">engineers move faster</span><span class="hero__w hero__w--period" style="--i:6">.</span>
           </h1>
+
+          <p class="hero__trace" data-hero-trace-status aria-hidden="true">
+            <span class="hero__trace-rule"></span>
+            <span class="hero__trace-label" data-trace-label>done · weeks → hrs</span>
+          </p>
 
           <p class="hero__proof" data-animate="fade-up">
             Software Engineer, platform inventor, and educator. Architecting AI-native systems that turn <em>weeks of manual engineering into autonomous hours</em>.

@@ -74,6 +74,20 @@ describe('Hero Section', () => {
     expect(ledger.textContent).toContain('Engineer');
   });
 
+  it('renders the decorative hero trace caption', () => {
+    const trace = document.querySelector('#hero .hero__trace');
+    expect(trace).not.toBeNull();
+    expect(trace.getAttribute('aria-hidden')).toBe('true');
+    expect(trace.querySelector('.hero__trace-label').textContent).toContain('weeks → hrs');
+  });
+
+  it('exposes the tagline as one exact sentence after the name', () => {
+    const h1 = document.querySelector('#hero h1');
+    expect(h1.textContent.replace(/\s+/g, ' ').trim()).toBe(
+      'Mohammad Noor Abu Khlaif. I build tools that help engineers move faster.'
+    );
+  });
+
   it('has typography brass accent on engineers move faster', () => {
     const brass = document.querySelector('#hero .hero__title .u-brass');
     expect(brass).not.toBeNull();
