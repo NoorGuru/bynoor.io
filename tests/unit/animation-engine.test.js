@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import {
   initAnimationEngine,
+  settleHash,
   MAX_ENTRANCE_DELAY_MS,
 } from '../../src/scripts/animation-engine.js';
 
@@ -118,5 +119,29 @@ describe('animation engine entrance response', () => {
     expect(children[0].getAttribute('data-animate-delay')).toBe('0');
     expect(children[1].getAttribute('data-animate-delay')).toBe('60');
     expect(children[2].getAttribute('data-animate-delay')).toBe('120');
+  });
+
+  it('settles all nodes with animate-visible on hashchange for content-first deep-links', () => {
+    document.body.innerHTML = `
+      <section id="target-section">
+        <div data-animate="fade-up" data-animate-delay="150" style="transition-delay: 150ms;"></div>
+        <div data-animate="fade-in"></div>
+      </section>
+      <section id="other-section">
+        <div data-animate="fade-up"></div>
+      </section>
+    `;
+    stubIntersectionObserver();
+    initAnimationEngine();
+
+    window.location.hash = '#target-section';
+    window.dispatchEvent(new Event('hashchange'));
+
+    const allNodes = document.querySelectorAll('[data-animate]');
+    expect(allNodes.length).toBe(3);
+    allNodes.forEach((node) => {
+      expect(node.classList.contains('animate-visible')).toBe(true);
+      expect(node.style.transitionDelay).toBe('');
+    });
   });
 });

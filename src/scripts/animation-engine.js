@@ -81,6 +81,55 @@ export function initAnimationEngine() {
   elements.forEach((el) => {
     observer.observe(el);
   });
+
+  // Passive, once-only bottom-settle: reveals any remaining animated elements
+  // when the visitor reaches the bottom of the page (e.g. instant jump to bottom)
+  const onBottomScroll = () => {
+    const scrollHeight = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight
+    );
+    if (
+      window.scrollY > 0 &&
+      window.scrollY + window.innerHeight >= scrollHeight - 4
+    ) {
+      document.querySelectorAll('[data-animate]:not(.animate-visible)').forEach((el) => {
+        el.style.transitionDelay = '';
+        el.classList.add('animate-visible');
+      });
+      window.removeEventListener('scroll', onBottomScroll);
+    }
+  };
+  window.addEventListener('scroll', onBottomScroll, { passive: true });
+  onBottomScroll();
+
+  // Settle any anchor-targeted section immediately and on hash change
+  settleHash();
+  window.addEventListener('hashchange', () => {
+    settleHash();
+    onBottomScroll();
+  });
+}
+
+/**
+ * Reveals elements with [data-animate] document-wide when an anchor is targeted,
+ * ensuring deep-link visits are content-first with 0 unrevealed elements anywhere.
+ */
+export function settleHash() {
+  if (prefersReducedMotion()) return;
+  const hash = window.location?.hash;
+  if (!hash) return;
+  let target = null;
+  try {
+    target = document.querySelector(hash);
+  } catch {
+    return;
+  }
+  if (!target) return;
+  document.querySelectorAll('[data-animate]').forEach((el) => {
+    el.style.transitionDelay = '';
+    el.classList.add('animate-visible');
+  });
 }
 
 /**
