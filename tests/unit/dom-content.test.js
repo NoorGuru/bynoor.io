@@ -157,10 +157,17 @@ describe('Skills Section', () => {
     ['AI Advocacy', 'Cross-Team Influence'],
   ];
 
-  it('has 3 chapter names build, architect, lead in order', () => {
-    const chapterNames = Array.from(
-      document.querySelectorAll('#skills .skills__chapter-name')
-    ).map((el) => el.textContent.trim());
+  it('has 3 chapter names build, architect, lead in order, each inside a .skills__spine', () => {
+    const spines = Array.from(
+      document.querySelectorAll('#skills .skills__spine')
+    );
+    expect(spines.length).toBe(3);
+
+    const chapterNames = spines.map((spine) => {
+      const name = spine.querySelector('.skills__chapter-name');
+      expect(name).not.toBeNull();
+      return name.textContent.trim();
+    });
     expect(chapterNames).toEqual(['build', 'architect', 'lead']);
   });
 
@@ -208,20 +215,21 @@ describe('Skills Section', () => {
     expect(actualRows).toEqual(expectedRows);
   });
 
-  it('.skills__chapter-head exists exactly 3 times and wraps the name plus the proof', () => {
-    const heads = Array.from(
-      document.querySelectorAll('#skills .skills__chapter-head')
+  it('has 3 .skills__body, each containing one .skills__chapter-proof and one .skills__ledger', () => {
+    const bodies = Array.from(
+      document.querySelectorAll('#skills .skills__body')
     );
-    expect(heads.length).toBe(3);
+    expect(bodies.length).toBe(3);
 
-    heads.forEach((head) => {
-      const name = head.querySelector('.skills__chapter-name');
-      const proof = head.querySelector('.skills__chapter-proof');
-      expect(name).not.toBeNull();
+    bodies.forEach((body, idx) => {
+      const proof = body.querySelector('.skills__chapter-proof');
+      const ledger = body.querySelector('.skills__ledger');
       expect(proof).not.toBeNull();
-      expect(head.children.length).toBe(2);
-      expect(head.children[0]).toBe(name);
-      expect(head.children[1]).toBe(proof);
+      expect(ledger).not.toBeNull();
+      expect(body.children.length).toBe(2);
+      expect(body.children[0]).toBe(proof);
+      expect(body.children[1]).toBe(ledger);
+      expect(proof.textContent.trim()).toBe(expectedProofs[idx]);
     });
   });
 
@@ -259,6 +267,7 @@ describe('Skills Section', () => {
       '#skills .skills__meta',
       '#skills .skills__stack',
       '#skills .skills__feeds',
+      '#skills .skills__chapter-head',
     ];
 
     rejectedSelectors.forEach((selector) => {

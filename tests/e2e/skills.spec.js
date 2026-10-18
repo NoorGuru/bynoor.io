@@ -60,7 +60,7 @@ test.describe('Skills Ledger E2E', () => {
     expect(result.uniqueSignatures.length).toBe(1);
   });
 
-  test("at 1200px each chapter name's right edge is left of the proof's left edge (the hang), and chapter name and ledger share a left edge", async ({ page }) => {
+  test("at 1200px the chapter name's width is less than its height (vertical) and its right edge is left of the proof's left edge", async ({ page }) => {
     await page.setViewportSize({ width: 1200, height: 900 });
     await page.goto('/');
     await page.waitForLoadState('domcontentloaded');
@@ -71,25 +71,25 @@ test.describe('Skills Ledger E2E', () => {
       return chapters.map((ch) => {
         const name = ch.querySelector('.skills__chapter-name').getBoundingClientRect();
         const proof = ch.querySelector('.skills__chapter-proof').getBoundingClientRect();
-        const ledger = ch.querySelector('.skills__ledger').getBoundingClientRect();
         return {
+          isVertical: name.width < name.height,
+          nameWidth: name.width,
+          nameHeight: name.height,
           hang: name.right < proof.left,
           nameRight: name.right,
           proofLeft: proof.left,
-          nameLeft: name.left,
-          ledgerLeft: ledger.left,
         };
       });
     });
 
     expect(positions.length).toBe(3);
     for (const p of positions) {
+      expect(p.isVertical, `Chapter name width (${p.nameWidth}) should be less than height (${p.nameHeight}) at 1200px`).toBe(true);
       expect(p.hang, `Chapter name right edge (${p.nameRight}) should be left of proof left edge (${p.proofLeft})`).toBe(true);
-      expect(Math.abs(p.nameLeft - p.ledgerLeft), 'Chapter name and ledger should share a left edge').toBeLessThanOrEqual(2);
     }
   });
 
-  test('at 899px and below the chapter name sits above the proof and both share a left edge', async ({ page }) => {
+  test('at 899px and below the chapter name is horizontal (width > height) and sits above the proof', async ({ page }) => {
     for (const width of [899, 375]) {
       await page.setViewportSize({ width, height: 900 });
       await page.goto('/');
@@ -102,18 +102,20 @@ test.describe('Skills Ledger E2E', () => {
           const name = ch.querySelector('.skills__chapter-name').getBoundingClientRect();
           const proof = ch.querySelector('.skills__chapter-proof').getBoundingClientRect();
           return {
+            isHorizontal: name.width > name.height,
+            nameWidth: name.width,
+            nameHeight: name.height,
             above: name.bottom <= proof.top + 2,
             nameBottom: name.bottom,
             proofTop: proof.top,
-            leftDiff: Math.abs(name.left - proof.left),
           };
         });
       });
 
       expect(positions.length).toBe(3);
       for (const p of positions) {
+        expect(p.isHorizontal, `At ${width}px, chapter name width (${p.nameWidth}) should be greater than height (${p.nameHeight})`).toBe(true);
         expect(p.above, `At ${width}px, chapter name bottom (${p.nameBottom}) should sit above proof top (${p.proofTop})`).toBe(true);
-        expect(p.leftDiff, `At ${width}px, chapter name and proof should share a left edge`).toBeLessThanOrEqual(2);
       }
     }
   });

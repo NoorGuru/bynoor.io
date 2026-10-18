@@ -2753,7 +2753,7 @@ body.menu-open {
 }
 
 
-/* === Skills: THE HANGING CHAPTER === */
+/* === Skills: VERTICAL MARGINALIA === */
 #skills {
   background: var(--paper);
   box-shadow: none;
@@ -2783,49 +2783,58 @@ body.menu-open {
   box-shadow: none;
 }
 
-/* Chapter band: 2px ink rule is the separator from the previous band.
-   The brass cap below is the only brass in the section. */
 .skills__chapter {
   position: relative;
-  min-width: 0;
-  padding: 2.5rem 0 2.75rem;
-  border-top: 2px solid var(--ink);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 0;
+  padding: 0 0 38px;
+  border-top: 1px solid var(--ink);
   background: transparent;
   box-shadow: none;
+  min-width: 0;
 }
 
 .skills__chapter::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0;
+  top: -1px;
   left: 0;
-  width: 4rem;
+  width: 48px;
   height: 3px;
   background: var(--brass);
   box-shadow: none;
 }
 
-.skills__chapter-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0.75rem;
-  min-width: 0;
+.skills__spine {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 18px;
+  box-shadow: none;
 }
 
 .skills__chapter-name {
+  writing-mode: horizontal-tb;
+  transform: none;
   font-family: var(--display);
-  font-size: clamp(2.5rem, 4.5vw, 3.5rem);
-  white-space: nowrap;
-  font-weight: 700;
-  line-height: 0.95;
+  font-size: 2.4rem;
+  font-weight: 600;
   letter-spacing: -0.03em;
+  line-height: 0.92;
   text-transform: lowercase;
   color: var(--ink);
   margin: 0;
-  min-width: 0;
-  overflow-wrap: break-word;
+  white-space: nowrap;
   box-shadow: none;
   scroll-margin-top: calc(var(--header-h) + 1.5rem);
+}
+
+.skills__body {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+  padding-top: 26px;
+  box-shadow: none;
 }
 
 .skills__chapter-proof {
@@ -2834,86 +2843,72 @@ body.menu-open {
   font-weight: 400;
   line-height: 1.65;
   color: var(--ink-soft);
-  max-width: 62ch;
+  max-width: 58ch;
   margin: 0;
   box-shadow: none;
 }
 
 .skills__ledger {
-  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  column-gap: 4rem;
-  row-gap: 0;
-  list-style: none;
-  min-width: 0;
-  margin: 2.25rem 0 0;
-  padding: 0;
+  border-bottom: 1px solid var(--line);
   background: transparent;
+  min-width: 0;
+  box-shadow: none;
 }
 
 .skills__row {
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  row-gap: 0.35rem;
-  min-width: 0;
-  padding: 1.05rem 0 1.1rem;
-  border-top: 1px solid var(--line);
   font-family: var(--body);
   font-size: 1.1875rem;
   font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: 0;
+  line-height: 1.45;
   color: var(--ink);
-  overflow-wrap: break-word;
-}
-
-.skills__row:last-child {
-  border-bottom: 1px solid var(--line);
+  padding: 13px 0 14px;
+  border-top: 1px solid var(--line);
+  min-width: 0;
+  box-shadow: none;
 }
 
 .skills__item {
   white-space: nowrap;
   min-width: 0;
+  color: var(--ink);
+  box-shadow: none;
 }
 
 .skills__item:not(:last-child)::after {
   content: "\00B7";
-  margin-inline: 0.6rem;
+  margin-inline: 0.55rem;
   color: var(--pine);
   font-weight: 700;
 }
 
 @media (min-width: 900px) {
-  .skills__chapter-head {
-    grid-template-columns: max-content minmax(0, 1fr);
-    column-gap: 3.5rem;
-    align-items: start;
+  .skills__chapter {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    column-gap: 3rem;
+    padding-bottom: 46px;
   }
 
-  .skills__chapter-proof {
-    padding-top: 0.65rem;
+  .skills__spine {
+    padding-top: 22px;
+  }
+
+  .skills__chapter-name {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: clamp(2.4rem, 3.2vw, 3rem);
   }
 
   .skills__ledger {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 2.5rem;
-  }
-
-  .skills__ledger::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 1px;
-    background: var(--line);
-  }
-
-  .skills__row:nth-last-child(-n + 2) {
-    border-bottom: 1px solid var(--line);
+    column-gap: 4.5rem;
   }
 }
 
@@ -2930,27 +2925,13 @@ body.menu-open {
     margin-top: 2rem;
   }
 
-  .skills__chapter {
-    padding: 2rem 0 2.25rem;
-  }
-
   .skills__chapter-name {
-    font-size: 2.35rem;
-    line-height: 1;
-  }
-
-  .skills__chapter-proof {
-    font-size: 0.95rem;
-  }
-
-  .skills__ledger {
-    grid-template-columns: minmax(0, 1fr);
-    margin-top: 1.75rem;
+    font-size: 2rem;
   }
 
   .skills__row {
-    font-size: 1.0625rem;
-    padding: 0.9rem 0 0.95rem;
+    font-size: 1rem;
+    padding: 11px 0 12px;
   }
 
   .skills__item {
@@ -2959,15 +2940,10 @@ body.menu-open {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #skills,
-  .skills__container,
-  #skills h2,
-  .skills__chapters,
   .skills__chapter,
-  .skills__chapter::before,
-  .skills__chapter-head,
+  .skills__spine,
   .skills__chapter-name,
-  .skills__chapter-proof,
+  .skills__body,
   .skills__ledger,
   .skills__row,
   .skills__item {
