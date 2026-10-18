@@ -95,7 +95,7 @@ test('journey rail is fully drawn with no transform under reduced motion', async
   await context.close();
 });
 
-test('skills layers are fully visible with no transform under reduced motion', async ({ browser }) => {
+test('skills chapters are fully visible with no transform under reduced motion', async ({ browser }) => {
   const context = await browser.newContext({
     reducedMotion: 'reduce',
   });
@@ -106,9 +106,9 @@ test('skills layers are fully visible with no transform under reduced motion', a
 
   const getSkillsState = async () => {
     return await page.evaluate(() => {
-      const layers = Array.from(document.querySelectorAll('#skills .skills__layer'));
-      return layers.map((layer) => {
-        const style = window.getComputedStyle(layer);
+      const chapters = Array.from(document.querySelectorAll('#skills .skills__chapter'));
+      return chapters.map((chapter) => {
+        const style = window.getComputedStyle(chapter);
         return {
           opacity: style.opacity,
           transform: style.transform,
@@ -119,9 +119,9 @@ test('skills layers are fully visible with no transform under reduced motion', a
 
   const beforeScroll = await getSkillsState();
   expect(beforeScroll.length).toBe(3);
-  for (const layer of beforeScroll) {
-    expect(layer.opacity).toBe('1');
-    expect(layer.transform === 'none' || layer.transform === 'matrix(1, 0, 0, 1, 0, 0)').toBe(true);
+  for (const chapter of beforeScroll) {
+    expect(chapter.opacity).toBe('1');
+    expect(chapter.transform === 'none' || chapter.transform === 'matrix(1, 0, 0, 1, 0, 0)').toBe(true);
   }
 
   await page.locator('#skills').scrollIntoViewIfNeeded();
@@ -129,9 +129,9 @@ test('skills layers are fully visible with no transform under reduced motion', a
 
   const afterScroll = await getSkillsState();
   expect(afterScroll.length).toBe(3);
-  for (const layer of afterScroll) {
-    expect(layer.opacity).toBe('1');
-    expect(layer.transform === 'none' || layer.transform === 'matrix(1, 0, 0, 1, 0, 0)').toBe(true);
+  for (const chapter of afterScroll) {
+    expect(chapter.opacity).toBe('1');
+    expect(chapter.transform === 'none' || chapter.transform === 'matrix(1, 0, 0, 1, 0, 0)').toBe(true);
   }
 
   await context.close();

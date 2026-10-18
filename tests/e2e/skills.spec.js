@@ -1,265 +1,279 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Skills Section E2E', () => {
-  test('skills has no horizontal overflow at 320px', async ({ page }) => {
-    await page.setViewportSize({ width: 320, height: 568 });
-    await page.goto('/');
-    await page.waitForLoadState('domcontentloaded');
-    await page.waitForTimeout(1500);
+test.describe('Skills Ledger E2E', () => {
+  const viewports = [320, 375, 899, 900, 1200, 1440];
 
-    const overflow = await page.evaluate(() => {
-      const docOverflow =
-        document.documentElement.scrollWidth >
-        document.documentElement.clientWidth;
-      const section = document.querySelector('#skills');
-      const rect = section.getBoundingClientRect();
-      const sectionOverflow =
-        rect.right > document.documentElement.clientWidth;
-      return { docOverflow, sectionOverflow };
-    });
+  for (const width of viewports) {
+    test(`skills has no horizontal overflow at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/');
+      await page.waitForLoadState('domcontentloaded');
+      await page.waitForTimeout(1000);
 
-    expect(overflow.docOverflow).toBe(false);
-    expect(overflow.sectionOverflow).toBe(false);
-  });
-
-  test('longest core capability wraps instead of overflowing at 320px', async ({
-    page,
-  }) => {
-    await page.setViewportSize({ width: 320, height: 568 });
-    await page.goto('/');
-    await page.waitForLoadState('domcontentloaded');
-    await page.waitForTimeout(1500);
-
-    const capMetrics = await page.evaluate(() => {
-      const caps = Array.from(
-        document.querySelectorAll('#skills .skills__cap')
-      );
-      const target = caps.find((el) =>
-        el.textContent.includes('AI-native Architectures')
-      );
-      if (!target) return null;
-      const computed = window.getComputedStyle(target);
-      const fontSize = parseFloat(computed.fontSize);
-      const lineHeight = parseFloat(computed.lineHeight) || fontSize * 1.2;
-      const height = target.getBoundingClientRect().height;
-      return {
-        scrollWidth: target.scrollWidth,
-        clientWidth: target.clientWidth,
-        height,
-        lineHeight,
-      };
-    });
-
-    expect(capMetrics).not.toBeNull();
-    expect(capMetrics.scrollWidth).toBeLessThanOrEqual(
-      capMetrics.clientWidth
-    );
-    expect(capMetrics.height).toBeGreaterThanOrEqual(capMetrics.lineHeight * 0.9);
-  });
-
-  test('meta is sticky on desktop and static on mobile', async ({ page }) => {
-    // Mobile check at 375px
-    await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto('/');
-    await page.waitForLoadState('domcontentloaded');
-    await page.waitForTimeout(1000);
-
-    const mobilePosition = await page.evaluate(() => {
-      const meta = document.querySelector('#skills .skills__meta');
-      return window.getComputedStyle(meta).position;
-    });
-    expect(mobilePosition).toBe('static');
-
-    // Tablet check at 768px
-    await page.setViewportSize({ width: 768, height: 1024 });
-    await page.goto('/');
-    await page.waitForLoadState('domcontentloaded');
-    await page.waitForTimeout(1000);
-
-    const tabletPosition = await page.evaluate(() => {
-      const meta = document.querySelector('#skills .skills__meta');
-      return window.getComputedStyle(meta).position;
-    });
-    expect(tabletPosition).toBe('sticky');
-
-    // Desktop check at 1200px
-    await page.setViewportSize({ width: 1200, height: 900 });
-    await page.goto('/');
-    await page.waitForLoadState('domcontentloaded');
-    await page.waitForTimeout(1500);
-
-    // Scroll the architect layer so its sticky meta activates
-    await page.evaluate(() => {
-      const layer = document.querySelector(
-        '#skills [aria-labelledby="skills-layer-architect"]'
-      );
-      const top = window.scrollY + layer.getBoundingClientRect().top;
-      window.scrollTo({ top: top + 150, behavior: 'instant' });
-    });
-    await page.waitForTimeout(300);
-
-    const desktopMeta = await page.evaluate(() => {
-      const architectMeta = document.querySelector(
-        '#skills [aria-labelledby="skills-layer-architect"] .skills__meta'
-      );
-      const style = window.getComputedStyle(architectMeta);
-      const rect = architectMeta.getBoundingClientRect();
-      return {
-        position: style.position,
-        top: Math.round(rect.top),
-      };
-    });
-
-    expect(desktopMeta.position).toBe('sticky');
-    expect(Math.abs(desktopMeta.top - 88)).toBeLessThanOrEqual(2);
-  });
-
-  test('lead stratum carries the 2px brass cap and build/architect carry 1px ink rules', async ({
-    page,
-  }) => {
-    await page.setViewportSize({ width: 1200, height: 900 });
-    await page.goto('/');
-    await page.waitForLoadState('domcontentloaded');
-    await page.waitForTimeout(1000);
-
-    const styles = await page.evaluate(() => {
-      const build = document.querySelector('#skills .skills__layer--build');
-      const architect = document.querySelector('#skills .skills__layer--architect');
-      const lead = document.querySelector('#skills .skills__layer--lead');
-
-      const buildStyle = window.getComputedStyle(build);
-      const architectStyle = window.getComputedStyle(architect);
-      const leadStyle = window.getComputedStyle(lead);
-
-      return {
-        buildWidth: buildStyle.borderTopWidth,
-        architectWidth: architectStyle.borderTopWidth,
-        leadWidth: leadStyle.borderTopWidth,
-        leadColor: leadStyle.borderTopColor,
-      };
-    });
-
-    expect(styles.buildWidth).toBe('1px');
-    expect(styles.architectWidth).toBe('1px');
-    expect(styles.leadWidth).toBe('2px');
-    expect(styles.leadColor).toBe('rgb(138, 100, 20)');
-  });
-
-  test('no tabindex or focusable non-interactive elements in skills', async ({
-    page,
-  }) => {
-    await page.setViewportSize({ width: 1200, height: 900 });
-    await page.goto('/');
-    await page.waitForLoadState('domcontentloaded');
-    await page.waitForTimeout(1500);
-
-    const skillsBadElements = await page.evaluate(() => {
-      const forbidden = document.querySelectorAll(
-        '#skills [tabindex], #skills a, #skills button'
-      );
-      return forbidden.length;
-    });
-    expect(skillsBadElements).toBe(0);
-
-    // Scroll skills into view and tab through
-    await page.locator('#skills').scrollIntoViewIfNeeded();
-
-    const focusedElementsInSkills = [];
-    for (let i = 0; i < 30; i++) {
-      await page.keyboard.press('Tab');
-      const focusedClass = await page.evaluate(() => {
-        const el = document.activeElement;
-        if (!el || el === document.body) return null;
-        if (el.closest('#skills')) {
-          return {
-            tagName: el.tagName,
-            className: el.className,
-          };
-        }
-        return null;
+      const overflow = await page.evaluate(() => {
+        const docOverflow =
+          document.documentElement.scrollWidth >
+          document.documentElement.clientWidth;
+        const section = document.querySelector('#skills');
+        const rect = section.getBoundingClientRect();
+        const sectionOverflow =
+          rect.right > document.documentElement.clientWidth;
+        return { docOverflow, sectionOverflow };
       });
-      if (focusedClass) {
-        focusedElementsInSkills.push(focusedClass);
-      }
+
+      expect(overflow.docOverflow).toBe(false);
+      expect(overflow.sectionOverflow).toBe(false);
+    });
+  }
+
+  test('34 entries visible with identical typography across all entries', async ({ page }) => {
+    await page.setViewportSize({ width: 1200, height: 900 });
+    await page.goto('/');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
+
+    const entryData = await page.evaluate(() => {
+      const entries = Array.from(document.querySelectorAll('#skills .skills__entry'));
+      const styles = entries.map((el) => {
+        const cs = window.getComputedStyle(el);
+        const rect = el.getBoundingClientRect();
+        const isVisible =
+          rect.width > 0 &&
+          rect.height > 0 &&
+          cs.visibility !== 'hidden' &&
+          cs.display !== 'none';
+        return {
+          isVisible,
+          tuple: `${cs.fontFamily}|${cs.fontSize}|${cs.fontWeight}|${cs.color}`,
+        };
+      });
+
+      const uniqueTuples = Array.from(new Set(styles.map((s) => s.tuple)));
+      return {
+        count: entries.length,
+        allVisible: styles.every((s) => s.isVisible),
+        uniqueTuples,
+      };
+    });
+
+    expect(entryData.count).toBe(34);
+    expect(entryData.allVisible).toBe(true);
+    expect(entryData.uniqueTuples.length).toBe(1);
+  });
+
+  test('two columns at 900px and 1200px; one column at 899px and 375px', async ({ page }) => {
+    // Two columns at 900px and 1200px
+    for (const width of [900, 1200]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/');
+      await page.waitForLoadState('domcontentloaded');
+      await page.waitForTimeout(500);
+
+      const positions = await page.evaluate(() => {
+        const entries = document.querySelectorAll('#skills .skills__entry');
+        const r1 = entries[0].getBoundingClientRect();
+        const r2 = entries[1].getBoundingClientRect();
+        return {
+          topDiff: Math.abs(r1.top - r2.top),
+          leftDiff: Math.abs(r1.left - r2.left),
+        };
+      });
+
+      expect(positions.topDiff, `At ${width}px, entries 1 and 2 should share top`).toBeLessThanOrEqual(2);
+      expect(positions.leftDiff, `At ${width}px, entries 1 and 2 should differ in left`).toBeGreaterThan(50);
     }
 
-    expect(focusedElementsInSkills).toHaveLength(0);
+    // One column at 899px and 375px
+    for (const width of [899, 375]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/');
+      await page.waitForLoadState('domcontentloaded');
+      await page.waitForTimeout(500);
+
+      const positions = await page.evaluate(() => {
+        const entries = document.querySelectorAll('#skills .skills__entry');
+        const r1 = entries[0].getBoundingClientRect();
+        const r2 = entries[1].getBoundingClientRect();
+        return {
+          topDiff: Math.abs(r1.top - r2.top),
+          leftDiff: Math.abs(r1.left - r2.left),
+        };
+      });
+
+      expect(positions.leftDiff, `At ${width}px, entries 1 and 2 should share left`).toBeLessThanOrEqual(2);
+      expect(positions.topDiff, `At ${width}px, entries 1 and 2 should differ in top`).toBeGreaterThan(10);
+    }
   });
 
-  test('skills section matches measure at 1440px', async ({
-    page,
-  }) => {
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto('/');
-    await page.waitForLoadState('domcontentloaded');
-    await page.waitForTimeout(1000);
-
-    const m = await page.evaluate(() => {
-      const skills = document.querySelector('#skills');
-      const container = document.querySelector('#skills .skills__container');
-
-      const sRect = skills.getBoundingClientRect();
-      const cRect = container.getBoundingClientRect();
-      const cStyle = window.getComputedStyle(container);
-
-      const cLeft = cRect.left + parseFloat(cStyle.paddingLeft);
-      const cRight = cRect.right - parseFloat(cStyle.paddingRight);
-
-      return {
-        skillsLeft: Math.round(sRect.left),
-        skillsRight: Math.round(sRect.right),
-        skillsWidth: Math.round(sRect.width),
-        containerContentLeft: Math.round(cLeft),
-        containerContentRight: Math.round(cRight),
-        containerContentWidth: Math.round(cRight - cLeft),
-      };
-    });
-
-    expect(m.skillsLeft).toBe(144);
-    expect(m.skillsRight).toBe(1296);
-    expect(m.skillsWidth).toBe(1152);
-    expect(m.containerContentLeft).toBe(176);
-    expect(m.containerContentRight).toBe(1264);
-    expect(m.containerContentWidth).toBe(1088);
-  });
-
-  test('no inline feeds spans exist in meta and gap connectors have high contrast pine styling', async ({
-    page,
-  }) => {
+  test('rules, brass segments, and zero box shadows in #skills', async ({ page }) => {
     await page.setViewportSize({ width: 1200, height: 900 });
     await page.goto('/');
     await page.waitForLoadState('domcontentloaded');
     await page.waitForTimeout(1000);
 
     const check = await page.evaluate(() => {
-      const inlineFeeds = document.querySelectorAll('#skills .skills__feeds');
-      const metas = Array.from(document.querySelectorAll('#skills .skills__meta'));
-      const metaHasFeeds = metas.some((m) => m.textContent.toLowerCase().includes('feeds'));
+      const entries = Array.from(document.querySelectorAll('#skills .skills__entry'));
+      const chapters = Array.from(document.querySelectorAll('#skills .skills__chapter'));
 
-      const connectors = Array.from(document.querySelectorAll('#skills .skills__connector'));
-      const connectorLines = Array.from(document.querySelectorAll('#skills .skills__connector-line'));
-      const lineStyles = connectorLines.map((line) => {
-        const style = window.getComputedStyle(line);
+      const entryBorders = entries.map((el) => {
+        const cs = window.getComputedStyle(el);
         return {
-          width: style.width,
-          backgroundColor: style.backgroundColor,
+          topWidth: cs.borderTopWidth,
+          topStyle: cs.borderTopStyle,
+          topColor: cs.borderTopColor,
+          bottomWidth: cs.borderBottomWidth,
+          bottomStyle: cs.borderBottomStyle,
+          bottomColor: cs.borderBottomColor,
+          marginBottom: cs.marginBottom,
         };
       });
 
+      const chapterBorders = chapters.map((el) => {
+        const cs = window.getComputedStyle(el);
+        return {
+          width: cs.borderTopWidth,
+          style: cs.borderTopStyle,
+          color: cs.borderTopColor,
+        };
+      });
+
+      const chapterBefores = chapters.map((el) => {
+        const cs = window.getComputedStyle(el, '::before');
+        return {
+          width: cs.width,
+          height: cs.height,
+          backgroundColor: cs.backgroundColor,
+        };
+      });
+
+      const allElements = Array.from(document.querySelectorAll('#skills, #skills *'));
+      const elementsWithShadow = allElements.filter((el) => {
+        const cs = window.getComputedStyle(el);
+        return cs.boxShadow && cs.boxShadow !== 'none';
+      }).length;
+
       return {
-        inlineFeedsCount: inlineFeeds.length,
-        metaHasFeeds,
-        connectorsCount: connectors.length,
-        lineStyles,
+        entryBorders,
+        chapterBorders,
+        chapterBefores,
+        elementsWithShadow,
       };
     });
 
-    expect(check.inlineFeedsCount).toBe(0);
-    expect(check.metaHasFeeds).toBe(false);
-    expect(check.connectorsCount).toBe(2);
-    for (const style of check.lineStyles) {
-      expect(style.width).toBe('2px');
-      expect(style.backgroundColor).toBe('rgb(38, 81, 56)');
+    // Entry border-top and border-bottom are 1px solid rgb(221, 211, 191) with margin-bottom -1px
+    for (const border of check.entryBorders) {
+      expect(border.topWidth).toBe('1px');
+      expect(border.topStyle).toBe('solid');
+      expect(border.topColor).toBe('rgb(221, 211, 191)');
+      expect(border.bottomWidth).toBe('1px');
+      expect(border.bottomStyle).toBe('solid');
+      expect(border.bottomColor).toBe('rgb(221, 211, 191)');
+      expect(border.marginBottom).toBe('-1px');
+    }
+
+    // Chapter rule 1px solid rgb(27, 23, 18)
+    for (const border of check.chapterBorders) {
+      expect(border.width).toBe('1px');
+      expect(border.style).toBe('solid');
+      expect(border.color).toBe('rgb(27, 23, 18)');
+    }
+
+    // Chapter ::before is flush 48px × 1px brass rgb(185, 138, 31)
+    for (const before of check.chapterBefores) {
+      expect(before.width).toBe('48px');
+      expect(before.height).toBe('1px');
+      expect(before.backgroundColor).toBe('rgb(185, 138, 31)');
+    }
+
+    // No element in #skills has a box-shadow
+    expect(check.elementsWithShadow).toBe(0);
+  });
+
+  test('long names do not overflow their column at 1200px or 320px', async ({ page }) => {
+    const targetNames = ['Mentoring & Coaching', 'AI-native Architectures', 'gRPC'];
+
+    for (const width of [1200, 320]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/');
+      await page.waitForLoadState('domcontentloaded');
+      await page.waitForTimeout(500);
+
+      const overflowResults = await page.evaluate((names) => {
+        const entries = Array.from(document.querySelectorAll('#skills .skills__entry'));
+        return names.map((name) => {
+          const el = entries.find((e) => e.textContent.trim() === name);
+          if (!el) return { name, found: false };
+          return {
+            name,
+            found: true,
+            scrollWidth: el.scrollWidth,
+            clientWidth: el.clientWidth,
+          };
+        });
+      }, targetNames);
+
+      for (const res of overflowResults) {
+        expect(res.found, `Entry "${res.name}" must exist`).toBe(true);
+        expect(
+          res.scrollWidth <= Math.ceil(res.clientWidth) + 1,
+          `"${res.name}" at ${width}px: scrollWidth (${res.scrollWidth}) <= clientWidth (${res.clientWidth})`
+        ).toBe(true);
+      }
+    }
+  });
+
+  test('nothing inside #skills is sticky', async ({ page }) => {
+    for (const width of [375, 768, 1200]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/');
+      await page.waitForLoadState('domcontentloaded');
+      await page.waitForTimeout(500);
+
+      const stickyElements = await page.evaluate(() => {
+        const elements = Array.from(document.querySelectorAll('#skills, #skills *'));
+        return elements
+          .filter((el) => window.getComputedStyle(el).position === 'sticky')
+          .map((el) => el.className || el.tagName);
+      });
+
+      expect(stickyElements, `At ${width}px, no sticky elements should exist`).toHaveLength(0);
+    }
+  });
+
+  test('no tabindex, focusable non-interactive elements, or data-animate in #skills', async ({ page }) => {
+    await page.setViewportSize({ width: 1200, height: 900 });
+    await page.goto('/');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
+
+    const forbidden = await page.evaluate(() => {
+      const elements = document.querySelectorAll(
+        '#skills [tabindex], #skills a, #skills button, #skills [data-animate]'
+      );
+      return elements.length;
+    });
+    expect(forbidden).toBe(0);
+  });
+
+  test('scroll-margin-top is set on #skills and chapter names to avoid header overlap', async ({ page }) => {
+    await page.setViewportSize({ width: 1200, height: 900 });
+    await page.goto('/');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(500);
+
+    const scrollMargins = await page.evaluate(() => {
+      const section = document.querySelector('#skills');
+      const chapterNames = Array.from(document.querySelectorAll('#skills .skills__chapter-name'));
+      return {
+        sectionScrollMargin: window.getComputedStyle(section).scrollMarginTop,
+        chapterScrollMargins: chapterNames.map((el) => window.getComputedStyle(el).scrollMarginTop),
+      };
+    });
+
+    expect(parseFloat(scrollMargins.sectionScrollMargin)).toBeGreaterThan(0);
+    expect(scrollMargins.chapterScrollMargins.length).toBe(3);
+    for (const sm of scrollMargins.chapterScrollMargins) {
+      expect(parseFloat(sm)).toBeGreaterThan(0);
     }
   });
 });

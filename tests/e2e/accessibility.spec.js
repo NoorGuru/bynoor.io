@@ -144,22 +144,12 @@ test('axe audit scoped to #skills passes with color-contrast enabled at 1200px',
     .withTags(['wcag2a', 'wcag2aa'])
     .analyze();
 
-  const violations = results.violations
-    .map((v) => ({
-      ...v,
-      nodes: v.nodes.filter(
-        (n) =>
-          !n.target.some((sel) => sel.includes('.skills__layer-num')) &&
-          !n.html.includes('skills__layer-num')
-      ),
-    }))
-    .filter((v) => v.nodes.length > 0)
-    .map((v) => ({
-      id: v.id,
-      impact: v.impact,
-      description: v.description,
-      nodes: v.nodes.length,
-    }));
+  const violations = results.violations.map((v) => ({
+    id: v.id,
+    impact: v.impact,
+    description: v.description,
+    nodes: v.nodes.length,
+  }));
 
   expect(violations, `Skills accessibility violations at 1200px: ${JSON.stringify(violations, null, 2)}`).toHaveLength(0);
 });
@@ -175,22 +165,12 @@ test('axe audit scoped to #skills passes with color-contrast enabled at 375px', 
     .withTags(['wcag2a', 'wcag2aa'])
     .analyze();
 
-  const violations = results.violations
-    .map((v) => ({
-      ...v,
-      nodes: v.nodes.filter(
-        (n) =>
-          !n.target.some((sel) => sel.includes('.skills__layer-num')) &&
-          !n.html.includes('skills__layer-num')
-      ),
-    }))
-    .filter((v) => v.nodes.length > 0)
-    .map((v) => ({
-      id: v.id,
-      impact: v.impact,
-      description: v.description,
-      nodes: v.nodes.length,
-    }));
+  const violations = results.violations.map((v) => ({
+    id: v.id,
+    impact: v.impact,
+    description: v.description,
+    nodes: v.nodes.length,
+  }));
 
   expect(violations, `Skills accessibility violations at 375px: ${JSON.stringify(violations, null, 2)}`).toHaveLength(0);
 });

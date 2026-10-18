@@ -99,117 +99,134 @@ describe('Highlights Section', () => {
 });
 
 describe('Skills Section', () => {
-  it('has all 3 skill layers', () => {
-    const labels = document.querySelectorAll('#skills .skills__layer-label');
-    expect(labels.length).toBe(3);
+  const expectedSkills = [
+    'Kotlin',
+    'Java',
+    'Python',
+    'TypeScript',
+    'JavaScript',
+    'Scala',
+    'Spring Boot',
+    'GraphQL',
+    'gRPC',
+    'React',
+    'Node.js',
+    'AWS',
+    'gcloud / GCP',
+    'OpenAPI',
+    'Platform Engineering',
+    'AI-native Architectures',
+    'MCP Servers',
+    'Agent Frameworks',
+    'LLM Tooling',
+    'SDKs',
+    'Microservices',
+    'Distributed Systems',
+    'System Design',
+    'Backend',
+    'Full-Stack',
+    'Engineering Leadership',
+    'Mentoring & Coaching',
+    'Hiring & Bar Raising',
+    'AI Advocacy',
+    'Training at Scale',
+    'Product Thinking',
+    'Strategic Planning',
+    'Knowledge Sharing',
+    'Cross-Team Influence',
+  ];
 
-    const actualLabels = Array.from(labels).map((l) => l.textContent.trim());
-    expect(actualLabels).toEqual(['build', 'architect', 'lead']);
+  const expectedProofs = [
+    'Learned React in weeks to lead an Amazon frontend project. Work daily across Kotlin, Java, Python, and TypeScript on backend, frontend, and infrastructure.',
+    'SDK platform handling 500M+ requests/year. Chain-of-tools agent architecture that cuts hallucination. Systems I built at Amazon still running 3+ years after I left.',
+    'Trained hundreds on AI-powered development. Onboarded 6 engineers onto 50+ repositories. Hired tens of engineers through bar-raising interviews at Amazon and Expedia. Teaching programming since 2013.',
+  ];
+
+  it('has 3 chapter names build, architect, lead in order', () => {
+    const chapterNames = Array.from(
+      document.querySelectorAll('#skills .skills__chapter-name')
+    ).map((el) => el.textContent.trim());
+    expect(chapterNames).toEqual(['build', 'architect', 'lead']);
   });
 
-  it('preserves all 34 tokens exactly once across core and index', () => {
-    const caps = Array.from(document.querySelectorAll('#skills .skills__cap')).map((el) => el.textContent.trim());
-    const indexItems = Array.from(document.querySelectorAll('#skills .skills__index-item')).map((el) => el.textContent.trim());
-    const allTokens = [...caps, ...indexItems];
+  it('has exactly 34 skills entries in order, correct per-chapter counts, and no element children', () => {
+    const entries = Array.from(
+      document.querySelectorAll('#skills .skills__entry')
+    );
+    expect(entries.length).toBe(34);
+    expect(entries.map((el) => el.textContent.trim())).toEqual(expectedSkills);
 
-    expect(allTokens.length).toBe(34);
-    expect(new Set(allTokens).size).toBe(34);
+    const chapters = Array.from(
+      document.querySelectorAll('#skills .skills__chapter')
+    );
+    expect(chapters.length).toBe(3);
+    const perChapterCounts = chapters.map(
+      (ch) => ch.querySelectorAll('.skills__entry').length
+    );
+    expect(perChapterCounts).toEqual([14, 11, 9]);
 
-    const expectedTokens = [
-      'Kotlin', 'Java', 'Python', 'TypeScript',
-      'JavaScript', 'Scala', 'Spring Boot', 'GraphQL', 'gRPC', 'React', 'Node.js', 'AWS', 'gcloud / GCP', 'OpenAPI',
-      'SDKs', 'AI-native Architectures', 'Agent Frameworks', 'Distributed Systems',
-      'Platform Engineering', 'MCP Servers', 'LLM Tooling', 'Microservices', 'System Design', 'Backend', 'Full-Stack',
-      'Training at Scale', 'Mentoring & Coaching', 'Hiring & Bar Raising', 'Knowledge Sharing',
-      'Engineering Leadership', 'AI Advocacy', 'Product Thinking', 'Strategic Planning', 'Cross-Team Influence',
-    ];
-
-    expect(new Set(allTokens)).toEqual(new Set(expectedTokens));
-  });
-
-  it('promotes exactly 4 core capabilities per layer', () => {
-    const layers = Array.from(document.querySelectorAll('#skills .skills__layer'));
-    const coreCounts = layers.map((layer) => layer.querySelectorAll('.skills__core-item').length);
-    expect(coreCounts).toEqual([4, 4, 4]);
-
-    const expectedCores = [
-      ['Kotlin', 'Java', 'Python', 'TypeScript'],
-      ['SDKs', 'AI-native Architectures', 'Agent Frameworks', 'Distributed Systems'],
-      ['Training at Scale', 'Mentoring & Coaching', 'Hiring & Bar Raising', 'Knowledge Sharing'],
-    ];
-
-    layers.forEach((layer, i) => {
-      const coreNames = Array.from(layer.querySelectorAll('.skills__cap')).map((el) => el.textContent.trim());
-      expect(coreNames).toEqual(expectedCores[i]);
+    entries.forEach((entry) => {
+      expect(entry.children.length).toBe(0);
     });
   });
 
-  it("every core tag is a fragment of that layer's proof sentence", () => {
-    const layers = Array.from(document.querySelectorAll('#skills .skills__layer'));
-    const expectedTagsPerLayer = [
-      ['daily', 'daily', 'daily', 'daily'],
-      ['500m+ requests/year', 'chain-of-tools', 'cuts hallucination', 'still running · 3+ years'],
-      ['trained hundreds', '6 engineers onto 50+ repositories', 'bar-raising · amazon and expedia', 'since 2013'],
+  it('contains exactly the 41 allowlisted strings in DOM order with zero invented copy', () => {
+    const expected41Strings = [
+      'How I Work',
+      'build',
+      expectedProofs[0],
+      ...expectedSkills.slice(0, 14),
+      'architect',
+      expectedProofs[1],
+      ...expectedSkills.slice(14, 25),
+      'lead',
+      expectedProofs[2],
+      ...expectedSkills.slice(25, 34),
+    ];
+    expect(expected41Strings.length).toBe(41);
+
+    const actualStrings = Array.from(
+      document.querySelectorAll('#skills h2, #skills h3, #skills p, #skills li')
+    ).map((el) => el.textContent.trim());
+
+    expect(actualStrings).toEqual(expected41Strings);
+  });
+
+  it('has negative checks: no rejected classes or text fragments anywhere in #skills', () => {
+    const rejectedSelectors = [
+      '#skills .skills__cap',
+      '#skills .skills__tag',
+      '#skills .skills__core',
+      '#skills [class*="skills__index"]',
+      '#skills [class*="skills__connector"]',
+      '#skills [class*="skills__layer"]',
+      '#skills .skills__meta',
+      '#skills .skills__stack',
+      '#skills .skills__feeds',
     ];
 
-    layers.forEach((layer, i) => {
-      const proofText = layer.querySelector('.skills__layer-proof').textContent.toLowerCase();
-      const tags = Array.from(layer.querySelectorAll('.skills__tag')).map((el) => el.textContent.trim().toLowerCase());
-      expect(tags).toEqual(expectedTagsPerLayer[i]);
-
-      tags.forEach((tag) => {
-        const fragments = tag.split('·').map((f) => f.trim());
-        fragments.forEach((fragment) => {
-          expect(proofText).toContain(fragment);
-        });
-      });
-    });
-  });
-
-  it('preserves all titles and proof sentences verbatim', () => {
-    const titles = Array.from(document.querySelectorAll('#skills .skills__layer-title')).map((el) => el.textContent.trim());
-    expect(titles).toEqual([
-      'Full-stack polyglot. Any language, any layer.',
-      'Scalable platforms and AI-native systems.',
-      'Engineering leader and force multiplier.',
-    ]);
-
-    const proofs = Array.from(document.querySelectorAll('#skills .skills__layer-proof')).map((el) => el.textContent.trim());
-    expect(proofs).toEqual([
-      'Learned React in weeks to lead an Amazon frontend project. Work daily across Kotlin, Java, Python, and TypeScript on backend, frontend, and infrastructure.',
-      'SDK platform handling 500M+ requests/year. Chain-of-tools agent architecture that cuts hallucination. Systems I built at Amazon still running 3+ years after I left.',
-      'Trained hundreds on AI-powered development. Onboarded 6 engineers onto 50+ repositories. Hired tens of engineers through bar-raising interviews at Amazon and Expedia. Teaching programming since 2013.',
-    ]);
-  });
-
-  it('has exactly 2 connectors and no interactive elements', () => {
-    const connectors = document.querySelectorAll('#skills .skills__connector');
-    expect(connectors.length).toBe(2);
-
-    const interactive = document.querySelectorAll('#skills a, #skills button, #skills [tabindex]');
-    expect(interactive.length).toBe(0);
-  });
-
-  it('has no inline feeds spans in meta and has gap connectors between strata', () => {
-    const inlineFeeds = document.querySelectorAll('#skills .skills__feeds');
-    expect(inlineFeeds.length).toBe(0);
-
-    const metas = document.querySelectorAll('#skills .skills__meta');
-    metas.forEach((meta) => {
-      expect(meta.textContent.toLowerCase()).not.toContain('feeds');
+    rejectedSelectors.forEach((selector) => {
+      const elements = document.querySelectorAll(selector);
+      expect(elements.length, `Expected no elements for ${selector}`).toBe(0);
     });
 
-    const layerLabels = Array.from(document.querySelectorAll('#skills .skills__layer-label')).map((l) => l.textContent.trim());
-    expect(layerLabels).toEqual(['build', 'architect', 'lead']);
+    const sectionText = document.querySelector('#skills').textContent;
+    expect(sectionText).not.toContain('feeds');
+    expect(sectionText).not.toContain('Also in this layer');
+  });
 
-    const stack = document.querySelector('#skills .skills__stack');
-    const directChildren = Array.from(stack.children).filter((el) => el.tagName !== 'COMMENT');
-    expect(directChildren.length).toBe(5);
-    expect(directChildren[0].classList.contains('skills__layer--build')).toBe(true);
-    expect(directChildren[1].classList.contains('skills__connector')).toBe(true);
-    expect(directChildren[2].classList.contains('skills__layer--architect')).toBe(true);
-    expect(directChildren[3].classList.contains('skills__connector')).toBe(true);
-    expect(directChildren[4].classList.contains('skills__layer--lead')).toBe(true);
+  it('preserves all proof sentences verbatim', () => {
+    const proofs = Array.from(
+      document.querySelectorAll('#skills .skills__chapter-proof')
+    ).map((el) => el.textContent.trim());
+    expect(proofs).toEqual(expectedProofs);
+  });
+
+  it('has zero interactive, focusable, or data-animate elements inside #skills', () => {
+    const forbidden = document.querySelectorAll(
+      '#skills a, #skills button, #skills [tabindex], #skills [data-animate]'
+    );
+    expect(forbidden.length).toBe(0);
   });
 });
 
