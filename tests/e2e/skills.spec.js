@@ -26,7 +26,7 @@ test.describe('Skills Ledger E2E', () => {
     });
   }
 
-  test('34 entries visible with identical typography across all entries', async ({ page }) => {
+  test('34 entries visible with exactly 4 distinct font signatures matching the mechanical rule', async ({ page }) => {
     await page.setViewportSize({ width: 1200, height: 900 });
     await page.goto('/');
     await page.waitForLoadState('domcontentloaded');
@@ -34,31 +34,123 @@ test.describe('Skills Ledger E2E', () => {
 
     const entryData = await page.evaluate(() => {
       const entries = Array.from(document.querySelectorAll('#skills .skills__entry'));
-      const styles = entries.map((el) => {
+
+      const getExpectedModifier = (text) => {
+        if (/[A-Z]{2,}/.test(text)) return 'skills__entry--code';
+        if (text.includes(' & ') || text.includes(' / ') || text.includes('-')) return 'skills__entry--linked';
+        if (text.includes(' ')) return 'skills__entry--phrase';
+        return 'skills__entry--token';
+      };
+
+      const data = entries.map((el) => {
         const cs = window.getComputedStyle(el);
         const rect = el.getBoundingClientRect();
+        const text = el.textContent.trim();
         const isVisible =
           rect.width > 0 &&
           rect.height > 0 &&
           cs.visibility !== 'hidden' &&
           cs.display !== 'none';
+
+        const signature = `${cs.fontFamily}|${cs.fontSize}|${cs.fontWeight}|${cs.fontStyle}`;
+        const expectedClass = getExpectedModifier(text);
+        const hasModifier = el.classList.contains(expectedClass);
+
         return {
+          text,
           isVisible,
-          tuple: `${cs.fontFamily}|${cs.fontSize}|${cs.fontWeight}|${cs.color}`,
+          signature,
+          expectedClass,
+          hasModifier,
         };
       });
 
-      const uniqueTuples = Array.from(new Set(styles.map((s) => s.tuple)));
+      const uniqueSignatures = Array.from(new Set(data.map((d) => d.signature)));
+
       return {
         count: entries.length,
-        allVisible: styles.every((s) => s.isVisible),
-        uniqueTuples,
+        allVisible: data.every((d) => d.isVisible),
+        uniqueSignatures,
+        allModifiersMatch: data.every((d) => d.hasModifier),
+        mismatches: data.filter((d) => !d.hasModifier),
       };
     });
 
     expect(entryData.count).toBe(34);
     expect(entryData.allVisible).toBe(true);
-    expect(entryData.uniqueTuples.length).toBe(1);
+    expect(entryData.uniqueSignatures.length).toBe(4);
+    expect(entryData.allModifiersMatch).toBe(true);
+  });
+
+  test('no entry has text-transform other than none; rendered casing preserved at 1440px', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
+
+    const check = await page.evaluate(() => {
+      const entries = Array.from(document.querySelectorAll('#skills .skills__entry'));
+      const textTransforms = entries.map((el) => window.getComputedStyle(el).textTransform);
+      const allNone = textTransforms.every((tt) => tt === 'none');
+
+      const targetNames = ['GraphQL', 'SDKs', 'gcloud / GCP', 'gRPC', 'Node.js', 'OpenAPI'];
+      const casing = targetNames.map((name) => {
+        const el = entries.find((e) => e.textContent.trim() === name);
+        return {
+          name,
+          found: !!el,
+          renderedText: el ? el.innerText.trim() : null,
+        };
+      });
+
+      return {
+        count: entries.length,
+        allNone,
+        casing,
+      };
+    });
+
+    expect(check.count).toBe(34);
+    expect(check.allNone).toBe(true);
+    for (const c of check.casing) {
+      expect(c.found, `Entry "${c.name}" should exist`).toBe(true);
+      expect(c.renderedText).toBe(c.name);
+    }
+  });
+
+  test('every entry has the same computed color and min-height 2.875rem at 1440px', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(1000);
+
+    const result = await page.evaluate(() => {
+      const entries = Array.from(document.querySelectorAll('#skills .skills__entry'));
+      const rootFontSize = parseFloat(window.getComputedStyle(document.documentElement).fontSize) || 16;
+      const expectedMinHeight = 2.875 * rootFontSize;
+
+      const colors = new Set();
+      const minHeights = [];
+
+      for (const el of entries) {
+        const cs = window.getComputedStyle(el);
+        colors.add(cs.color);
+        minHeights.push(parseFloat(cs.minHeight));
+      }
+
+      return {
+        count: entries.length,
+        uniqueColors: Array.from(colors),
+        minHeights,
+        expectedMinHeight,
+      };
+    });
+
+    expect(result.count).toBe(34);
+    expect(result.uniqueColors.length).toBe(1);
+    for (const mh of result.minHeights) {
+      expect(Math.abs(mh - result.expectedMinHeight)).toBeLessThanOrEqual(0.5);
+    }
   });
 
   test('two columns at 900px and 1200px; one column at 899px and 375px', async ({ page }) => {

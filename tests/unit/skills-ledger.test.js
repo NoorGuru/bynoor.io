@@ -76,8 +76,27 @@ describe('Skills Ledger Source Text Verification', () => {
     expect(skillsBlock).not.toContain('column-count');
   });
 
-  it('index.astro contains exactly 34 occurrences of class="skills__entry"', () => {
-    const entryMatches = indexAstro.match(/class="skills__entry"/g) || [];
+  it('index.astro contains exactly 34 skills entries with modifier classes', () => {
+    const entryMatches = indexAstro.match(/class="skills__entry\s+skills__entry--(token|linked|phrase|code)"/g) || [];
     expect(entryMatches.length).toBe(34);
+  });
+
+  it('every entry modifier class in index.astro matches the mechanical rule applied to its own text', () => {
+    const entryRegex = /<li\s+class="skills__entry\s+skills__entry--([a-z]+)">([^<]+)<\/li>/g;
+    const matches = [...indexAstro.matchAll(entryRegex)];
+    expect(matches.length).toBe(34);
+
+    const getExpectedModifier = (text) => {
+      const decoded = text.replace(/&amp;/g, '&');
+      if (/[A-Z]{2,}/.test(decoded)) return 'code';
+      if (decoded.includes(' & ') || decoded.includes(' / ') || decoded.includes('-')) return 'linked';
+      if (decoded.includes(' ')) return 'phrase';
+      return 'token';
+    };
+
+    matches.forEach(([, modifier, text]) => {
+      const expected = getExpectedModifier(text.trim());
+      expect(modifier).toBe(expected);
+    });
   });
 });

@@ -2841,6 +2841,9 @@ body.menu-open {
 }
 
 .skills__entry {
+  display: flex;
+  align-items: center;
+  min-height: 2.875rem;
   font-family: var(--body);
   font-size: 1rem;
   font-weight: 500;
@@ -2860,6 +2863,47 @@ body.menu-open {
   overflow-wrap: break-word;
   word-break: normal;
   hyphens: none;
+}
+
+.skills__entry.skills__entry--token {
+  font-family: var(--display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.skills__entry.skills__entry--linked {
+  font-family: var(--display);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.skills__entry.skills__entry--phrase {
+  font-family: var(--body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0.005em;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.skills__entry.skills__entry--code {
+  font-family: var(--mono);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0.015em;
+  line-height: 1.35;
+  color: var(--ink);
+  text-transform: none;
 }
 
 @media (min-width: 900px) {
@@ -2898,7 +2942,14 @@ body.menu-open {
   }
 
   .skills__entry {
-    font-size: 1rem;
+    min-height: 2.625rem;
+    overflow-wrap: anywhere;
+  }
+
+  .skills__entry.skills__entry--token,
+  .skills__entry.skills__entry--linked,
+  .skills__entry.skills__entry--phrase,
+  .skills__entry.skills__entry--code {
     overflow-wrap: anywhere;
   }
 }
