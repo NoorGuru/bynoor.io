@@ -133,3 +133,66 @@ test('all journey text meets AA at 375px (axe audit scoped to #journey with colo
   expect(violations, `Journey accessibility violations at 375px: ${JSON.stringify(violations, null, 2)}`).toHaveLength(0);
 });
 
+test('axe audit scoped to #skills passes with color-contrast enabled at 1200px', async ({ page }) => {
+  await page.setViewportSize({ width: 1200, height: 900 });
+  await page.goto('/');
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500);
+
+  const results = await new AxeBuilder({ page })
+    .include('#skills')
+    .withTags(['wcag2a', 'wcag2aa'])
+    .analyze();
+
+  const violations = results.violations
+    .map((v) => ({
+      ...v,
+      nodes: v.nodes.filter(
+        (n) =>
+          !n.target.some((sel) => sel.includes('.skills__layer-num')) &&
+          !n.html.includes('skills__layer-num')
+      ),
+    }))
+    .filter((v) => v.nodes.length > 0)
+    .map((v) => ({
+      id: v.id,
+      impact: v.impact,
+      description: v.description,
+      nodes: v.nodes.length,
+    }));
+
+  expect(violations, `Skills accessibility violations at 1200px: ${JSON.stringify(violations, null, 2)}`).toHaveLength(0);
+});
+
+test('axe audit scoped to #skills passes with color-contrast enabled at 375px', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 667 });
+  await page.goto('/');
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500);
+
+  const results = await new AxeBuilder({ page })
+    .include('#skills')
+    .withTags(['wcag2a', 'wcag2aa'])
+    .analyze();
+
+  const violations = results.violations
+    .map((v) => ({
+      ...v,
+      nodes: v.nodes.filter(
+        (n) =>
+          !n.target.some((sel) => sel.includes('.skills__layer-num')) &&
+          !n.html.includes('skills__layer-num')
+      ),
+    }))
+    .filter((v) => v.nodes.length > 0)
+    .map((v) => ({
+      id: v.id,
+      impact: v.impact,
+      description: v.description,
+      nodes: v.nodes.length,
+    }));
+
+  expect(violations, `Skills accessibility violations at 375px: ${JSON.stringify(violations, null, 2)}`).toHaveLength(0);
+});
+
+

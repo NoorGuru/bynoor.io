@@ -95,3 +95,46 @@ test('journey rail is fully drawn with no transform under reduced motion', async
   await context.close();
 });
 
+test('skills layers are fully visible with no transform under reduced motion', async ({ browser }) => {
+  const context = await browser.newContext({
+    reducedMotion: 'reduce',
+  });
+  const page = await context.newPage();
+  await page.goto('/');
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500);
+
+  const getSkillsState = async () => {
+    return await page.evaluate(() => {
+      const layers = Array.from(document.querySelectorAll('#skills .skills__layer'));
+      return layers.map((layer) => {
+        const style = window.getComputedStyle(layer);
+        return {
+          opacity: style.opacity,
+          transform: style.transform,
+        };
+      });
+    });
+  };
+
+  const beforeScroll = await getSkillsState();
+  expect(beforeScroll.length).toBe(3);
+  for (const layer of beforeScroll) {
+    expect(layer.opacity).toBe('1');
+    expect(layer.transform === 'none' || layer.transform === 'matrix(1, 0, 0, 1, 0, 0)').toBe(true);
+  }
+
+  await page.locator('#skills').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
+
+  const afterScroll = await getSkillsState();
+  expect(afterScroll.length).toBe(3);
+  for (const layer of afterScroll) {
+    expect(layer.opacity).toBe('1');
+    expect(layer.transform === 'none' || layer.transform === 'matrix(1, 0, 0, 1, 0, 0)').toBe(true);
+  }
+
+  await context.close();
+});
+
+

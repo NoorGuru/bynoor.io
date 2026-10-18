@@ -1371,71 +1371,102 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         <div class="skills__stack">
           <!-- Layer 1: Build -->
-          <article class="skills__layer skills__layer--build" data-animate="fade-up">
-            <div class="skills__layer-accent" aria-hidden="true"></div>
-            <div class="skills__layer-content">
-              <span class="skills__layer-label">build</span>
+          <article class="skills__layer skills__layer--build" data-animate="fade-up" aria-labelledby="skills-layer-build">
+            <div class="skills__meta">
+              <span class="skills__layer-num" aria-hidden="true">01</span>{" "}
+              <span class="skills__layer-label" id="skills-layer-build">build</span>
+            </div>
+            <div class="skills__body">
               <h3 class="skills__layer-title">Full-stack polyglot. Any language, any layer.</h3>
               <p class="skills__layer-proof">Learned React in weeks to lead an Amazon frontend project. Work daily across Kotlin, Java, Python, and TypeScript on backend, frontend, and infrastructure.</p>
-              <div class="skills__layer-tokens">
-                <span class="skills__token">Kotlin</span>
-                <span class="skills__token">Java</span>
-                <span class="skills__token">Python</span>
-                <span class="skills__token">TypeScript</span>
-                <span class="skills__token">JavaScript</span>
-                <span class="skills__token">Scala</span>
-                <span class="skills__token">Spring Boot</span>
-                <span class="skills__token">GraphQL</span>
-                <span class="skills__token">gRPC</span>
-                <span class="skills__token">React</span>
-                <span class="skills__token">Node.js</span>
-                <span class="skills__token">AWS</span>
-                <span class="skills__token">gcloud / GCP</span>
-                <span class="skills__token">OpenAPI</span>
+              <ul class="skills__core">
+                <li class="skills__core-item"><span class="skills__cap">Kotlin</span><span class="skills__tag">daily</span></li>
+                <li class="skills__core-item"><span class="skills__cap">Java</span><span class="skills__tag">daily</span></li>
+                <li class="skills__core-item"><span class="skills__cap">Python</span><span class="skills__tag">daily</span></li>
+                <li class="skills__core-item"><span class="skills__cap">TypeScript</span><span class="skills__tag">daily</span></li>
+              </ul>
+              <div class="skills__index">
+                <span class="skills__index-label" id="skills-index-build">Also in this layer</span>
+                <ul class="skills__index-list" aria-labelledby="skills-index-build">
+                  <li class="skills__index-item">JavaScript</li>
+                  <li class="skills__index-item">Scala</li>
+                  <li class="skills__index-item">Spring Boot</li>
+                  <li class="skills__index-item">GraphQL</li>
+                  <li class="skills__index-item">gRPC</li>
+                  <li class="skills__index-item">React</li>
+                  <li class="skills__index-item">Node.js</li>
+                  <li class="skills__index-item">AWS</li>
+                  <li class="skills__index-item">gcloud / GCP</li>
+                  <li class="skills__index-item">OpenAPI</li>
+                </ul>
               </div>
             </div>
           </article>
+
+          <div class="skills__connector" aria-hidden="true">
+            <span class="skills__connector-line"></span>
+            <span class="skills__connector-label">feeds ↓</span>
+          </div>
 
           <!-- Layer 2: Architect -->
-          <article class="skills__layer skills__layer--architect" data-animate="fade-up">
-            <div class="skills__layer-accent" aria-hidden="true"></div>
-            <div class="skills__layer-content">
-              <span class="skills__layer-label">architect</span>
+          <article class="skills__layer skills__layer--architect" data-animate="fade-up" aria-labelledby="skills-layer-architect">
+            <div class="skills__meta">
+              <span class="skills__layer-num" aria-hidden="true">02</span>{" "}
+              <span class="skills__layer-label" id="skills-layer-architect">architect</span>
+            </div>
+            <div class="skills__body">
               <h3 class="skills__layer-title">Scalable platforms and AI-native systems.</h3>
               <p class="skills__layer-proof">SDK platform handling 500M+ requests/year. Chain-of-tools agent architecture that cuts hallucination. Systems I built at Amazon still running 3+ years after I left.</p>
-              <div class="skills__layer-tokens">
-                <span class="skills__token">Platform Engineering</span>
-                <span class="skills__token">AI-native Architectures</span>
-                <span class="skills__token">MCP Servers</span>
-                <span class="skills__token">Agent Frameworks</span>
-                <span class="skills__token">LLM Tooling</span>
-                <span class="skills__token">SDKs</span>
-                <span class="skills__token">Microservices</span>
-                <span class="skills__token">Distributed Systems</span>
-                <span class="skills__token">System Design</span>
-                <span class="skills__token">Backend</span>
-                <span class="skills__token">Full-Stack</span>
+              <ul class="skills__core">
+                <li class="skills__core-item"><span class="skills__cap">SDKs</span><span class="skills__tag">500M+ requests/year</span></li>
+                <li class="skills__core-item"><span class="skills__cap">AI-native Architectures</span><span class="skills__tag">chain-of-tools</span></li>
+                <li class="skills__core-item"><span class="skills__cap">Agent Frameworks</span><span class="skills__tag">cuts hallucination</span></li>
+                <li class="skills__core-item"><span class="skills__cap">Distributed Systems</span><span class="skills__tag">still running · 3+ years</span></li>
+              </ul>
+              <div class="skills__index">
+                <span class="skills__index-label" id="skills-index-architect">Also in this layer</span>
+                <ul class="skills__index-list" aria-labelledby="skills-index-architect">
+                  <li class="skills__index-item">Platform Engineering</li>
+                  <li class="skills__index-item">MCP Servers</li>
+                  <li class="skills__index-item">LLM Tooling</li>
+                  <li class="skills__index-item">Microservices</li>
+                  <li class="skills__index-item">System Design</li>
+                  <li class="skills__index-item">Backend</li>
+                  <li class="skills__index-item">Full-Stack</li>
+                </ul>
               </div>
             </div>
           </article>
 
+          <div class="skills__connector" aria-hidden="true">
+            <span class="skills__connector-line"></span>
+            <span class="skills__connector-label">feeds ↓</span>
+          </div>
+
           <!-- Layer 3: Lead -->
-          <article class="skills__layer skills__layer--lead" data-animate="fade-up">
-            <div class="skills__layer-accent" aria-hidden="true"></div>
-            <div class="skills__layer-content">
-              <span class="skills__layer-label">lead</span>
+          <article class="skills__layer skills__layer--lead" data-animate="fade-up" aria-labelledby="skills-layer-lead">
+            <div class="skills__meta">
+              <span class="skills__layer-num" aria-hidden="true">03</span>{" "}
+              <span class="skills__layer-label" id="skills-layer-lead">lead</span>
+            </div>
+            <div class="skills__body">
               <h3 class="skills__layer-title">Engineering leader and force multiplier.</h3>
               <p class="skills__layer-proof">Trained hundreds on AI-powered development. Onboarded 6 engineers onto 50+ repositories. Hired tens of engineers through bar-raising interviews at Amazon and Expedia. Teaching programming since 2013.</p>
-              <div class="skills__layer-tokens">
-                <span class="skills__token">Engineering Leadership</span>
-                <span class="skills__token">Mentoring &amp; Coaching</span>
-                <span class="skills__token">Hiring &amp; Bar Raising</span>
-                <span class="skills__token">AI Advocacy</span>
-                <span class="skills__token">Training at Scale</span>
-                <span class="skills__token">Product Thinking</span>
-                <span class="skills__token">Strategic Planning</span>
-                <span class="skills__token">Knowledge Sharing</span>
-                <span class="skills__token">Cross-Team Influence</span>
+              <ul class="skills__core">
+                <li class="skills__core-item"><span class="skills__cap">Training at Scale</span><span class="skills__tag">trained hundreds</span></li>
+                <li class="skills__core-item"><span class="skills__cap">Mentoring &amp; Coaching</span><span class="skills__tag">6 engineers onto 50+ repositories</span></li>
+                <li class="skills__core-item"><span class="skills__cap">Hiring &amp; Bar Raising</span><span class="skills__tag">bar-raising · Amazon and Expedia</span></li>
+                <li class="skills__core-item"><span class="skills__cap">Knowledge Sharing</span><span class="skills__tag">since 2013</span></li>
+              </ul>
+              <div class="skills__index">
+                <span class="skills__index-label" id="skills-index-lead">Also in this layer</span>
+                <ul class="skills__index-list" aria-labelledby="skills-index-lead">
+                  <li class="skills__index-item">Engineering Leadership</li>
+                  <li class="skills__index-item">AI Advocacy</li>
+                  <li class="skills__index-item">Product Thinking</li>
+                  <li class="skills__index-item">Strategic Planning</li>
+                  <li class="skills__index-item">Cross-Team Influence</li>
+                </ul>
               </div>
             </div>
           </article>
