@@ -41,15 +41,19 @@ test('overlay menu opens and closes on mobile', async ({ page }) => {
   await expect(overlay).not.toBeVisible();
 });
 
-test('desktop navigation includes journey link between build and teach and fits without overflow at 1024px', async ({ page }) => {
+test('desktop navigation fits without overflow at 1024px', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
   await page.goto('/');
   await page.waitForLoadState('domcontentloaded');
   await page.waitForTimeout(1500);
 
-  const journeyLink = page.locator('.nav__links a[href="#journey"]');
-  await expect(journeyLink).toBeVisible();
-  await expect(journeyLink).toHaveText('journey');
+  const buildLink = page.locator('.nav__links a[href="#projects"]');
+  await expect(buildLink).toBeVisible();
+  await expect(buildLink).toHaveText('build');
+
+  const teachLink = page.locator('.nav__links a[href="#teach"]');
+  await expect(teachLink).toBeVisible();
+  await expect(teachLink).toHaveText('teach');
 
   // Verify header and page have no horizontal overflow at 1024px
   const fits = await page.evaluate(() => {
@@ -68,7 +72,7 @@ test('desktop navigation includes journey link between build and teach and fits 
   expect(fits.navLinksWidth).toBeLessThan(500);
 });
 
-test('mobile menu includes journey link with index 03 and clicks through', async ({ page }) => {
+test('mobile menu includes teach link with index 03 and clicks through', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 667 });
   await page.goto('/');
   await page.waitForLoadState('domcontentloaded');
@@ -76,13 +80,13 @@ test('mobile menu includes journey link with index 03 and clicks through', async
 
   // Open mobile menu
   await page.locator('.nav__hamburger').click();
-  const journeyMobile = page.locator('#mobile-menu a[href="#journey"]');
-  await expect(journeyMobile).toBeVisible();
-  await expect(journeyMobile.locator('.mobile-menu__link-index')).toHaveText('03');
-  await expect(journeyMobile).toContainText('journey');
+  const teachMobile = page.locator('#mobile-menu a[href="#teach"]');
+  await expect(teachMobile).toBeVisible();
+  await expect(teachMobile.locator('.mobile-menu__link-index')).toHaveText('03');
+  await expect(teachMobile).toContainText('teach');
 
-  // Click journey link in mobile menu
-  await journeyMobile.click();
+  // Click teach link in mobile menu
+  await teachMobile.click();
   // Menu should close
   await expect(page.locator('#mobile-menu')).not.toBeVisible();
 });

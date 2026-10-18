@@ -38,6 +38,11 @@
 html {
   background: var(--paper);
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+main section[id] {
+  scroll-margin-top: 5rem;
 }
 
 body {
@@ -437,52 +442,6 @@ body.menu-open {
   min-width: 0;
   width: 100%;
   box-sizing: border-box;
-}
-
-.hero__status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--pine);
-  background: rgba(38, 81, 56, 0.06);
-  border: 1px solid rgba(38, 81, 56, 0.16);
-  border-radius: 999px;
-  padding: 0.35rem 0.85rem;
-  margin: 0;
-  box-shadow: 0 1px 2px rgba(27, 23, 18, 0.03);
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.hero__status-indicator {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--pine);
-  box-shadow: 0 0 0 2px rgba(38, 81, 56, 0.2);
-  flex-shrink: 0;
-  animation: heroPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes heroPulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.45;
-    transform: scale(0.85);
-  }
-}
-
-.hero__status-text {
-  white-space: normal;
-  line-height: 1.35;
 }
 
 .hero__title {
@@ -1586,6 +1545,13 @@ body.menu-open {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.projects__featured--aura .projects__preview-img {
+  object-fit: cover;
+  object-position: top center;
+  aspect-ratio: 3 / 2;
+  height: 100%;
+}
+
 .projects__preview-link:hover .projects__preview-img {
   transform: scale(1.015);
 }
@@ -1669,6 +1635,19 @@ body.menu-open {
   margin-top: 0.75rem;
 }
 
+.projects__featured--egwizard .projects__featured-desc {
+  color: var(--paper);
+}
+
+.projects__featured--egwizard .projects__featured-eyebrow {
+  color: rgba(247, 243, 234, 0.85);
+}
+
+.projects__featured--egwizard .projects__action-tag {
+  color: var(--paper);
+  border-color: rgba(221, 211, 191, 0.3);
+}
+
 .projects__featured-arc {
   display: flex;
   flex-direction: column;
@@ -1750,6 +1729,14 @@ body.menu-open {
 
 .projects__arc-stage--current .projects__arc-detail {
   color: var(--brass);
+}
+
+.projects__featured--egwizard .projects__arc-label {
+  color: rgba(247, 243, 234, 0.85);
+}
+
+.projects__featured--egwizard .projects__arc-stage--current .projects__arc-detail {
+  color: var(--paper);
 }
 
 .projects__arc-connector {
@@ -1874,8 +1861,7 @@ body.menu-open {
 
 /* === Alternating Case Study Rhythm on Desktop (min-width: 900px) ===
    Aura card has preview on the left and content on the right.
-   Nebula card has content on the left and preview on the right (flex-direction: row-reverse).
-   EG Wizard remains a prestigious full-width flagship card. */
+   Nebula card has content on the left and preview on the right (flex-direction: row-reverse). */
 @media (min-width: 900px) {
   .projects__featured--aura,
   .projects__featured--nebula {
@@ -1913,12 +1899,6 @@ body.menu-open {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-
-  .projects__featured--egwizard .projects__featured-content {
-    padding: 2.25rem 2.25rem 1.75rem;
-    width: 100%;
-    box-sizing: border-box;
   }
 
   .projects__featured-stats {
@@ -2598,8 +2578,13 @@ body.menu-open {
   border-bottom: 1px solid var(--line-strong);
 }
 .journey__act-numeral {
-  font-family: var(--display); font-weight: 900; font-size: 2.25rem;
-  line-height: 0.9; letter-spacing: -0.03em; color: var(--ink); opacity: 0.14;
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 2.75rem;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  opacity: 1;
 }
 .journey__act-title {
   font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.14em;
@@ -2763,36 +2748,6 @@ body.menu-open {
   position: relative;
   overflow: hidden;
   box-shadow: 0 2px 10px rgba(27, 23, 18, 0.03);
-}
-
-@media (min-width: 860px) {
-  .skills__layer::after {
-    position: absolute;
-    right: 2rem;
-    top: 0.75rem;
-    font-family: var(--display);
-    font-weight: 900;
-    font-size: clamp(4.5rem, 8vw, 7rem);
-    line-height: 1;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
-    color: rgba(27, 23, 18, 0.03);
-    pointer-events: none;
-    user-select: none;
-    z-index: 1;
-  }
-
-  .skills__layer--build::after {
-    content: 'BUILD';
-  }
-
-  .skills__layer--architect::after {
-    content: 'ARCHITECT';
-  }
-
-  .skills__layer--lead::after {
-    content: 'LEAD';
-  }
 }
 
 .skills__layer-content {
@@ -2974,7 +2929,7 @@ body.menu-open {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: color 0.2s ease;
 }
 
 .recommendations__card.is-expanded .recommendations__quote p {
@@ -3292,7 +3247,7 @@ body.menu-open {
 }
 
 .links__world-hook {
-  color: var(--ink-soft);
+  color: var(--muted);
   margin: 0.4rem 0 0;
   font-size: 0.92rem;
 }
