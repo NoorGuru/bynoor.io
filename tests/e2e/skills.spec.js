@@ -60,6 +60,64 @@ test.describe('Skills Ledger E2E', () => {
     expect(result.uniqueSignatures.length).toBe(1);
   });
 
+  test("at 1200px each chapter name's right edge is left of the proof's left edge (the hang), and chapter name and ledger share a left edge", async ({ page }) => {
+    await page.setViewportSize({ width: 1200, height: 900 });
+    await page.goto('/');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForTimeout(500);
+
+    const positions = await page.evaluate(() => {
+      const chapters = Array.from(document.querySelectorAll('#skills .skills__chapter'));
+      return chapters.map((ch) => {
+        const name = ch.querySelector('.skills__chapter-name').getBoundingClientRect();
+        const proof = ch.querySelector('.skills__chapter-proof').getBoundingClientRect();
+        const ledger = ch.querySelector('.skills__ledger').getBoundingClientRect();
+        return {
+          hang: name.right < proof.left,
+          nameRight: name.right,
+          proofLeft: proof.left,
+          nameLeft: name.left,
+          ledgerLeft: ledger.left,
+        };
+      });
+    });
+
+    expect(positions.length).toBe(3);
+    for (const p of positions) {
+      expect(p.hang, `Chapter name right edge (${p.nameRight}) should be left of proof left edge (${p.proofLeft})`).toBe(true);
+      expect(Math.abs(p.nameLeft - p.ledgerLeft), 'Chapter name and ledger should share a left edge').toBeLessThanOrEqual(2);
+    }
+  });
+
+  test('at 899px and below the chapter name sits above the proof and both share a left edge', async ({ page }) => {
+    for (const width of [899, 375]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/');
+      await page.waitForLoadState('domcontentloaded');
+      await page.waitForTimeout(500);
+
+      const positions = await page.evaluate(() => {
+        const chapters = Array.from(document.querySelectorAll('#skills .skills__chapter'));
+        return chapters.map((ch) => {
+          const name = ch.querySelector('.skills__chapter-name').getBoundingClientRect();
+          const proof = ch.querySelector('.skills__chapter-proof').getBoundingClientRect();
+          return {
+            above: name.bottom <= proof.top + 2,
+            nameBottom: name.bottom,
+            proofTop: proof.top,
+            leftDiff: Math.abs(name.left - proof.left),
+          };
+        });
+      });
+
+      expect(positions.length).toBe(3);
+      for (const p of positions) {
+        expect(p.above, `At ${width}px, chapter name bottom (${p.nameBottom}) should sit above proof top (${p.proofTop})`).toBe(true);
+        expect(p.leftDiff, `At ${width}px, chapter name and proof should share a left edge`).toBeLessThanOrEqual(2);
+      }
+    }
+  });
+
   test('two columns at 900px and 1200px; one column at 899px and 375px', async ({ page }) => {
     for (const width of [900, 1200]) {
       await page.setViewportSize({ width, height: 900 });
@@ -102,7 +160,7 @@ test.describe('Skills Ledger E2E', () => {
     }
   });
 
-  test('every item except the last in its row has a ::after with content middot and color rgb(38, 81, 56); last item has no ::after', async ({ page }) => {
+  test('every item except the last in its row has an ::after with content middot and color rgb(38, 81, 56); last item has none', async ({ page }) => {
     await page.setViewportSize({ width: 1200, height: 900 });
     await page.goto('/');
     await page.waitForLoadState('domcontentloaded');
@@ -207,106 +265,7 @@ test.describe('Skills Ledger E2E', () => {
     }
   });
 
-  test('row rule stops short: ::before width is clientWidth - 32 at >=900px, and clientWidth - 20 at 320px', async ({ page }) => {
-    for (const width of [1200, 900]) {
-      await page.setViewportSize({ width, height: 900 });
-      await page.goto('/');
-      await page.waitForLoadState('domcontentloaded');
-      await page.waitForTimeout(500);
-
-      const check = await page.evaluate(() => {
-        const rows = Array.from(document.querySelectorAll('#skills .skills__row'));
-        return rows.map((row) => {
-          const beforeStyle = window.getComputedStyle(row, '::before');
-          const beforeWidth = parseFloat(beforeStyle.width);
-          const expectedWidth = row.clientWidth - 32;
-          return {
-            clientWidth: row.clientWidth,
-            beforeWidth,
-            expectedWidth,
-            diff: Math.abs(beforeWidth - expectedWidth),
-          };
-        });
-      });
-
-      for (const r of check) {
-        expect(r.diff, `At ${width}px, ::before width should equal clientWidth - 32`).toBeLessThanOrEqual(1);
-      }
-    }
-
-    await page.setViewportSize({ width: 320, height: 900 });
-    await page.goto('/');
-    await page.waitForLoadState('domcontentloaded');
-    await page.waitForTimeout(500);
-
-    const check320 = await page.evaluate(() => {
-      const rows = Array.from(document.querySelectorAll('#skills .skills__row'));
-      return rows.map((row) => {
-        const beforeStyle = window.getComputedStyle(row, '::before');
-        const beforeWidth = parseFloat(beforeStyle.width);
-        const expectedWidth = row.clientWidth - 20;
-        return {
-          clientWidth: row.clientWidth,
-          beforeWidth,
-          expectedWidth,
-          diff: Math.abs(beforeWidth - expectedWidth),
-        };
-      });
-    });
-
-    for (const r of check320) {
-      expect(r.diff, 'At 320px, ::before width should equal clientWidth - 20').toBeLessThanOrEqual(1);
-    }
-  });
-
-  test('gutter fold exists only at >=900px', async ({ page }) => {
-    await page.setViewportSize({ width: 1200, height: 900 });
-    await page.goto('/');
-    await page.waitForLoadState('domcontentloaded');
-    await page.waitForTimeout(500);
-
-    const desktopCheck = await page.evaluate(() => {
-      const ledgers = Array.from(document.querySelectorAll('#skills .skills__ledger'));
-      return ledgers.map((ledger) => {
-        const cs = window.getComputedStyle(ledger, '::before');
-        return {
-          width: cs.width,
-          height: parseFloat(cs.height),
-          content: cs.content,
-        };
-      });
-    });
-
-    expect(desktopCheck.length).toBe(3);
-    for (const check of desktopCheck) {
-      expect(check.width).toBe('1px');
-      expect(check.height).toBeGreaterThan(0);
-    }
-
-    for (const width of [899, 375]) {
-      await page.setViewportSize({ width, height: 900 });
-      await page.goto('/');
-      await page.waitForLoadState('domcontentloaded');
-      await page.waitForTimeout(500);
-
-      const mobileCheck = await page.evaluate(() => {
-        const ledgers = Array.from(document.querySelectorAll('#skills .skills__ledger'));
-        return ledgers.map((ledger) => {
-          const cs = window.getComputedStyle(ledger, '::before');
-          return {
-            content: cs.content,
-          };
-        });
-      });
-
-      expect(mobileCheck.length).toBe(3);
-      for (const check of mobileCheck) {
-        expect(check.content === 'none' || check.content === '""' || !check.content).toBe(true);
-      }
-    }
-  });
-
-  test('no box-shadow in #skills, nothing sticky, no tabindex, no data-animate, no focusable elements', async ({ page }) => {
+  test('no box-shadow inside #skills; nothing sticky; no [tabindex], no data-animate, no focusable elements', async ({ page }) => {
     await page.setViewportSize({ width: 1200, height: 900 });
     await page.goto('/');
     await page.waitForLoadState('domcontentloaded');
@@ -340,25 +299,25 @@ test.describe('Skills Ledger E2E', () => {
     expect(check.forbiddenInteractive).toBe(0);
   });
 
-  test('scroll-margin-top is set on #skills and chapter names to avoid header overlap', async ({ page }) => {
+  test('#skills anchor navigation leaves the heading visible below the fixed header', async ({ page }) => {
     await page.setViewportSize({ width: 1200, height: 900 });
-    await page.goto('/');
+    await page.goto('/#skills');
     await page.waitForLoadState('domcontentloaded');
     await page.waitForTimeout(500);
 
-    const scrollMargins = await page.evaluate(() => {
-      const section = document.querySelector('#skills');
-      const chapterNames = Array.from(document.querySelectorAll('#skills .skills__chapter-name'));
+    const check = await page.evaluate(() => {
+      const heading = document.querySelector('#skills-heading');
+      const header = document.querySelector('header');
+      const headingRect = heading.getBoundingClientRect();
+      const headerRect = header.getBoundingClientRect();
       return {
-        sectionScrollMargin: window.getComputedStyle(section).scrollMarginTop,
-        chapterScrollMargins: chapterNames.map((el) => window.getComputedStyle(el).scrollMarginTop),
+        headingTop: headingRect.top,
+        headerBottom: headerRect.bottom,
+        visibleBelowHeader: headingRect.top >= headerRect.bottom,
       };
     });
 
-    expect(parseFloat(scrollMargins.sectionScrollMargin)).toBeGreaterThan(0);
-    expect(scrollMargins.chapterScrollMargins.length).toBe(3);
-    for (const sm of scrollMargins.chapterScrollMargins) {
-      expect(parseFloat(sm)).toBeGreaterThan(0);
-    }
+    expect(check.visibleBelowHeader).toBe(true);
+    expect(check.headingTop).toBeGreaterThanOrEqual(check.headerBottom);
   });
 });

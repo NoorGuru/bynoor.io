@@ -107,11 +107,11 @@ describe('Skills Section', () => {
     'TypeScript',
     'JavaScript',
     'Spring Boot',
+    'React',
+    'Node.js',
     'GraphQL',
     'gRPC',
     'OpenAPI',
-    'React',
-    'Node.js',
     'AWS',
     'gcloud / GCP',
     'AI-native Architectures',
@@ -143,11 +143,9 @@ describe('Skills Section', () => {
   ];
 
   const expectedRows = [
-    ['Kotlin', 'Java', 'Scala'],
-    ['Python'],
-    ['TypeScript', 'JavaScript'],
-    ['Spring Boot', 'GraphQL', 'gRPC', 'OpenAPI'],
-    ['React', 'Node.js'],
+    ['Kotlin', 'Java', 'Scala', 'Python', 'TypeScript', 'JavaScript'],
+    ['Spring Boot', 'React', 'Node.js'],
+    ['GraphQL', 'gRPC', 'OpenAPI'],
     ['AWS', 'gcloud / GCP'],
     ['AI-native Architectures', 'MCP Servers', 'Agent Frameworks', 'LLM Tooling'],
     ['Platform Engineering', 'SDKs', 'Microservices'],
@@ -187,11 +185,11 @@ describe('Skills Section', () => {
     });
   });
 
-  it('has 14 skills rows total, per-chapter counts [6, 4, 4], and per-row membership exactly as listed in order', () => {
+  it('has 12 skills rows total, exactly 4 per chapter, and row membership exactly as listed in order', () => {
     const rows = Array.from(
       document.querySelectorAll('#skills .skills__row')
     );
-    expect(rows.length).toBe(14);
+    expect(rows.length).toBe(12);
 
     const chapters = Array.from(
       document.querySelectorAll('#skills .skills__chapter')
@@ -200,7 +198,7 @@ describe('Skills Section', () => {
     const perChapterCounts = chapters.map(
       (ch) => ch.querySelectorAll('.skills__row').length
     );
-    expect(perChapterCounts).toEqual([6, 4, 4]);
+    expect(perChapterCounts).toEqual([4, 4, 4]);
 
     const actualRows = rows.map((row) =>
       Array.from(row.querySelectorAll('.skills__item')).map((item) =>
@@ -208,6 +206,23 @@ describe('Skills Section', () => {
       )
     );
     expect(actualRows).toEqual(expectedRows);
+  });
+
+  it('.skills__chapter-head exists exactly 3 times and wraps the name plus the proof', () => {
+    const heads = Array.from(
+      document.querySelectorAll('#skills .skills__chapter-head')
+    );
+    expect(heads.length).toBe(3);
+
+    heads.forEach((head) => {
+      const name = head.querySelector('.skills__chapter-name');
+      const proof = head.querySelector('.skills__chapter-proof');
+      expect(name).not.toBeNull();
+      expect(proof).not.toBeNull();
+      expect(head.children.length).toBe(2);
+      expect(head.children[0]).toBe(name);
+      expect(head.children[1]).toBe(proof);
+    });
   });
 
   it('contains exactly the 41 allowlisted strings in DOM order with zero invented copy', () => {
@@ -226,7 +241,7 @@ describe('Skills Section', () => {
     expect(expected41Strings.length).toBe(41);
 
     const actualStrings = Array.from(
-      document.querySelectorAll('#skills h2, #skills h3, #skills p, #skills .skills__item')
+      document.querySelectorAll('#skills h2, #skills h3, #skills p, .skills__item')
     ).map((el) => el.textContent.trim());
 
     expect(actualStrings).toEqual(expected41Strings);

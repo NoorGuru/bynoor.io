@@ -9,7 +9,7 @@ describe('Skills Ledger Source Text Verification', () => {
   const homeCss = readFileSync(homeCssPath, 'utf-8');
   const indexAstro = readFileSync(indexAstroPath, 'utf-8');
 
-  const skillsBlockStart = homeCss.indexOf('/* === Skills: THE LEDGER === */');
+  const skillsBlockStart = homeCss.indexOf('/* === Skills:');
   const skillsBlockEnd = homeCss.indexOf('/* === Recommendations:');
   const skillsBlock = homeCss.slice(skillsBlockStart, skillsBlockEnd);
 
@@ -51,27 +51,35 @@ describe('Skills Ledger Source Text Verification', () => {
     });
   });
 
-  it('.skills__row::after has width: 1.5rem, height: 3px, and background: var(--brass)', () => {
-    expect(skillsBlock).toMatch(/\.skills__row::after\s*\{[^}]*width:\s*1\.5rem;/);
-    expect(skillsBlock).toMatch(/\.skills__row::after\s*\{[^}]*height:\s*3px;/);
-    expect(skillsBlock).toMatch(/\.skills__row::after\s*\{[^}]*background:\s*var\(--brass\);/);
+  it('asserts chapter-head grid with 13rem margin column at >=900px', () => {
+    expect(skillsBlock).toMatch(/@media\s*\(min-width:\s*900px\)\s*\{[\s\S]*\.skills__chapter-head\s*\{[^}]*grid-template-columns:\s*13rem minmax\(0,\s*1fr\);/);
+    expect(skillsBlock).toMatch(/@media\s*\(min-width:\s*900px\)\s*\{[\s\S]*\.skills__chapter-head\s*\{[^}]*column-gap:\s*3rem;/);
   });
 
-  it('.skills__row::before has right: 2rem inset stop and 1px line background', () => {
-    expect(skillsBlock).toMatch(/\.skills__row::before\s*\{[^}]*right:\s*2rem;/);
-    expect(skillsBlock).toMatch(/\.skills__row::before\s*\{[^}]*height:\s*1px;/);
-    expect(skillsBlock).toMatch(/\.skills__row::before\s*\{[^}]*background:\s*var\(--line\);/);
+  it('asserts chapter name font-size clamp', () => {
+    expect(skillsBlock).toMatch(/\.skills__chapter-name\s*\{[^}]*font-size:\s*clamp\(2\.5rem,\s*4\.5vw,\s*3\.5rem\);/);
   });
 
-  it('has gutter rule and brass cap at min-width: 900px', () => {
-    expect(skillsBlock).toMatch(/@media\s*\(min-width:\s*900px\)\s*\{[\s\S]*\.skills__ledger::before\s*\{[^}]*left:\s*50%;[^}]*width:\s*1px;[^}]*background:\s*var\(--line\);/);
-    expect(skillsBlock).toMatch(/@media\s*\(min-width:\s*900px\)\s*\{[\s\S]*\.skills__ledger::after\s*\{[^}]*left:\s*calc\(50%\s*-\s*1px\);[^}]*width:\s*3px;[^}]*height:\s*1\.5rem;[^}]*background:\s*var\(--brass\);/);
+  it('asserts 4rem x 3px brass cap on the chapter rule', () => {
+    expect(skillsBlock).toMatch(/\.skills__chapter::before\s*\{[^}]*width:\s*4rem;/);
+    expect(skillsBlock).toMatch(/\.skills__chapter::before\s*\{[^}]*height:\s*3px;/);
+    expect(skillsBlock).toMatch(/\.skills__chapter::before\s*\{[^}]*background:\s*var\(--brass\);/);
   });
 
-  it('has pine separator on .skills__item:not(:last-child)::after', () => {
+  it('asserts full-width row borders with no right: 2rem inset trick', () => {
+    expect(skillsBlock).toMatch(/\.skills__row\s*\{[^}]*border-top:\s*1px solid var\(--line\);/);
+    expect(skillsBlock).toMatch(/\.skills__row:last-child\s*\{[^}]*border-bottom:\s*1px solid var\(--line\);/);
+    expect(skillsBlock).not.toContain('right: 2rem');
+    expect(skillsBlock).not.toContain('right: 1.25rem');
+    expect(skillsBlock).not.toContain('.skills__row::before');
+    expect(skillsBlock).not.toContain('.skills__row::after');
+  });
+
+  it('asserts pine middot separator on .skills__item:not(:last-child)::after', () => {
     expect(skillsBlock).toMatch(/\.skills__item:not\(:last-child\)::after\s*\{[^}]*content:\s*["']\\00B7["'];/);
     expect(skillsBlock).toMatch(/\.skills__item:not\(:last-child\)::after\s*\{[^}]*color:\s*var\(--pine\);/);
     expect(skillsBlock).toMatch(/\.skills__item:not\(:last-child\)::after\s*\{[^}]*font-weight:\s*700;/);
+    expect(skillsBlock).toMatch(/\.skills__item:not\(:last-child\)::after\s*\{[^}]*margin-inline:\s*0\.6rem;/);
   });
 
   it('has exactly one min-width media query and it is 900px', () => {
@@ -92,9 +100,9 @@ describe('Skills Ledger Source Text Verification', () => {
     expect(skillsBlock).toMatch(/\.skills__chapter-name\s*\{[^}]*scroll-margin-top:\s*calc\(var\(--header-h\)\s*\+\s*1\.5rem\);/);
   });
 
-  it('index.astro contains exactly 14 skills rows and 34 skills items', () => {
+  it('index.astro contains exactly 12 skills rows and 34 skills items', () => {
     const rowMatches = indexAstro.match(/class="skills__row"/g) || [];
-    expect(rowMatches.length).toBe(14);
+    expect(rowMatches.length).toBe(12);
 
     const itemMatches = indexAstro.match(/class="skills__item"/g) || [];
     expect(itemMatches.length).toBe(34);

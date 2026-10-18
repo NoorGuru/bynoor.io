@@ -1371,21 +1371,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         <div class="skills__chapters">
           <article class="skills__chapter skills__chapter--build" aria-labelledby="skills-chapter-build">
-            <h3 class="skills__chapter-name" id="skills-chapter-build">build</h3>
-            <p class="skills__chapter-proof">Learned React in weeks to lead an Amazon frontend project. Work daily across Kotlin, Java, Python, and TypeScript on backend, frontend, and infrastructure.</p>
+            <div class="skills__chapter-head">
+              <h3 class="skills__chapter-name" id="skills-chapter-build">build</h3>
+              <p class="skills__chapter-proof">Learned React in weeks to lead an Amazon frontend project. Work daily across Kotlin, Java, Python, and TypeScript on backend, frontend, and infrastructure.</p>
+            </div>
             <ul class="skills__ledger">
-              <li class="skills__row"><span class="skills__item">Kotlin</span><span class="skills__item">Java</span><span class="skills__item">Scala</span></li>
-              <li class="skills__row"><span class="skills__item">Python</span></li>
-              <li class="skills__row"><span class="skills__item">TypeScript</span><span class="skills__item">JavaScript</span></li>
-              <li class="skills__row"><span class="skills__item">Spring Boot</span><span class="skills__item">GraphQL</span><span class="skills__item">gRPC</span><span class="skills__item">OpenAPI</span></li>
-              <li class="skills__row"><span class="skills__item">React</span><span class="skills__item">Node.js</span></li>
+              <li class="skills__row"><span class="skills__item">Kotlin</span><span class="skills__item">Java</span><span class="skills__item">Scala</span><span class="skills__item">Python</span><span class="skills__item">TypeScript</span><span class="skills__item">JavaScript</span></li>
+              <li class="skills__row"><span class="skills__item">Spring Boot</span><span class="skills__item">React</span><span class="skills__item">Node.js</span></li>
+              <li class="skills__row"><span class="skills__item">GraphQL</span><span class="skills__item">gRPC</span><span class="skills__item">OpenAPI</span></li>
               <li class="skills__row"><span class="skills__item">AWS</span><span class="skills__item">gcloud / GCP</span></li>
             </ul>
           </article>
 
           <article class="skills__chapter skills__chapter--architect" aria-labelledby="skills-chapter-architect">
-            <h3 class="skills__chapter-name" id="skills-chapter-architect">architect</h3>
-            <p class="skills__chapter-proof">SDK platform handling 500M+ requests/year. Chain-of-tools agent architecture that cuts hallucination. Systems I built at Amazon still running 3+ years after I left.</p>
+            <div class="skills__chapter-head">
+              <h3 class="skills__chapter-name" id="skills-chapter-architect">architect</h3>
+              <p class="skills__chapter-proof">SDK platform handling 500M+ requests/year. Chain-of-tools agent architecture that cuts hallucination. Systems I built at Amazon still running 3+ years after I left.</p>
+            </div>
             <ul class="skills__ledger">
               <li class="skills__row"><span class="skills__item">AI-native Architectures</span><span class="skills__item">MCP Servers</span><span class="skills__item">Agent Frameworks</span><span class="skills__item">LLM Tooling</span></li>
               <li class="skills__row"><span class="skills__item">Platform Engineering</span><span class="skills__item">SDKs</span><span class="skills__item">Microservices</span></li>
@@ -1395,8 +1397,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </article>
 
           <article class="skills__chapter skills__chapter--lead" aria-labelledby="skills-chapter-lead">
-            <h3 class="skills__chapter-name" id="skills-chapter-lead">lead</h3>
-            <p class="skills__chapter-proof">Trained hundreds on AI-powered development. Onboarded 6 engineers onto 50+ repositories. Hired tens of engineers through bar-raising interviews at Amazon and Expedia. Teaching programming since 2013.</p>
+            <div class="skills__chapter-head">
+              <h3 class="skills__chapter-name" id="skills-chapter-lead">lead</h3>
+              <p class="skills__chapter-proof">Trained hundreds on AI-powered development. Onboarded 6 engineers onto 50+ repositories. Hired tens of engineers through bar-raising interviews at Amazon and Expedia. Teaching programming since 2013.</p>
+            </div>
             <ul class="skills__ledger">
               <li class="skills__row"><span class="skills__item">Engineering Leadership</span><span class="skills__item">Hiring &amp; Bar Raising</span></li>
               <li class="skills__row"><span class="skills__item">Mentoring &amp; Coaching</span><span class="skills__item">Training at Scale</span><span class="skills__item">Knowledge Sharing</span></li>
