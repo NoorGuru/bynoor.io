@@ -1911,6 +1911,12 @@ body.menu-open {
     margin-top: 0;
   }
 
+  /* The stats row is the card's bottom band here, so the content column has to
+     carry its own bottom rhythm or the tags sit on the divider */
+  .projects__featured--egwizard .projects__featured-content {
+    padding-bottom: 1.75rem;
+  }
+
   .projects__preview-link {
     display: block;
   }
