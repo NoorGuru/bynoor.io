@@ -294,6 +294,7 @@ describe('Navigation', () => {
     expect(hrefs).toContain('#links');
     expect(hrefs).toContain('#projects');
     expect(hrefs).toContain('#teach');
+    expect(hrefs).toContain('#journey');
   });
 
   it('renders desktop navigation links in correct order', () => {
@@ -307,13 +308,14 @@ describe('Navigation', () => {
       { href: '#highlights', text: 'proof' },
       { href: '#projects', text: 'build' },
       { href: '#teach', text: 'teach' },
+      { href: '#journey', text: 'journey' },
       { href: '#skills', text: 'skills' },
       { href: '#links', text: 'connect' },
       { href: '/technical-interview-preparation-kit/', text: 'prep kit' },
     ]);
   });
 
-  it('renders mobile menu links with 01..06 indices in order', () => {
+  it('renders mobile menu links with 01..07 indices in order', () => {
     const mobileLinks = Array.from(document.querySelectorAll('.mobile-menu__link'));
     const items = mobileLinks.map((l) => {
       const index = l.querySelector('.mobile-menu__link-index')?.textContent.trim();
@@ -329,9 +331,10 @@ describe('Navigation', () => {
       { index: '01', text: 'proof', href: '#highlights' },
       { index: '02', text: 'build', href: '#projects' },
       { index: '03', text: 'teach', href: '#teach' },
-      { index: '04', text: 'skills', href: '#skills' },
-      { index: '05', text: 'connect', href: '#links' },
-      { index: '06', text: 'prep kit', href: '/technical-interview-preparation-kit/' },
+      { index: '04', text: 'journey', href: '#journey' },
+      { index: '05', text: 'skills', href: '#skills' },
+      { index: '06', text: 'connect', href: '#links' },
+      { index: '07', text: 'prep kit', href: '/technical-interview-preparation-kit/' },
     ]);
   });
 
