@@ -18,12 +18,12 @@ const { prefix = "", active = null, logoHref = "#hero" } = Astro.props;
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHXB3G7XDR" is:inline></script>
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-XHXB3G7XDR');
+    (()=>{let l=()=>{if(l.d)return;l.d=1;let s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-XHXB3G7XDR';document.head.appendChild(s)};['pointerdown','keydown','scroll','touchstart'].forEach(e=>addEventListener(e,l,{passive:true,once:true}));'requestIdleCallback'in window?requestIdleCallback(l,{timeout:3000}):setTimeout(l,3000)})();
   </script>
   <link rel="preload" as="font" href="/fonts/fraunces-normal.woff2" type="font/woff2" crossorigin>
   <link rel="preload" as="font" href="/fonts/dm-sans-variable.woff2" type="font/woff2" crossorigin>
