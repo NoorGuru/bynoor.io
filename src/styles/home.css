@@ -3637,6 +3637,47 @@ body.menu-open {
 }
 
 /* === Motion Engine === */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #noor-name,
+  .hero__proof,
+  .hero__actions,
+  .hero__signals,
+  .hero__plaque-shell {
+    animation: hero-fade-up 0.6s var(--ease) both;
+  }
+
+  #noor-name {
+    animation-delay: 0ms;
+  }
+
+  .hero__proof {
+    animation-delay: 60ms;
+  }
+
+  .hero__actions {
+    animation-delay: 120ms;
+  }
+
+  .hero__signals {
+    animation-delay: 180ms;
+  }
+
+  .hero__plaque-shell {
+    animation-delay: 240ms;
+  }
+}
+
 html.js-loaded [data-animate="fade-up"] {
   opacity: 0;
   transform: translateY(16px);
@@ -3660,6 +3701,16 @@ html.js-loaded [data-animate="fade-up"].animate-visible,
   *::after {
     transition: none !important;
     animation: none !important;
+  }
+
+  #noor-name,
+  .hero__proof,
+  .hero__actions,
+  .hero__signals,
+  .hero__plaque-shell {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   html.js-loaded [data-animate],
