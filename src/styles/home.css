@@ -1158,7 +1158,6 @@ body.menu-open {
   border: 1px solid var(--line);
   border-radius: 16px;
   background: rgba(247, 243, 234, 0.5);
-  overflow: hidden;
   transition: border-color 200ms ease, background-color 200ms ease;
 }
 
@@ -1178,6 +1177,7 @@ body.menu-open {
   user-select: none;
   min-height: 48px;
   gap: 1rem;
+  border-radius: 16px;
 }
 
 .ledger__disclosure-btn::-webkit-details-marker {
