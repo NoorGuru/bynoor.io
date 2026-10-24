@@ -5,6 +5,7 @@ import { initAnimationEngine, initParallax, initSectionAccentReveal, initJourney
 import { initScrollProgress } from './scroll-progress.js';
 import { initRecommendations } from './recommendations.js';
 import { initTeachFacade } from './teach-facade.js';
+import { initDisclosurePaintFix } from './disclosure-paint.js';
 import { initClipboard } from './clipboard.js';
 
 // Initialize modules when DOM is ready
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollSpy();
   initRecommendations();
   initTeachFacade();
+  initDisclosurePaintFix();
   initClipboard();
 
   // Set current year in footer
