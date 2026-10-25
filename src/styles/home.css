@@ -1547,14 +1547,6 @@ body.menu-open {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.projects__featured--aura .projects__preview-img {
-  object-fit: cover;
-  object-position: top center;
-  width: 100%;
-  height: 100%;
-  aspect-ratio: auto;
-}
-
 .projects__preview-link:hover .projects__preview-img {
   transform: scale(1.015);
 }
@@ -1925,6 +1917,14 @@ body.menu-open {
     height: auto;
     aspect-ratio: auto;
     object-fit: contain;
+  }
+
+  .projects__featured--aura .projects__preview-img {
+    object-fit: cover;
+    object-position: top center;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
   }
 }
 
