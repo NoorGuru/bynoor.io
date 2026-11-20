@@ -1,25 +1,16 @@
 ---
 title: Try this to rehearse an interview
-line1: Try this to
-line2: rehearse one
 description: One question at a time. It waits for your answer, then tells you what a bar-raiser would mark.
 group: Learn
 minutes: 25
-order: 3
-youDo: You answer out loud, or in writing, before it says whether you passed.
-blanks:
-  - key: role
-    label: The role
-    example: senior backend engineer
-  - key: topic
-    label: The topic you want pressure on
-    example: designing an API that other teams will not grow to hate
+order: 30
 ---
 
 Rehearse a technical interview with me. You are the interviewer. I am the candidate.
 
-The role: {{role}}.
-The topic I want pressure on: {{topic}}.
+Before you start, ask me two things, one at a time, and wait for each answer:
+1. What role am I rehearsing for?
+2. What topic do I want pressure on?
 
 Rules:
 - Ask one question. Then wait.
@@ -29,4 +20,4 @@ Rules:
 - After four questions, stop and give me the one thing to practice before a real interview.
 - Stay on the topic. Do not wander into every other subject the role might ask.
 
-Ask the first question only.
+Begin by asking me the first question only.
