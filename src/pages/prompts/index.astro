@@ -49,7 +49,7 @@ const pageUrl = "https://bynoor.io/prompts/";
     <section class="try-hero" aria-labelledby="try-title">
       <div class="try-hero__inner">
         <h1 id="try-title" data-animate="fade-up">Try this</h1>
-        <p data-animate="fade-up" data-animate-delay="80">Copy a prompt. Paste it into a chat. The chat asks what it needs. You do the work.</p>
+        <p data-animate="fade-up" data-animate-delay="80">Pick a title. Copy it, or open it to read the full prompt. The chat asks what it needs.</p>
       </div>
     </section>
 
@@ -58,25 +58,29 @@ const pageUrl = "https://bynoor.io/prompts/";
         {groups.map((group) => (
           <div class="try-group">
             <h2 data-animate="fade-up">{group.name}</h2>
-            {group.items.map((prompt) => (
-              <article class="prompt" id={prompt.id} data-animate="fade-up">
-                <div class="prompt__head">
-                  <h3 class="prompt__title">{prompt.data.title}</h3>
-                  <p class="prompt__meta">{prompt.data.minutes} min</p>
-                </div>
-                <p class="prompt__note">{prompt.data.description}</p>
-                <div class="prompt__actions">
-                  <button
-                    class="prompt__copy"
-                    type="button"
-                    data-copy-from={`#prompt-${prompt.id}`}
-                    data-copy-msg="Prompt copied"
-                  >Copy prompt</button>
-                  <a class="prompt__share" href={`/prompts/${prompt.id}/`}>Open alone</a>
-                </div>
-                <pre class="prompt__body" id={`prompt-${prompt.id}`}>{(prompt.body ?? "").trim()}</pre>
-              </article>
-            ))}
+            <ul class="try-group__list">
+              {group.items.map((prompt) => (
+                <li class="prompt-row" id={prompt.id} data-animate="fade-up">
+                  <div class="prompt-row__main">
+                    <h3 class="prompt-row__title">
+                      <a href={`/prompts/${prompt.id}/`}>{prompt.data.title}</a>
+                    </h3>
+                    <p class="prompt-row__note">{prompt.data.description}</p>
+                  </div>
+                  <p class="prompt-row__meta">{prompt.data.minutes} min</p>
+                  <div class="prompt-row__actions">
+                    <button
+                      class="prompt__copy"
+                      type="button"
+                      data-copy-from={`#prompt-${prompt.id}`}
+                      data-copy-msg="Prompt copied"
+                    >Copy prompt</button>
+                    <a class="prompt__open" href={`/prompts/${prompt.id}/`}>Open</a>
+                  </div>
+                  <pre class="prompt__source" id={`prompt-${prompt.id}`} aria-hidden="true">{(prompt.body ?? "").trim()}</pre>
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>

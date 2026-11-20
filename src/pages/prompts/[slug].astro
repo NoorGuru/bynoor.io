@@ -58,13 +58,36 @@ const others = prompts.filter((prompt) => prompt.id !== entry.id);
           </div>
           <pre class="prompt__body" id="prompt-body">{body}</pre>
         </article>
+      </div>
+    </section>
 
-        <div class="try-foot__inner" style="margin-top: 3.5rem;">
-          <p>Other prompts</p>
-          <p set:html={others.map((prompt) =>
-            `<a href="/prompts/${prompt.id}/">${prompt.data.title}</a>`
-          ).join(" · ")}></p>
-        </div>
+    <section class="try-more" aria-labelledby="more-title">
+      <div class="try-more__inner">
+        <h2 id="more-title" data-animate="fade-up">More to try</h2>
+        <p class="try-more__lede" data-animate="fade-up" data-animate-delay="60">Another title, same idea: copy it, or open it.</p>
+        <ul class="try-group__list">
+          {others.map((prompt) => (
+            <li class="prompt-row" data-animate="fade-up">
+              <div class="prompt-row__main">
+                <h3 class="prompt-row__title">
+                  <a href={`/prompts/${prompt.id}/`}>{prompt.data.title}</a>
+                </h3>
+                <p class="prompt-row__note">{prompt.data.description}</p>
+              </div>
+              <p class="prompt-row__meta">{prompt.data.minutes} min</p>
+              <div class="prompt-row__actions">
+                <button
+                  class="prompt__copy"
+                  type="button"
+                  data-copy-from={`#more-${prompt.id}`}
+                  data-copy-msg="Prompt copied"
+                >Copy prompt</button>
+                <a class="prompt__open" href={`/prompts/${prompt.id}/`}>Open</a>
+              </div>
+              <pre class="prompt__source" id={`more-${prompt.id}`} aria-hidden="true">{(prompt.body ?? "").trim()}</pre>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   </main>
