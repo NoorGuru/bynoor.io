@@ -1,0 +1,96 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/prompts.css";
+import { getCollection } from "astro:content";
+
+const prompts = (await getCollection("prompt")).sort((a, b) => a.data.order - b.data.order);
+const groups = ["Learn", "Make"].map((name) => ({
+  name,
+  items: prompts.filter((prompt) => prompt.data.group === name),
+}));
+const pageUrl = "https://bynoor.io/prompts/";
+---
+<BaseLayout prefix="/" active="prompts" logoHref="/">
+  <Fragment slot="head">
+    <title>Try this | Noor</title>
+    <meta name="description" content="Five prompts you copy into a chat. The chat asks what it needs. You finish the work yourself.">
+    <meta name="author" content="Mohammad Noor Abu Khlaif">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href={pageUrl}>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Mohammad Noor Abu Khlaif">
+    <meta property="og:title" content="Try this | Noor">
+    <meta property="og:description" content="Five prompts you copy into a chat. The chat asks what it needs.">
+    <meta property="og:image" content="https://bynoor.io/og-image.png">
+    <meta property="og:url" content={pageUrl}>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Try this | Noor">
+    <meta name="twitter:description" content="Five prompts you copy into a chat. The chat asks what it needs.">
+    <meta name="twitter:image" content="https://bynoor.io/og-image.png">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "Try this",
+      description: "Prompts you copy into a chat and then finish yourself.",
+      url: pageUrl,
+      author: { "@id": "https://bynoor.io/#person" },
+      itemListElement: prompts.map((prompt, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: prompt.data.title,
+        url: `https://bynoor.io/prompts/${prompt.id}/`,
+      })),
+    })}></script>
+  </Fragment>
+  <Fragment slot="pre">
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+  </Fragment>
+  <main id="main-content" class="prompts">
+    <section class="try-hero" aria-labelledby="try-title">
+      <div class="try-hero__inner">
+        <h1 id="try-title" data-animate="fade-up">Try this</h1>
+        <p data-animate="fade-up" data-animate-delay="80">Pick a title. Copy it, or open it to read the full prompt. The chat asks what it needs.</p>
+      </div>
+    </section>
+
+    <section class="try-list" aria-label="Prompts">
+      <div class="try-list__inner">
+        {groups.map((group) => (
+          <div class="try-group">
+            <h2 data-animate="fade-up">{group.name}</h2>
+            <ul class="try-group__list">
+              {group.items.map((prompt) => (
+                <li class="prompt-row" id={prompt.id} data-animate="fade-up">
+                  <div class="prompt-row__main">
+                    <h3 class="prompt-row__title">
+                      <a href={`/prompts/${prompt.id}/`}>{prompt.data.title}</a>
+                    </h3>
+                    <p class="prompt-row__note">{prompt.data.description}</p>
+                  </div>
+                  <p class="prompt-row__meta">{prompt.data.minutes} min</p>
+                  <div class="prompt-row__actions">
+                    <a class="prompt__action" href={`/prompts/${prompt.id}/`}>Open</a>
+                    <button
+                      class="prompt__action"
+                      type="button"
+                      data-copy-from={`#prompt-${prompt.id}`}
+                      data-copy-msg="Prompt copied"
+                    >Copy prompt</button>
+                  </div>
+                  <pre class="prompt__source" id={`prompt-${prompt.id}`} aria-hidden="true">{(prompt.body ?? "").trim()}</pre>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="try-foot" aria-label="More">
+      <div class="try-foot__inner">
+        <p>Want a longer interview sheet? <a href="/technical-interview-preparation-kit/">Open the preparation kit</a>.</p>
+        <p>Missing a prompt? <a href="mailto:moh.noor94@gmail.com?subject=A%20prompt%20to%20try">Send the title</a>.</p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

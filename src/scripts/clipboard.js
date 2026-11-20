@@ -67,13 +67,26 @@ export async function copyToClipboard(text, customMessage) {
   return false;
 }
 
+function textFromCopyTrigger(el) {
+  const email = el.getAttribute('data-copy-email');
+  if (email) return email;
+
+  const from = el.getAttribute('data-copy-from');
+  if (from) {
+    const target = document.querySelector(from);
+    return target ? (target.textContent || '').trim() : '';
+  }
+
+  return el.getAttribute('data-copy-text') || '';
+}
+
 export function initClipboard(root = document) {
-  const copyElements = root.querySelectorAll('[data-copy-email], [data-copy-text]');
+  const copyElements = root.querySelectorAll('[data-copy-email], [data-copy-text], [data-copy-from]');
 
   copyElements.forEach((el) => {
     el.addEventListener('click', async (e) => {
       const email = el.getAttribute('data-copy-email');
-      const text = email || el.getAttribute('data-copy-text');
+      const text = textFromCopyTrigger(el);
       const msg = el.getAttribute('data-copy-msg') || (email ? 'Email copied: ' + email + ' ✓' : 'Copied to clipboard ✓');
 
       // Prevent navigating if it was a mailto link
@@ -93,6 +106,12 @@ export function initClipboard(root = document) {
         label.textContent = 'Copied! ✓';
         setTimeout(() => {
           label.textContent = originalText;
+        }, 2000);
+      } else if (el.tagName.toLowerCase() === 'button') {
+        const originalText = el.textContent;
+        el.textContent = 'Copied';
+        setTimeout(() => {
+          el.textContent = originalText;
         }, 2000);
       }
     });
