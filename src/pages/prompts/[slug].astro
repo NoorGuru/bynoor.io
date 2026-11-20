@@ -1,0 +1,184 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/prompts.css";
+import { getCollection } from "astro:content";
+import { fillPrompt, valuesForBlanks } from "../../lib/prompts";
+
+export async function getStaticPaths() {
+  const prompts = await getCollection("prompt");
+  return prompts.map((entry) => ({ params: { slug: entry.id } }));
+}
+
+const { slug } = Astro.params;
+const prompts = (await getCollection("prompt")).sort((a, b) => a.data.order - b.data.order);
+const entry = prompts.find((prompt) => prompt.id === slug);
+if (!entry) throw new Error(`Missing prompt: ${slug}`);
+
+const values = valuesForBlanks(Astro.url, entry.data.blanks);
+const filled = fillPrompt(entry.body ?? "", values);
+const pageUrl = `https://bynoor.io/prompts/${entry.id}/`;
+const others = prompts.filter((prompt) => prompt.id !== entry.id);
+---
+<BaseLayout prefix="/" active="prompts" logoHref="/">
+  <Fragment slot="head">
+    <title>{entry.data.title} | Noor</title>
+    <meta name="description" content={entry.data.description}>
+    <meta name="author" content="Mohammad Noor Abu Khlaif">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href={pageUrl}>
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Mohammad Noor Abu Khlaif">
+    <meta property="og:title" content={`${entry.data.title} | Noor`}>
+    <meta property="og:description" content={entry.data.description}>
+    <meta property="og:image" content="https://bynoor.io/og-image.png">
+    <meta property="og:url" content={pageUrl}>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content={`${entry.data.title} | Noor`}>
+    <meta name="twitter:description" content={entry.data.description}>
+    <meta name="twitter:image" content="https://bynoor.io/og-image.png">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: entry.data.title,
+      description: entry.data.description,
+      url: pageUrl,
+      author: { "@id": "https://bynoor.io/#person" },
+    })}></script>
+  </Fragment>
+  <Fragment slot="pre">
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+  </Fragment>
+  <main id="main-content" class="prompts">
+    <section class="slip-top" aria-labelledby="slip-title">
+      <div class="slip-top__frame">
+        <img
+          class="slip-top__photo"
+          src="/try/teacher-writing-on-blackboard564.jpg"
+          alt="A hand writing with chalk on a blackboard, mid-stroke."
+          width="1600"
+          height="1064"
+        />
+      </div>
+      <article class="sheet">
+        <a class="sheet__back" href="/prompts/">All the slips</a>
+        <h1 id="slip-title">
+          <span class="sheet__line" data-animate="fade-up">{entry.data.line1}</span>
+          <span class="sheet__line" data-animate="fade-up" data-animate-delay="80">{entry.data.line2}</span>
+        </h1>
+        <p class="sheet__dek" data-animate="fade-up" data-animate-delay="140">{entry.data.description}</p>
+        <form class="sheet__form" method="get" data-slip-form data-animate="fade-up" data-animate-delay="180">
+          {entry.data.blanks.map((blank) => (
+            <label class="field" for={blank.key}>
+              <span>{blank.label}</span>
+              {blank.long ? (
+                <textarea id={blank.key} name={blank.key} rows="4" maxlength="180">{values[blank.key]}</textarea>
+              ) : (
+                <input id={blank.key} name={blank.key} type="text" value={values[blank.key]} maxlength="160" autocomplete="off">
+              )}
+            </label>
+          ))}
+          <div class="sheet__actions">
+            <button class="ink-btn ink-btn--pine" type="submit">Rewrite the slip</button>
+            <button class="ink-btn" type="button" data-copy-prompt>Copy this prompt</button>
+          </div>
+        </form>
+        <pre class="prompt-out" data-slip-out>{filled}</pre>
+        <p class="sheet__you">{entry.data.youDo}</p>
+      </article>
+    </section>
+
+    <section class="write" aria-labelledby="write-heading">
+      <h2 id="write-heading" class="write__title" data-animate="fade-up">You still write it</h2>
+      <p class="write__lede" data-animate="fade-up" data-animate-delay="80">The chat can mark the work. It cannot do the practice. These are other people’s hands and pages.</p>
+      <div class="write__grid">
+        <figure data-animate="settle">
+          <img src="/try/young-woman-writing-or-drawing.jpg" alt="A red-chalk drawing of a young person writing, eyes on the page, pen in hand." width="1594" height="2250" loading="lazy">
+          <figcaption>Someone writing, drawn in red chalk around the 1600s.</figcaption>
+        </figure>
+        <figure data-animate="fade-up">
+          <img src="/try/mek-ii-426.jpg" alt="An open carton of white school chalk." width="1920" height="3073" loading="lazy">
+          <figcaption>School chalk.</figcaption>
+        </figure>
+        <figure data-animate="fade-up" data-animate-delay="80">
+          <video class="write__hand" autoplay muted loop playsinline preload="metadata" poster="/try/writing-loop-poster.jpg" width="854" height="480">
+            <source src="/try/writing-loop.webm" type="video/webm">
+          </video>
+          <img class="still" src="/try/writing-loop-poster.jpg" alt="A hand writing the word it is learning, pencil on a white page." width="854" height="480" loading="lazy">
+          <figcaption>A hand writing a word it is learning.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="more" aria-labelledby="more-heading">
+      <h2 id="more-heading" data-animate="fade-up">The other slips</h2>
+      <ul>
+        {others.map((prompt) => (
+          <li>
+            <a href={`/prompts/${prompt.id}/`} data-animate="fade-up">
+              <span>{prompt.data.title}</span>
+              <span>{prompt.data.minutes} min</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="sources" aria-label="Picture credits">
+      <p>The photographs and the clip are other people’s writing and teaching. They are not my classroom, my notes, or my portrait.</p>
+      <ul>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Teacher-writing-on-blackboard564.jpg">“Teacher writing on a blackboard”</a> by Alegri, CC BY 3.0, via Wikimedia Commons.</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:MEK_II-426.jpg">“MEK II-426”</a>, a carton of school chalk, by GodeNehler, CC BY-SA 4.0, via Wikimedia Commons.</li>
+        <li><a href="https://www.artic.edu/artworks/82505">“Young Woman Writing or Drawing”</a>, 1600s, public domain (CC0), via the Art Institute of Chicago.</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Mersi.webm">“Mersi”</a> by Roozitaa, CC BY-SA 4.0, via Wikimedia Commons.</li>
+      </ul>
+    </section>
+  </main>
+  <script type="application/json" id="prompt-template" is:inline set:html={JSON.stringify({ body: (entry.body ?? "").trim(), blanks: entry.data.blanks })}></script>
+  <script>
+    import { copyToClipboard } from "../../scripts/clipboard.js";
+
+    const template = document.getElementById("prompt-template");
+    const form = document.querySelector("[data-slip-form]");
+    const out = document.querySelector("[data-slip-out]");
+    const copyBtn = document.querySelector("[data-copy-prompt]");
+    if (template && form instanceof HTMLFormElement && out && copyBtn instanceof HTMLButtonElement) {
+      const data = JSON.parse(template.textContent || "{}");
+      const params = new URLSearchParams(window.location.search);
+      for (const blank of data.blanks) {
+        const field = form.elements.namedItem(blank.key);
+        const fromUrl = (params.get(blank.key) || "").replace(/[\u0000-\u001F\u007F]/g, "").trim().slice(0, 180);
+        if (fromUrl && (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement)) field.value = fromUrl;
+      }
+      const paint = () => {
+        const values = {};
+        for (const blank of data.blanks) {
+          const field = form.elements.namedItem(blank.key);
+          const raw = field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement ? field.value.trim() : "";
+          values[blank.key] = raw || blank.example;
+        }
+        out.textContent = String(data.body).replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (_, key) => values[key] ?? "");
+      };
+      form.addEventListener("input", paint);
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        paint();
+      });
+      paint();
+      copyBtn.addEventListener("click", async () => {
+        const ok = await copyToClipboard(out.textContent || "", "Prompt copied");
+        if (!ok) return;
+        const original = copyBtn.textContent;
+        copyBtn.textContent = "Copied";
+        window.setTimeout(() => {
+          copyBtn.textContent = original;
+        }, 1600);
+      });
+    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.querySelectorAll("video").forEach((video) => {
+        video.pause();
+        video.removeAttribute("autoplay");
+      });
+    }
+  </script>
+</BaseLayout>

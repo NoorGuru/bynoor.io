@@ -312,6 +312,7 @@ describe('Navigation', () => {
       { href: '#skills', text: 'skills' },
       { href: '#links', text: 'connect' },
       { href: '/technical-interview-preparation-kit/', text: 'prep kit' },
+      { href: '/prompts/', text: 'try this' },
     ]);
   });
 
@@ -335,6 +336,7 @@ describe('Navigation', () => {
       { index: '05', text: 'skills', href: '#skills' },
       { index: '06', text: 'connect', href: '#links' },
       { index: '07', text: 'prep kit', href: '/technical-interview-preparation-kit/' },
+      { index: '08', text: 'try this', href: '/prompts/' },
     ]);
   });
 
