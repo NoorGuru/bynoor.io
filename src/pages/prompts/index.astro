@@ -69,9 +69,9 @@ const pageUrl = "https://bynoor.io/prompts/";
                   </div>
                   <p class="prompt-row__meta">{prompt.data.minutes} min</p>
                   <div class="prompt-row__actions">
-                    <a class="prompt__open prompt__open--primary" href={`/prompts/${prompt.id}/`}>Open</a>
+                    <a class="prompt__action" href={`/prompts/${prompt.id}/`}>Open</a>
                     <button
-                      class="prompt__copy prompt__copy--secondary"
+                      class="prompt__action"
                       type="button"
                       data-copy-from={`#prompt-${prompt.id}`}
                       data-copy-msg="Prompt copied"

@@ -145,8 +145,12 @@ main.prompts > section {
   overflow: hidden;
 }
 
+.prompt__action,
 .prompt__copy {
   appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 0;
   border-radius: 0.35rem;
   padding: 0.75rem 1.15rem;
@@ -155,57 +159,19 @@ main.prompts > section {
   font-family: var(--sans);
   font-size: 1rem;
   font-weight: 560;
+  line-height: 1.2;
+  text-decoration: none;
   cursor: pointer;
 }
 
+.prompt__action:hover,
 .prompt__copy:hover {
   background: var(--pine-deep);
+  color: var(--paper);
 }
 
+.prompt__action:focus-visible,
 .prompt__copy:focus-visible {
-  outline: 2px solid var(--brass);
-  outline-offset: 3px;
-}
-
-.prompt__copy--secondary {
-  background: transparent;
-  color: var(--pine-deep);
-  padding: 0.75rem 0.35rem;
-  font-weight: 500;
-  text-decoration: underline;
-  text-underline-offset: 0.16em;
-}
-
-.prompt__copy--secondary:hover {
-  background: transparent;
-  color: var(--pine);
-}
-
-.prompt__open {
-  color: var(--pine-deep);
-  font-size: 1rem;
-  text-decoration: underline;
-  text-underline-offset: 0.16em;
-}
-
-.prompt__open--primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.35rem;
-  padding: 0.75rem 1.15rem;
-  background: var(--ink);
-  color: var(--paper);
-  font-weight: 560;
-  text-decoration: none;
-}
-
-.prompt__open--primary:hover {
-  background: var(--pine-deep);
-  color: var(--paper);
-}
-
-.prompt__open--primary:focus-visible {
   outline: 2px solid var(--brass);
   outline-offset: 3px;
 }
