@@ -387,6 +387,30 @@ describe('Footer', () => {
     const yearSpan = footer.querySelector('#year');
     expect(yearSpan).not.toBeNull();
   });
+
+  it('lists all bynoor ecosystem sites and guides in the footer directory', () => {
+    const directory = document.querySelector('footer.footer .footer__directory');
+    expect(directory).not.toBeNull();
+
+    const expectedSites = [
+      ['https://aura.bynoor.io', 'aura.bynoor.io'],
+      ['https://nebula.bynoor.io', 'nebula.bynoor.io'],
+      ['https://present.bynoor.io', 'present.bynoor.io'],
+      ['https://void.bynoor.io', 'void.bynoor.io'],
+    ];
+
+    for (const [href, host] of expectedSites) {
+      const link = directory.querySelector(`a[href="${href}"]`);
+      expect(link).not.toBeNull();
+      expect(link.getAttribute('target')).toBe('_blank');
+      expect(link.getAttribute('rel')).toContain('noopener');
+      expect(link.textContent).toContain(host);
+    }
+
+    const kitLink = directory.querySelector('a[href="/technical-interview-preparation-kit/"]');
+    expect(kitLink).not.toBeNull();
+    expect(kitLink.textContent).toContain('Technical Interview Prep Kit');
+  });
 });
 
 describe('SEO', () => {
