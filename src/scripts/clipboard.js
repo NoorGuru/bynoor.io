@@ -87,10 +87,11 @@ export function initClipboard(root = document) {
       await copyToClipboard(text, msg);
 
       // Temporary button state change if it's a button
-      const label = el.querySelector('.hero__btn-copy-label');
+      const label = el.querySelector('.hero__btn-copy-label, .hero__copy-inline-hint');
       if (label) {
-        const originalText = label.textContent;
-        label.textContent = 'Copied! ✓';
+        const originalText = label.dataset.originalLabel || label.textContent;
+        label.dataset.originalLabel = originalText;
+        label.textContent = 'Copied ✓';
         setTimeout(() => {
           label.textContent = originalText;
         }, 2000);

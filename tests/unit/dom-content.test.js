@@ -30,7 +30,7 @@ describe('Hero Section', () => {
   it('has the tagline text', () => {
     const tagline = document.querySelector('.hero__tagline');
     expect(tagline).not.toBeNull();
-    expect(tagline.textContent).toContain('I build tools that help engineers move faster');
+    expect(tagline.textContent).toContain('I build the systems other engineers build on');
   });
 
   it('has the subtitle text', () => {
@@ -45,39 +45,39 @@ describe('Hero Section', () => {
     expect(cta.textContent).toContain("Book a conversation");
   });
 
-  it('has social icon links with correct hrefs in hero', () => {
-    const heroSection = document.querySelector('#hero');
-    const linkedin = heroSection.querySelector('a[href="https://www.linkedin.com/in/mohnoor94"]');
-    const github = heroSection.querySelector('a[href="https://github.com/mohnoor94"]');
-    const youtube = heroSection.querySelector('a[href="https://www.youtube.com/c/CodeWithNoor"]');
-    const email = heroSection.querySelector('a[href="mailto:moh.noor94@gmail.com"]');
+  it('has the editorial byline with name, pedigree, and portrait photo', () => {
+    const byline = document.querySelector('#hero .hero__byline');
+    expect(byline).not.toBeNull();
+    expect(byline.textContent).toContain('Mohammad Noor Abu Khlaif');
+    expect(byline.textContent).toContain('Expedia Group');
+    expect(byline.textContent).toContain('Amazon');
 
-    expect(linkedin).not.toBeNull();
-    expect(github).not.toBeNull();
-    expect(youtube).not.toBeNull();
-    expect(email).not.toBeNull();
-  });
-
-  it('has the editorial portrait frame with photo', () => {
-    const frame = document.querySelector('#hero .hero__portrait-frame');
+    const frame = byline.querySelector('.hero__portrait-frame');
     expect(frame).not.toBeNull();
     const img = frame.querySelector('img');
     expect(img).not.toBeNull();
     expect(img.getAttribute('src')).toBe('/profile-pic.png');
   });
 
-  it('renders the core capabilities plaque ledger', () => {
-    const ledger = document.querySelector('#hero .hero__plaque-ledger');
-    expect(ledger).not.toBeNull();
-    expect(ledger.textContent).toContain('Builder');
-    expect(ledger.textContent).toContain('Teacher');
-    expect(ledger.textContent).toContain('Engineer');
+  it('has inline email copy reassurance in hero', () => {
+    const copyBtn = document.querySelector('#hero button[data-copy-email="moh.noor94@gmail.com"]');
+    expect(copyBtn).not.toBeNull();
+    expect(copyBtn.textContent).toContain('moh.noor94@gmail.com');
   });
 
-  it('has typography brass accent on engineers move faster', () => {
+  it('renders the hairline editorial proof rail', () => {
+    const rail = document.querySelector('#hero .hero__rail');
+    expect(rail).not.toBeNull();
+    expect(rail.textContent).toContain('Weeks → Hours');
+    expect(rail.textContent).toContain('100s upskilled');
+    expect(rail.textContent).toContain('18.7K learners');
+    expect(document.querySelector('#hero').textContent).not.toContain('EG Wizard');
+  });
+
+  it('has typography brass accent on other engineers build on', () => {
     const brass = document.querySelector('#hero .hero__title .u-brass');
     expect(brass).not.toBeNull();
-    expect(brass.textContent).toBe('engineers move faster');
+    expect(brass.textContent).toBe('other engineers build on');
   });
 });
 
@@ -266,7 +266,7 @@ describe('Projects Section', () => {
     expect(statsText).toContain('Official Roadmap');
   });
 
-  it('has alternating featured case study cards (Aura, Nebula, EG Wizard)', () => {
+  it('has featured case study cards in narrative order (EG Wizard, Aura, Nebula)', () => {
     const aura = document.querySelector('.projects__featured--aura');
     const nebula = document.querySelector('.projects__featured--nebula');
     const egWizard = document.querySelector('.projects__featured--egwizard');
@@ -275,29 +275,28 @@ describe('Projects Section', () => {
     expect(nebula).not.toBeNull();
     expect(egWizard).not.toBeNull();
 
-    // Check DOM order: Aura -> Nebula -> EG Wizard
+    // Check DOM order: EG Wizard -> Aura -> Nebula
     const featuredArticles = document.querySelectorAll('#projects .projects__featured');
-    expect(featuredArticles[0]).toBe(aura);
-    expect(featuredArticles[1]).toBe(nebula);
-    expect(featuredArticles[2]).toBe(egWizard);
+    expect(featuredArticles[0]).toBe(egWizard);
+    expect(featuredArticles[1]).toBe(aura);
+    expect(featuredArticles[2]).toBe(nebula);
   });
 });
 
 describe('Navigation', () => {
-  it('has all section links present', () => {
+  it('has core section links present', () => {
     const nav = document.querySelector('nav');
     const links = nav.querySelectorAll('a');
     const hrefs = Array.from(links).map((l) => l.getAttribute('href'));
 
     expect(hrefs).toContain('#highlights');
-    expect(hrefs).toContain('#skills');
-    expect(hrefs).toContain('#links');
     expect(hrefs).toContain('#projects');
-    expect(hrefs).toContain('#teach');
     expect(hrefs).toContain('#journey');
+    expect(hrefs).toContain('#teach');
+    expect(hrefs).toContain('#links');
   });
 
-  it('renders desktop navigation links in correct order', () => {
+  it('renders 5 desktop navigation links matching vertical DOM order', () => {
     const navLinks = Array.from(document.querySelectorAll('.nav__links .nav__link'));
     const items = navLinks.map((l) => ({
       href: l.getAttribute('href'),
@@ -306,16 +305,14 @@ describe('Navigation', () => {
 
     expect(items).toEqual([
       { href: '#highlights', text: 'proof' },
-      { href: '#projects', text: 'build' },
-      { href: '#teach', text: 'teach' },
+      { href: '#projects', text: 'work' },
       { href: '#journey', text: 'journey' },
-      { href: '#skills', text: 'skills' },
+      { href: '#teach', text: 'teaching' },
       { href: '#links', text: 'connect' },
-      { href: '/technical-interview-preparation-kit/', text: 'prep kit' },
     ]);
   });
 
-  it('renders mobile menu links with 01..07 indices in order', () => {
+  it('renders mobile menu links with 01..05 indices in order', () => {
     const mobileLinks = Array.from(document.querySelectorAll('.mobile-menu__link'));
     const items = mobileLinks.map((l) => {
       const index = l.querySelector('.mobile-menu__link-index')?.textContent.trim();
@@ -329,20 +326,18 @@ describe('Navigation', () => {
 
     expect(items).toEqual([
       { index: '01', text: 'proof', href: '#highlights' },
-      { index: '02', text: 'build', href: '#projects' },
-      { index: '03', text: 'teach', href: '#teach' },
-      { index: '04', text: 'journey', href: '#journey' },
-      { index: '05', text: 'skills', href: '#skills' },
-      { index: '06', text: 'connect', href: '#links' },
-      { index: '07', text: 'prep kit', href: '/technical-interview-preparation-kit/' },
+      { index: '02', text: 'work', href: '#projects' },
+      { index: '03', text: 'journey', href: '#journey' },
+      { index: '04', text: 'teaching', href: '#teach' },
+      { index: '05', text: 'connect', href: '#links' },
     ]);
   });
 
-  it('has prep kit link present', () => {
-    const nav = document.querySelector('nav');
-    const kitLink = nav.querySelector('a[href="/technical-interview-preparation-kit/"]');
+  it('has prep kit link accessible in page section and footer', () => {
+    const kitLink = document.querySelector('#prep-kit a[href="/technical-interview-preparation-kit/"]');
+    const footerKitLink = document.querySelector('footer a[href="/technical-interview-preparation-kit/"]');
     expect(kitLink).not.toBeNull();
-    expect(kitLink.textContent.toLowerCase()).toBe('prep kit');
+    expect(footerKitLink).not.toBeNull();
   });
 });
 

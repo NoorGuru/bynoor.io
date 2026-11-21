@@ -47,13 +47,13 @@ test('desktop navigation fits without overflow at 1024px', async ({ page }) => {
   await page.waitForLoadState('domcontentloaded');
   await page.waitForTimeout(1500);
 
-  const buildLink = page.locator('.nav__links a[href="#projects"]');
-  await expect(buildLink).toBeVisible();
-  await expect(buildLink).toHaveText('build');
+  const workLink = page.locator('.nav__links a[href="#projects"]');
+  await expect(workLink).toBeVisible();
+  await expect(workLink).toHaveText('Work');
 
   const teachLink = page.locator('.nav__links a[href="#teach"]');
   await expect(teachLink).toBeVisible();
-  await expect(teachLink).toHaveText('teach');
+  await expect(teachLink).toHaveText('Teaching');
 
   // Verify header and page have no horizontal overflow at 1024px
   const fits = await page.evaluate(() => {
@@ -72,7 +72,7 @@ test('desktop navigation fits without overflow at 1024px', async ({ page }) => {
   expect(fits.navLinksWidth).toBeLessThan(500);
 });
 
-test('mobile menu includes teach link with index 03 and clicks through', async ({ page }) => {
+test('mobile menu includes Teaching link with index 04 and clicks through', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 667 });
   await page.goto('/');
   await page.waitForLoadState('domcontentloaded');
@@ -82,8 +82,8 @@ test('mobile menu includes teach link with index 03 and clicks through', async (
   await page.locator('.nav__hamburger').click();
   const teachMobile = page.locator('#mobile-menu a[href="#teach"]');
   await expect(teachMobile).toBeVisible();
-  await expect(teachMobile.locator('.mobile-menu__link-index')).toHaveText('03');
-  await expect(teachMobile).toContainText('teach');
+  await expect(teachMobile.locator('.mobile-menu__link-index')).toHaveText('04');
+  await expect(teachMobile).toContainText('Teaching');
 
   // Click teach link in mobile menu
   await teachMobile.click();
