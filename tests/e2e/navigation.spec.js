@@ -150,3 +150,20 @@ test('mobile More accordion expands and navigates to Technical Interview Prepara
   await page.waitForURL('**/technical-interview-preparation-kit/**');
   await expect(page).toHaveURL(/technical-interview-preparation-kit/);
 });
+
+test('footer directory displays all bynoor ecosystem sites and Interview Prep Kit', async ({ page }) => {
+  await page.setViewportSize({ width: 1200, height: 900 });
+  await page.goto('/');
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500);
+
+  const directory = page.locator('footer.footer .footer__directory');
+  await directory.scrollIntoViewIfNeeded();
+  await expect(directory).toBeVisible();
+
+  await expect(directory.locator('a[href="https://aura.bynoor.io"]')).toBeVisible();
+  await expect(directory.locator('a[href="https://nebula.bynoor.io"]')).toBeVisible();
+  await expect(directory.locator('a[href="https://present.bynoor.io"]')).toBeVisible();
+  await expect(directory.locator('a[href="https://void.bynoor.io"]')).toBeVisible();
+  await expect(directory.locator('a[href="/technical-interview-preparation-kit/"]')).toBeVisible();
+});

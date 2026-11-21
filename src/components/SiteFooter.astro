@@ -1,5 +1,8 @@
 ---
-const { logoHref = "#hero" } = Astro.props;
+import { moreSites, moreGuides } from "../data/more-links.js";
+
+const { active = null, logoHref = "#hero" } = Astro.props;
+const isKitActive = active === "kit";
 ---
 <!-- Footer -->
   <footer class="footer" data-section-accent="primary">
@@ -47,11 +50,77 @@ const { logoHref = "#hero" } = Astro.props;
         </a>
       </div>
 
+      <!-- Ecosystem & Guides Directory -->
+      <nav class="footer__directory" aria-label="Sites and guides by Noor" data-animate="fade-up" data-animate-delay="450">
+        <div class="footer__group">
+          <div class="footer__group-head">
+            <span class="footer__group-label">Across bynoor.io</span>
+            <span class="footer__group-note">Apps, playbooks, talks &amp; experiments</span>
+          </div>
+          <ul class="footer__sites">
+            {moreSites.map((site) => (
+              <li class="footer__site-item">
+                <a
+                  href={site.href}
+                  target="_blank"
+                  rel="noopener"
+                  class="footer__site-card"
+                >
+                  <div class="footer__site-top">
+                    <span class="footer__site-title">{site.name}</span>
+                    <svg class="footer__site-arrow" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M4.5 11.5L11.5 4.5" />
+                      <path d="M5.5 4.5H11.5V10.5" />
+                    </svg>
+                  </div>
+                  <p class="footer__site-desc">{site.desc}</p>
+                  <div class="footer__site-meta">
+                    <span class="footer__site-host">{site.href.replace(/^https?:\/\//, "")}</span>
+                    <span class="footer__site-badge">{site.badge}</span>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="footer__group footer__group--guides">
+          <div class="footer__group-head">
+            <span class="footer__group-label">Guides &amp; Resources</span>
+          </div>
+          <ul class="footer__guides">
+            {moreGuides.map((guide) => (
+              <li class="footer__guide-item">
+                <a
+                  href={guide.href}
+                  class={`footer__guide-card${isKitActive ? ' footer__guide-card--active' : ''}`}
+                  aria-current={isKitActive ? "page" : undefined}
+                >
+                  <div class="footer__guide-body">
+                    <div class="footer__guide-head">
+                      <span class="footer__guide-title">{guide.name}</span>
+                      <span class="footer__site-badge">{guide.badge}</span>
+                    </div>
+                    <p class="footer__guide-desc">{guide.desc}</p>
+                  </div>
+                  <span class="footer__guide-cta">
+                    <span>{isKitActive ? "Viewing guide" : "Read guide"}</span>
+                    <svg class="footer__guide-arrow" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M3.5 8h9" />
+                      <path d="M8.5 4l4 4-4 4" />
+                    </svg>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+
       <!-- Bottom line -->
       <div class="footer__bottom">
         <p class="footer__copy">2012 – <span id="year">{new Date().getFullYear()}</span></p>
         <p class="footer__made">Designed &amp; engineered by Noor</p>
-        <a href="/technical-interview-preparation-kit/" class="footer__kit-link">Interview Prep Kit →</a>
       </div>
     </div>
   </footer>
