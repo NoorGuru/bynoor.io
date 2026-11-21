@@ -330,7 +330,8 @@ img {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  min-width: 310px;
+  width: 360px;
+  max-width: calc(100vw - 2rem);
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -378,9 +379,20 @@ img {
 }
 
 .nav__dropdown-header {
-  padding: 0.35rem 0.65rem 0.45rem;
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 0.4rem;
+  padding: 0.35rem 0.65rem 0.25rem;
+  margin-bottom: 0.15rem;
+}
+
+.nav__dropdown-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 0.45rem 0.4rem;
+}
+
+.nav__dropdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
 .nav__dropdown-label {
@@ -670,6 +682,32 @@ body.menu-open {
 
 .mobile-menu__drawer-inner {
   overflow: hidden;
+  padding-bottom: 0.5rem;
+}
+
+.mobile-menu__subgroup {
+  margin-top: 0.85rem;
+}
+
+.mobile-menu__subgroup:first-child {
+  margin-top: 0.5rem;
+}
+
+.mobile-menu__subgroup-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  padding: 0.2rem 0.25rem 0.45rem;
+}
+
+.mobile-menu__sublinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
 }
 
 .mobile-menu__sublink {
@@ -677,7 +715,7 @@ body.menu-open {
   align-items: center;
   gap: 0.85rem;
   padding: 0.85rem 1rem;
-  margin: 0.5rem 0 0.85rem;
+  margin: 0;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 8px;

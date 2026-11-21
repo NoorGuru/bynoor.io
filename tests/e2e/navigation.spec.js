@@ -110,6 +110,26 @@ test('desktop More dropdown displays and navigates to Technical Interview Prepar
   await expect(page).toHaveURL(/technical-interview-preparation-kit/);
 });
 
+test('desktop More dropdown lists bynoor ecosystem sites', async ({ page }) => {
+  await page.setViewportSize({ width: 1024, height: 768 });
+  await page.goto('/');
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500);
+
+  const moreTrigger = page.locator('.nav__dropdown-trigger');
+  await moreTrigger.click();
+
+  const auraLink = page.locator('.nav__dropdown-menu a[href="https://aura.bynoor.io"]');
+  const nebulaLink = page.locator('.nav__dropdown-menu a[href="https://nebula.bynoor.io"]');
+  const presentLink = page.locator('.nav__dropdown-menu a[href="https://present.bynoor.io"]');
+  const voidLink = page.locator('.nav__dropdown-menu a[href="https://void.bynoor.io"]');
+
+  await expect(auraLink).toBeVisible();
+  await expect(nebulaLink).toBeVisible();
+  await expect(presentLink).toBeVisible();
+  await expect(voidLink).toBeVisible();
+});
+
 test('mobile More accordion expands and navigates to Technical Interview Preparation Kit', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 667 });
   await page.goto('/');

@@ -350,6 +350,14 @@ describe('Navigation', () => {
     expect(kitLink.textContent).toContain('Technical Interview Prep Kit');
   });
 
+  it('renders desktop More dropdown with links to Aura, Nebula, Present, Void', () => {
+    const dropdown = document.querySelector('.nav__dropdown-menu');
+    expect(dropdown.querySelector('a[href="https://aura.bynoor.io"]')).not.toBeNull();
+    expect(dropdown.querySelector('a[href="https://nebula.bynoor.io"]')).not.toBeNull();
+    expect(dropdown.querySelector('a[href="https://present.bynoor.io"]')).not.toBeNull();
+    expect(dropdown.querySelector('a[href="https://void.bynoor.io"]')).not.toBeNull();
+  });
+
   it('renders mobile More accordion with 06 index and Technical Interview Preparation Kit link', () => {
     const moreTrigger = document.querySelector('.mobile-menu__accordion-trigger');
     expect(moreTrigger).not.toBeNull();
@@ -359,6 +367,14 @@ describe('Navigation', () => {
     const kitLink = document.querySelector('.mobile-menu__drawer a[href="/technical-interview-preparation-kit/"]');
     expect(kitLink).not.toBeNull();
     expect(kitLink.textContent).toContain('Technical Interview Prep Kit');
+  });
+
+  it('renders mobile More accordion with links to Aura, Nebula, Present, Void', () => {
+    const drawer = document.querySelector('.mobile-menu__drawer');
+    expect(drawer.querySelector('a[href="https://aura.bynoor.io"]')).not.toBeNull();
+    expect(drawer.querySelector('a[href="https://nebula.bynoor.io"]')).not.toBeNull();
+    expect(drawer.querySelector('a[href="https://present.bynoor.io"]')).not.toBeNull();
+    expect(drawer.querySelector('a[href="https://void.bynoor.io"]')).not.toBeNull();
   });
 });
 
