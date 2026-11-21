@@ -33,7 +33,7 @@ const { prefix = "", active = null, logoHref = "#hero" } = Astro.props;
   <body>
     <slot name="pre" />
     <SiteHeader prefix={prefix} active={active} logoHref={logoHref} />
-    <MobileMenu prefix={prefix} logoHref={logoHref} />
+    <MobileMenu prefix={prefix} active={active} logoHref={logoHref} />
     <slot />
     <slot name="post" />
     <SiteFooter logoHref={logoHref} />

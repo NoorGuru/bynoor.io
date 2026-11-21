@@ -339,6 +339,27 @@ describe('Navigation', () => {
     expect(kitLink).not.toBeNull();
     expect(footerKitLink).not.toBeNull();
   });
+
+  it('renders desktop More dropdown with Technical Interview Preparation Kit link', () => {
+    const moreTrigger = document.querySelector('.nav__dropdown-trigger');
+    expect(moreTrigger).not.toBeNull();
+    expect(moreTrigger.textContent).toContain('More');
+
+    const kitLink = document.querySelector('.nav__dropdown-menu a[href="/technical-interview-preparation-kit/"]');
+    expect(kitLink).not.toBeNull();
+    expect(kitLink.textContent).toContain('Technical Interview Prep Kit');
+  });
+
+  it('renders mobile More accordion with 06 index and Technical Interview Preparation Kit link', () => {
+    const moreTrigger = document.querySelector('.mobile-menu__accordion-trigger');
+    expect(moreTrigger).not.toBeNull();
+    expect(moreTrigger.textContent).toContain('06');
+    expect(moreTrigger.textContent).toContain('More');
+
+    const kitLink = document.querySelector('.mobile-menu__drawer a[href="/technical-interview-preparation-kit/"]');
+    expect(kitLink).not.toBeNull();
+    expect(kitLink.textContent).toContain('Technical Interview Prep Kit');
+  });
 });
 
 describe('Footer', () => {

@@ -2,6 +2,7 @@
  * Navigation module
  * Handles full-screen mobile menu with staggered animations,
  * hamburger toggle, Escape key close, link click close,
+ * desktop "More" dropdown, mobile "More" accordion drawer,
  * and glassmorphism scroll toggle.
  */
 
@@ -9,6 +10,56 @@ export function initNavigation() {
   const hamburger = document.querySelector('.nav__hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
   const header = document.querySelector('.header');
+
+  // Desktop "More" dropdown
+  const desktopDropdownItem = document.querySelector('.nav__item--dropdown');
+  const desktopDropdownTrigger = document.querySelector('.nav__dropdown-trigger');
+
+  if (desktopDropdownTrigger && desktopDropdownItem) {
+    function toggleDesktopDropdown(force) {
+      const isOpen = force !== undefined ? force : !desktopDropdownItem.classList.contains('is-open');
+      desktopDropdownItem.classList.toggle('is-open', isOpen);
+      desktopDropdownTrigger.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    desktopDropdownTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleDesktopDropdown();
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!desktopDropdownItem.contains(e.target)) {
+        toggleDesktopDropdown(false);
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && desktopDropdownItem.classList.contains('is-open')) {
+        toggleDesktopDropdown(false);
+        desktopDropdownTrigger.focus();
+      }
+    });
+  }
+
+  // Mobile "More" accordion
+  const mobileAccordionTrigger = document.querySelector('.mobile-menu__accordion-trigger');
+  const mobileAccordionItem = document.querySelector('.mobile-menu__item--accordion');
+
+  if (mobileAccordionTrigger && mobileAccordionItem) {
+    function toggleMobileAccordion(force) {
+      const isOpen = force !== undefined ? force : !mobileAccordionItem.classList.contains('is-open');
+      mobileAccordionItem.classList.toggle('is-open', isOpen);
+      mobileAccordionTrigger.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    mobileAccordionTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMobileAccordion();
+    });
+  }
 
   if (!hamburger) return;
 
@@ -19,7 +70,7 @@ export function initNavigation() {
       document.body.classList.add('menu-open');
       // Trap focus: move focus to first link after animation (without visible outline)
       setTimeout(() => {
-        const firstLink = mobileMenu.querySelector('.mobile-menu__link');
+        const firstLink = mobileMenu.querySelector('.mobile-menu__link, .mobile-menu__accordion-trigger');
         if (firstLink) firstLink.focus({ preventScroll: true, focusVisible: false });
       }, 300);
     }
@@ -53,10 +104,17 @@ export function initNavigation() {
     }
   });
 
-  // Close when a mobile menu link is clicked
+  // Close when a mobile menu link is clicked (excluding accordion toggle)
   if (mobileMenu) {
     mobileMenu.addEventListener('click', (e) => {
-      if (e.target.closest('.mobile-menu__link') || e.target.closest('.mobile-menu__cta')) {
+      if (e.target.closest('.mobile-menu__accordion-trigger')) {
+        return;
+      }
+      if (
+        e.target.closest('.mobile-menu__link') ||
+        e.target.closest('.mobile-menu__sublink') ||
+        e.target.closest('.mobile-menu__cta')
+      ) {
         closeMenu();
       }
     });
