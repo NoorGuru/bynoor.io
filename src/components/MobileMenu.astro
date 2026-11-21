@@ -1,5 +1,6 @@
 ---
-const { prefix = "", logoHref = "#hero" } = Astro.props;
+const { prefix = "", active = null, logoHref = "#hero" } = Astro.props;
+const isKitActive = active === "kit";
 ---
 
 
@@ -12,10 +13,68 @@ const { prefix = "", logoHref = "#hero" } = Astro.props;
         <li class="mobile-menu__item"><a href={prefix + "#journey"} class="mobile-menu__link"><span class="mobile-menu__link-index">03</span>Journey</a></li>
         <li class="mobile-menu__item"><a href={prefix + "#teach"} class="mobile-menu__link"><span class="mobile-menu__link-index">04</span>Teaching</a></li>
         <li class="mobile-menu__item"><a href={prefix + "#links"} class="mobile-menu__link"><span class="mobile-menu__link-index">05</span>Connect</a></li>
+        <li class={`mobile-menu__item mobile-menu__item--accordion${isKitActive ? ' is-open' : ''}`}>
+          <button
+            type="button"
+            class="mobile-menu__accordion-trigger"
+            aria-expanded={isKitActive ? "true" : "false"}
+            aria-controls="mobile-more-drawer"
+            id="mobile-more-trigger"
+          >
+            <span class="mobile-menu__link-index">06</span>
+            <span class="mobile-menu__accordion-title">More</span>
+            <svg
+              class="mobile-menu__accordion-chevron"
+              viewBox="0 0 16 16"
+              width="18"
+              height="18"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M3.5 6L8 10.5L12.5 6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <div
+            class="mobile-menu__drawer"
+            id="mobile-more-drawer"
+            role="region"
+            aria-labelledby="mobile-more-trigger"
+          >
+            <div class="mobile-menu__drawer-inner">
+              <a
+                href="/technical-interview-preparation-kit/"
+                class={`mobile-menu__sublink${isKitActive ? ' mobile-menu__sublink--active' : ''}`}
+              >
+                <span class="mobile-menu__sublink-icon" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H16a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H6.5a2.5 2.5 0 0 0-2.5 2.5Z" />
+                    <path d="M6 6h7M6 9h5" />
+                  </svg>
+                </span>
+                <div class="mobile-menu__sublink-content">
+                  <div class="mobile-menu__sublink-header">
+                    <span class="mobile-menu__sublink-title">Technical Interview Prep Kit</span>
+                    <span class="mobile-menu__sublink-badge">Guide</span>
+                  </div>
+                  <span class="mobile-menu__sublink-desc">Data structures, algorithms & system design</span>
+                </div>
+                <svg class="mobile-menu__sublink-arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 12l4-4-4-4" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </li>
       </ul>
       <a href="https://cal.com/mohammad-noor" target="_blank" rel="noopener" class="mobile-menu__cta">Book a conversation ↗</a>
     </nav>
   </div>
 
   <!-- Main Content -->
-  

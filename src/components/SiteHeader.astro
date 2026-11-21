@@ -1,5 +1,6 @@
 ---
 const { prefix = "", active = null, logoHref = "#hero" } = Astro.props;
+const isKitActive = active === "kit";
 ---
 <!-- Header / Navigation -->
   <header class="header">
@@ -22,6 +23,67 @@ const { prefix = "", active = null, logoHref = "#hero" } = Astro.props;
         <li><a href={prefix + "#journey"} class="nav__link">Journey</a></li>
         <li><a href={prefix + "#teach"} class="nav__link">Teaching</a></li>
         <li><a href={prefix + "#links"} class="nav__link">Connect</a></li>
+        <li class="nav__item nav__item--dropdown">
+          <button
+            type="button"
+            class={`nav__dropdown-trigger${isKitActive ? ' nav__dropdown-trigger--active' : ''}`}
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="nav-more-menu"
+            id="nav-more-trigger"
+          >
+            <span>More</span>
+            <svg
+              class="nav__dropdown-icon"
+              viewBox="0 0 12 12"
+              width="12"
+              height="12"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M2.5 4.5L6 8L9.5 4.5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <div
+            class="nav__dropdown-menu"
+            id="nav-more-menu"
+            role="menu"
+            aria-labelledby="nav-more-trigger"
+          >
+            <div class="nav__dropdown-header">
+              <span class="nav__dropdown-label">Resources</span>
+            </div>
+            <a
+              href="/technical-interview-preparation-kit/"
+              class={`nav__dropdown-item${isKitActive ? ' nav__dropdown-item--active' : ''}`}
+              role="menuitem"
+            >
+              <span class="nav__dropdown-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H16a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H6.5a2.5 2.5 0 0 0-2.5 2.5Z" />
+                  <path d="M6 6h7M6 9h5" />
+                </svg>
+              </span>
+              <div class="nav__dropdown-item-content">
+                <div class="nav__dropdown-item-header">
+                  <span class="nav__dropdown-item-title">Technical Interview Prep Kit</span>
+                  <span class="nav__dropdown-item-badge">Guide</span>
+                </div>
+                <span class="nav__dropdown-item-desc">Data structures, algorithms & system design</span>
+              </div>
+              <svg class="nav__dropdown-item-arrow" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 12l4-4-4-4" />
+              </svg>
+            </a>
+          </div>
+        </li>
       </ul>
       <a href="https://cal.com/mohammad-noor" target="_blank" rel="noopener" class="nav__cta">Book a conversation</a>
     </nav>

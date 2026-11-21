@@ -90,3 +90,43 @@ test('mobile menu includes Teaching link with index 04 and clicks through', asyn
   // Menu should close
   await expect(page.locator('#mobile-menu')).not.toBeVisible();
 });
+
+test('desktop More dropdown displays and navigates to Technical Interview Preparation Kit', async ({ page }) => {
+  await page.setViewportSize({ width: 1024, height: 768 });
+  await page.goto('/');
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500);
+
+  const moreTrigger = page.locator('.nav__dropdown-trigger');
+  await expect(moreTrigger).toBeVisible();
+
+  // Click More trigger to open dropdown
+  await moreTrigger.click();
+  const prepKitItem = page.locator('.nav__dropdown-menu a[href="/technical-interview-preparation-kit/"]');
+  await expect(prepKitItem).toBeVisible();
+
+  await prepKitItem.click();
+  await page.waitForURL('**/technical-interview-preparation-kit/**');
+  await expect(page).toHaveURL(/technical-interview-preparation-kit/);
+});
+
+test('mobile More accordion expands and navigates to Technical Interview Preparation Kit', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 667 });
+  await page.goto('/');
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(1500);
+
+  // Open mobile menu
+  await page.locator('.nav__hamburger').click();
+  const moreTrigger = page.locator('.mobile-menu__accordion-trigger');
+  await expect(moreTrigger).toBeVisible();
+
+  // Click More accordion
+  await moreTrigger.click();
+  const prepKitSublink = page.locator('.mobile-menu__drawer a[href="/technical-interview-preparation-kit/"]');
+  await expect(prepKitSublink).toBeVisible();
+
+  await prepKitSublink.click();
+  await page.waitForURL('**/technical-interview-preparation-kit/**');
+  await expect(page).toHaveURL(/technical-interview-preparation-kit/);
+});
