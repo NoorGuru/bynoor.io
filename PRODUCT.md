@@ -20,7 +20,7 @@ Inventor of EG Wizard at Expedia Group (ex-Amazon): AI-powered developer platfor
 
 ## Operating Context
 
-Single-page Astro site with a fixed section order (everything always visible). External booking via Cal.com; resume PDF; social presence via LinkedIn, GitHub, YouTube, X, email. Prep kit is a separate route. Based in Amman, Jordan; bilingual (en/ar) teaching identity.
+Single-page Astro site with a fixed section order (everything always visible). External booking via Cal.com; resume PDF; social presence via LinkedIn, GitHub, YouTube, Instagram, X, email. Prep kit is a separate route. Based in Amman, Jordan; bilingual (en/ar) teaching identity.
 
 ## Capabilities and Constraints
 

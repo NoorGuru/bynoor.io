@@ -167,6 +167,7 @@ Always open to conversations about AI in developer tooling, platform engineering
 - GitHub: https://github.com/mohnoor94
 - GitHub Organizations: https://github.com/NoorGuru (Product Lab), https://github.com/GoBanana-io (AI Agent Tooling)
 - YouTube: https://www.youtube.com/c/CodeWithNoor
+- Instagram: https://www.instagram.com/bynoor.io
 - Twitter/X: https://x.com/mohnoor94
 - StackOverflow: https://stackoverflow.com/users/2847543/mohammad-noor
 - Email: mailto:moh.noor94@gmail.com

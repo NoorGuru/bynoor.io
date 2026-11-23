@@ -130,6 +130,7 @@ describe('Skills Section', () => {
 describe('Links Section', () => {
   const expectedChannelHrefs = [
     'https://www.youtube.com/c/CodeWithNoor',
+    'https://www.instagram.com/bynoor.io',
     'https://www.linkedin.com/in/mohnoor94',
     'https://github.com/mohnoor94',
     'https://x.com/mohnoor94',
@@ -173,6 +174,14 @@ describe('Links Section', () => {
     expect(youtubeLink).not.toBeNull();
     const label = youtubeLink.querySelector('.links__world-platform');
     expect(label.textContent).toBe('Code with Noor');
+  });
+
+  it('Instagram world points at @bynoor.io', () => {
+    const linksSection = document.querySelector('#links');
+    const instagramLink = linksSection.querySelector('a[href="https://www.instagram.com/bynoor.io"]');
+    expect(instagramLink).not.toBeNull();
+    expect(instagramLink.querySelector('.links__world-platform').textContent).toBe('Instagram');
+    expect(instagramLink.textContent).toContain('@bynoor.io');
   });
 });
 
